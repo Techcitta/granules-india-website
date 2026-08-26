@@ -1,0 +1,11 @@
+.esg-pillar-section {
+  width: min(1828px, 100% - 3.2rem);
+  margin: clamp(60px, 8vw, 100px) auto 0;
+}
+.esg-pillar-head { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; margin-bottom: 40px; }
+.esg-pillar-head h2 { margin: 0; font: 500 clamp(28px, 4vw, 50px)/1.1 'Manrope', sans-serif; color: var(--n9); max-width: 720px; }
+.esg-pillar-head p { margin: 0; font: 500 22px/1.3 'Manrope', sans-serif; color: var(--n7); letter-spacing: 0.22px; flex: 1 1 320px; max-width: 620px; }
+
+.esg-carousel { display: flex; gap: 24px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; border-radius: 40px; }
+.esg-carousel::-webkit-scrollbar { display: none; }
+.esg-carousel img { flex: 0 0 auto; width: 45%; min-width: 320px; aspect-ratio: 903/650; object-fit: cover; border-radius: 40px; }
