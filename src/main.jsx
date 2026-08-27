@@ -29,9 +29,10 @@ function ScrollHighlightManager() {
         '.fac-intro',
         '.cp-about-desc',
         '.scroll-intro',
+        '.rd-eco-note',
       ];
       const elements = document.querySelectorAll(selectors.join(', '));
-      const threshold = window.innerHeight * 0.45;
+      const threshold = window.innerHeight * 0.55;
 
       elements.forEach((el) => {
         const rect = el.getBoundingClientRect();
@@ -102,6 +103,7 @@ function App() {
         <Route path="/business/fd" element={<FdPage />} />
         <Route path="/business/rd" element={<RdPage />} />
         <Route path="/business/quality-compliance" element={<QualityCompliancePage />} />
+        <Route path="/business/qc" element={<QualityCompliancePage />} />
         <Route path="/company/facilities" element={<FacilitiesPage />} />
         <Route path="/business/peptides" element={<PeptidesPage />} />
         <Route path="/sustainability" element={<SustainabilityOverviewPage />} />

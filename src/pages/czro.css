@@ -34,27 +34,46 @@
   width: min(1692px, 100% - 3.2rem);
   margin: clamp(40px, 5vw, 60px) auto 0;
 }
-.czro-track { display: flex; gap: 24px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 8px; }
+.czro-track {
+  display: flex; gap: 24px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+  padding: 16px 8px 24px 8px; cursor: grab; user-select: none; -webkit-user-select: none; touch-action: pan-x pan-y;
+}
 .czro-track::-webkit-scrollbar { display: none; }
+.czro-track:active, .czro-track.is-dragging { cursor: grabbing; scroll-behavior: auto; }
+
 .czro-card {
   flex: 0 0 auto; width: 472px; height: 520px; border-radius: 30px; overflow: hidden;
   position: relative; display: flex; flex-direction: column; justify-content: flex-end;
   background: #eee;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
 }
-.czro-card img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.czro-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(0, 97, 248, 0.18), 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+.czro-card img.bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.czro-card:hover img.bg { transform: scale(1.06); }
 .czro-card-label {
   position: relative; z-index: 1; background: linear-gradient(180deg, #0061f8, #004dc5);
   padding: 30px 40px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
   min-height: 122px;
+  transition: background 0.3s ease;
 }
-.czro-card-label span { font: 700 26px/1.2 'Manrope', sans-serif; color: #fff; }
+.czro-card:hover .czro-card-label { background: linear-gradient(180deg, #006ef7, #0046b8); }
+.czro-card-label span { font: 700 26px/1.2 'Manrope', sans-serif; color: #fff; transition: transform 0.3s ease; }
+.czro-card:hover .czro-card-label span { transform: translateX(4px); }
 .czro-card-arrow {
   width: 40px; height: 40px; border-radius: 40px; background: rgba(255, 255, 255, 0.9);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease;
 }
-.czro-carousel-nav { display: flex; justify-content: flex-end; gap: 18px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e6e6e6; }
-.czro-carousel-nav button { width: 40px; height: 40px; border: none; background: none; cursor: pointer; }
-.czro-carousel-nav img { width: 100%; height: 100%; }
+.czro-card:hover .czro-card-arrow { transform: scale(1.15) rotate(45deg); background: #ffffff; }
+.czro-carousel-nav { display: none !important; }
 
 .czro-facility {
   width: min(1828px, 100% - 3.2rem);

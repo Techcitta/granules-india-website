@@ -13,13 +13,25 @@ const BENEFITS: BenefitItem[] = [
     body: 'Tailored for therapeutic precision and patient compliance.',
     icon: 'icon-test-tube.svg',
   },
-  { title: 'Different Dosage Forms', body: 'Including tablets, capsules, powders and pediatric-friendly formats', icon: 'icon-circles.svg' },
-  { title: 'Flexible Batch Size and Packaging Formats', body: 'Designed for global distribution and market-specific needs.', icon: 'icon-box.svg' },
-  { title: 'Global Regulatory Submissions', body: 'Backed by deep expertise and region-specific strategies.', icon: 'icon-globe.svg' },
+  {
+    title: 'Different Dosage Forms',
+    body: 'Including tablets, capsules, powders and pediatric-friendly formats tailored for global markets.',
+    icon: 'icon-circles.svg',
+  },
+  {
+    title: 'Flexible Batch Size and Packaging Formats',
+    body: 'Designed for global distribution and market-specific regulatory needs.',
+    icon: 'icon-box.svg',
+  },
+  {
+    title: 'Global Regulatory Submissions',
+    body: 'Backed by deep expertise and region-specific regulatory filing strategies across US, EU, and global agencies.',
+    icon: 'icon-globe.svg',
+  },
 ];
 
 export default function FdPage() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
 
   useEffect(() => {
     document.title = 'Finished Dosages — Granules India';
@@ -30,7 +42,7 @@ export default function FdPage() {
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: 'min(1463px, 100% - 3.2rem)', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <span>Homepage</span>
         <span className="sep">{'>'}</span>
         <span>Business</span>
@@ -42,7 +54,7 @@ export default function FdPage() {
         <img src={`${F}hero-banner.png`} alt="Granules finished dosages manufacturing" />
       </div>
 
-      <div className="biz-intro" style={{ maxWidth: 'min(1132px, 100% - 3.2rem)', width: 'min(1132px, 100% - 3.2rem)' }}>
+      <div className="biz-intro">
         <p>
           At Granules India we offer end-to-end development and manufacturing solutions for oral
           dosage forms. Our capabilities bring together regulatory-compliant facilities, advanced
@@ -97,10 +109,10 @@ export default function FdPage() {
                       <p className="biz-accordion-title">{item.title}</p>
                     </div>
                     <span className="biz-accordion-toggle">
-                      <img src={`${F}icon-minus.svg`} alt="" />
+                      <img src={`${F}${isOpen ? 'icon-minus.svg' : 'icon-plus.svg'}`} alt={isOpen ? 'Collapse' : 'Expand'} />
                     </span>
                   </div>
-                  {isOpen && <p className="biz-accordion-body">{item.body}</p>}
+                  {isOpen && item.body && <p className="biz-accordion-body">{item.body}</p>}
                 </button>
               );
             })}

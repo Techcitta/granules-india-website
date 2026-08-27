@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
 import './operational-excellence.css';
@@ -11,14 +11,30 @@ const KEY_INITIATIVE_CARDS = [
   { title: 'Visibility Drives Results', image: 'card-visibility-drives-results.png' },
 ];
 
-const BELTS = [
-  'Black Belt : Strategic Change Leader',
-  'Green Belt : Project Leader',
-  'Yellow Belt : Team Contributor',
-  'White Belt : Foundation Awareness',
+type BeltItem = { title: string; body: string };
+
+const BELTS: BeltItem[] = [
+  {
+    title: 'Black Belt : Strategic Change Leader',
+    body: 'Leads high-impact enterprise projects, mentors Green Belts, and drives cross-functional Lean Six Sigma transformation.',
+  },
+  {
+    title: 'Green Belt : Project Leader',
+    body: 'Leads process improvement projects and applies statistical root-cause problem solving on the manufacturing floor.',
+  },
+  {
+    title: 'Yellow Belt : Team Contributor',
+    body: 'Participates in Kaizen blitzes and supports daily continuous improvement and waste elimination initiatives.',
+  },
+  {
+    title: 'White Belt : Foundation Awareness',
+    body: 'Understands fundamental Lean concepts, visual management controls, and 5S workplace organization.',
+  },
 ];
 
 export default function OperationalExcellencePage() {
+  const [openBelt, setOpenBelt] = useState<number>(-1);
+
   useEffect(() => {
     document.title = 'Operational Excellence — Granules India';
     window.scrollTo(0, 0);
@@ -99,12 +115,23 @@ export default function OperationalExcellencePage() {
             who enhance quality, efficiency, and patient safety.
           </p>
           <div className="oe-belts">
-            {BELTS.map((belt) => (
-              <div className="oe-belt" key={belt}>
-                <span>{belt}</span>
-                <img src={`${OE}icon-minus.svg`} alt="" />
-              </div>
-            ))}
+            {BELTS.map((belt, index) => {
+              const isOpen = openBelt === index;
+              return (
+                <button
+                  type="button"
+                  className="oe-belt"
+                  key={belt.title}
+                  onClick={() => setOpenBelt(isOpen ? -1 : index)}
+                >
+                  <div className="oe-belt-head">
+                    <span>{belt.title}</span>
+                    <img src={`${OE}${isOpen ? 'icon-minus.svg' : 'icon-plus.svg'}`} alt={isOpen ? 'Collapse' : 'Expand'} />
+                  </div>
+                  {isOpen && <p className="oe-belt-body">{belt.body}</p>}
+                </button>
+              );
+            })}
           </div>
         </div>
         <div className="oe-pyramid">

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavBar, CompanyFooter } from '../components/company';
+import { useSwipeScroll } from '../hooks/useSwipeScroll';
 import '../components/company/company.css';
 import './czro.css';
 
@@ -73,16 +74,12 @@ function FacilityAccordion() {
 }
 
 export default function GranulesCzroPage() {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const { swipeProps, isDragging } = useSwipeScroll();
 
   useEffect(() => {
     document.title = 'Granules CZRO — Granules India';
     window.scrollTo(0, 0);
   }, []);
-
-  const scroll = (direction: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: direction * 500, behavior: 'smooth' });
-  };
 
   return (
     <div className="cp">
@@ -131,7 +128,7 @@ export default function GranulesCzroPage() {
       </div>
 
       <div className="czro-carousel">
-        <div className="czro-track" ref={trackRef}>
+        <div className={`czro-track${isDragging ? ' is-dragging' : ''}`} {...swipeProps}>
           {CAPABILITIES.map((card) => (
             <article className="czro-card" key={card.title}>
               <img className="bg" src={`${C}${card.image}`} alt="" />
@@ -143,14 +140,6 @@ export default function GranulesCzroPage() {
               </div>
             </article>
           ))}
-        </div>
-        <div className="czro-carousel-nav">
-          <button type="button" aria-label="Scroll left" onClick={() => scroll(-1)}>
-            <img src={`${C}carousel-arrow-left.svg`} alt="" />
-          </button>
-          <button type="button" aria-label="Scroll right" onClick={() => scroll(1)}>
-            <img src={`${C}carousel-arrow-right.svg`} alt="" />
-          </button>
         </div>
       </div>
 

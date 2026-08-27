@@ -18,31 +18,44 @@ const THERAPEUTIC_AREAS = [
   { label: 'Anti-hypertensives', icon: 'icon-anti-hypertensives.svg' },
 ];
 
-type ScaleItem = { title: string; body: string; icon: string };
+type ScaleItem = { title: string; body: string; icon: string; image?: string | null };
 
 const SCALE_ITEMS: ScaleItem[] = [
   {
     title: '40,000+ TPA Installed Capacity',
     body: 'The installed capacity spans four locations in Hyderabad and Vizag, totaling over 40,000 TPA.',
     icon: 'icon-capacity.svg',
+    image: 'scale-bg.png',
   },
-  { title: 'Automation with DCS', body: '', icon: 'icon-manufacturing.svg' },
-  { title: 'Global Market Presence', body: '', icon: 'icon-globe.svg' },
+  {
+    title: 'Automation with DCS',
+    body: 'Distributed Control Systems (DCS) minimize human error and optimize consistency',
+    icon: 'icon-manufacturing.svg',
+    image: null,
+  },
+  {
+    title: 'Global Market Presence',
+    body: 'Proven ability to serve 80+ countries across regulated markets.',
+    icon: 'icon-globe.svg',
+    image: null,
+  },
 ];
 
 export default function ApiPage() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
 
   useEffect(() => {
     document.title = 'Active Pharmaceutical Ingredients — Granules India';
     window.scrollTo(0, 0);
   }, []);
 
+  const activeImage = (open >= 0 && SCALE_ITEMS[open]?.image) ? `${A}${SCALE_ITEMS[open].image}` : (SCALE_ITEMS[0]?.image ? `${A}${SCALE_ITEMS[0].image}` : null);
+
   return (
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: 'min(1463px, 100% - 3.2rem)', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <span>Homepage</span>
         <span className="sep">{'>'}</span>
         <span>Business</span>
@@ -84,7 +97,7 @@ export default function ApiPage() {
       </div>
 
       <div className="biz-panel">
-        <img className="bg" src={`${A}scale-bg.png`} alt="" />
+        {activeImage && <img className="bg" src={activeImage} alt="" />}
         <div className="overlay" />
         <div className="biz-panel-grid">
           <div className="biz-panel-head">
@@ -112,7 +125,7 @@ export default function ApiPage() {
                       <p className="biz-accordion-title">{item.title}</p>
                     </div>
                     <span className="biz-accordion-toggle">
-                      <img src={`${A}icon-minus.svg`} alt="" />
+                      <img src={`${A}${isOpen ? 'icon-minus.svg' : 'icon-plus.svg'}`} alt={isOpen ? 'Collapse' : 'Expand'} />
                     </span>
                   </div>
                   {isOpen && item.body && <p className="biz-accordion-body">{item.body}</p>}

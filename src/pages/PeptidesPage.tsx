@@ -1,15 +1,38 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavBar, CompanyFooter } from '../components/company';
+import { useSwipeScroll } from '../hooks/useSwipeScroll';
 import '../components/company/company.css';
 import './business.css';
 
 const P = '/assets/peptides/';
 
-const CAPABILITY_CARDS = [
-  { title: 'Generic APIs', image: 'card-generic-apis.png' },
-  { title: 'Contract Services', image: 'card-contract-services.png' },
-  { title: 'Cosmetic Peptides', image: 'card-cosmetic-peptides.png' },
-  { title: 'Theragnostic Peptides', image: 'card-theragnostic-peptides.png' },
+type CapabilityCard = {
+  title: string;
+  image: string;
+  desc: string;
+};
+
+const CAPABILITY_CARDS: CapabilityCard[] = [
+  {
+    title: 'Generic APIs',
+    image: 'card-generic-apis.png',
+    desc: 'High-purity generic peptide APIs synthesized to global pharmacopeial standards.',
+  },
+  {
+    title: 'Contract Services',
+    image: 'card-contract-services.png',
+    desc: 'Custom peptide synthesis, process development, and scale-up services for clinical and commercial partners.',
+  },
+  {
+    title: 'Cosmetic Peptides',
+    image: 'card-cosmetic-peptides.png',
+    desc: 'Bioactive peptides for advanced dermatological and high-performance cosmetic formulations.',
+  },
+  {
+    title: 'Theragnostic Peptides',
+    image: 'card-theragnostic-peptides.png',
+    desc: 'Targeted peptide solutions uniting diagnostic molecular imaging with targeted therapeutic delivery.',
+  },
 ];
 
 type OfferItem = { title: string; body: string; icon: string };
@@ -17,33 +40,54 @@ type OfferItem = { title: string; body: string; icon: string };
 const OFFERS: OfferItem[] = [
   {
     title: 'Globally Endorsed Production Practices',
-    body: 'Regulatory-aligned manufacturing with Swissmedic and USFDA standards',
+    body: 'Regulatory-aligned manufacturing meeting Swissmedic and USFDA compliance standards.',
     icon: 'icon-production-belt.svg',
   },
-  { title: 'End-to-End Global CDMO Support', body: '', icon: 'icon-box.svg' },
-  { title: 'Innovating GLP-1 and Growth Therapies', body: '', icon: 'icon-manufacturing.svg' },
-  { title: 'Sustainable Peptide & Amino Solutions', body: '', icon: 'icon-circles.svg' },
-  { title: 'Agile, Modular Global Infrastructure', body: '', icon: 'icon-globe.svg' },
+  {
+    title: 'End-to-End Global CDMO Support',
+    body: 'Complete synthesis, process development, and scale-up lifecycle support for pharmaceutical partners.',
+    icon: 'icon-box.svg',
+  },
+  {
+    title: 'Innovating GLP-1 and Growth Therapies',
+    body: 'Specialized peptide platforms tailored for obesity, metabolic disorders, and next-generation peptide drugs.',
+    icon: 'icon-manufacturing.svg',
+  },
+  {
+    title: 'Sustainable Peptide & Amino Solutions',
+    body: 'Green chemistry principles reducing hazardous solvents and waste throughout synthesis cycles.',
+    icon: 'icon-circles.svg',
+  },
+  {
+    title: 'Agile, Modular Global Infrastructure',
+    body: 'Integrated facilities spanning Switzerland and India offering flexible batch sizes and rapid commercialization.',
+    icon: 'icon-globe.svg',
+  },
 ];
 
 export default function PeptidesPage() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(0);
+  const {
+    swipeProps,
+    isDragging,
+    scrollProgress,
+    canScrollLeft,
+    canScrollRight,
+    thumbWidth,
+    scroll,
+  } = useSwipeScroll();
+  const [openCard, setOpenCard] = useState(-1);
+  const [open, setOpen] = useState(-1);
 
   useEffect(() => {
     document.title = 'Peptides — Granules India';
     window.scrollTo(0, 0);
   }, []);
 
-  const scroll = (direction: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: direction * 500, behavior: 'smooth' });
-  };
-
   return (
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: 'min(1463px, 100% - 3.2rem)', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <span>Homepage</span>
         <span className="sep">{'>'}</span>
         <span>Business</span>
@@ -87,26 +131,64 @@ export default function PeptidesPage() {
       </div>
 
       <div className="biz-carousel">
-        <div className="biz-track" ref={trackRef}>
-          {CAPABILITY_CARDS.map((card) => (
-            <article className="biz-card" key={card.title}>
-              <img className="bg" src={`${P}${card.image}`} alt="" />
-              <div className="biz-card-label">
-                <span>{card.title}</span>
-                <span className="biz-card-arrow">
-                  <img src={`${P}arrow-plus.svg`} alt="" style={{ width: 20, height: 20 }} />
-                </span>
-              </div>
-            </article>
-          ))}
+        <div className={`biz-track${isDragging ? ' is-dragging' : ''}`} {...swipeProps}>
+          {CAPABILITY_CARDS.map((card, idx) => {
+            const isOpenCard = openCard === idx;
+            return (
+              <article
+                className={`biz-card${isOpenCard ? ' is-open' : ''}`}
+                key={card.title}
+                onMouseEnter={() => setOpenCard(idx)}
+                onMouseLeave={() => setOpenCard(-1)}
+                onClick={() => setOpenCard(isOpenCard ? -1 : idx)}
+              >
+                <img className="bg" src={`${P}${card.image}`} alt={card.title} />
+                <div className="biz-sheet">
+                  <div className="biz-sheet-head">
+                    <span className="biz-sheet-title">{card.title}</span>
+                    <span className="biz-sheet-symbol" aria-hidden="true">+</span>
+                  </div>
+                  <div className="biz-sheet-body">
+                    <p className="biz-sheet-desc">{card.desc}</p>
+                    <span className="biz-sheet-learn">LEARN MORE ↗</span>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
-        <div className="biz-carousel-nav">
-          <button type="button" aria-label="Scroll left" onClick={() => scroll(-1)}>
-            <img src={`${P}carousel-arrow-left.svg`} alt="" />
-          </button>
-          <button type="button" aria-label="Scroll right" onClick={() => scroll(1)}>
-            <img src={`${P}carousel-arrow-right.svg`} alt="" />
-          </button>
+
+        {/* Dynamic progress bar and smooth arrow navigation */}
+        <div className="biz-carousel-controls">
+          <div className="biz-progress-track">
+            <div
+              className="biz-progress-bar"
+              style={{
+                width: `${thumbWidth}%`,
+                left: `${scrollProgress * (100 - thumbWidth)}%`,
+              }}
+            />
+          </div>
+          <div className="biz-carousel-arrows">
+            <button
+              type="button"
+              className="biz-arrow-btn"
+              onClick={() => scroll(-1)}
+              disabled={!canScrollLeft}
+              aria-label="Scroll left"
+            >
+              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+            </button>
+            <button
+              type="button"
+              className="biz-arrow-btn"
+              onClick={() => scroll(1)}
+              disabled={!canScrollRight}
+              aria-label="Scroll right"
+            >
+              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -135,7 +217,7 @@ export default function PeptidesPage() {
                       <p className="biz-accordion-title">{item.title}</p>
                     </div>
                     <span className="biz-accordion-toggle">
-                      <img src={`${P}icon-minus.svg`} alt="" />
+                      <img src={`${P}${isOpen ? 'icon-minus.svg' : 'icon-plus.svg'}`} alt={isOpen ? 'Collapse' : 'Expand'} />
                     </span>
                   </div>
                   {isOpen && item.body && <p className="biz-accordion-body">{item.body}</p>}
