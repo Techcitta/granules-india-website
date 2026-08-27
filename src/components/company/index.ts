@@ -8,6 +8,7 @@ export { default as LeadershipSection } from './LeadershipSection';
 export { default as SubsidiariesCarousel } from './SubsidiariesCarousel';
 export { default as CareerSection } from './CareerSection';
 export { default as CompanyFooter } from './CompanyFooter';
+export { default as StockVideoBanner } from './StockVideoBanner';
 export * from './types';
 export * from './data';
 export * from './constants';
