@@ -42,7 +42,7 @@ export default function QualityCompliancePage() {
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: 'min(1463px, 100% - 3.2rem)', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <span>Homepage</span>
         <span className="sep">{'>'}</span>
         <span>Business</span>
@@ -75,38 +75,43 @@ export default function QualityCompliancePage() {
           <h2>Embedding quality at every stage</h2>
         </div>
 
-        {STORIES.map((story) => (
-          <div className={`qc-story${story.reverse ? ' qc-story--reverse' : ''}`} key={story.title}>
-            <div className="qc-story-image">
-              <img src={`${Q}${story.image}`} alt="" />
-            </div>
-            <div className="qc-story-copy">
+        {STORIES.map((story, index) => (
+          <div
+            className={`qc-stack-card qc-stack-card--${index}${story.reverse ? ' qc-stack-card--reverse' : ''}`}
+            key={story.title}
+          >
+            <div className="qc-card-copy">
               <h3>{story.title}</h3>
               <p>{story.body}</p>
             </div>
+            <div className="qc-card-media">
+              <img src={`${Q}${story.image}`} alt={story.title} />
+            </div>
           </div>
         ))}
-      </div>
 
-      <div className="qc-certs">
-        <div className="qc-certs-badge">Certified to global quality standards</div>
-        <div className="qc-certs-icons">
-          {['cert-1.png', 'cert-2.png', 'cert-3.png'].map((cert) => (
-            <div className="qc-cert-tile" key={cert}>
-              <img src={`${Q}${cert}`} alt="Quality certification" />
+        <div className="qc-below-stack">
+          <div className="qc-certs">
+            <div className="qc-certs-badge">Certified to global quality standards</div>
+            <div className="qc-certs-icons">
+              {['cert-1.png', 'cert-2.png', 'cert-3.png'].map((cert) => (
+                <div className="qc-cert-tile" key={cert}>
+                  <img src={`${Q}${cert}`} alt="Quality certification" />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      <div className="qc-cta">
-        <img className="bg" src={`${Q}cta-bg.png`} alt="" />
-        <div className="overlay" />
-        <div className="qc-cta-copy">
-          <h2>Lorem ipsum convallis consectetur</h2>
-          <p>Lorem ipsum dolor sit amet consectetur. Ipsum magna a ac nibh morbi malesuada molestie mauris.</p>
+          <div className="qc-cta">
+            <img className="bg" src={`${Q}cta-bg.png`} alt="" />
+            <div className="overlay" />
+            <div className="qc-cta-copy">
+              <h2>Lorem ipsum convallis consectetur</h2>
+              <p>Lorem ipsum dolor sit amet consectetur. Ipsum magna a ac nibh morbi malesuada molestie mauris.</p>
+            </div>
+            <a className="cp-cta-btn" href="/business/api">Lorem ipsum</a>
+          </div>
         </div>
-        <a className="cp-cta-btn" href="/business/api">Lorem ipsum</a>
       </div>
 
       <CompanyFooter />

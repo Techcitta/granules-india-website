@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
@@ -13,7 +13,52 @@ const PILLAR_NAV = [
   { id: 'governance', label: 'Governance' },
 ];
 
-const ENV_SUB_TABS = ['GHG Emissions', 'Water Management', 'Waste Management', 'Biodiversity Management'];
+type EnvSubTabItem = {
+  tabLabel: string;
+  title: string;
+  desc: string;
+  statValue: string;
+  statUnit?: string;
+  statLabel: string;
+  image: string;
+};
+
+const ENV_TABS_DATA: EnvSubTabItem[] = [
+  {
+    tabLabel: 'GHG EMISSIONS',
+    title: 'GHG EMISSIONS',
+    desc: 'Granules is decoupling emissions from production, building a future-proof, low-carbon pharma platform.',
+    statValue: '32.2%',
+    statLabel: 'ABSOLUTE REDUCTION IN SCOPE 1 & 2 EMISSIONS SINCE FY23',
+    image: 'hero-banner.png',
+  },
+  {
+    tabLabel: 'WATER MANAGEMENT',
+    title: 'WATER MANAGEMENT',
+    desc: 'We design for water reuse and track every drop across plants, R&D, and offices.',
+    statValue: '2,16,823',
+    statUnit: 'KL',
+    statLabel: 'TOTAL FRESHWATER USE IN FY25',
+    image: 'esg-water.png',
+  },
+  {
+    tabLabel: 'WASTE MANAGEMENT',
+    title: 'WASTE MANAGEMENT',
+    desc: 'Circularity is built into operations, from raw material selection to post-production disposal.',
+    statValue: '100%',
+    statLabel: 'NON-HAZARDOUS WASTE REUSED OR RECYCLED',
+    image: 'esg-waste.png',
+  },
+  {
+    tabLabel: 'BIODIVERSITY MANAGEMENT',
+    title: 'BIODIVERSITY MANAGEMENT',
+    desc: 'We seek opportunities to collaborate with environmental organizations and community-based programs to increase our positive impact.',
+    statValue: '15,000',
+    statLabel: 'NATIVE SAPLINGS PLANTED IN TELANGANA',
+    image: 'esg-biodiversity.png',
+  },
+];
+
 const SOCIAL_SUB_TABS = ['Learning and Development', 'Community'];
 
 const GOVERNANCE_STATS = [
@@ -25,20 +70,38 @@ const GOVERNANCE_STATS = [
 ];
 
 export default function EsgInActionPage() {
+  const [activePillar, setActivePillar] = useState<'environment' | 'social' | 'governance'>('environment');
+  const [envTabIndex, setEnvTabIndex] = useState(3);
+  const [govStatIdx, setGovStatIdx] = useState(0);
+  const [isGovPaused, setIsGovPaused] = useState(false);
+
   useEffect(() => {
     document.title = 'ESG in Action — Granules India';
     window.scrollTo(0, 0);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Auto-advance governance stats every 2.5s
+  useEffect(() => {
+    if (isGovPaused) return undefined;
+    const timer = setInterval(() => {
+      setGovStatIdx((prev) => (prev + 1) % GOVERNANCE_STATS.length);
+    }, 2500);
+
+    return () => clearInterval(timer);
+  }, [isGovPaused]);
+
+  const nextEnvTab = () => {
+    setEnvTabIndex((prev) => (prev + 1) % ENV_TABS_DATA.length);
   };
+
+  const currentEnvTab = ENV_TABS_DATA[envTabIndex] || ENV_TABS_DATA[0];
+  const currentGovStat = GOVERNANCE_STATS[govStatIdx] || GOVERNANCE_STATS[0];
 
   return (
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: 'min(1463px, 100% - 3.2rem)', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <span>Homepage</span>
         <span className="sep">{'>'}</span>
         <span>Sustainability</span>
@@ -59,18 +122,33 @@ export default function EsgInActionPage() {
         </p>
       </div>
 
-      <div className="sus-pillar-tabs" style={{ marginTop: 'clamp(40px, 5vw, 60px)' }}>
-        {PILLAR_NAV.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            className="sus-pillar-tab"
-            style={{ borderColor: '#0061f8', color: '#0061f8' }}
-            onClick={() => scrollTo(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
+      {/* 3 Main Pillar Tabs Bar with Gradient Indicator */}
+      <div className="esg-main-tabs-wrap">
+        <div className="esg-main-tabs">
+          {PILLAR_NAV.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              className={`esg-main-tab-btn${activePillar === tab.id ? ' active' : ''}`}
+              onClick={() => {
+                setActivePillar(tab.id as 'environment' | 'social' | 'governance');
+                document.getElementById(tab.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        <div className="esg-main-tabs-track">
+          <div
+            className="esg-main-tabs-indicator"
+            style={{
+              transform: `translateX(${
+                activePillar === 'environment' ? '0%' : activePillar === 'social' ? '100%' : '200%'
+              })`,
+            }}
+          />
+        </div>
       </div>
 
       <section className="esg-pillar-section" id="environment">
@@ -82,31 +160,57 @@ export default function EsgInActionPage() {
             conserving water, and reducing waste across all sites and suppliers.
           </p>
         </div>
-        <div className="sus-pillar-tabs" style={{ marginBottom: 24 }}>
-          {ENV_SUB_TABS.map((tab, index) => (
-            <span key={tab} className={`sus-pillar-tab${index === 0 ? ' active' : ''}`} style={{ background: index === 0 ? '#197b0c' : '#fff', borderColor: '#00bc1b', color: index === 0 ? '#fff' : '#197b0c', cursor: 'default' }}>
-              {tab}
-            </span>
+
+        {/* Sub Tabs */}
+        <div className="esg-sub-tabs">
+          {ENV_TABS_DATA.map((tab, idx) => (
+            <button
+              key={tab.tabLabel}
+              type="button"
+              className={`esg-sub-tab${idx === envTabIndex ? ' active' : ''}`}
+              onClick={() => setEnvTabIndex(idx)}
+            >
+              {tab.tabLabel}
+            </button>
           ))}
         </div>
-        <div className="sus-event" style={{ background: '#eefff1', color: '#197b0c' }}>
-          <div className="sus-event-copy">
-            <h3 className="sus-event-title">GHG Emissions</h3>
-            <p className="sus-event-desc" style={{ color: '#070707' }}>
-              Granules is decoupling emissions from production, building a future-proof,
-              low-carbon pharma platform.
-            </p>
-            <div className="sus-event-stats">
-              <div className="sus-stat">
-                <p className="sus-stat-value">32.2%</p>
-                <p className="sus-stat-label">Absolute reduction in Scope 1 &amp; 2 emissions since FY23</p>
+
+        {/* 2-Column Environment Card */}
+        <div className="esg-env-card" key={currentEnvTab.tabLabel}>
+          <div className="esg-env-copy">
+            <div>
+              <h3 className="esg-env-title">{currentEnvTab.title}</h3>
+              <p className="esg-env-desc">{currentEnvTab.desc}</p>
+            </div>
+
+            <div className="esg-env-metric-block">
+              <p className="esg-env-stat-val">
+                {currentEnvTab.statValue}
+                {currentEnvTab.statUnit && (
+                  <span className="esg-env-stat-unit">{currentEnvTab.statUnit}</span>
+                )}
+              </p>
+              <p className="esg-env-stat-lbl">{currentEnvTab.statLabel}</p>
+
+              {/* 3 Dash Indicator */}
+              <div className="esg-env-dashes">
+                <span className="esg-env-dash active" />
+                <span className="esg-env-dash" />
+                <span className="esg-env-dash" />
               </div>
             </div>
           </div>
-          <div className="esg-carousel">
-            {['env-1.png', 'env-2.png', 'env-3.png', 'env-4.png'].map((img) => (
-              <img key={img} src={`${S}${img}`} alt="Environment sustainability initiative" />
-            ))}
+
+          <div className="esg-env-media">
+            <img src={`${S}${currentEnvTab.image}`} alt={currentEnvTab.title} />
+            <button
+              type="button"
+              className="esg-env-next-btn"
+              onClick={nextEnvTab}
+              aria-label="Next environment tab"
+            >
+              ›
+            </button>
           </div>
         </div>
       </section>
@@ -170,23 +274,42 @@ export default function EsgInActionPage() {
             operational matters, while regularly reviewing the performance of senior management.
           </p>
         </div>
-        <div className="sus-event" style={{ background: '#f4f0ff', color: '#7248f5' }}>
-          <div className="sus-event-copy">
-            <h3 className="sus-event-title">Board Composition</h3>
-            <p className="sus-event-desc" style={{ color: '#070707' }}>
-              Our Board comprises industry experts with diverse backgrounds, who offer us valuable
-              insights into our diverse business practices.
-            </p>
-            <div className="sus-event-stats">
-              {GOVERNANCE_STATS.map((stat) => (
-                <div className="sus-stat" key={stat.label} style={{ minWidth: 140 }}>
-                  <p className="sus-stat-value" style={{ fontSize: 40 }}>{stat.value}</p>
-                  <p className="sus-stat-label" style={{ fontSize: 15 }}>{stat.label}</p>
-                </div>
-              ))}
+
+        {/* 2-Column Governance Rotating Metric Card */}
+        <div
+          className="esg-gov-card"
+          onMouseEnter={() => setIsGovPaused(true)}
+          onMouseLeave={() => setIsGovPaused(false)}
+        >
+          <div className="esg-gov-copy">
+            <div>
+              <h3 className="esg-gov-title">Board Composition</h3>
+              <p className="esg-gov-desc">
+                Our Board comprises industry experts with diverse backgrounds, who offer us valuable
+                insights into our diverse business practices.
+              </p>
+            </div>
+
+            <div className="esg-gov-stat-wrap" key={currentGovStat.label}>
+              <p className="esg-gov-stat-val">{currentGovStat.value}</p>
+              <p className="esg-gov-stat-lbl">{currentGovStat.label}</p>
+
+              {/* 5 Segment Dash Indicators */}
+              <div className="esg-gov-dashes">
+                {GOVERNANCE_STATS.map((stat, idx) => (
+                  <button
+                    key={stat.label}
+                    type="button"
+                    className={`esg-gov-dash${idx === govStatIdx ? ' active' : ''}`}
+                    onClick={() => setGovStatIdx(idx)}
+                    aria-label={`Select governance metric ${stat.label}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-          <div className="sus-event-image">
+
+          <div className="esg-gov-media">
             <img src={`${S}governance-1.png`} alt="Board of Directors" />
           </div>
         </div>
@@ -196,10 +319,10 @@ export default function EsgInActionPage() {
         <img className="bg" src={`${S}cta-bg.png`} alt="" />
         <div className="overlay" />
         <div className="sus-cta-copy">
-          <h2>Lorem ipsum convallis consectetur</h2>
-          <p>Lorem ipsum dolor sit amet consectetur. Ipsum magna a ac nibh morbi malesuada molestie mauris.</p>
+          <h2>Transparent Reporting, Measurable Progress</h2>
+          <p>Explore our integrated annual and sustainability reports to discover how we track, report, and advance our ESG commitments.</p>
         </div>
-        <a className="cp-cta-btn" href="/#investor">Integrated Report</a>
+        <Link className="cp-cta-btn" to="/investor/annual-reports">Integrated Report</Link>
       </div>
 
       <CompanyFooter />

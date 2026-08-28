@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import worldMapUrl from '@svg-maps/world/world.svg?url';
+import { CompanyFooter } from '../components/company';
+import '../components/company/company.css';
 
 const A = '/assets/';
 
@@ -34,17 +37,181 @@ function Button({ children, href = '#', className = '' }) {
 }
 
 function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
+  const [hoveredMenu, setHoveredMenu] = useState(null);
+  const closeTimer = useRef(null);
   const links = [
-    ['Company', '/company'], ['Business', '#business'], ['Sustainability', '#sustainability'],
+    ['About Us', '/company'], ['Business', '#business'], ['Sustainability', '#sustainability'],
     ['Investor', '#investor'], ['Media', '#media'], ['Careers', '#careers'], ['Contact', '#footer']
   ];
+  const submenuData = {
+    'About Us': {
+      title: 'About Us',
+      quickLinks: [
+        ['ABOUT US', '/company'],
+        ['MILESTONE', '/company/milestone'],
+        ['AWARDS', '/company/awards'],
+      ],
+      links: [
+        ['Leadership', '/company/leadership'],
+        ['Group Companies', '/company#subsidiaries'],
+        ['Sub Companies', '/company#subsidiaries'],
+        ['Operational Excellence', '/company/operational-excellence'],
+      ],
+      image: 'company/values-bg-2.png',
+    },
+    Company: {
+      title: 'About Us',
+      quickLinks: [
+        ['ABOUT US', '/company'],
+        ['MILESTONE', '/company/milestone'],
+        ['AWARDS', '/company/awards'],
+      ],
+      links: [
+        ['Leadership', '/company/leadership'],
+        ['Group Companies', '/company#subsidiaries'],
+        ['Sub Companies', '/company#subsidiaries'],
+        ['Operational Excellence', '/company/operational-excellence'],
+      ],
+      image: 'company/values-bg-2.png',
+    },
+    Business: {
+      title: 'Business',
+      quickLinks: [
+        ['API', '/business/api'],
+        ['PFI', '/business/pfi'],
+        ['FINISHED DOSAGES', '/business/fd'],
+        ['PEPTIDES', '/business/peptides'],
+      ],
+      links: [
+        ['Research & Development', '/business/rd'],
+        ['Quality & Compliance', '/business/quality-compliance'],
+        ['Manufacturing Facilities', '/company/facilities'],
+      ],
+      image: 'company/gpi-facility.png',
+    },
+    Sustainability: {
+      title: 'Sustainability',
+      quickLinks: [
+        ['OVERVIEW', '/sustainability'],
+        ['STRATEGY', '/sustainability/strategy'],
+        ['ESG IN ACTION', '/sustainability/esg-in-action'],
+      ],
+      links: [
+        ['Policies', '/sustainability#policies'],
+        ['Reports & Disclosures', '/sustainability#reports'],
+        ['Assurance & Verification Report', '/sustainability#assurance'],
+        ['Commitments Memberships & Ratings', '/sustainability#commitments'],
+        ['Certifications', '/sustainability#certifications'],
+      ],
+      image: 'esg-world-profile.png',
+    },
+    Investor: {
+      title: 'Investor',
+      quickLinks: [
+        ['OVERVIEW', '/investor'],
+        ['ANNUAL REPORTS', '/investor/annual-reports'],
+      ],
+      links: [
+        ['Quarterly Results', '/investor'],
+        ['Investor Resources', '/investor'],
+        ['Financial Highlights', '/investor'],
+      ],
+      image: 'investor-report-cover.png',
+    },
+    Media: {
+      title: 'Media',
+      quickLinks: [
+        ['NEWS & MEDIA', '/media'],
+        ['PRESS RELEASES', '/media'],
+      ],
+      links: [
+        ['Corporate Announcements', '/media'],
+        ['Media Kit', '/media'],
+      ],
+      image: 'company/leadership-photo-main-2.png',
+    },
+    Careers: {
+      title: 'Careers',
+      quickLinks: [
+        ['OVERVIEW', '/careers'],
+        ['OPPORTUNITIES', '/careers/opportunities'],
+      ],
+      links: [
+        ['Life at Granules', '/careers/life-at-granules'],
+        ['Culture & Purpose', '/careers'],
+      ],
+      image: 'company/career-bg.png',
+    },
+    Contact: {
+      title: 'Contact',
+      quickLinks: [
+        ['CONTACT US', '/contact'],
+      ],
+      links: [
+        ['Global Offices', '/contact'],
+        ['Investor Inquiries', '/investor'],
+      ],
+      image: 'company/gpi-facility.png',
+    },
+  };
+
+  const showMenu = (label) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setHoveredMenu(label);
+  };
+
+  const hideMenu = () => {
+    closeTimer.current = setTimeout(() => setHoveredMenu(null), 200);
+  };
 
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <a className="brand" href="#top" aria-label="Granules home"><img src={`${A}logo.png`} alt="Granules" /></a>
       <button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open}>Menu</button>
       <nav className={open ? 'open' : ''} aria-label="Primary navigation">
-        {links.map(([label, href]) => <a key={label} className={activeSection === href.slice(1) ? 'active' : ''} aria-current={activeSection === href.slice(1) ? 'page' : undefined} href={href} onClick={() => setOpen(false)}>{label}</a>)}
+        {links.map(([label, href]) => {
+          const sub = submenuData[label];
+          return (
+            <div className="home-nav-item" key={label} onMouseEnter={() => sub && showMenu(label)} onMouseLeave={hideMenu}>
+              {href.startsWith('#') ? (
+                <a className={activeSection === href.slice(1) ? 'active' : ''} aria-current={activeSection === href.slice(1) ? 'page' : undefined} href={href} onClick={() => setOpen(false)}>
+                  {label}
+                </a>
+              ) : (
+                <Link className={activeSection === href.slice(1) ? 'active' : ''} aria-current={activeSection === href.slice(1) ? 'page' : undefined} to={href} onClick={() => setOpen(false)}>
+                  {label}
+                </Link>
+              )}
+              {sub && (
+                <div className={`home-nav-submenu${hoveredMenu === label ? ' is-open' : ''}`} onMouseEnter={() => showMenu(label)}>
+                  <div className="home-nav-submenu-copy">
+                    <div className="home-nav-submenu-header-box">
+                      <strong>{sub.title}</strong>
+                      <div className="home-nav-quick-links">
+                        {sub.quickLinks.map(([subLabel, subHref]) => (
+                          <Link to={subHref} key={subLabel} onClick={() => { setHoveredMenu(null); setOpen(false); }}>
+                            <span>{subLabel}</span>
+                            <span aria-hidden="true">↗</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="home-nav-submenu-links">
+                      {sub.links.map(([subLabel, subHref]) => (
+                        <Link to={subHref} key={subLabel} onClick={() => { setHoveredMenu(null); setOpen(false); }}>
+                          {subLabel}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="home-nav-submenu-thumb">
+                    <img src={`${A}${sub.image}`} alt="" />
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
         <button className="search-button" aria-label="Search the page" onClick={onSearch}><img src={`${A}search.svg`} alt="" /></button>
         <span className="global">🌍 <span>Global</span></span>
       </nav>
@@ -54,31 +221,37 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
 
 function Hero() {
   const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [previousSlide, setPreviousSlide] = useState(null);
   const [focus, setFocus] = useState({ x: 50, y: 50 });
   useEffect(() => {
-    if (paused) return undefined;
-    const timer = setInterval(() => setSlide((current) => (current + 1) % heroSlides.length), 7000);
+    const timer = setInterval(() => setSlide((current) => {
+      setPreviousSlide(current);
+      return (current + 1) % heroSlides.length;
+    }), 7000);
     return () => clearInterval(timer);
-  }, [paused]);
+  }, []);
   const current = heroSlides[slide];
-  const change = (step) => setSlide((slide + step + heroSlides.length) % heroSlides.length);
+  const goToSlide = (nextSlide) => {
+    setPreviousSlide(slide);
+    setSlide(nextSlide);
+  };
+  const change = (step) => goToSlide((slide + step + heroSlides.length) % heroSlides.length);
 
   return (
-    <section className="hero" id="top" style={{ backgroundImage: `url(${A}${current.image})`, backgroundPosition: `${focus.x}% ${focus.y}%` }} onPointerMove={(event) => { if (event.pointerType === 'mouse') setFocus({ x: 50 + ((event.clientX / innerWidth) - .5) * 4, y: 50 + ((event.clientY / innerHeight) - .5) * 4 }); }}>
+    <section className="hero" id="top" onPointerMove={(event) => { if (event.pointerType === 'mouse') setFocus({ x: 50 + ((event.clientX / innerWidth) - .5) * 4, y: 50 + ((event.clientY / innerHeight) - .5) * 4 }); }}>
+      {previousSlide !== null && <div className="hero-image hero-image-previous" style={{ backgroundImage: `url(${A}${heroSlides[previousSlide].image})`, backgroundPosition: `${focus.x}% ${focus.y}%` }} />}
+      <div className={`hero-image hero-image-current${previousSlide !== null ? ' is-transitioning' : ''}`} key={slide} style={{ backgroundImage: `url(${A}${current.image})`, backgroundPosition: `${focus.x}% ${focus.y}%` }} onAnimationEnd={() => setPreviousSlide(null)} />
       <div className="hero-shade" />
-      <div className="hero-content shell hero-live" key={slide}>
-        <span className="slide-count">{String(slide + 1).padStart(2, '0')} / 05</span>
+      <div className="hero-content shell">
         <h1>{current.title}</h1>
         <Button href="#business">{current.cta}</Button>
       </div>
       <div className="hero-controls shell">
         <div className="progress" aria-label="Hero slides">
-          {heroSlides.map((_, index) => <button key={index} className={index === slide ? 'active' : ''} onClick={() => setSlide(index)} aria-label={`Go to slide ${index + 1}`} />)}
+          {heroSlides.map((_, index) => <button key={index} className={index === slide ? 'active' : ''} onClick={() => goToSlide(index)} aria-label={`Go to slide ${index + 1}`} />)}
         </div>
         <div className="arrow-controls">
           <button onClick={() => change(-1)} aria-label="Previous slide"><Arrow reverse /></button>
-          <button className="pause-button" onClick={() => setPaused(!paused)} aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}>{paused ? '▶' : 'Ⅱ'}</button>
           <button onClick={() => change(1)} aria-label="Next slide"><Arrow /></button>
         </div>
       </div>
@@ -143,29 +316,58 @@ function About() {
 
 function Business() {
   const [openProduct, setOpenProduct] = useState(-1);
+
   return (
     <section className="section shell ruled" id="business">
       <Tag>Business Verticals</Tag>
       <div className="section-heading split-heading">
-        <div><h2>Comprehensive capabilities across core and emerging therapies</h2><p>We operate across five strategic verticals, combining scientific depth, regulatory experience, and manufacturing strength.</p></div>
+        <div>
+          <h2>Comprehensive capabilities across core and emerging therapies</h2>
+          <p>We operate across five strategic verticals, combining scientific depth, regulatory experience, and manufacturing strength.</p>
+        </div>
         <Button href="#business">Products</Button>
       </div>
+
       <div className="product-grid">
-        {products.map((product, index) => (
-          <article className={`product-card${openProduct === index ? ' is-open' : ''}`} key={product.title}>
-            <button className="product-toggle" type="button" onClick={() => setOpenProduct(openProduct === index ? -1 : index)} aria-expanded={openProduct === index} aria-label={`${openProduct === index ? 'Close' : 'Explore'} ${product.title}`}>
-              <span className="product-visual" aria-hidden={openProduct === index}>
-                <img src={`${A}${product.image}`} alt="" />
-                <span className="product-bar"><span>{product.title}</span><i className="product-symbol" aria-hidden="true">+</i></span>
-              </span>
-              <span className="product-detail" aria-hidden={openProduct !== index}>
-                <span className="product-detail-head"><strong>{product.title}</strong><i className="product-symbol" aria-hidden="true">−</i></span>
-                <span className="product-description">{product.body}</span>
-                <span className="product-learn">Learn more</span>
-              </span>
-            </button>
-          </article>
-        ))}
+        {products.map((product, index) => {
+          const isOpen = openProduct === index;
+          return (
+            <article
+              className={`product-card${isOpen ? ' is-open' : ''}`}
+              key={product.title}
+              onMouseEnter={() => setOpenProduct(index)}
+              onMouseLeave={() => setOpenProduct(-1)}
+            >
+              <button
+                className="product-toggle"
+                type="button"
+                onClick={() => setOpenProduct(isOpen ? -1 : index)}
+                aria-expanded={isOpen}
+                aria-label={`${isOpen ? 'Close' : 'Explore'} ${product.title}`}
+              >
+                {/* Background product image */}
+                <div className="product-img-wrap">
+                  <img src={`${A}${product.image}`} alt={product.title} />
+                </div>
+
+                {/* Sliding blue drawer sheet */}
+                <div className="product-sheet">
+                  <div className="product-sheet-head">
+                    <span className="product-sheet-title">{product.title}</span>
+                    <span className="product-symbol" aria-hidden="true">
+                      {isOpen ? '−' : '+'}
+                    </span>
+                  </div>
+
+                  <div className="product-sheet-body">
+                    <p className="product-description">{product.body}</p>
+                    <span className="product-learn">LEARN MORE</span>
+                  </div>
+                </div>
+              </button>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
@@ -209,10 +411,40 @@ function Presence() {
 }
 
 function Credentials() {
+  // Repeat the logos list to ensure each group exceeds the widest viewport
+  const certsGroup = [...certs, ...certs, ...certs];
+
   return (
     <section className="credentials shell">
-      <h2>Our facilities are approved by key global regulatory authorities, reflecting our commitment to quality systems, operational transparency, and market readiness.</h2>
-      <div className="cert-row">{certs.map((logo) => <img src={`${A}${logo}`} alt="Regulatory certification" key={logo} />)}</div>
+      <h2>
+        Our facilities are approved by key global regulatory authorities, reflecting our commitment
+        to quality systems, operational transparency, and market readiness.
+      </h2>
+      <div className="cert-row" aria-label="Regulatory certifications">
+        <div className="cert-track">
+          {/* First group of logos */}
+          <div className="cert-group">
+            {certsGroup.map((logo, index) => (
+              <img
+                src={`${A}${logo}`}
+                alt="Regulatory certification"
+                key={`primary-${logo}-${index}`}
+              />
+            ))}
+          </div>
+
+          {/* Second duplicate group of logos for seamless infinite looping */}
+          <div className="cert-group" aria-hidden="true">
+            {certsGroup.map((logo, index) => (
+              <img
+                src={`${A}${logo}`}
+                alt=""
+                key={`clone-${logo}-${index}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -340,5 +572,5 @@ export default function HomePage() {
     onScroll();
     return () => { reveal.disconnect(); active.disconnect(); removeEventListener('scroll', onScroll); };
   }, []);
-  return <><div className="scroll-progress" style={{ width: `${progress}%` }} /><Header open={menuOpen} setOpen={setMenuOpen} activeSection={activeSection} scrolled={navCompressed} onSearch={() => { setMenuOpen(false); setSearchOpen(true); }} /><SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} /><main><Hero /><About /><Business /><Presence /><Credentials /><Sustainability /><Investor /><Media /><Careers /></main><Footer /><a className={progress > 8 ? 'back-to-top visible' : 'back-to-top'} href="#top" aria-label="Back to top"><Arrow reverse /></a></>;
+  return <><div className="scroll-progress" style={{ width: `${progress}%` }} /><Header open={menuOpen} setOpen={setMenuOpen} activeSection={activeSection} scrolled={navCompressed} onSearch={() => { setMenuOpen(false); setSearchOpen(true); }} /><SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} /><main><Hero /><About /><Business /><Presence /><Credentials /><Sustainability /><Investor /><Media /><Careers /></main><CompanyFooter /><a className={progress > 8 ? 'back-to-top visible' : 'back-to-top'} href="#top" aria-label="Back to top"><Arrow reverse /></a></>;
 }

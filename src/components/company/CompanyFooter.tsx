@@ -1,57 +1,94 @@
 import { Link } from 'react-router-dom';
-import { asset } from './constants';
-import { FOOTER_SOCIALS } from './data';
+
+const PRODUCT_LINKS = [
+  { label: 'Active Pharmaceutical Ingredients', href: '/business/api' },
+  { label: 'Pharmaceutical Formulation Intermediates', href: '/business/pfi' },
+  { label: 'Finished Dosages', href: '/business/fd' },
+  { label: 'Peptides', href: '/business/peptides' },
+];
+
+const COMPANY_LINKS = [
+  { label: 'ABOUT US', href: '/company' },
+  { label: 'SUSTAINABILITY', href: '/sustainability' },
+  { label: 'INVESTORS', href: '/investor' },
+  { label: 'MEDIA', href: '/media' },
+  { label: 'CAREERS', href: '/careers' },
+  { label: 'CONTACT US', href: '/contact' },
+];
+
+const SOCIAL_LINKS = [
+  { name: 'Facebook', icon: '/assets/facebook.svg', href: 'https://facebook.com' },
+  { name: 'Instagram', icon: '/assets/instagram.svg', href: 'https://instagram.com' },
+  { name: 'X', icon: '/assets/x.svg', href: 'https://x.com' },
+  { name: 'LinkedIn', icon: '/assets/linkedin.svg', href: 'https://linkedin.com' },
+  { name: 'YouTube', icon: '/assets/youtube.svg', href: 'https://youtube.com' },
+];
 
 export default function CompanyFooter() {
   return (
-    <footer className="cp-footer">
-      <img className="cp-bg" src={asset('footer-bg.png')} alt="" />
-      <div className="cp-bg-overlay" />
+    <footer className="cp-footer" id="footer">
+      <div className="cp-footer-bg-wrap">
+        <img className="cp-bg" src="/assets/footer-bg.png" alt="" />
+      </div>
       <div className="cp-footer-inner">
         <div className="cp-footer-top">
           <div className="cp-footer-brand">
-            <div className="cp-footer-logo">
-              <img src={asset('footer-logo.png')} alt="Granules" />
-            </div>
+            <Link to="/" className="cp-footer-logo-badge" aria-label="Granules Homepage">
+              <img src="/assets/footer-logo.png" alt="Granules" />
+            </Link>
             <p>
               Granules India, headquartered in Hyderabad, is a vertically integrated pharma
               manufacturer delivering APIs, PFIs, and FDs globally with regulatory-compliant
               operations in India, US and Europe ensuring quality, scale, and sustainability.
             </p>
           </div>
+
           <div className="cp-footer-cols">
             <div className="cp-footer-col">
-              <h5>Products</h5>
-              <Link to="/business/api">Active Pharmaceutical Ingredients</Link>
-              <Link to="/business/pfi">Pharmaceutical Formulation Intermediates</Link>
-              <Link to="/business/fd">Finished Dosages</Link>
-              <Link to="/business/peptides">Peptides</Link>
+              <h5>PRODUCTS</h5>
+              <div className="cp-footer-link-group">
+                {PRODUCT_LINKS.map((link) => (
+                  <Link to={link.href} key={link.label}>
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
+
             <div className="cp-footer-col cp-footer-impact">
-              <h5 className="cp-visually-hidden">Impact</h5>
-              <Link to="/company">Company</Link>
-              <Link to="/sustainability">Sustainability</Link>
-              <Link to="/investor">Investors</Link>
-              <Link to="/media">Media</Link>
-              <Link to="/careers">Careers</Link>
-              <Link to="/contact">contact US</Link>
+              <div className="cp-footer-link-group">
+                {COMPANY_LINKS.map((link) => (
+                  <Link to={link.href} key={link.label}>
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
         <div className="cp-footer-divider" />
+
         <div className="cp-footer-bottom">
-          <p className="cp-footer-legal">
-            <span>Copyright &copy; 2025 Granules. All rights reserved.</span>
-            <a href="/#footer">Privacy policy</a>
-            <a href="/#footer">Cookies Policy</a>
-            <a href="/#footer">Disclaimer</a>
-            <a href="/#footer">Data Protection Notice</a>
-            <a href="/#footer">Terms &amp; Condition</a>
-          </p>
+          <div className="cp-footer-legal">
+            <span className="cp-legal-copy">COPYRIGHT © 2025 GRANULES. ALL RIGHTS RESERVED.</span>
+            <Link to="/#footer">PRIVACY POLICY</Link>
+            <Link to="/#footer">COOKIES POLICY</Link>
+            <Link to="/#footer">DISCLAIMER</Link>
+            <Link to="/#footer">DATA PROTECTION NOTICE</Link>
+            <Link to="/#footer">TERMS &amp; CONDITION</Link>
+          </div>
+
           <div className="cp-footer-socials">
-            {FOOTER_SOCIALS.map((icon) => (
-              <a href="/#footer" key={icon}>
-                <img src={asset(icon)} alt="" />
+            {SOCIAL_LINKS.map((item) => (
+              <a
+                href={item.href}
+                key={item.name}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={item.name}
+              >
+                <img src={item.icon} alt={item.name} />
               </a>
             ))}
           </div>

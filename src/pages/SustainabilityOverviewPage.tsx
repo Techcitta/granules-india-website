@@ -7,29 +7,106 @@ import './overview.css';
 const S = '/assets/sustainability/';
 
 const PILLARS = [
-  { key: 'environment', title: 'Environment Stewardship', image: 'card-environment.png' },
-  { key: 'social', title: 'Breaking Barriers', image: 'card-breaking-barriers.png' },
-  { key: 'governance', title: 'Integrity in Action', image: 'card-integrity.png' },
-] as const;
-
-const GOAL_2030_STATS = [
-  { value: '42%', label: 'Reduction in Scope 1 and 2 emissions' },
-  { value: '42%', label: 'Cut in Scope 3 emissions' },
-  { value: '100%', label: 'Sourcing of renewable electricity' },
-  { value: 'Zero', label: 'Waste to Landfill achievement' },
-  { value: '1million+', label: 'Lives impacted through CSR programs' },
-  { value: 'Gender', label: 'Pay parity attained' },
-  { value: '100%', label: "Increase in women's employment achieved" },
+  {
+    key: 'environment',
+    title: 'Environment Stewardship',
+    desc: 'Driving clean energy adoption, water conservation, and waste circularity to minimize our footprint.',
+    image: 'card-environment.png',
+    color: '#008714',
+    bgGradient: 'linear-gradient(180deg, #008714 0%, #00a819 100%)',
+    iconColor: '#008714',
+  },
+  {
+    key: 'social',
+    title: 'Breaking Barriers',
+    desc: 'Empowering our people through safe workplaces, diversity, and community development.',
+    image: 'card-breaking-barriers.png',
+    color: '#0061f8',
+    bgGradient: 'linear-gradient(180deg, #0061f8 0%, #004ecc 100%)',
+    iconColor: '#0061f8',
+  },
+  {
+    key: 'governance',
+    title: 'Integrity in Action',
+    desc: 'Operate with integrity, transparency, and a policy-backed governance structure.',
+    image: 'card-integrity.png',
+    color: '#7248f5',
+    bgGradient: 'linear-gradient(180deg, #7248f5 0%, #5f33e6 100%)',
+    iconColor: '#7248f5',
+  },
 ];
 
-type JourneyYear = { year: string; items?: string[]; hasContent: boolean };
+type GoalPeriod = {
+  id: string;
+  yearLabel: string;
+  peekLabel: string;
+  image: string;
+  isDynamic: boolean;
+  staticTitle?: string;
+  stats?: { value: string; label: string }[];
+};
 
-const JOURNEY_YEARS: JourneyYear[] = [
-  { year: '2008', hasContent: false },
-  { year: '2020', hasContent: false },
+const GOAL_PERIODS: GoalPeriod[] = [
+  {
+    id: '2030',
+    yearLabel: 'By 2030',
+    peekLabel: '2030',
+    image: 'goal-2030-image.png',
+    isDynamic: true,
+    stats: [
+      { value: '42%', label: 'REDUCTION IN SCOPE 1 AND 2 EMISSIONS' },
+      { value: '42%', label: 'CUT IN SCOPE 3 EMISSIONS' },
+      { value: '100%', label: 'SOURCING OF RENEWABLE ELECTRICITY' },
+      { value: 'Zero', label: 'WASTE TO LANDFILL ACHIEVEMENT' },
+      { value: '1million+', label: 'LIVES IMPACTED THROUGH CSR PROGRAMS' },
+      { value: 'Gender', label: 'PAY PARITY ATTAINED' },
+      { value: '100%', label: "INCREASE IN WOMEN'S EMPLOYMENT ACHIEVED" },
+    ],
+  },
+  {
+    id: '2032',
+    yearLabel: 'By 2032',
+    peekLabel: '2032',
+    image: 'goal-2032-image.png',
+    isDynamic: false,
+    staticTitle: 'Achieve Water Positivity',
+  },
+  {
+    id: '2050',
+    yearLabel: 'By 2050',
+    peekLabel: '2050',
+    image: 'goal-2050-image.png',
+    isDynamic: false,
+    staticTitle: 'Reach Net Zero Emission',
+  },
+];
+
+type JourneyMilestone = {
+  year: string;
+  image: string;
+  items: string[];
+};
+
+const JOURNEY_MILESTONES: JourneyMilestone[] = [
+  {
+    year: '2008',
+    image: 'journey-2023.png',
+    items: [
+      'Initiated enterprise-wide green pharma manufacturing benchmarks across core production units.',
+      'Installed advanced wastewater treatment and Zero Liquid Discharge (ZLD) infrastructure.',
+    ],
+  },
+  {
+    year: '2020',
+    image: 'journey-2024.png',
+    items: [
+      'Formalized Board-level ESG governance charter and dedicated Sustainability Committee.',
+      'Established 2030 sustainability roadmap aligned with UN Sustainable Development Goals (SDGs).',
+    ],
+  },
   {
     year: '2023',
-    hasContent: true,
+    image: 'journey-2023.png',
     items: [
       'Conducted comprehensive GHG inventorization across the value chain, including subsidiaries.',
       'Submitted SBTi net-zero commitment and established UNGC partnership.',
@@ -37,8 +114,245 @@ const JOURNEY_YEARS: JourneyYear[] = [
       'Advanced the supplier sustainability program.',
     ],
   },
-  { year: '2025', hasContent: false },
+  {
+    year: '2024',
+    image: 'journey-2024.png',
+    items: [
+      'Achieved SBTi validation for near- and long-term goals, aligned with the 1.5°C pathway to reach Net Zero by 2050 or sooner.',
+      'Commissioned 1 MW on-site rooftop solar installation at the Gagillapur unit.',
+    ],
+  },
+  {
+    year: '2025',
+    image: 'journey-2025.png',
+    items: [
+      'Received Gold rating from EcoVadis in our first corporate-wide assessment.',
+      'Improved CDP Climate score to "B" and earned an "A" on CDP\'s 2024 Supplier Engagement Assessment (SEA).',
+      'Joined the Pharmaceutical Supply Chain Initiative (PSCI) to support responsible, sustainable supply chains.',
+    ],
+  },
 ];
+
+function SustainabilityJourneyCarousel() {
+  const [activeIdx, setActiveIdx] = useState(2); // default to 2023
+
+  const current = JOURNEY_MILESTONES[activeIdx];
+
+  const handlePrev = () => {
+    setActiveIdx((prev) => (prev - 1 + JOURNEY_MILESTONES.length) % JOURNEY_MILESTONES.length);
+  };
+
+  const handleNext = () => {
+    setActiveIdx((prev) => (prev + 1) % JOURNEY_MILESTONES.length);
+  };
+
+  return (
+    <div className="ov-journey">
+      <h2>Our journey</h2>
+
+      {/* Stage with Left/Right Giant Outline Watermarks & Center Card */}
+      <div className="ov-journey-stage">
+        <span className="ov-journey-watermark ov-journey-watermark--left" aria-hidden="true">
+          {current.year}
+        </span>
+
+        <article className="ov-journey-card" key={current.year}>
+          <div className="ov-journey-media">
+            <img src={`${S}${current.image}`} alt={`Granules sustainability journey ${current.year}`} />
+          </div>
+
+          <ul className="ov-journey-list">
+            {current.items.map((item, i) => (
+              <li className="ov-journey-item" key={i}>
+                <svg className="ov-journey-bullseye" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="#197b0c" strokeWidth="2.2" />
+                  <circle cx="12" cy="12" r="4.5" fill="#197b0c" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <span className="ov-journey-watermark ov-journey-watermark--right" aria-hidden="true">
+          {current.year}
+        </span>
+      </div>
+
+      {/* Navigation Arrows */}
+      <div className="ov-journey-nav">
+        <button
+          type="button"
+          className="ov-journey-nav-btn"
+          onClick={handlePrev}
+          aria-label="Previous milestone"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          className="ov-journey-nav-btn"
+          onClick={handleNext}
+          aria-label="Next milestone"
+        >
+          ›
+        </button>
+      </div>
+
+      {/* Bottom Timeline with filled active progress */}
+      <div className="ov-journey-timeline">
+        <div className="ov-timeline-line">
+          <div
+            className="ov-timeline-progress"
+            style={{ width: `${(activeIdx / (JOURNEY_MILESTONES.length - 1)) * 100}%` }}
+          />
+        </div>
+
+        <div className="ov-timeline-nodes">
+          {JOURNEY_MILESTONES.map((m, idx) => {
+            const isActive = idx === activeIdx;
+            return (
+              <button
+                key={m.year}
+                type="button"
+                className={`ov-timeline-node${isActive ? ' active' : ''}`}
+                onClick={() => setActiveIdx(idx)}
+                aria-label={`Go to year ${m.year}`}
+              >
+                <span className="ov-node-year">{m.year}</span>
+                <span className="ov-node-dot" />
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SustainabilityGoalsCarousel() {
+  const [periodIdx, setPeriodIdx] = useState(0); // 0: 2030, 1: 2032, 2: 2050
+  const [statIdx, setStatIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const currentPeriod = GOAL_PERIODS[periodIdx];
+  const stats = currentPeriod.stats || [];
+  const numStats = stats.length;
+
+  // Auto-advance metric every 2 seconds only when active card is dynamic (2030)
+  useEffect(() => {
+    if (isPaused || !currentPeriod.isDynamic || numStats <= 1) return undefined;
+    const interval = setInterval(() => {
+      setStatIdx((prev) => (prev + 1) % numStats);
+    }, 2000); // 2 seconds
+
+    return () => clearInterval(interval);
+  }, [isPaused, numStats, periodIdx, currentPeriod.isDynamic]);
+
+  const handlePeriodChange = (newIdx: number) => {
+    setPeriodIdx(newIdx);
+    setStatIdx(0);
+  };
+
+  // Left peek is previous, right peek is next
+  const prevPeriodIdx = (periodIdx - 1 + GOAL_PERIODS.length) % GOAL_PERIODS.length;
+  const nextPeriodIdx = (periodIdx + 1) % GOAL_PERIODS.length;
+
+  const currentStat = stats[statIdx] || stats[0];
+
+  return (
+    <div
+      className="ov-goals"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <h2>Our sustainability goals</h2>
+
+      <div className="ov-goals-slider">
+        {/* Left Peek Card */}
+        <button
+          type="button"
+          className="ov-goal-peek ov-goal-peek--left"
+          onClick={() => handlePeriodChange(prevPeriodIdx)}
+          aria-label={`View ${GOAL_PERIODS[prevPeriodIdx].yearLabel}`}
+        >
+          <span>{GOAL_PERIODS[prevPeriodIdx].peekLabel}</span>
+        </button>
+
+        {/* Center Active Goal Card */}
+        <div className="ov-goal-card">
+          <div className="ov-goal-copy">
+            <h3>{currentPeriod.yearLabel}</h3>
+
+            {currentPeriod.isDynamic && currentStat ? (
+              <>
+                <div className="ov-goal-stat-wrap" key={`${currentPeriod.id}-${statIdx}`}>
+                  <p className="ov-goal-stat-val">{currentStat.value}</p>
+                  <p className="ov-goal-stat-lbl">{currentStat.label}</p>
+                </div>
+
+                {/* Multi-segment progress bar for all stats */}
+                <div className="ov-goal-segments" aria-label={`${currentPeriod.yearLabel} metrics`}>
+                  {stats.map((stat, idx) => (
+                    <button
+                      key={stat.label + idx}
+                      type="button"
+                      className={`ov-goal-seg${idx === statIdx ? ' active' : ''}`}
+                      onClick={() => {
+                        setStatIdx(idx);
+                        setIsPaused(true);
+                      }}
+                      title={`${stat.value}: ${stat.label}`}
+                      aria-label={`View metric ${idx + 1}: ${stat.label}`}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <h4 className="ov-goal-static-title" key={currentPeriod.id}>
+                {currentPeriod.staticTitle}
+              </h4>
+            )}
+          </div>
+
+          <div className="ov-goal-image">
+            <img key={currentPeriod.image} src={`${S}${currentPeriod.image}`} alt={currentPeriod.yearLabel} />
+          </div>
+        </div>
+
+        {/* Right Peek Card */}
+        <button
+          type="button"
+          className="ov-goal-peek ov-goal-peek--right"
+          onClick={() => handlePeriodChange(nextPeriodIdx)}
+          aria-label={`View ${GOAL_PERIODS[nextPeriodIdx].yearLabel}`}
+        >
+          <span>{GOAL_PERIODS[nextPeriodIdx].peekLabel}</span>
+        </button>
+      </div>
+
+      {/* Navigation Arrows */}
+      <div className="ov-goals-nav">
+        <button
+          type="button"
+          className="ov-goals-nav-btn"
+          onClick={() => handlePeriodChange(prevPeriodIdx)}
+          aria-label="Previous goal period"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          className="ov-goals-nav-btn"
+          onClick={() => handlePeriodChange(nextPeriodIdx)}
+          aria-label="Next goal period"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  );
+}
 
 const PARTNERSHIP_TABS = [
   {
@@ -84,7 +398,7 @@ const PARTNERSHIP_TABS = [
 ];
 
 export default function SustainabilityOverviewPage() {
-  const [journeyIndex, setJourneyIndex] = useState(2);
+  const [activePillar, setActivePillar] = useState<number | null>(null);
   const [partnershipTab, setPartnershipTab] = useState(0);
 
   useEffect(() => {
@@ -92,13 +406,11 @@ export default function SustainabilityOverviewPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const activeYear = JOURNEY_YEARS[journeyIndex];
-
   return (
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: 'min(1463px, 100% - 3.2rem)', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <span>Homepage</span>
         <span className="sep">{'>'}</span>
         <span className="current">Sustainability Overview</span>
@@ -124,42 +436,69 @@ export default function SustainabilityOverviewPage() {
         <a className="cp-cta-btn" href="/sustainability/strategy">Explore ESG Strategy</a>
       </div>
 
-      <div className="sus-pillar-grid">
-        {PILLARS.map((pillar) => (
-          <article className={`sus-pillar-card sus-pillar--${pillar.key}`} key={pillar.key}>
-            <img className="bg" src={`${S}${pillar.image}`} alt="" />
-            <div className="sus-pillar-label">
-              <span>{pillar.title}</span>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="ov-goals">
-        <h2>Our sustainability goals</h2>
-        <div className="ov-goals-row">
-          <div className="ov-goal-peek"><span>2050</span></div>
-          <div className="ov-goal-card">
-            <div className="ov-goal-copy">
-              <h3>By 2030</h3>
-              <div className="ov-goal-stats">
-                {GOAL_2030_STATS.map((stat) => (
-                  <div className="sus-stat" key={stat.label}>
-                    <p className="sus-stat-value">{stat.value}</p>
-                    <p className="sus-stat-label" style={{ color: 'var(--n7)' }}>{stat.label}</p>
-                  </div>
-                ))}
+      {/* Interactive ESG Pillars: Smooth sliding drawer flow matching homepage product cards */}
+      <div
+        className="sus-pillar-grid"
+        onMouseLeave={() => setActivePillar(null)}
+      >
+        {PILLARS.map((pillar, index) => {
+          const isOpen = activePillar === index;
+          return (
+            <article
+              key={pillar.key}
+              className={`sus-pillar-card sus-pillar--${pillar.key}${isOpen ? ' is-open' : ''}`}
+              onMouseEnter={() => setActivePillar(index)}
+              onMouseLeave={() => setActivePillar(null)}
+              onClick={() => setActivePillar((prev) => (prev === index ? null : index))}
+              onFocus={() => setActivePillar(index)}
+              onBlur={() => setActivePillar(null)}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActivePillar((prev) => (prev === index ? null : index));
+                }
+              }}
+              aria-expanded={isOpen}
+            >
+              {/* Background Photo with smooth scale */}
+              <div className="sus-pillar-img-wrap">
+                <img className="sus-pillar-bg" src={`${S}${pillar.image}`} alt={pillar.title} />
               </div>
-            </div>
-            <div className="ov-goal-image">
-              <img src={`${S}goal-2030-image.png`} alt="Sustainability goal 2030" />
-            </div>
-          </div>
-          <div className="ov-goal-peek"><span>2032</span></div>
-        </div>
+
+              {/* Smooth Bottom Sliding Sheet (Matching product card flow) */}
+              <div
+                className="sus-pillar-sheet"
+                style={{ background: pillar.bgGradient }}
+              >
+                <div className="sus-pillar-sheet-head">
+                  <span className="sus-pillar-sheet-title">{pillar.title}</span>
+                  <span
+                    className="sus-pillar-symbol"
+                    style={{ color: pillar.iconColor }}
+                    aria-hidden="true"
+                  >
+                    {isOpen ? '−' : '+'}
+                  </span>
+                </div>
+
+                <div className="sus-pillar-sheet-body">
+                  <p className="sus-pillar-sheet-desc">{pillar.desc}</p>
+                  <a className="sus-pillar-learn" href="/sustainability/strategy">
+                    <span>LEARN MORE</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
-      <h2 style={{ margin: 'clamp(60px, 8vw, 90px) auto clamp(24px, 3vw, 40px)', width: 'min(1465px, 100% - 3.2rem)', font: "500 clamp(28px, 4vw, 50px)/1.1 'Manrope', sans-serif", color: 'var(--n9)' }}>
+      {/* Sustainability Goals Interactive Carousel with 2-second metric auto-rotation */}
+      <SustainabilityGoalsCarousel />
+
+      <h2 style={{ margin: 'clamp(60px, 8vw, 90px) auto clamp(24px, 3vw, 40px)', width: '85%', font: "500 clamp(28px, 4vw, 50px)/1.1 'Manrope', sans-serif", color: 'var(--n9)' }}>
         Leadership commitment
       </h2>
       <div className="ov-leadership">
@@ -181,40 +520,8 @@ export default function SustainabilityOverviewPage() {
         </div>
       </div>
 
-      <div className="ov-journey">
-        <h2>Our journey</h2>
-        <div className="ov-journey-tabs">
-          {JOURNEY_YEARS.map((y, index) => (
-            <button
-              key={y.year}
-              type="button"
-              className={`ov-journey-tab${index === journeyIndex ? ' active' : ''}`}
-              onClick={() => setJourneyIndex(index)}
-            >
-              {y.year}
-            </button>
-          ))}
-        </div>
-        {activeYear.hasContent ? (
-          <div className="ov-journey-card">
-            <div className="ov-journey-image">
-              <img src={`${S}journey-2023.png`} alt="Granules sustainability journey 2023" />
-            </div>
-            <div className="ov-journey-list">
-              {activeYear.items!.map((item) => (
-                <div className="ov-journey-item" key={item}>
-                  <img src={`${S}icon-check.svg`} alt="" />
-                  <p>{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <p style={{ textAlign: 'center', color: '#197b0c', font: "500 20px/1.4 'Manrope', sans-serif" }}>
-            Milestone details for {activeYear.year} will be published soon.
-          </p>
-        )}
-      </div>
+      {/* Our Journey Timeline Section with Giant Outline Watermarks */}
+      <SustainabilityJourneyCarousel />
 
       <div className="ov-partnerships">
         <h2>Partnerships, collaborations and ratings</h2>
