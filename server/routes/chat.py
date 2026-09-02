@@ -20,6 +20,7 @@ RULES:
 7. For financial questions, include specific numbers and the reporting period.
 8. Never say "I don't have enough information" unless the context is completely unrelated to the question.
 9. After each fact, include the exact quote from the source document in [Quote] notation. Example: Dr. K.V.S. Ram Rao is the CEO [Source: Integrated Report FY24 25] [Quote: "Dr. K.V.S. Ram Rao, Joint Managing Director & Chief Executive Officer"]
+10. If the question is completely unrelated to Granules India (like math, general knowledge, etc.), answer it directly WITHOUT any [Source] citations. Do NOT include sources for non-Granules questions.
 
 CONTEXT:
 """
@@ -40,9 +41,38 @@ GREETING_PATTERNS = {
     "good day", "greetings", "howdy", "hi there", "hello there",
 }
 
+# Patterns that indicate questions NOT about Granules India
+IRRELEVANT_PATTERNS = [
+    r'\bwhat\s+is\s+\d+\s*[\+\-\*\/\%]\s*\d+',  # math: what is 2+2
+    r'\b\d+\s*[\+\-\*\/\%]\s*\d+\s*[=\?]',       # math: 2+2= or 2+2?
+    r'\b(weather|temperature|time|date|day)\b',     # general info
+    r'\b(recipe|cook|food|restaurant)\b',           # food
+    r'\b(movie|music|song|actor|actress)\b',        # entertainment
+    r'\b(sports|football|cricket|tennis)\b',        # sports
+    r'\b(who\s+(is|was)\s+(the\s+)?president|who\s+invented)\b',  # general knowledge
+    r'\b(translate|definition|meaning\s+of)\b',     # language
+    r'\b(2\s*\+\s*2|1\s*\+\s*1|3\s*\*\s*3)\b',   # specific math
+]
+
 
 def is_greeting(message: str) -> bool:
     return message.strip().lower().rstrip("!.") in GREETING_PATTERNS
+
+
+def is_irrelevant_to_granules(message: str) -> bool:
+    """Check if the question is completely unrelated to Granules India."""
+    msg_lower = message.lower().strip()
+
+    # Check if it's a math question
+    for pattern in IRRELEVANT_PATTERNS:
+        if re.search(pattern, msg_lower):
+            # Double check - if it also mentions granules, it might be relevant
+            granules_keywords = ['granules', 'pharma', 'api', 'senn', 'acquisition', 'esg', 'sustainability']
+            if any(kw in msg_lower for kw in granules_keywords):
+                return False
+            return True
+
+    return False
 
 
 @router.post("/chat", response_model=ChatResponse)
@@ -50,6 +80,25 @@ async def chat(req: ChatRequest):
     if is_greeting(req.message):
         return ChatResponse(
             answer="Hello! How can I assist you with information about Granules India Limited today?",
+            sources=[],
+        )
+
+    # Handle irrelevant questions (math, general knowledge, etc.)
+    if is_irrelevant_to_granules(req.message):
+        genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+        model = genai.GenerativeModel(
+        model_name="gemini-flash-latest",
+        system_instruction="Answer the question directly and concisely. Do not include any citations or sources.",
+        )
+        response = model.generate_content(
+            req.message,
+            generation_config=genai.types.GenerationConfig(
+                temperature=0.3,
+                max_output_tokens=500,
+            ),
+        )
+        return ChatResponse(
+            answer=response.text + "\n\n*Note: This is a general knowledge question. For questions about Granules India, I can provide detailed answers with sources.*",
             sources=[],
         )
 
@@ -74,7 +123,7 @@ async def chat(req: ChatRequest):
 
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
     model = genai.GenerativeModel(
-        model_name="gemini-2.0-flash",
+        model_name="gemini-flash-latest",
         system_instruction=SYSTEM_PROMPT,
     )
     response = model.generate_content(
@@ -87,8 +136,12 @@ async def chat(req: ChatRequest):
 
     answer = response.text
 
-    # Extract cited source titles and quotes from the answer text
+    # Check if the answer contains any source citations
     cited_titles = set(re.findall(r'\[Source: (.*?)\]', answer))
+
+    # If no sources cited in answer, return without sources
+    if not cited_titles:
+        return ChatResponse(answer=answer, sources=[])
 
     # Extract quotes: [Quote: "..."]
     quotes_by_source = {}
@@ -131,20 +184,6 @@ async def chat(req: ChatRequest):
                 "route": c["metadata"].get("route", "#"),
                 "snippet": extract_relevant_snippet(c["content"], req.message),
                 "proof": source_quotes[0] if source_quotes else None,
-                "source_type": c["metadata"].get("source_type", "website"),
-                "filename": c["metadata"].get("filename"),
-                "file_path": c["metadata"].get("file_path"),
-                "page_number": c["metadata"].get("page_number"),
-            })
-
-    if not sources:
-        for c in chunks[:2]:
-            title = c["metadata"].get("title", "Unknown")
-            sources.append({
-                "title": title,
-                "route": c["metadata"].get("route", "#"),
-                "snippet": extract_relevant_snippet(c["content"], req.message),
-                "proof": None,
                 "source_type": c["metadata"].get("source_type", "website"),
                 "filename": c["metadata"].get("filename"),
                 "file_path": c["metadata"].get("file_path"),
