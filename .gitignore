@@ -3,6 +3,5 @@ dist/
 work/
 *.log
 .DS_Store
-.qdrant_store/
 .env
 
