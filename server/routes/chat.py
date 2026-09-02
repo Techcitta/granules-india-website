@@ -137,7 +137,13 @@ async def chat(req: ChatRequest):
     answer = response.text
 
     # Check if the answer contains any source citations
-    cited_titles = set(re.findall(r'\[Source: (.*?)\]', answer))
+    # Extract titles - handle both formats: "Title" and "Title (/route)"
+    cited_titles = set()
+    for match in re.findall(r'\[Source: (.*?)\]', answer):
+        # Strip route if present: "Title (/route)" -> "Title"
+        title = re.sub(r'\s*\(/.*?\)\s*$', '', match).strip()
+        if title:
+            cited_titles.add(title)
 
     # If no sources cited in answer, return without sources
     if not cited_titles:
@@ -147,6 +153,8 @@ async def chat(req: ChatRequest):
     quotes_by_source = {}
     for match in re.finditer(r'\[Source: (.*?)\].*?\[Quote: "(.*?)"\]', answer):
         src = match.group(1)
+        # Strip route if present
+        src = re.sub(r'\s*\(/.*?\)\s*$', '', src).strip()
         quote = match.group(2)
         if src not in quotes_by_source:
             quotes_by_source[src] = []
