@@ -52,15 +52,14 @@ export default function MilestonePage() {
 
       <div className="ms-intro">
         <p>
-          Granules India has been redefining pharmaceutical manufacturing since 1984. What began
-          as a single facility in Hyderabad has evolved into a global leader in APIs, PFIs, and
-          finished dosages, driven by scientific innovation, operational scale, and regulatory
-          excellence.
+          Granules India has been redefining pharmaceutical manufacturing since 1984. What began as a
+          single facility in Hyderabad has evolved into a global leader in APIs, PFIs, and finished
+          dosages, driven by scientific innovation, operational scale, and regulatory excellence.
         </p>
         <p>
           From pioneering PFIs in India to establishing U.S. front-end operations and building
-          ESG-aligned infrastructure, every milestone reflects our commitment to quality, access,
-          and resilient global supply chains.
+          ESG-aligned infrastructure, every milestone reflects our commitment to quality, access, and
+          resilient global supply chains
         </p>
       </div>
 

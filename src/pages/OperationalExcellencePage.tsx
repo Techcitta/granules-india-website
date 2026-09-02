@@ -102,16 +102,18 @@ export default function OperationalExcellencePage() {
       </div>
 
       <div className="oe-intro">
+        <h2>Excellence Through People and Process</h2>
         <p>
           Embedding a culture of continuous improvement, Granules redefines operational excellence
-          through a people-first, data-driven, and tech-enabled approach. Every enhancement
-          <span className="muted">, from the shop floor to enterprise systems, is designed to improve precision, reduce waste, and create sustainable value.</span>
+          through a people-first, data-driven, and tech-enabled approach. Every enhancement, from
+          the shop floor to enterprise systems, is designed to improve precision, reduce waste, and
+          create sustainable value.
         </p>
         <p>
-          Employees are trained and empowered to solve problems, challenge assumptions, and
-          deliver measurable results. A tiered, role-based training framework ensures lean
-          thinking is applied in real-time through live and function-specific projects, building a
-          culture of high performance across the organisation.
+          Employees are trained and empowered to solve problems, challenge assumptions, and deliver
+          measurable results. A tiered, role-based training framework ensures lean thinking is
+          applied in real-time through live and function-specific projects, building a culture of
+          high performance across the organisation.
         </p>
       </div>
 
