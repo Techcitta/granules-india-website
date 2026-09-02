@@ -18,11 +18,14 @@ def get_client():
     if _client is not None:
         return _client
     
+    # Check for LOCAL_ONLY flag (for export/import scripts)
+    local_only = os.getenv("LOCAL_ONLY", "").lower() == "true"
+    
     # Cloud mode: use QDRANT_URL and QDRANT_API_KEY from .env
     qdrant_url = os.getenv("QDRANT_URL")
     qdrant_api_key = os.getenv("QDRANT_API_KEY")
     
-    if qdrant_url and qdrant_api_key:
+    if qdrant_url and qdrant_api_key and not local_only:
         # Connect to Qdrant Cloud
         _client = QdrantClient(url=qdrant_url, api_key=qdrant_api_key)
     else:
