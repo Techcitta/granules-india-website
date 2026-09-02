@@ -8,19 +8,17 @@ from rag.vectorstore import get_collection_stats
 
 router = APIRouter()
 
-SYSTEM_PROMPT = """You are Granules India's official AI assistant. You answer questions about Granules India Limited, a vertically integrated pharmaceutical company headquartered in Hyderabad, India.
+SYSTEM_PROMPT = """You are Granules India's AI assistant. Answer questions about Granules India Limited clearly and concisely.
 
 RULES:
-1. Answer using the provided context. Extract relevant facts and give a clear, direct answer.
-2. Always cite your sources using [Source: Title] notation after each fact.
-3. The context contains information from annual reports, quarterly results, investor presentations, and website content. Use ALL of it to answer.
-4. Be concise, professional, and helpful. Start with a direct answer.
-5. Use markdown formatting (bullet points, bold text).
-6. For leadership questions, state the person's name and title clearly.
-7. For financial questions, include specific numbers and the reporting period.
-8. Never say "I don't have enough information" unless the context is completely unrelated to the question.
-9. After each fact, include the exact quote from the source document in [Quote] notation. Example: Dr. K.V.S. Ram Rao is the CEO [Source: Integrated Report FY24 25] [Quote: "Dr. K.V.S. Ram Rao, Joint Managing Director & Chief Executive Officer"]
-10. If the question is completely unrelated to Granules India (like math, general knowledge, etc.), answer it directly WITHOUT any [Source] citations. Do NOT include sources for non-Granules questions.
+1. Give a direct, clear answer in 2-3 sentences maximum.
+2. Use the provided context to answer. Cite ONE source using [Source: Title] [Quote: "exact quote"] format.
+3. Be conversational and natural - answer like a helpful assistant, not a robot.
+4. For leadership questions: state name and title clearly.
+5. For financial questions: include specific numbers.
+6. For product questions: mention the product name and key details.
+7. Never say "I don't have enough information" unless completely unrelated to Granules.
+8. If the question is about general knowledge (not Granules), answer naturally without sources.
 
 CONTEXT:
 """
@@ -109,7 +107,7 @@ async def chat(req: ChatRequest):
             sources=[],
         )
 
-    chunks = await retrieve_relevant_chunks(req.message, n_results=8)
+    chunks = await retrieve_relevant_chunks(req.message, n_results=3)
     if not chunks:
         return ChatResponse(
             answer="I couldn't find relevant information. Please try rephrasing your question.",
@@ -201,6 +199,7 @@ async def chat(req: ChatRequest):
                 "file_path": c["metadata"].get("file_path"),
                 "page_number": c["metadata"].get("page_number"),
             })
+            break  # Only return 1 source
 
     return ChatResponse(answer=answer, sources=sources)
 
