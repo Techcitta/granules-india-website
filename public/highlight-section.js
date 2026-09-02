@@ -131,7 +131,58 @@
   function highlightSection(sectionName) {
     if (!sectionName) return;
 
-    const selector = SECTION_SELECTORS[sectionName];
+    // Try exact match first, then fuzzy match
+    let selector = SECTION_SELECTORS[sectionName];
+    
+    // Fuzzy match: if no exact match, try to find a matching key
+    if (!selector) {
+      const normalizedName = sectionName.toLowerCase().replace(/[^a-z0-9]/g, '');
+      for (const [key, sel] of Object.entries(SECTION_SELECTORS)) {
+        if (normalizedName.includes(key) || key.includes(normalizedName)) {
+          selector = sel;
+          break;
+        }
+      }
+    }
+    
+    // Also try matching by common keywords in the section name
+    if (!selector) {
+      const keywords = {
+        'api': '.biz-intro, [class*="api"]',
+        'product': '.biz-intro, [class*="product"], [class*="api"]',
+        'leadership': '.ld-hero, [class*="leadership"]',
+        'management': '.ld-hero, [class*="leadership"]',
+        'director': '.ld-hero, [class*="leadership"]',
+        'chairman': '.ld-hero, [class*="leadership"]',
+        'ceo': '.ld-hero, [class*="leadership"]',
+        'facility': '.fac-intro, [class*="facility"]',
+        'financial': '.inv-hero, [class*="financial"]',
+        'esg': '.esg-hero, [class*="esg"]',
+        'sustainability': '.sus-hero, [class*="sustainability"]',
+        'community': '.community, [class*="community"]',
+        'milestone': '.ms-intro, [class*="milestone"]',
+        'award': '.aw-hero, [class*="award"]',
+        'news': '.news, [class*="news"]',
+        'quality': '.qc-intro, [class*="quality"]',
+        'pfi': '.biz-intro, [class*="pfi"]',
+        'fd': '.biz-intro, [class*="fd"]',
+        'peptide': '.biz-intro, [class*="peptide"]',
+        'acquisition': '.acq, [class*="acquisition"]',
+        'subsidiary': '.sub, [class*="subsid"]',
+        'annual': '.inv-hero, [class*="annual"]',
+        'report': '.inv-hero, [class*="report"]',
+        'careers': '.careers-hero, [class*="career"]',
+        'contact': '.contact-hero, [class*="contact"]',
+      };
+      const lowerName = sectionName.toLowerCase();
+      for (const [keyword, sel] of Object.entries(keywords)) {
+        if (lowerName.includes(keyword)) {
+          selector = sel;
+          break;
+        }
+      }
+    }
+
     if (!selector) return;
 
     // Wait for page to be ready

@@ -187,9 +187,13 @@ async def chat(req: ChatRequest):
         title = c["metadata"].get("title", "Unknown")
         if title in cited_titles:
             source_quotes = quotes_by_source.get(title, [])
+            route = c["metadata"].get("route", "#")
+            # Derive section key from route for highlighting (e.g. /business/api -> api)
+            section = route.strip("/").split("/")[-1] if route and route != "#" else ""
             sources.append({
                 "title": title,
-                "route": c["metadata"].get("route", "#"),
+                "route": route,
+                "section": section,
                 "snippet": extract_relevant_snippet(c["content"], req.message),
                 "proof": source_quotes[0] if source_quotes else None,
                 "source_type": c["metadata"].get("source_type", "website"),
