@@ -180,6 +180,42 @@ async def chat(req: ChatRequest):
             best = best[:197] + "..."
         return best.strip()
 
+    def validate_citation_matches_query(quote: str, query: str) -> bool:
+        """Validate that the citation quote is relevant to the query."""
+        if not quote:
+            return True  # No quote to validate
+        
+        quote_lower = quote.lower()
+        query_lower = query.lower()
+        
+        # Extract key terms from query
+        query_terms = [w for w in re.split(r'\W+', query_lower) if len(w) > 2]
+        
+        # Check if any query term appears in the quote
+        for term in query_terms:
+            if term in quote_lower:
+                return True
+        
+        # Check for semantic matches
+        semantic_matches = {
+            'ceo': ['chief executive officer', 'managing director', 'chairman'],
+            'leader': ['chief executive officer', 'managing director', 'chairman', 'director'],
+            'head': ['chief executive officer', 'managing director', 'chairman', 'director'],
+            'product': ['api', 'drug', 'tablet', 'capsule', 'formulation', 'medicine'],
+            'revenue': ['revenue', 'sales', 'income', 'turnover'],
+            'profit': ['profit', 'pat', 'earnings', 'margin'],
+            'employee': ['employee', 'team', 'staff', 'workforce'],
+            'location': ['location', 'address', 'office', 'facility'],
+        }
+        
+        for query_term, synonyms in semantic_matches.items():
+            if query_term in query_lower:
+                for synonym in synonyms:
+                    if synonym in quote_lower:
+                        return True
+        
+        return False
+
     sources = []
     for c in chunks:
         title = c["metadata"].get("title", "Unknown")
@@ -188,12 +224,18 @@ async def chat(req: ChatRequest):
             route = c["metadata"].get("route", "#")
             # Derive section key from route for highlighting (e.g. /business/api -> api)
             section = route.strip("/").split("/")[-1] if route and route != "#" else ""
+            
+            # Validate that the citation matches the query
+            quote = source_quotes[0] if source_quotes else None
+            if quote and not validate_citation_matches_query(quote, req.message):
+                continue  # Skip this citation if it doesn't match the query
+            
             sources.append({
                 "title": title,
                 "route": route,
                 "section": section,
                 "snippet": extract_relevant_snippet(c["content"], req.message),
-                "proof": source_quotes[0] if source_quotes else None,
+                "proof": quote,
                 "source_type": c["metadata"].get("source_type", "website"),
                 "filename": c["metadata"].get("filename"),
                 "file_path": c["metadata"].get("file_path"),
