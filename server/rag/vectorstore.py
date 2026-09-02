@@ -12,7 +12,7 @@ PERSIST_DIR = str(Path(__file__).resolve().parent.parent / ".qdrant_store")
 def get_client():
     global _client
     if _client is not None:
-        return _client``
+        return _client
     Path(PERSIST_DIR).mkdir(parents=True, exist_ok=True)
     _client = QdrantClient(path=PERSIST_DIR)
     # Create collection if it doesn't exist
