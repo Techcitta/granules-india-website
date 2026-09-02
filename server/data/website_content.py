@@ -1078,4 +1078,254 @@ WEBSITE_CONTENT = [
             "chemistry."
         ),
     },
+    {
+        "id": "leadership-board",
+        "title": "Board of Directors",
+        "route": "/about/our-leadership",
+        "section": "leadership",
+        "source_type": "website",
+        "content": (
+            "Board of Directors: Dr. Krishna Prasad Chigurupati - Chairman and Managing Director. "
+            "Mrs. Uma Devi Chigurupati - Executive Director. Ms. Priyanka Chigurupati - Executive "
+            "Director. Mr. Harsha Chigurupati - Executive Director. Mr. K. B. Sankar Rao - Non-Executive "
+            "Non-Independent Director. Mr. Arun Sawhney - Independent Director. Mr. Robert George "
+            "Cunard - Independent Director. Dr. Saumen Chakraborty - Independent Director. Mrs. Sucharita "
+            "Rao Palepu - Independent Director. Mr. Kapil Kumar Mehan - Independent Director. "
+            "Dr. Sethurathnam Ravi - Independent Director. Mr. Rajiv Pritidas Kakodkar - Independent "
+            "Director. Ms. Jyothi Prasad - Independent Director."
+        ),
+    },
+    {
+        "id": "leadership-management",
+        "title": "Management Team",
+        "route": "/about/our-leadership",
+        "section": "management",
+        "source_type": "website",
+        "content": (
+            "Management Team: Mr. Mukesh Surana - Chief Financial Officer. Mr. PV Srinivas - Chief "
+            "Technology Officer. Mr. Vinodkumar Parur - Chief Human Resources Officer. Mr. Ramraj "
+            "Rangarajalu - President and Head Formulations Operations. Mr. Manikandan Ramalingam - "
+            "Senior Vice President and Head Formulation R&D. Mr. Sanjay Kumar - Chief Executive Officer "
+            "Senn Tides India Private Limited. Dr. Baskaran PN - President and Head API Operations. "
+            "Dr. Vijay Raghavan - President Global Portfolio. Dr. Rajesh Kapoor - Global Head Quality. "
+            "Dr. TVSK Vittal - Senior Vice President and Head API R&D. Mr. GSR Prasad - Chief Operating "
+            "Officer. Mr. Sandip Neogi - Chief Financial Officer."
+        ),
+    },
+    {
+        "id": "leadership-cmd",
+        "title": "Dr. Krishna Prasad Chigurupati Chairman and Managing Director",
+        "route": "/about/our-leadership",
+        "section": "cmd",
+        "source_type": "website",
+        "content": (
+            "Dr. Krishna Prasad Chigurupati is the Chairman and Managing Director of Granules India "
+            "Limited. Under his leadership the organisation has transformed itself into one of the "
+            "largest pharmaceutical manufacturing Companies. His pharmaceutical journey started in 1984 "
+            "with the manufacturing of Paracetamol for quality-conscious customers in the global markets. "
+            "He pioneered many innovations in pharmaceutical manufacturing including commercialising "
+            "Pharmaceutical Formulation Intermediates as a cost-effective product for global finished "
+            "dosage manufacturers. Dr. Prasad with his passion for innovation undertook research in "
+            "process chemistry and filed 33 patents out of which 5 patents were granted so far. He was "
+            "awarded an Honorary Doctor of Science by GITAM Deemed University for his exemplary "
+            "contribution to science and society. Dr. Prasad is an avid marathon runner and has "
+            "participated in many marathons across the globe. In 2010 he along with his wife Mrs. Uma "
+            "Devi Chigurupati ran marathons on all seven continents including Antarctica and the North "
+            "Pole. In 2015 they completed the World Marathon Challenge of running seven marathons on "
+            "seven continents in seven days. Both these achievements have been recognised by the "
+            "Guinness Book of World Records."
+        ),
+    },
+    {
+        "id": "leadership-priyanka",
+        "title": "Ms. Priyanka Chigurupati Executive Director",
+        "route": "/about/our-leadership",
+        "section": "leadership-detail",
+        "source_type": "website",
+        "content": (
+            "Ms. Priyanka Chigurupati Executive Director Granules India Limited leads Global Sales "
+            "Strategy and Quality Compliance among other roles within the Company. She has been with "
+            "Granules for over 15 years and has contributed across multiple divisions serving in various "
+            "leadership capacities. She is currently also serving as a Director at Granules "
+            "Pharmaceuticals Inc where she held the position of Executive Director from 2017 to 2024. "
+            "Priyanka holds a Bachelor of Science in Business Management from Case Western Reserve "
+            "University in Cleveland Ohio and has completed an Executive Leadership Program at Harvard "
+            "Business School Boston Massachusetts."
+        ),
+    },
+    {
+        "id": "leadership-uma",
+        "title": "Mrs. Uma Devi Chigurupati Executive Director",
+        "route": "/about/our-leadership",
+        "section": "leadership-detail",
+        "source_type": "website",
+        "content": (
+            "An entrepreneur a successful businesswoman a sportsperson and a two-time Guinness Book of "
+            "World Record holder Mrs. Uma Devi Chigurupati is also the Executive Director of Granules "
+            "India Limited. She spearheads the Corporate Social Responsibility and Human Resources "
+            "functions in the Company. A post-graduate in Soil Microbiology from Nagarjuna University "
+            "she holds more than three decades of experience in Pharmaceuticals across various corporate "
+            "functions. Mrs. Chigurupati has been the Chairperson of FICCI FLO Hyderabad. During her "
+            "tenure she has taken up many initiatives to empower women at both the grassroots and "
+            "white-collar levels."
+        ),
+    },
+    {
+        "id": "leadership-harsha",
+        "title": "Mr. Harsha Chigurupati Executive Director",
+        "route": "/about/our-leadership",
+        "section": "leadership-detail",
+        "source_type": "website",
+        "content": (
+            "Mr. Harsha Chigurupati has been with Granules India since 2006 and was operational in "
+            "multiple departments across the company. Over the years he has focused on driving "
+            "transformation innovation and long-term strategic growth across the pharmaceutical and "
+            "healthcare sectors. With leadership responsibilities spanning technology transformation "
+            "and organizational development he is particularly passionate about leveraging emerging "
+            "technologies artificial intelligence and advanced manufacturing to create scalable globally "
+            "competitive businesses."
+        ),
+    },
+    {
+        "id": "leadership-sanjay",
+        "title": "Mr. Sanjay Kumar CEO Senn Tides India",
+        "route": "/about/our-leadership",
+        "section": "leadership-detail",
+        "source_type": "website",
+        "content": (
+            "Sanjay Kumar holds a B.Tech from IIT Kanpur and an MBA from IIM Bangalore where he was "
+            "on the Directors Merit List. He has completed the CFA Program CFA Institute USA and "
+            "attended the Stanford Graduate School of Business. He brings over 20 years of experience "
+            "in corporate strategy M&A investor relations and business transformation across global "
+            "pharmaceutical organisations. Sanjay is the Chief Executive Officer of Ascelis Peptides "
+            "Granules Indias peptide CDMO subsidiary. Previously he served as Chief Strategy Officer "
+            "and Chief Sustainability Officer at Granules India."
+        ),
+    },
+    {
+        "id": "leadership-mukesh",
+        "title": "Mr. Mukesh Surana Chief Financial Officer",
+        "route": "/about/our-leadership",
+        "section": "leadership-detail",
+        "source_type": "website",
+        "content": (
+            "Mukesh Surana is a Chartered Accountant with All India ranks in both CA Final and "
+            "Intermediate examinations. He brings over two and a half decades of diverse global "
+            "experience across pharmaceuticals manufacturing infrastructure commodities global supply "
+            "chains and fast-moving consumer businesses. Prior to joining Granules India he has worked "
+            "with leading organizations including Garware Technical Fibres Kalpataru Projects International "
+            "and Asian Paints. He has received several industry recognitions including CII CFO Excellence "
+            "Award in 2024 and Best CFO Award Business World in 2022."
+        ),
+    },
+    {
+        "id": "milestones-detailed",
+        "title": "Detailed Company Milestones",
+        "route": "/about/our-milestones",
+        "section": "milestones",
+        "source_type": "website",
+        "content": (
+            "Detailed Milestones: 1984 - Triton Laboratories formed to produce Paracetamol API at "
+            "Bonthapally facility in Hyderabad. 1990 - Triton opened second manufacturing facility at "
+            "Jeedimetla to produce multiple APIs. 1991 - Granules India Private Limited incorporated. "
+            "1993 - Granules established first PFI facility at Jeedimetla. 1995 - Granules became listed "
+            "company after IPO at Hyderabad Stock Exchange. 2001 - Merger of Triton Laboratories with "
+            "Granules. 2003 - New large volume PFI facility in Gagillapur and wholly owned subsidiary "
+            "Granules USA for marketing in US. 2005 - New Paracetamol plant built in Bonthapally "
+            "Hyderabad. 2008 - Granules entered Finished Dosage segment. 2010 - Received US FDA "
+            "approval for first ANDA. 2013 - API R&D facility in Pragathi Nagar Hyderabad. Acquired "
+            "Auctus Pharma an API manufacturing facility with regulatory approvals. 2014 - Wholly owned "
+            "subsidiary in US Granules Pharmaceutical for formulation R&D. Entered Over-the-Counter "
+            "business in US through Granules Consumer Healthcare. 2015 - Laid foundation for Oncology "
+            "OSD Plant in Visakhapatnam. 2016 - Launched Self Directed Team SDT program. 2017 - "
+            "Commenced LEAN SIX-Sigma Program. 2018 - Entered front-end business for sale of Rx "
+            "Products in US under GPI Label. 2019 - Filed first oncology DMF and 7 other DMFs 12 "
+            "ANDAs and 3 MAs. 2020 - Received approvals for 11 ANDAs. Laid foundation for largest "
+            "single manufacturing site for Multi-Unit Pellet system facility. 2023 - Set up GPAK a "
+            "79000 sq ft packaging facility. 2024 - Granules Life Sciences GLS with planned FD capacity "
+            "of 8 billion dosages commenced operations. Granules CZRO pilot plant commenced operation."
+        ),
+    },
+    {
+        "id": "facilities-detailed",
+        "title": "Detailed Manufacturing Facilities",
+        "route": "/about/our-facilities",
+        "section": "facilities",
+        "source_type": "website",
+        "content": (
+            "Facilities: Bonthapally Hyderabad - API Facility with capacity 34560 TPA. Capabilities "
+            "include 5 Paracetamol Grades 5.2 Ton Batch Size. Regulatory Approvals US FDA EDQM WHO "
+            "COFEPRIS INFARMED. Bonthapally II - Intermediate Facility API Capacity 175 KL PA. "
+            "Jeedimetla Hyderabad - Multi-Product API and PFI Facility. API capacity 4800 TPA PFI "
+            "capacity 1440 TPA. Capabilities include 1.2 Ton PFI Batch Size. Regulatory Approvals "
+            "API US FDA EDQM COFEPRIS WHO CDCSO. PFI WHO GMP COFEPRIS INFARMED. Gagillapur Hyderabad "
+            "- Finished Dosage and PFI Facility. PFI capacity 24000 TPA FD capacity 21.6 billion PA. "
+            "Capabilities include 6 MT PFI Batch Size High Shear and Fluid Bed Granulation Pilot "
+            "Facility with Geometrical Scale-Up. Regulatory Approvals PFI US FDA COFEPRIS TGA MCC "
+            "INFARMED. FD US FDA MCC COFEPRIS TGA INFARMED. Paravada Unit-4 Visakhapatnam - API "
+            "Facility capacity 380 KL PA. Regulatory Approvals US FDA KFDA EU GMP WHO GMP EDQM. "
+            "Paravada Unit-5 Visakhapatnam - API and FD Facility. API Oncology capacity 4.33 KL and "
+            "Non-Oncology NPD 10.53 KL. FD capacity Tablets 1 billion PA and Capsules 71 million PA. "
+            "Regulatory Approvals API and FDF EU GMP. Chantilly Virginia USA - R&D and FD Facility. "
+            "Capacity 1.5 million units 100000 Sq Feet R&D and manufacturing capacity. FD capacity "
+            "1.5 billion PA. Regulatory Approvals FD US FDA DEA. Genome Valley Hyderabad - Granules "
+            "Life Sciences. Capacity 8 billion dosage FD capacity by 2026."
+        ),
+    },
+    {
+        "id": "facility-bonthapally",
+        "title": "Bonthapally Manufacturing Facility",
+        "route": "/about/our-facilities",
+        "section": "facility-detail",
+        "source_type": "website",
+        "content": (
+            "Bonthapally facility Hyderabad: API Facility with capacity 34560 TPA. Capabilities "
+            "include 5 Paracetamol Grades 5.2 Ton Batch Size. Regulatory Approvals US FDA EDQM WHO "
+            "COFEPRIS INFARMED. Bonthapally II - Intermediate Facility API Capacity 175 KL PA. "
+            "This is one of the oldest and largest API manufacturing sites producing Paracetamol and "
+            "other APIs for global markets."
+        ),
+    },
+    {
+        "id": "facility-gagillapur",
+        "title": "Gagillapur Manufacturing Facility",
+        "route": "/about/our-facilities",
+        "section": "facility-detail",
+        "source_type": "website",
+        "content": (
+            "Gagillapur facility Hyderabad: Finished Dosage and PFI Facility. PFI capacity 24000 TPA "
+            "FD capacity 21.6 billion PA. Capabilities include 6 MT PFI Batch Size High Shear and "
+            "Fluid Bed Granulation Pilot Facility with Geometrical Scale-Up. Regulatory Approvals "
+            "PFI US FDA COFEPRIS TGA MCC INFARMED. FD US FDA MCC COFEPRIS TGA INFARMED. This is one "
+            "of the largest single manufacturing sites for PFIs and Finished Dosages."
+        ),
+    },
+    {
+        "id": "facility-chantilly",
+        "title": "Chantilly Virginia USA Facility",
+        "route": "/about/our-facilities",
+        "section": "facility-detail",
+        "source_type": "website",
+        "content": (
+            "Chantilly Virginia USA: R&D and FD Facility. Capacity 1.5 million units 100000 Sq Feet "
+            "R&D and manufacturing capacity. FD capacity 1.5 billion PA. Regulatory Approvals FD "
+            "US FDA DEA. This facility provides formulation R&D and manufacturing capability in the "
+            "US to develop and commercialize oral solid dosages. It also addresses Make in America "
+            "policy requirements."
+        ),
+    },
+    {
+        "id": "facility-gls",
+        "title": "Granules Life Sciences GLS Facility",
+        "route": "/about/our-facilities",
+        "section": "facility-detail",
+        "source_type": "website",
+        "content": (
+            "Granules Life Sciences GLS located in Genome Valley Hyderabad: Capacity 8 billion dosage "
+            "FD capacity by 2026. State-of-the-art vertically integrated manufacturing facility "
+            "capable of producing 10 billion oral solid dosage OSD units annually. Approved by the "
+            "USFDA with EU GMP certification underway. Strategically designed layout on five acres with "
+            "14 additional acres reserved for future expansion."
+        ),
+    },
 ]

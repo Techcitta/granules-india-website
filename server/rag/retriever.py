@@ -10,8 +10,17 @@ QUERY_EXPANSIONS = {
     "revenue": "revenue from operations total income",
     "profit": "profit after tax net profit PAT",
     "employees": "employee strength manpower team",
-    "sustainability": "sustainability environment carbon net zero green",
+    "sustainability": "sustainability environment carbon net zero green esg",
+    "esg": "esg sustainability environment social governance carbon net zero",
     "api": "active pharmaceutical ingredients API manufacturing",
+    "acquired": "acquisition acquired purchased bought merger takeover",
+    "acquisition": "acquisition acquired purchased bought merger takeover senn chemicals auctus",
+    "acquisitions": "acquisition acquired purchased bought merger takeover senn chemicals auctus",
+    "bought": "acquisition acquired purchased bought merger takeover",
+    "subsidiary": "subsidiary subsidiaries group company owned",
+    "product": "product API portfolio drug medicine tablet capsule",
+    "financial": "financial revenue EBITDA PAT profit quarterly results",
+    "quarterly": "quarterly results Q1 Q2 Q3 Q4 revenue EBITDA PAT",
 }
 
 
@@ -27,7 +36,7 @@ def expand_query(query: str) -> str:
     return query
 
 
-async def retrieve_relevant_chunks(query: str, n_results: int = 6) -> list[dict]:
+async def retrieve_relevant_chunks(query: str, n_results: int = 10) -> list[dict]:
     expanded = expand_query(query)
     query_embedding = generate_single_embedding(expanded)
     results = query_collection(query_embedding, n_results)
