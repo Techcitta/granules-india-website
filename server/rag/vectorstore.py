@@ -4,7 +4,7 @@ from pathlib import Path
 import uuid
 
 _client = None
-COLLECTION_NAME = "granules_knowledge"
+COLLECTION_NAME = "india_knowledge_base"
 VECTOR_SIZE = 384  # all-MiniLM-L6-v2 dimension
 PERSIST_DIR = str(Path(__file__).resolve().parent.parent / ".qdrant_store")
 
