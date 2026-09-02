@@ -110,7 +110,8 @@
       const url = getSourceUrl(src);
       if (url) {
         const highlightParam = src.section ? '?highlight=' + encodeURIComponent(src.section) : '';
-        meta = '<a href="' + escapeHtml(url) + highlightParam + '" class="gw-chat-source-file-link">View on website</a>';
+        const fullUrl = url + highlightParam;
+        meta = '<a href="' + escapeHtml(fullUrl) + '" class="gw-chat-source-file-link" onclick="window.location.href=\'' + escapeHtml(fullUrl) + '\'; return false;">View on website</a>';
       } else {
         meta = '<span class="gw-chat-source-file-link">Website Content</span>';
       }

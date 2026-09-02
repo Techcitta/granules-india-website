@@ -232,7 +232,9 @@
       window.history.replaceState({}, '', url);
 
       // Delay highlight slightly to ensure page is rendered
-      setTimeout(() => highlightSection(highlight), 300);
+      setTimeout(() => highlightSection(highlight), 500);
+      setTimeout(() => highlightSection(highlight), 1500);
+      setTimeout(() => highlightSection(highlight), 3000);
     }
   }
 
@@ -242,6 +244,32 @@
   } else {
     init();
   }
+
+  // Also listen for SPA navigation (React Router)
+  let lastUrl = window.location.href;
+  const observer = new MutationObserver(() => {
+    const currentUrl = window.location.href;
+    if (currentUrl !== lastUrl) {
+      lastUrl = currentUrl;
+      // Check for highlight parameter on URL change
+      const params = new URLSearchParams(window.location.search);
+      const highlight = params.get('highlight');
+      if (highlight) {
+        const url = new URL(window.location);
+        url.searchParams.delete('highlight');
+        window.history.replaceState({}, '', url);
+        setTimeout(() => highlightSection(highlight), 500);
+        setTimeout(() => highlightSection(highlight), 1500);
+        setTimeout(() => highlightSection(highlight), 3000);
+      }
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Listen for popstate (back/forward navigation)
+  window.addEventListener('popstate', () => {
+    setTimeout(init, 100);
+  });
 
   // Expose for manual use
   window.GranulesHighlight = highlightSection;
