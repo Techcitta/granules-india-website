@@ -1,7 +1,11 @@
+import os
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 from pathlib import Path
 import uuid
+from dotenv import load_dotenv
+
+load_dotenv()
 
 _client = None
 COLLECTION_NAME = "india_knowledge_base"
@@ -13,8 +17,19 @@ def get_client():
     global _client
     if _client is not None:
         return _client
-    Path(PERSIST_DIR).mkdir(parents=True, exist_ok=True)
-    _client = QdrantClient(path=PERSIST_DIR)
+    
+    # Cloud mode: use QDRANT_URL and QDRANT_API_KEY from .env
+    qdrant_url = os.getenv("QDRANT_URL")
+    qdrant_api_key = os.getenv("QDRANT_API_KEY")
+    
+    if qdrant_url and qdrant_api_key:
+        # Connect to Qdrant Cloud
+        _client = QdrantClient(url=qdrant_url, api_key=qdrant_api_key)
+    else:
+        # Local mode: use persistent storage
+        Path(PERSIST_DIR).mkdir(parents=True, exist_ok=True)
+        _client = QdrantClient(path=PERSIST_DIR)
+    
     # Create collection if it doesn't exist
     collections = [c.name for c in _client.get_collections().collections]
     if COLLECTION_NAME not in collections:
