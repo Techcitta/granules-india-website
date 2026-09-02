@@ -6,7 +6,8 @@
 (function () {
   'use strict';
 
-  const API_URL = '/api/chat';
+  // Use deployed backend URL if set, otherwise use relative path (for local dev with Vite proxy)
+  const API_URL = window.GRANULES_API_URL ? window.GRANULES_API_URL + '/api/chat' : '/api/chat';
   const GREETINGS = [
     'hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening',
     'how are you', "what's up", 'sup', 'yo', 'hii', 'helo', 'hiiii',
