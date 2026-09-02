@@ -328,7 +328,9 @@
     // Welcome message
     addMessage(
       'assistant',
-      "Hello! I'm Granules India's AI assistant. I can answer questions about our company, products, sustainability, investor information, and more. How can I help you today?"
+      "Hello! I'm Granules India's AI assistant. I can answer questions about our company, products, sustainability, investor information, and more. How can I help you today?",
+      [],
+      true  // isWelcome - no feedback buttons
     );
     renderMessages();
 
