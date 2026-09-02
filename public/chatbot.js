@@ -161,7 +161,23 @@
       sources += '</div>';
     }
 
-    return '<div class="gw-chat-msg ' + cls + '">' + avatar + '<div class="gw-chat-msg-content">' + bubble + sources + '</div></div>';
+    // Add feedback buttons for bot messages
+    let feedback = '';
+    if (!isUser && msg.role === 'assistant') {
+      const feedbackId = msg.id;
+      feedback = '<div class="gw-chat-feedback" id="feedback-' + feedbackId + '">' +
+        '<button class="gw-chat-feedback-btn like" data-msg="' + feedbackId + '" data-type="like" onclick="window.GranulesFeedback(\'' + feedbackId + '\', \'like\')">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>' +
+          'I like this' +
+        '</button>' +
+        '<button class="gw-chat-feedback-btn dislike" data-msg="' + feedbackId + '" data-type="dislike" onclick="window.GranulesFeedback(\'' + feedbackId + '\', \'dislike\')">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>' +
+          'Could be better' +
+        '</button>' +
+      '</div>';
+    }
+
+    return '<div class="gw-chat-msg ' + cls + '">' + avatar + '<div class="gw-chat-msg-content">' + bubble + sources + feedback + '</div></div>';
   }
 
   /* ── typing indicator ───────────────────────────────────────────────── */
@@ -344,6 +360,33 @@
     });
     input.addEventListener('input', updateSendButton);
   }
+
+  // Feedback handler
+  function handleFeedback(msgId, type) {
+    // Update button states
+    const feedbackContainer = document.getElementById('feedback-' + msgId);
+    if (feedbackContainer) {
+      const buttons = feedbackContainer.querySelectorAll('.gw-chat-feedback-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.type === type) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    // Find the message in state
+    const msg = messages.find(m => m.id === msgId);
+    if (msg) {
+      msg.feedback = type;
+    }
+
+    // Log feedback (could send to backend in future)
+    console.log('Feedback:', msgId, type);
+  }
+
+  // Expose feedback handler globally
+  window.GranulesFeedback = handleFeedback;
 
   // Boot
   if (document.readyState === 'loading') {
