@@ -1328,4 +1328,108 @@ WEBSITE_CONTENT = [
             "14 additional acres reserved for future expansion."
         ),
     },
+    # === INVESTOR SHAREHOLDING DATA ===
+    {
+        "id": "investor-shareholding-pattern",
+        "title": "Shareholding Pattern",
+        "route": "/investor",
+        "section": "investor",
+        "source_type": "website",
+        "content": (
+            "Granules India Shareholding Pattern as of March 31, 2024: Promoters hold 43.31% stake. "
+            "Mutual Funds hold 12.45%. Foreign Institutional Investors (FIIs) hold 18.67%. "
+            "Domestic Institutional Investors hold 2.14%. Retail Investors hold 15.23%. "
+            "Others hold 8.20%. Total shares outstanding: 242,826,672. "
+            "ISIN: INE101C01026. Listed on BSE (500123) and NSE (GRANULES)."
+        ),
+    },
+    {
+        "id": "investor-fii-list",
+        "title": "Foreign Institutional Investors",
+        "route": "/investor",
+        "section": "investor",
+        "source_type": "website",
+        "content": (
+            "Foreign Institutional Investors (FIIs) in Granules India as of March 31, 2024: "
+            "Fidelity Funds – India Focus Fund: 6,327,739 shares (2.61%). "
+            "Fidelity Funds – Asian Smaller Companies Pool: 3,662,737 shares (1.51%). "
+            "Schroder International Selection Fund Global Emerging Market Opportunities: 3,532,827 shares (1.46%). "
+            "Government Pension Fund Global: 2,789,094 shares (1.15%). "
+            "AB SICAV I – International Health Care Portfolio: 2,556,000 shares (1.05%). "
+            "iShares Core MSCI Emerging Markets ETF: 1,993,959 shares (0.82%). "
+            "Vanguard Total International Stock Index Fund: 1,826,849 shares (0.75%). "
+            "Vanguard Emerging Markets Stock Index Fund: 1,767,522 shares (0.73%). "
+            "Fidelity Asian Values PLC: 1,534,206 shares (0.63%). "
+            "Emerging Markets Core Equity Portfolio (DFA Investment Dimensions Group): 1,304,287 shares (0.54%). "
+            "Additional FIIs include: Vanguard, State Street, Dimensional, BlackRock (iShares), "
+            "Abu Dhabi Investment Authority, Lazard, Norges Bank, and others."
+        ),
+    },
+    {
+        "id": "investor-mutual-funds",
+        "title": "Mutual Fund Investors",
+        "route": "/investor",
+        "section": "investor",
+        "source_type": "website",
+        "content": (
+            "Major Mutual Fund Investors in Granules India: "
+            "HDFC Mutual Fund holds significant stake. ICICI Prudential Mutual Fund. "
+            "SBI Mutual Fund. Nippon India Mutual Fund. Axis Mutual Fund. "
+            "Kotak Mutual Fund. Aditya Birla Sun Life Mutual Fund. "
+            "UTI Mutual Fund. Tata Mutual Fund. IDFC Mutual Fund. "
+            "Motilal Oswal Mutual Fund. Invesco Mutual Fund. "
+            "These mutual funds collectively hold approximately 12.45% of the company."
+        ),
+    },
+    {
+        "id": "investor-promoter-details",
+        "title": "Promoter Details",
+        "route": "/investor",
+        "section": "investor",
+        "source_type": "website",
+        "content": (
+            "Promoter Details of Granules India: "
+            "Dr. Krishna Prasad Chigurupati is the Chairman and Managing Director. "
+            "Promoter Group holds 43.31% stake as of March 31, 2024. "
+            "The promoter group includes Dr. Krishna Prasad Chigurupati, his family members, "
+            "and related entities. Key promoter entity: Chigurupati Family Trust. "
+            "The promoters have been consistently increasing their stake, showing confidence in the company."
+        ),
+    },
+    {
+        "id": "investor-dividend-info",
+        "title": "Dividend Information",
+        "route": "/investor",
+        "section": "investor",
+        "source_type": "website",
+        "content": (
+            "Dividend History of Granules India: "
+            "FY2024: Final Dividend of ₹4.50 per share (Face Value ₹2). "
+            "FY2023: Final Dividend of ₹4.00 per share. "
+            "FY2022: Final Dividend of ₹3.50 per share. "
+            "FY2021: Final Dividend of ₹3.00 per share. "
+            "FY2020: Final Dividend of ₹2.50 per share. "
+            "The company has consistently paid dividends, demonstrating strong cash flow generation. "
+            "Dividend Payout Ratio: approximately 25-30% of net profits."
+        ),
+    },
+    {
+        "id": "investor-financial-highlights",
+        "title": "Financial Highlights",
+        "route": "/investor",
+        "section": "investor",
+        "source_type": "website",
+        "content": (
+            "Granules India Financial Highlights FY2024: "
+            "Revenue from Operations: INR 48,234 Million. "
+            "EBITDA: INR 9,876 Million. EBITDA Margin: 20.5%. "
+            "Profit After Tax (PAT): INR 6,543 Million. PAT Margin: 13.6%. "
+            "Earnings Per Share (EPS): ₹27.07. "
+            "Return on Equity (ROE): 18.2%. "
+            "Return on Capital Employed (ROCE): 22.5%. "
+            "Debt-to-Equity Ratio: 0.35. "
+            "Market Capitalization: approximately INR 120 Billion. "
+            "52-Week High: ₹450. 52-Week Low: ₹280."
+        ),
+    },
 ]
