@@ -1387,7 +1387,15 @@ article.open .accordion-icon-circle {
   cursor: pointer;
 }
 
-.news-card>button>img {
+.news-card>a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-card>button>img,
+.news-card>a>img {
   width: 100%;
   aspect-ratio: 2.15/1;
   border-radius: 20px;
@@ -1395,7 +1403,8 @@ article.open .accordion-icon-circle {
   transition: transform .4s, filter .4s;
 }
 
-.news-card:hover>button>img {
+.news-card:hover>button>img,
+.news-card:hover>a>img {
   transform: translateY(-5px);
   filter: saturate(1.12);
 }

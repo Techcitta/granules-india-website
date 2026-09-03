@@ -42,23 +42,23 @@ const heroSlides = [
 const products = [
   {
     image: 'api.webp',
-    title: 'Active Pharmaceutical Ingredients',
+    title: 'Active Pharmaceutical Ingredients (APIs)',
     eyebrow: 'API',
-    body: 'High-volume active pharmaceutical ingredients used by top global pharma companies.',
+    body: 'Large-scale manufacturing capabilities, integrated operations, and strong process optimization.',
     href: '/business/api',
   },
   {
     image: 'pfi.webp',
-    title: 'Pharmaceutical Formulations Intermediates',
+    title: 'Pharmaceutical Formulations Intermediates (PFIs)',
     eyebrow: 'PFI',
-    body: 'Custom pharmaceutical formulation intermediates optimized for flexibility and efficiency.',
+    body: 'Custom pharmaceutical formulation intermediates optimized for efficiency and flexibility.',
     href: '/business/pfi',
   },
   {
     image: 'finished-dosage.webp',
-    title: 'Finished Dosages',
+    title: 'Finished Dosages (FDs)',
     eyebrow: 'FD',
-    body: 'Finished dosages manufactured at scale, backed by stringent quality systems.',
+    body: 'Scale and complexity supported by multi-site supply capabilities.',
     href: '/business/fd',
   },
 ];
@@ -66,10 +66,11 @@ const products = [
 const news = [
   {
     image: 'news-1.webp',
-    category: 'News',
-    title: 'Recognized among India’s Top 10 Sustainable Pharma Companies.',
-    body: 'The recognition reflects continued progress across renewable energy, responsible operations and measurable climate action.',
-    href: '/media',
+    category: 'Stories',
+    title: 'Granules India secures sole first-to-file status for generic drug',
+    body: 'Granules India has secured sole first-to-file status for a generic drug, strengthening its position in regulated markets.',
+    href: 'https://timesofindia.indiatimes.com/city/hyderabad/granules-india-secures-sole-first-to-file-status-for-generic-drug/articleshow/132222024.cms',
+    external: true,
   },
   {
     image: 'news-2.webp',
@@ -493,10 +494,16 @@ function Business() {
       <Tag>Business Verticals</Tag>
       <div className="section-heading split-heading">
         <div>
-          <h2>Comprehensive capabilities across core and emerging therapies</h2>
-          <p>We operate across five strategic verticals, combining scientific depth, regulatory experience, and manufacturing strength.</p>
+          <h2>Delivering Impact Across Pharmaceutical Value Chain</h2>
+          <p>
+            We serve patients and our partners across the globe with a vertically integrated model
+            that brings together innovation, manufacturing excellence, and compliance at scale. With
+            established capabilities across APIs, PFIs, finished dosages and peptide CDMO, we are
+            also strengthening our portfolio complexity across therapies with high-barrier, early to
+            market opportunities in Central Nervous System (CNS), oncology and metabolic disorders.
+          </p>
         </div>
-        <Button href="/business/api">Explore Products &rarr;</Button>
+        <Button href="/business/api">Products &rarr;</Button>
       </div>
 
       <div className="product-grid">
@@ -660,6 +667,15 @@ function Credentials() {
 function Sustainability() {
   const items = [
     {
+      title: 'Target to achieve Net Zero by 2050',
+      body: 'We are committed to science-based decarbonization, with SBTi-validated targets guiding our journey toward Net Zero emissions.',
+      icon: 'icon-recycle-leaf.svg',
+      iconType: 'plain',
+      href: '/sustainability/strategy',
+      cta: 'View Decarbonisation Strategy',
+      bg: `${A}sustainability-net-zero.jpg`,
+    },
+    {
       title: 'Granules CZRO',
       body: 'Our greenfield manufacturing unit leads the way in energy-efficient operations and low-emission processes, redefining what large-scale green pharma looks like.',
       icon: 'icon-windmill-sustain.svg',
@@ -667,15 +683,6 @@ function Sustainability() {
       href: '/company/granules-czro',
       cta: 'Explore Granules CZRO',
       bg: `${A}sustainability.webp`,
-    },
-    {
-      title: 'Target to achieve Net Zero by 2050',
-      body: 'A long-term decarbonisation roadmap built around renewables, efficiency and responsible operations.',
-      icon: 'icon-recycle-leaf.svg',
-      iconType: 'plain',
-      href: '/sustainability/strategy',
-      cta: 'View Decarbonisation Strategy',
-      bg: `${A}sustainability-net-zero.jpg`,
     },
     {
       title: 'Pharma Pathshala',
@@ -772,8 +779,8 @@ function Investor() {
         <Tag>Investor Relations</Tag>
         <h2>Transparent. Trusted. Future-focused.</h2>
         <p>
-          Stay informed with real-time stock performance (NSE | BSE), key financial metrics, and
-          forward-looking growth strategies backed by innovation and execution strength.
+          Driven by operational excellence and responsible growth, we remain focused on creating
+          sustainable value for our investors.
         </p>
         <Button href="/investor">Learn More &rarr;</Button>
       </div>
@@ -839,20 +846,36 @@ function Media() {
             <Tag>Newsroom</Tag>
             <h2>What’s new at Granules</h2>
           </div>
-          <Button href="/media">View All News &rarr;</Button>
+          <Button href="/media">View all &rarr;</Button>
         </div>
         <div className="news-grid">
           {news.map((item) => (
             <article className="news-card" key={item.title}>
-              <button onClick={() => setSelected(item)} aria-label={`Read ${item.title}`}>
-                <img src={`${A}${item.image}`} alt="" loading="lazy" decoding="async" />
-                <div className="news-meta">
-                  <span>{item.category}</span>
-                  <time>12 June 2024</time>
-                </div>
-                <h3>{item.title}</h3>
-                <span className="read-more">Read More &rarr;</span>
-              </button>
+              {item.external ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Read ${item.title}`}
+                >
+                  <img src={`${A}${item.image}`} alt="" loading="lazy" decoding="async" />
+                  <div className="news-meta">
+                    <span>{item.category}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <span className="read-more">Read More &rarr;</span>
+                </a>
+              ) : (
+                <button onClick={() => setSelected(item)} aria-label={`Read ${item.title}`}>
+                  <img src={`${A}${item.image}`} alt="" loading="lazy" decoding="async" />
+                  <div className="news-meta">
+                    <span>{item.category}</span>
+                    <time>12 June 2024</time>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <span className="read-more">Read More &rarr;</span>
+                </button>
+              )}
             </article>
           ))}
         </div>
