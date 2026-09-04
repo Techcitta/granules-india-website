@@ -53,11 +53,11 @@ export default function PfiPage() {
       <NavBar />
 
       <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
-        <span>Homepage</span>
-        <span className="sep">{'>'}</span>
-        <span>Business</span>
-        <span className="sep">{'>'}</span>
-        <span className="current">Pharmaceutical Formulation Intermediates</span>
+        <a href="/">HOMEPAGE</a>
+        <span className="sep">›</span>
+        <a href="/business/api">BUSINESS</a>
+        <span className="sep">›</span>
+        <span className="current">PHARMACEUTICAL FORMULATION INTERMEDIATES</span>
       </p>
       <h1 className="cp-page-title">Pharmaceutical Formulation Intermediates</h1>
       <div className="cp-hero-banner">
