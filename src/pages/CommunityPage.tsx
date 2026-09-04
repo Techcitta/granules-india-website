@@ -18,13 +18,13 @@ const IMPACT_GOALS: CSRStat[] = [
   {
     value: '1M+',
     label: 'Our Goal',
-    sublabel: 'Touch 1 million lives by 2030 through sustainable grassroots interventions',
+    sublabel: 'Touch 1 million lives by 2030',
     badge: 'Vision 2030',
   },
   {
     value: '3.5L+',
     label: 'Our Progress',
-    sublabel: '3.5+ lakhs lives positively touched in FY26 across healthcare, education & skilling',
+    sublabel: '3.5+ lakhs Lives positively touched in FY26',
     badge: 'FY26 Impact',
   },
 ];
@@ -51,7 +51,7 @@ const CSR_FOCUS_AREAS: FocusArea[] = [
     tagColor: '#0061f8',
     metric: '1,600+',
     unit: 'Individuals Trained',
-    desc: '1,600+ Individuals trained through Pharma Patashala since its inception in 2017 with industry-aligned curricula and direct pharmaceutical manufacturing career pathways.',
+    desc: '1,600+ Individuals trained through Pharma Patashala since its inception in 2017',
     image: 'skill-development.webp',
     highlights: [
       'Pharma Patashala specialized academy',
@@ -94,12 +94,12 @@ const CSR_FOCUS_AREAS: FocusArea[] = [
   {
     id: 'environment',
     title: 'Environment',
-    tag: 'Afforestation & Biodiversity',
+    tag: 'Afforestation & Ecology',
     tagBg: 'rgba(5, 150, 105, 0.08)',
     tagColor: '#059669',
     metric: '18,000+',
     unit: 'Native Trees Planted',
-    desc: '18,000+ Native trees planted and nurtured across local communities, industrial green belts, and biodiversity conservation zones.',
+    desc: '18,000+ Native trees planted',
     image: 'environment.webp',
     highlights: [
       'Native species plantation drives',

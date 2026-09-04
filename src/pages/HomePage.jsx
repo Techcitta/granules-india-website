@@ -131,7 +131,7 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
     ['Investor', '#investor'],
     ['Media', '#media'],
     ['Careers', '#careers'],
-    ['Contact', '#footer'],
+    ['Contact Us', '#footer'],
   ];
   const submenuData = {
     'About Us': {
@@ -986,10 +986,10 @@ function Footer() {
     ['Contact Us', '/contact'],
   ];
   const socials = [
-    { icon: 'facebook.svg', name: 'Facebook', href: 'https://www.facebook.com/share/1BSgd7PiTC/?mibextid=wwXIfr' },
-    { icon: 'instagram.svg', name: 'Instagram', href: 'https://instagram.com' },
-    { icon: 'x.svg', name: 'X', href: 'https://x.com/GranulesIndia' },
     { icon: 'linkedin.svg', name: 'LinkedIn', href: 'https://www.linkedin.com/company/granules-india-limited/' },
+    { icon: 'instagram.svg', name: 'Instagram', href: 'https://www.instagram.com/granulesindialimited_official/followers/' },
+    { icon: 'x.svg', name: 'X', href: 'https://x.com/GranulesIndia' },
+    { icon: 'facebook.svg', name: 'Facebook', href: 'https://www.facebook.com/share/1BSgd7PiTC/?mibextid=wwXIfr' },
     { icon: 'youtube.svg', name: 'YouTube', href: 'https://www.youtube.com/@Granules-IndiaLimited/featured' },
   ];
   return (
@@ -1020,11 +1020,11 @@ function Footer() {
       <div className="footer-bottom shell">
         <div>
           <span>Copyright © 2025 Granules. All rights reserved.</span>
-          <Link to="/privacy-policy">Privacy Policy</Link>
-          <Link to="/cookies-policy">Cookies Policy</Link>
-          <Link to="/disclaimer">Disclaimer</Link>
-          <Link to="/data-protection-notice">Data Protection Notice</Link>
-          <Link to="/terms-of-use">Terms of Use</Link>
+          <Link to="/contact">Privacy Policy</Link>
+          <Link to="/contact">Cookies Policy</Link>
+          <Link to="/contact">Disclaimer</Link>
+          <Link to="/contact">Data Protection Notice</Link>
+          <Link to="/contact">Terms & Condition</Link>
         </div>
         <div className="socials">
           {socials.map((item) => (
