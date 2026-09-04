@@ -88,7 +88,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage.tsx';
 import CookiePolicyPage from './pages/CookiePolicyPage.tsx';
 import DisclaimerPage from './pages/DisclaimerPage.tsx';
 import DataProtectionNoticePage from './pages/DataProtectionNoticePage.tsx';
-import TermsConditionsPage from './pages/TermsConditionsPage.tsx';
+import TermsOfUsePage from './pages/TermsOfUsePage.tsx';
 
 function App() {
   return (
@@ -142,9 +142,10 @@ function App() {
         <Route path="/disclaimer" element={<DisclaimerPage />} />
         <Route path="/data-protection-notice" element={<DataProtectionNoticePage />} />
         <Route path="/data-protection" element={<DataProtectionNoticePage />} />
-        <Route path="/terms-conditions" element={<TermsConditionsPage />} />
-        <Route path="/terms-condition" element={<TermsConditionsPage />} />
-        <Route path="/terms" element={<TermsConditionsPage />} />
+        <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+        <Route path="/terms-conditions" element={<TermsOfUsePage />} />
+        <Route path="/terms-condition" element={<TermsOfUsePage />} />
+        <Route path="/terms" element={<TermsOfUsePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

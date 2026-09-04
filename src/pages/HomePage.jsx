@@ -1020,11 +1020,11 @@ function Footer() {
       <div className="footer-bottom shell">
         <div>
           <span>Copyright © 2025 Granules. All rights reserved.</span>
-          <Link to="/contact">Privacy Policy</Link>
-          <Link to="/contact">Cookies Policy</Link>
-          <Link to="/contact">Disclaimer</Link>
-          <Link to="/contact">Data Protection Notice</Link>
-          <Link to="/contact">Terms & Condition</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/cookies-policy">Cookies Policy</Link>
+          <Link to="/disclaimer">Disclaimer</Link>
+          <Link to="/data-protection-notice">Data Protection Notice</Link>
+          <Link to="/terms-of-use">Terms of Use</Link>
         </div>
         <div className="socials">
           {socials.map((item) => (

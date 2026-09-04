@@ -96,7 +96,7 @@ export default function CompanyFooter() {
             <Link to="/cookies-policy">COOKIES POLICY</Link>
             <Link to="/disclaimer">DISCLAIMER</Link>
             <Link to="/data-protection-notice">DATA PROTECTION NOTICE</Link>
-            <Link to="/terms-conditions">TERMS &amp; CONDITION</Link>
+            <Link to="/terms-of-use">TERMS OF USE</Link>
           </div>
 
           <div className="cp-footer-socials">
