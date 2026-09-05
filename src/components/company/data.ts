@@ -89,7 +89,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Investor', href: '/investor', matchPrefix: '/investor' },
   { label: 'Media', href: '/media', matchPrefix: '/media' },
   { label: 'Careers', href: '/careers', matchPrefix: '/careers' },
-  { label: 'Contact', href: '/contact', matchPrefix: '/contact' },
+  { label: 'Contact Us', href: '/contact', matchPrefix: '/contact' },
 ];
 
 export const FOOTER_SOCIALS = ['social-1.svg', 'social-2.svg', 'social-3.svg', 'social-4.svg', 'social-5.svg'];

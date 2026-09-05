@@ -131,116 +131,85 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
     ['Investor', '#investor'],
     ['Media', '#media'],
     ['Careers', '#careers'],
-    ['Contact', '#footer'],
+    ['Contact Us', '#footer'],
   ];
   const submenuData = {
     'About Us': {
-      title: 'About Us',
-      quickLinks: [
-        ['ABOUT US', '/company'],
-        ['MILESTONE', '/company/milestone'],
-        ['AWARDS', '/company/awards'],
+      sections: [
+        {
+          title: 'Overview',
+          quickLinks: [
+            ['About Us', '/company'],
+            ['Our Journey', '/company/milestone'],
+            ['Leadership', '/company/leadership'],
+            ['Awards', '/company/awards'],
+          ],
+        },
+        {
+          title: 'Global Subsidiaries',
+          quickLinks: [
+            ['Overview', '/company/global-subsidiaries'],
+            ['Granules Pharmaceuticals Inc. (GPI)', 'https://www.granulespharma.com/'],
+            ['Granules Life Sciences', '/company/granules-life-sciences'],
+            ['Senn Tides', '/company/ascelis-peptides'],
+            ['Granules CZRO', '/company/granules-czro'],
+          ],
+        },
       ],
       links: [
-        ['Leadership', '/company/leadership'],
-        ['Global Subsidiaries', '/company/global-subsidiaries'],
-        ['Granules Life Sciences', '/company/granules-life-sciences'],
         ['Operational Excellence', '/company/operational-excellence'],
       ],
       image: 'company/values-bg-2.webp',
     },
     Company: {
-      title: 'About Us',
-      quickLinks: [
-        ['ABOUT US', '/company'],
-        ['MILESTONE', '/company/milestone'],
-        ['AWARDS', '/company/awards'],
+      sections: [
+        {
+          title: 'Overview',
+          quickLinks: [
+            ['About Us', '/company'],
+            ['Our Journey', '/company/milestone'],
+            ['Leadership', '/company/leadership'],
+            ['Awards', '/company/awards'],
+          ],
+        },
+        {
+          title: 'Global Subsidiaries',
+          quickLinks: [
+            ['Overview', '/company/global-subsidiaries'],
+            ['Granules Pharmaceuticals Inc. (GPI)', 'https://www.granulespharma.com/'],
+            ['Granules Life Sciences', '/company/granules-life-sciences'],
+            ['Senn Tides', '/company/ascelis-peptides'],
+            ['Granules CZRO', '/company/granules-czro'],
+          ],
+        },
       ],
       links: [
-        ['Leadership', '/company/leadership'],
-        ['Global Subsidiaries', '/company/global-subsidiaries'],
-        ['Granules Life Sciences', '/company/granules-life-sciences'],
         ['Operational Excellence', '/company/operational-excellence'],
       ],
       image: 'company/values-bg-2.webp',
     },
     Business: {
-      title: 'Business',
+      title: 'GENERICS',
       quickLinks: [
         ['API', '/business/api'],
         ['PFI', '/business/pfi'],
         ['FINISHED DOSAGES', '/business/fd'],
-        ['PEPTIDES', '/business/peptides'],
       ],
       links: [
+        ['Peptides CDMO', '/business/peptides'],
         ['Research & Development', '/business/rd'],
         ['Quality & Compliance', '/business/quality-compliance'],
-        ['Manufacturing Facilities', '/company/facilities'],
+        ['Facilities', '/company/facilities'],
       ],
       image: 'company/gpi-facility.webp',
-    },
-    Community: {
-      title: 'Community',
-      quickLinks: [
-        ['OVERVIEW', '/community'],
-        ['SKILL DEVELOPMENT', '/community'],
-        ['HEALTHCARE', '/community'],
-      ],
-      links: [
-        ['Pharma Patashala', '/community'],
-        ['Mobile Mammography Camps', '/community'],
-        ['Vidya Volunteers & Education', '/community'],
-        ['Native Tree Plantation', '/community'],
-      ],
-      image: 'esg/social-1.webp',
-    },
-    Investor: {
-      title: 'Investor',
-      quickLinks: [
-        ['OVERVIEW', '/investor'],
-        ['ANNUAL REPORTS', '/investor/annual-reports'],
-      ],
-      links: [
-        ['Quarterly Results', '/investor'],
-        ['Investor Resources', '/investor'],
-        ['Financial Highlights', '/investor'],
-      ],
-      image: 'investor-report-cover.webp',
-    },
-    Media: {
-      title: 'Media',
-      quickLinks: [
-        ['NEWS & MEDIA', '/media'],
-        ['PRESS RELEASES', '/media'],
-      ],
-      links: [
-        ['Corporate Announcements', '/media'],
-        ['Media Kit', '/media'],
-      ],
-      image: 'company/leadership-photo-main-2.webp',
     },
     Careers: {
       title: 'Careers',
-      quickLinks: [
-        ['OVERVIEW', '/careers'],
-        ['OPPORTUNITIES', '/careers/opportunities'],
-      ],
       links: [
-        ['Life at Granules', '/careers/life-at-granules'],
-        ['Culture & Purpose', '/careers'],
+        ['Overview', '/careers'],
+        ['Opportunities', '/careers/opportunities'],
       ],
       image: 'company/career-bg.webp',
-    },
-    Contact: {
-      title: 'Contact',
-      quickLinks: [
-        ['CONTACT US', '/contact'],
-      ],
-      links: [
-        ['Global Offices', '/contact'],
-        ['Investor Inquiries', '/investor'],
-      ],
-      image: 'company/gpi-facility.webp',
     },
   };
 
@@ -295,24 +264,74 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
               {sub && (
                 <div className={`home-nav-submenu${hoveredMenu === label ? ' is-open' : ''}`} onMouseEnter={() => showMenu(label)}>
                   <div className="home-nav-submenu-copy">
-                    <div className="home-nav-submenu-header-box">
-                      <strong>{sub.title}</strong>
-                      <div className="home-nav-quick-links">
-                        {sub.quickLinks.map(([subLabel, subHref]) => (
-                          <Link to={subHref} key={subLabel} onClick={() => { setHoveredMenu(null); setOpen(false); }}>
-                            <span>{subLabel}</span>
-                            <span aria-hidden="true">↗</span>
-                          </Link>
-                        ))}
+                    {(sub.sections || (sub.title && sub.quickLinks ? [{ title: sub.title, quickLinks: sub.quickLinks }] : [])).map((section, idx) => (
+                      <div className="home-nav-submenu-header-box" key={section.title || idx}>
+                        {section.title && <strong>{section.title}</strong>}
+                        <div className="home-nav-quick-links">
+                          {section.quickLinks.map(([subLabel, subHref]) =>
+                            subHref.startsWith('http') ? (
+                              <a
+                                href={subHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                key={subLabel}
+                                onClick={() => {
+                                  setHoveredMenu(null);
+                                  setOpen(false);
+                                }}
+                              >
+                                <span>{subLabel}</span>
+                                <span aria-hidden="true">↗</span>
+                              </a>
+                            ) : (
+                              <Link
+                                to={subHref}
+                                key={subLabel}
+                                onClick={() => {
+                                  setHoveredMenu(null);
+                                  setOpen(false);
+                                }}
+                              >
+                                <span>{subLabel}</span>
+                                <span aria-hidden="true">↗</span>
+                              </Link>
+                            )
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <div className="home-nav-submenu-links">
-                      {sub.links.map(([subLabel, subHref]) => (
-                        <Link to={subHref} key={subLabel} onClick={() => { setHoveredMenu(null); setOpen(false); }}>
-                          {subLabel}
-                        </Link>
-                      ))}
-                    </div>
+                    ))}
+
+                    {sub.links && sub.links.length > 0 && (
+                      <div className="home-nav-submenu-links">
+                        {sub.links.map(([subLabel, subHref]) =>
+                          subHref.startsWith('http') ? (
+                            <a
+                              href={subHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              key={subLabel}
+                              onClick={() => {
+                                setHoveredMenu(null);
+                                setOpen(false);
+                              }}
+                            >
+                              {subLabel}
+                            </a>
+                          ) : (
+                            <Link
+                              to={subHref}
+                              key={subLabel}
+                              onClick={() => {
+                                setHoveredMenu(null);
+                                setOpen(false);
+                              }}
+                            >
+                              {subLabel}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    )}
                   </div>
                   {sub.imageHref ? (
                     <a
@@ -986,10 +1005,10 @@ function Footer() {
     ['Contact Us', '/contact'],
   ];
   const socials = [
-    { icon: 'facebook.svg', name: 'Facebook', href: 'https://www.facebook.com/share/1BSgd7PiTC/?mibextid=wwXIfr' },
-    { icon: 'instagram.svg', name: 'Instagram', href: 'https://instagram.com' },
-    { icon: 'x.svg', name: 'X', href: 'https://x.com/GranulesIndia' },
     { icon: 'linkedin.svg', name: 'LinkedIn', href: 'https://www.linkedin.com/company/granules-india-limited/' },
+    { icon: 'instagram.svg', name: 'Instagram', href: 'https://www.instagram.com/granulesindialimited_official/followers/' },
+    { icon: 'x.svg', name: 'X', href: 'https://x.com/GranulesIndia' },
+    { icon: 'facebook.svg', name: 'Facebook', href: 'https://www.facebook.com/share/1BSgd7PiTC/?mibextid=wwXIfr' },
     { icon: 'youtube.svg', name: 'YouTube', href: 'https://www.youtube.com/@Granules-IndiaLimited/featured' },
   ];
   return (
@@ -1020,11 +1039,11 @@ function Footer() {
       <div className="footer-bottom shell">
         <div>
           <span>Copyright © 2025 Granules. All rights reserved.</span>
-          <Link to="/privacy-policy">Privacy Policy</Link>
-          <Link to="/cookies-policy">Cookies Policy</Link>
-          <Link to="/disclaimer">Disclaimer</Link>
-          <Link to="/data-protection-notice">Data Protection Notice</Link>
-          <Link to="/terms-of-use">Terms of Use</Link>
+          <Link to="/contact">Privacy Policy</Link>
+          <Link to="/contact">Cookies Policy</Link>
+          <Link to="/contact">Disclaimer</Link>
+          <Link to="/contact">Data Protection Notice</Link>
+          <Link to="/contact">Terms & Condition</Link>
         </div>
         <div className="socials">
           {socials.map((item) => (

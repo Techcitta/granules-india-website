@@ -583,7 +583,7 @@ export default function SustainabilityOverviewPage() {
       <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <a href="/">HOMEPAGE</a>
         <span className="sep">›</span>
-        <span className="current">SUSTAINABILITY OVERVIEW</span>
+        <span className="current">SUSTAINABILITY</span>
       </p>
 
       <section className="sus-lead-hero-wrap" style={{ marginTop: 'clamp(30px, 4vw, 50px)' }}>

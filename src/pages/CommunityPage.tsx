@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
@@ -18,13 +18,13 @@ const IMPACT_GOALS: CSRStat[] = [
   {
     value: '1M+',
     label: 'Our Goal',
-    sublabel: 'Touch 1 million lives by 2030 through sustainable grassroots interventions',
+    sublabel: 'Touch 1 million lives by 2030',
     badge: 'Vision 2030',
   },
   {
     value: '3.5L+',
     label: 'Our Progress',
-    sublabel: '3.5+ lakhs lives positively touched in FY26 across healthcare, education & skilling',
+    sublabel: '3.5+ lakhs Lives positively touched in FY26',
     badge: 'FY26 Impact',
   },
 ];
@@ -51,7 +51,7 @@ const CSR_FOCUS_AREAS: FocusArea[] = [
     tagColor: '#0061f8',
     metric: '1,600+',
     unit: 'Individuals Trained',
-    desc: '1,600+ Individuals trained through Pharma Patashala since its inception in 2017 with industry-aligned curricula and direct pharmaceutical manufacturing career pathways.',
+    desc: '1,600+ Individuals trained through Pharma Patashala since its inception in 2017',
     image: 'skill-development.webp',
     highlights: [
       'Pharma Patashala specialized academy',
@@ -94,12 +94,12 @@ const CSR_FOCUS_AREAS: FocusArea[] = [
   {
     id: 'environment',
     title: 'Environment',
-    tag: 'Afforestation & Biodiversity',
+    tag: 'Afforestation & Ecology',
     tagBg: 'rgba(5, 150, 105, 0.08)',
     tagColor: '#059669',
     metric: '18,000+',
     unit: 'Native Trees Planted',
-    desc: '18,000+ Native trees planted and nurtured across local communities, industrial green belts, and biodiversity conservation zones.',
+    desc: '18,000+ Native trees planted',
     image: 'environment.webp',
     highlights: [
       'Native species plantation drives',
@@ -134,6 +134,8 @@ const CSR_DOCUMENTS = [
 ];
 
 export default function CommunityPage() {
+  const [openPillar, setOpenPillar] = useState<number>(-1);
+
   useEffect(() => {
     document.title = 'Corporate Social Responsibility — Granules India';
     window.scrollTo(0, 0);
@@ -226,7 +228,7 @@ export default function CommunityPage() {
           </div>
         </section>
 
-        {/* 4 Core Focus Areas Showcase (with CSR specific photos) */}
+        {/* 4 Core Focus Areas Showcase (with Interactive Sliding Drawer Sheet on Hover) */}
         <section className="comm-pillars-section" id="initiatives" aria-label="Core Focus Areas">
           <div className="comm-section-head-simple">
             <span className="comm-section-tag">Key Initiatives</span>
@@ -237,44 +239,63 @@ export default function CommunityPage() {
           </div>
 
           <div className="comm-pillars-showcase">
-            {CSR_FOCUS_AREAS.map((card) => (
-              <article key={card.id} className="comm-pillar-item-card">
-                <div className="comm-pillar-item-media">
-                  <img
-                    src={`${CSR}${card.image}`}
-                    alt={card.title}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span
-                    className="comm-pillar-item-badge"
-                    style={{ background: card.tagBg, color: card.tagColor }}
-                  >
-                    {card.tag}
-                  </span>
-                </div>
-
-                <div className="comm-pillar-item-content">
-                  <h3 className="comm-pillar-item-title">{card.title}</h3>
-
-                  <div className="comm-pillar-item-stat-box">
-                    <strong className="comm-pillar-item-num">{card.metric}</strong>
-                    <span className="comm-pillar-item-unit">{card.unit}</span>
+            {CSR_FOCUS_AREAS.map((card, index) => {
+              const isOpen = openPillar === index;
+              return (
+                <article
+                  key={card.id}
+                  className={`comm-pillar-item-card${isOpen ? ' is-open' : ''}`}
+                  onMouseEnter={() => setOpenPillar(index)}
+                  onMouseLeave={() => setOpenPillar(-1)}
+                >
+                  <div className="comm-pillar-item-media">
+                    <img
+                      src={`${CSR}${card.image}`}
+                      alt={card.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span
+                      className="comm-pillar-item-badge"
+                      style={{ background: card.tagBg, color: card.tagColor }}
+                    >
+                      {card.tag}
+                    </span>
                   </div>
 
-                  <p className="comm-pillar-item-desc">{card.desc}</p>
+                  {/* Sliding Drawer Sheet like Homepage Product Card */}
+                  <div className="comm-pillar-sheet">
+                    <div
+                      className="comm-pillar-sheet-head"
+                      onClick={() => setOpenPillar(isOpen ? -1 : index)}
+                    >
+                      <h3 className="comm-pillar-sheet-title">{card.title}</h3>
+                      <span className="comm-pillar-symbol" aria-hidden="true">
+                        {isOpen ? '−' : '+'}
+                      </span>
+                    </div>
 
-                  <ul className="comm-pillar-highlights" aria-label={`${card.title} highlights`}>
-                    {card.highlights.map((h, i) => (
-                      <li key={i}>
-                        <span className="comm-bullet-dot" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+                    <div className="comm-pillar-sheet-body">
+                      <div className="comm-pillar-item-stat-box">
+                        <strong className="comm-pillar-item-num">{card.metric}</strong>
+                        <span className="comm-pillar-item-unit">{card.unit}</span>
+                      </div>
+
+                      <p className="comm-pillar-item-desc">{card.desc}</p>
+
+                      <ul className="comm-pillar-highlights" aria-label={`${card.title} highlights`}>
+                        {card.highlights.map((h, i) => (
+                          <li key={i}>
+                            <span className="comm-bullet-dot" />
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </section>
 
