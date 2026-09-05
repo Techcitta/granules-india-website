@@ -41,7 +41,7 @@ const SUBMENUS: Record<string, Submenu> = {
           { label: 'Overview', href: '/company/global-subsidiaries' },
           { label: 'Granules Pharmaceuticals Inc. (GPI)', href: 'https://www.granulespharma.com/' },
           { label: 'Granules Life Sciences', href: '/company/granules-life-sciences' },
-          { label: 'Senn Tides', href: '/company/ascelis-peptides' },
+          { label: 'Senn Tides', href: '/company/senn-tides' },
           { label: 'Granules CZRO', href: '/company/granules-czro' },
         ],
       },
@@ -68,7 +68,7 @@ const SUBMENUS: Record<string, Submenu> = {
           { label: 'Overview', href: '/company/global-subsidiaries' },
           { label: 'Granules Pharmaceuticals Inc. (GPI)', href: 'https://www.granulespharma.com/' },
           { label: 'Granules Life Sciences', href: '/company/granules-life-sciences' },
-          { label: 'Senn Tides', href: '/company/ascelis-peptides' },
+          { label: 'Senn Tides', href: '/company/senn-tides' },
           { label: 'Granules CZRO', href: '/company/granules-czro' },
         ],
       },
@@ -83,6 +83,7 @@ const SUBMENUS: Record<string, Submenu> = {
       {
         title: 'GENERICS',
         quickLinks: [
+          { label: 'OVERVIEW', href: '/business/generics' },
           { label: 'API', href: '/business/api' },
           { label: 'PFI', href: '/business/pfi' },
           { label: 'FINISHED DOSAGES', href: '/business/fd' },

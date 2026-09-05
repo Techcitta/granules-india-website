@@ -151,7 +151,7 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
             ['Overview', '/company/global-subsidiaries'],
             ['Granules Pharmaceuticals Inc. (GPI)', 'https://www.granulespharma.com/'],
             ['Granules Life Sciences', '/company/granules-life-sciences'],
-            ['Senn Tides', '/company/ascelis-peptides'],
+            ['Senn Tides', '/company/senn-tides'],
             ['Granules CZRO', '/company/granules-czro'],
           ],
         },
@@ -178,7 +178,7 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
             ['Overview', '/company/global-subsidiaries'],
             ['Granules Pharmaceuticals Inc. (GPI)', 'https://www.granulespharma.com/'],
             ['Granules Life Sciences', '/company/granules-life-sciences'],
-            ['Senn Tides', '/company/ascelis-peptides'],
+            ['Senn Tides', '/company/senn-tides'],
             ['Granules CZRO', '/company/granules-czro'],
           ],
         },
@@ -193,6 +193,7 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
         {
           title: 'GENERICS',
           quickLinks: [
+            ['OVERVIEW', '/business/generics'],
             ['API', '/business/api'],
             ['PFI', '/business/pfi'],
             ['FINISHED DOSAGES', '/business/fd'],

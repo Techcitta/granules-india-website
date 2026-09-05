@@ -50,15 +50,15 @@ const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
     tags: ['Direct US Presence', 'Rx Distribution', 'Formulation R&D'],
   },
   {
-    name: 'Senn Tides India Private Limited',
+    name: 'Senn Tides Private Limited',
     badge: 'Peptide CDMO',
     location: 'Switzerland & India',
     image: '/assets/ascelis/hero-banner.webp',
     description:
-      'Advancing peptide-based therapies through specialized CDMO capabilities.',
+      'Integrated CDMO platform providing custom peptide APIs, amino acid derivatives, fragments and theranostic peptides across Switzerland and India.',
     ctaText: 'Learn More',
-    ctaHref: '/company/ascelis-peptides',
-    tags: ['Specialized CDMO', 'Peptide Synthesis', 'Metabolic & Oncology'],
+    ctaHref: '/company/senn-tides',
+    tags: ['Specialized CDMO', 'Swiss Quality & cGMP', 'LPPS & SPPS Synthesis'],
   },
 ];
 

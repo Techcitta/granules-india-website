@@ -18,6 +18,7 @@ function ScrollHighlightManager() {
         '.gls-intro',
         '.czro-intro',
         '.asc-intro',
+        '.senn-intro',
         '.sus-intro',
         '.rd-intro',
         '.qc-intro',
@@ -63,6 +64,7 @@ import AwardsPage from './pages/AwardsPage.tsx';
 import LeadershipPage from './pages/LeadershipPage.tsx';
 import GranulesCzroPage from './pages/GranulesCzroPage.tsx';
 import AscelisPeptidesPage from './pages/AscelisPeptidesPage.tsx';
+import SennTidesPage from './pages/SennTidesPage.tsx';
 import GranulesLifeSciencesPage from './pages/GranulesLifeSciencesPage.tsx';
 import OperationalExcellencePage from './pages/OperationalExcellencePage.tsx';
 import GenericsPage from './pages/GenericsPage.tsx';
@@ -105,6 +107,8 @@ function App() {
         <Route path="/company/awards" element={<AwardsPage />} />
         <Route path="/company/leadership" element={<LeadershipPage />} />
         <Route path="/company/granules-czro" element={<GranulesCzroPage />} />
+        <Route path="/company/senn-tides" element={<SennTidesPage />} />
+        <Route path="/senn-tides" element={<SennTidesPage />} />
         <Route path="/company/ascelis-peptides" element={<AscelisPeptidesPage />} />
         <Route path="/company/granules-life-sciences" element={<GranulesLifeSciencesPage />} />
         <Route path="/granules-life-sciences" element={<GranulesLifeSciencesPage />} />
