@@ -189,11 +189,15 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
       image: 'company/values-bg-2.webp',
     },
     Business: {
-      title: 'GENERICS',
-      quickLinks: [
-        ['API', '/business/api'],
-        ['PFI', '/business/pfi'],
-        ['FINISHED DOSAGES', '/business/fd'],
+      sections: [
+        {
+          title: 'GENERICS',
+          quickLinks: [
+            ['API', '/business/api'],
+            ['PFI', '/business/pfi'],
+            ['FINISHED DOSAGES', '/business/fd'],
+          ],
+        },
       ],
       links: [
         ['Peptides CDMO', '/business/peptides'],
@@ -204,10 +208,18 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
       image: 'company/gpi-facility.webp',
     },
     Careers: {
-      title: 'Careers',
+      sections: [
+        {
+          title: 'CAREERS',
+          quickLinks: [
+            ['Overview', '/careers'],
+            ['Life at Granules', '/careers/life-at-granules'],
+            ['Opportunities', '/careers/opportunities'],
+          ],
+        },
+      ],
       links: [
-        ['Overview', '/careers'],
-        ['Opportunities', '/careers/opportunities'],
+        ['Leadership', '/company/leadership'],
       ],
       image: 'company/career-bg.webp',
     },
@@ -268,7 +280,7 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
                       <div className="home-nav-submenu-header-box" key={section.title || idx}>
                         {section.title && <strong>{section.title}</strong>}
                         <div className="home-nav-quick-links">
-                          {section.quickLinks.map(([subLabel, subHref]) =>
+                          {(section.quickLinks || []).map(([subLabel, subHref]) =>
                             subHref.startsWith('http') ? (
                               <a
                                 href={subHref}
@@ -339,9 +351,9 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="home-nav-submenu-thumb"
-                      title="View ESG Profile"
+                      title="View Profile"
                     >
-                      <img src={`${A}${sub.image}`} alt="ESG Profile" loading="lazy" decoding="async" />
+                      <img src={`${A}${sub.image}`} alt="" loading="lazy" decoding="async" />
                     </a>
                   ) : (
                     <div className="home-nav-submenu-thumb">
@@ -874,7 +886,7 @@ function Investor() {
           Driven by operational excellence and responsible growth, we remain focused on creating
           sustainable value for our investors.
         </p>
-        <Button href="/investor">Learn More &rarr;</Button>
+        <Button href="/investor">ABOUT INVESTORS &rarr;</Button>
       </div>
       <div className="investor-panel">
         <a

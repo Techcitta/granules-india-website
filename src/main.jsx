@@ -78,7 +78,6 @@ import SustainabilityStrategyPage from './pages/SustainabilityStrategyPage.tsx';
 import EsgInActionPage from './pages/EsgInActionPage.tsx';
 import CommunityPage from './pages/CommunityPage.tsx';
 import InvestorOverviewPage from './pages/InvestorOverviewPage.tsx';
-import InvestorOverviewV2Page from './pages/InvestorOverviewV2Page.tsx';
 import InvestorAnnualReportsPage from './pages/InvestorAnnualReportsPage.tsx';
 import MediaPage from './pages/MediaPage.tsx';
 import CareerOverviewPage from './pages/CareerOverviewPage.tsx';
@@ -132,7 +131,7 @@ function App() {
         <Route path="/csr" element={<CommunityPage />} />
         <Route path="/community" element={<CommunityPage />} />
         <Route path="/investor" element={<InvestorOverviewPage />} />
-        <Route path="/investor/v2" element={<InvestorOverviewV2Page />} />
+        <Route path="/investor/v2" element={<InvestorOverviewPage />} />
         <Route path="/investor/annual-reports" element={<InvestorAnnualReportsPage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/careers" element={<CareerOverviewPage />} />

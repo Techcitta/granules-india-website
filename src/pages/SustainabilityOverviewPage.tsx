@@ -595,6 +595,12 @@ export default function SustainabilityOverviewPage() {
             onClick={() => scrollToSection('sec-policies')}
           >
             <span className="sus-jump-label">Policies</span>
+            <span className="sus-jump-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </span>
           </button>
 
           <button
@@ -603,6 +609,12 @@ export default function SustainabilityOverviewPage() {
             onClick={() => scrollToSection('sec-reports')}
           >
             <span className="sus-jump-label">Reports &amp; Disclosures</span>
+            <span className="sus-jump-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </span>
           </button>
 
           <button
@@ -611,6 +623,12 @@ export default function SustainabilityOverviewPage() {
             onClick={() => scrollToSection('sec-assurance')}
           >
             <span className="sus-jump-label">Assurance &amp; Verification Report</span>
+            <span className="sus-jump-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </span>
           </button>
 
           <button
@@ -619,6 +637,12 @@ export default function SustainabilityOverviewPage() {
             onClick={() => scrollToSection('sec-commitments')}
           >
             <span className="sus-jump-label">Commitments, Memberships &amp; Ratings</span>
+            <span className="sus-jump-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </span>
           </button>
 
           <button
@@ -627,6 +651,12 @@ export default function SustainabilityOverviewPage() {
             onClick={() => scrollToSection('sec-certifications')}
           >
             <span className="sus-jump-label">Certifications</span>
+            <span className="sus-jump-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </span>
           </button>
 
           <a
