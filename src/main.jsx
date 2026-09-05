@@ -29,6 +29,7 @@ function ScrollHighlightManager() {
         '.fac-intro',
         '.cp-about-desc',
         '.scroll-intro',
+        '.global-sub-intro',
       ];
       const elements = document.querySelectorAll(selectors.join(', '));
       const threshold = window.innerHeight * 0.45;
@@ -56,6 +57,7 @@ function ScrollHighlightManager() {
 
 import HomePage from './pages/HomePage.jsx';
 import CompanyPage from './pages/CompanyPage.tsx';
+import GlobalSubsidiariesPage from './pages/GlobalSubsidiariesPage.tsx';
 import MilestonePage from './pages/MilestonePage.tsx';
 import AwardsPage from './pages/AwardsPage.tsx';
 import LeadershipPage from './pages/LeadershipPage.tsx';
@@ -97,6 +99,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/company" element={<CompanyPage />} />
+        <Route path="/company/global-subsidiaries" element={<GlobalSubsidiariesPage />} />
+        <Route path="/company/subsidiaries" element={<GlobalSubsidiariesPage />} />
+        <Route path="/global-subsidiaries" element={<GlobalSubsidiariesPage />} />
         <Route path="/company/milestone" element={<MilestonePage />} />
         <Route path="/company/awards" element={<AwardsPage />} />
         <Route path="/company/leadership" element={<LeadershipPage />} />

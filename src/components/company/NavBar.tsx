@@ -22,7 +22,7 @@ const SUBMENUS: Record<string, Submenu> = {
     ],
     links: [
       { label: 'Leadership', href: '/company/leadership' },
-      { label: 'Group Companies', href: '/company#subsidiaries' },
+      { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
       { label: 'Granules Life Sciences', href: '/company/granules-life-sciences' },
       { label: 'Operational Excellence', href: '/company/operational-excellence' },
     ],
@@ -37,7 +37,7 @@ const SUBMENUS: Record<string, Submenu> = {
     ],
     links: [
       { label: 'Leadership', href: '/company/leadership' },
-      { label: 'Group Companies', href: '/company#subsidiaries' },
+      { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
       { label: 'Granules Life Sciences', href: '/company/granules-life-sciences' },
       { label: 'Operational Excellence', href: '/company/operational-excellence' },
     ],

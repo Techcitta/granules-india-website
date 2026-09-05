@@ -5,7 +5,7 @@ const ABOUT_LINKS = [
   { label: 'Vision & Mission', href: '/company#vision' },
   { label: 'Leadership', href: '/company/leadership' },
   { label: 'Milestone', href: '/company/milestone' },
-  { label: 'Group Companies', href: '/company#subsidiaries' },
+  { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
 ];
 
 const SOLUTIONS_LINKS = [

@@ -143,7 +143,7 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
       ],
       links: [
         ['Leadership', '/company/leadership'],
-        ['Group Companies', '/company#subsidiaries'],
+        ['Global Subsidiaries', '/company/global-subsidiaries'],
         ['Granules Life Sciences', '/company/granules-life-sciences'],
         ['Operational Excellence', '/company/operational-excellence'],
       ],
@@ -158,7 +158,7 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
       ],
       links: [
         ['Leadership', '/company/leadership'],
-        ['Group Companies', '/company#subsidiaries'],
+        ['Global Subsidiaries', '/company/global-subsidiaries'],
         ['Granules Life Sciences', '/company/granules-life-sciences'],
         ['Operational Excellence', '/company/operational-excellence'],
       ],
