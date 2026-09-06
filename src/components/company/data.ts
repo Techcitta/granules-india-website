@@ -70,15 +70,6 @@ export const SUBSIDIARIES: SubsidiaryCard[] = [
     href: '/company/senn-tides',
     logoBadge: 'company/nav-logo.webp',
   },
-  {
-    fullName: 'GRANULES USA INC., US',
-    shortName: 'GUSA-US',
-    description:
-      'Distribution and commercial headquarters serving the North American pharmaceutical and healthcare markets.',
-    image: 'company/gpi-facility.webp',
-    href: '/company',
-    logoBadge: 'company/nav-logo.webp',
-  },
 ];
 
 export const NAV_LINKS: NavLink[] = [

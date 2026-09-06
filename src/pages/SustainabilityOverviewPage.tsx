@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
 import './sustainability.css';
@@ -659,10 +660,8 @@ export default function SustainabilityOverviewPage() {
             </span>
           </button>
 
-          <a
-            href="https://esgworld.com/granules-india"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/sustainability/esg-profile"
             className="sus-jump-card sus-jump-card--esg"
             title="View Granules ESG Profile on ESG World"
           >
@@ -671,7 +670,7 @@ export default function SustainabilityOverviewPage() {
               alt="ESG World - Our ESG Profile"
               className="sus-jump-esg-img"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Demonstrating Resilience, Emerging Stronger Speech Banner */}

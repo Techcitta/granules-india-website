@@ -11,7 +11,7 @@ const heroSlides = [
     image: 'hero-1.webp',
     title: 'Globally approved. Vertically integrated. Trusted worldwide',
     cta: 'Our Products',
-    link: '#business',
+    link: '/business/generics',
   },
   {
     image: 'hero-5.webp',
@@ -125,13 +125,13 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
   const closeTimer = useRef(null);
   const links = [
     ['About Us', '/company'],
-    ['Business', '#business'],
+    ['Business', '/business/generics'],
     ['Sustainability', '/sustainability'],
     ['Community', '/community'],
-    ['Investor', '#investor'],
-    ['Media', '#media'],
-    ['Careers', '#careers'],
-    ['Contact Us', '#footer'],
+    ['Investor', '/investor'],
+    ['Media', '/media'],
+    ['Careers', '/careers'],
+    ['Contact Us', '/contact'],
   ];
   const submenuData = {
     'About Us': {
@@ -214,14 +214,11 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
           title: 'CAREERS',
           quickLinks: [
             ['Overview', '/careers'],
-            ['Life at Granules', '/careers/life-at-granules'],
             ['Opportunities', '/careers/opportunities'],
           ],
         },
       ],
-      links: [
-        ['Leadership', '/company/leadership'],
-      ],
+      links: [],
       image: 'company/career-bg.webp',
     },
   };
@@ -789,15 +786,6 @@ function Sustainability() {
       cta: 'Explore Granules CZRO',
       bg: `${A}sustainability.webp`,
     },
-    {
-      title: 'Pharma Pathshala',
-      body: 'Building community resilience through access to skills, knowledge and meaningful opportunity.',
-      icon: 'icon-home-sustain.svg',
-      iconType: 'circle',
-      href: '/sustainability/esg-in-action/community',
-      cta: 'Discover Community Programs',
-      bg: `${A}sustainability-pathshala.jpg`,
-    },
   ];
   const [open, setOpen] = useState(0);
   const currentBg = (open >= 0 && items[open]?.bg) ? items[open].bg : items[0].bg;
@@ -1052,11 +1040,11 @@ function Footer() {
       <div className="footer-bottom shell">
         <div>
           <span>Copyright © 2025 Granules. All rights reserved.</span>
-          <Link to="/contact">Privacy Policy</Link>
-          <Link to="/contact">Cookies Policy</Link>
-          <Link to="/contact">Disclaimer</Link>
-          <Link to="/contact">Data Protection Notice</Link>
-          <Link to="/contact">Terms & Condition</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/cookie-policy">Cookies Policy</Link>
+          <Link to="/disclaimer">Disclaimer</Link>
+          <Link to="/data-protection-notice">Data Protection Notice</Link>
+          <Link to="/terms-of-use">Terms of Use</Link>
         </div>
         <div className="socials">
           {socials.map((item) => (
@@ -1075,7 +1063,7 @@ function SearchOverlay({ open, onClose }) {
   const [query, setQuery] = useState('');
   const results = [
     ['About Granules', '/company', 'Company leadership and integrated capabilities'],
-    ['Business Verticals', '#business', 'APIs, PFIs and finished dosages'],
+    ['Business Verticals', '/business/generics', 'APIs, PFIs and finished dosages'],
     ['Global Presence', '#presence', 'Locations, subsidiaries and facilities'],
     ['Sustainability', '/sustainability', 'CZRO, Net Zero and Pharma Pathshala'],
     ['Investor Relations', '/investor', 'Stock performance and annual report'],

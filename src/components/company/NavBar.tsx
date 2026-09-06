@@ -104,14 +104,11 @@ const SUBMENUS: Record<string, Submenu> = {
         title: 'CAREERS',
         quickLinks: [
           { label: 'Overview', href: '/careers' },
-          { label: 'Life at Granules', href: '/careers/life-at-granules' },
           { label: 'Opportunities', href: '/careers/opportunities' },
         ],
       },
     ],
-    links: [
-      { label: 'Leadership', href: '/company/leadership' },
-    ],
+    links: [],
     image: 'company/career-bg.webp',
   },
 };

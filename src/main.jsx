@@ -78,6 +78,7 @@ import PeptidesPage from './pages/PeptidesPage.tsx';
 import SustainabilityOverviewPage from './pages/SustainabilityOverviewPage.tsx';
 import SustainabilityStrategyPage from './pages/SustainabilityStrategyPage.tsx';
 import EsgInActionPage from './pages/EsgInActionPage.tsx';
+import EsgProfilePage from './pages/EsgProfilePage.tsx';
 import CommunityPage from './pages/CommunityPage.tsx';
 import InvestorOverviewPage from './pages/InvestorOverviewPage.tsx';
 import InvestorAnnualReportsPage from './pages/InvestorAnnualReportsPage.tsx';
@@ -127,6 +128,10 @@ function App() {
         <Route path="/sustainability" element={<SustainabilityOverviewPage />} />
         <Route path="/sustainability/strategy" element={<SustainabilityStrategyPage />} />
         <Route path="/sustainability/esg-in-action" element={<EsgInActionPage />} />
+        <Route path="/sustainability/esg-profile" element={<EsgProfilePage />} />
+        <Route path="/esg-profile" element={<EsgProfilePage />} />
+        <Route path="/sustainability/esg-world" element={<EsgProfilePage />} />
+        <Route path="/esg-world" element={<EsgProfilePage />} />
         <Route path="/sustainability/esg-in-action/community" element={<CommunityPage />} />
         <Route path="/sustainability/corporate-social-responsibility" element={<CommunityPage />} />
         <Route path="/sustainability/csr" element={<CommunityPage />} />
