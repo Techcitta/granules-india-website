@@ -2415,7 +2415,9 @@ footer[id] {
 .fac-intro p,
 .fac-intro span,
 .cp-about-desc p,
-.cp-about-desc span {
+.cp-about-desc span,
+.global-sub-intro p,
+.global-sub-intro span {
   transition: color 0.5s cubic-bezier(0.2, 0, 0.2, 1);
 }
 

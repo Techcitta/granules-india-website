@@ -5,6 +5,7 @@ const ABOUT_LINKS = [
   { label: 'Our Journey', href: '/company/milestone' },
   { label: 'Leadership', href: '/company/leadership' },
   { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
+  { label: 'Granules Pharmaceuticals Inc', href: 'https://www.granulespharma.com/' },
 ];
 
 const SOLUTIONS_LINKS = [
@@ -54,11 +55,22 @@ export default function CompanyFooter() {
             <div className="cp-footer-col">
               <h5>About Us</h5>
               <div className="cp-footer-link-group">
-                {ABOUT_LINKS.map((link) => (
-                  <Link to={link.href} key={link.label}>
-                    {link.label}
-                  </Link>
-                ))}
+                {ABOUT_LINKS.map((link) =>
+                  link.href.startsWith('http') ? (
+                    <a
+                      href={link.href}
+                      key={link.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.href} key={link.label}>
+                      {link.label}
+                    </Link>
+                  )
+                )}
               </div>
             </div>
 

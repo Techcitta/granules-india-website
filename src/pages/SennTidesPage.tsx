@@ -152,6 +152,7 @@ const LEADERSHIP = [
 
 export default function SennTidesPage() {
   const [openCard, setOpenCard] = useState<number>(-1);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     document.title = 'Senn Tides | Peptide CDMO in Switzerland and India | Granules India';
@@ -178,7 +179,18 @@ export default function SennTidesPage() {
       'peptide CDMO Switzerland and India, custom peptide synthesis, peptide API manufacturer, amino acid derivatives, LPPS peptide manufacturing, Senn Chemicals'
     );
 
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      setIsScrolled(scrollY > 220);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     window.scrollTo(0, 0);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -210,7 +222,10 @@ export default function SennTidesPage() {
           />
           <div className="senn-hero-scrim" />
           <div className="senn-hero-overlay">
-            <span className="senn-hero-badge">Switzerland &amp; India</span>
+            <span className="senn-hero-badge">
+              <span className="senn-flag-dot" />
+              Switzerland &amp; India
+            </span>
             <h2 className="senn-hero-heading">
               Integrated CDMO Platform. Switzerland and India.
             </h2>
@@ -219,7 +234,7 @@ export default function SennTidesPage() {
       </div>
 
       {/* Overview Section */}
-      <section className="senn-intro" aria-label="Overview">
+      <section className={`senn-intro ${isScrolled ? 'is-scrolled' : ''}`} aria-label="Overview">
         <p>
           <span>
             Senn Tides is a wholly owned subsidiary of Granules India and its integrated CDMO platform, with an established foundation in peptides and expansion into oligonucleotides and antibody-drug conjugates underway.{' '}
@@ -280,8 +295,16 @@ export default function SennTidesPage() {
         })}
       </div>
 
-      <div style={{ width: '85%', margin: '28px auto 0' }}>
-        <p style={{ font: "500 18px/1.6 'Manrope', sans-serif", color: 'var(--n7, #4b5563)', margin: 0 }}>
+      <div className="senn-audience-note">
+        <div className="senn-audience-note-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <p>
           We work with pharmaceutical innovators, cosmetic brand owners and specialty therapeutic developers.
         </p>
       </div>
