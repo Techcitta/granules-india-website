@@ -36,9 +36,6 @@ const SOCIAL_LINKS = [
 export default function CompanyFooter() {
   return (
     <footer className="cp-footer" id="footer">
-      <div className="cp-footer-bg-wrap">
-        <img className="cp-bg" src="/assets/footer-bg.webp" alt="" loading="lazy" decoding="async" />
-      </div>
       <div className="cp-footer-inner">
         <div className="cp-footer-top">
           <div className="cp-footer-brand">

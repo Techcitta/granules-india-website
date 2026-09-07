@@ -1081,29 +1081,12 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
   margin-top: clamp(50px, 6vw, 80px);
   padding: clamp(38px, 4vw, 54px) 0 20px;
   position: relative;
-  color: #ffffff;
   overflow: hidden;
   width: 100%;
-  background: linear-gradient(90deg, #009d9a 0%, #007bf2 25%, #0062f5 60%, #0050e6 100%);
-}
-
-.cp-footer-bg-wrap {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.cp-footer img.cp-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+  background:
+    radial-gradient(ellipse at 0% 100%, #009d9a 0%, rgba(0, 157, 154, 0) 62%),
+    linear-gradient(165deg, #007dab 0%, #0061e8 42%, #0046e2 100%);
+  color: #ffffff;
 }
 
 .cp-footer-inner {
@@ -1155,7 +1138,7 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
 .cp-footer-brand p {
   margin: 0;
   font: 400 14px/1.6 'Manrope', sans-serif;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
   letter-spacing: 0;
 }
 
@@ -1226,16 +1209,16 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
   gap: clamp(16px, 2.5vw, 32px);
   font: 500 12.5px/1.5 'Manrope', sans-serif;
   letter-spacing: 0.2px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   margin: 0;
 }
 
 .cp-footer-legal .cp-legal-copy {
-  color: rgba(255, 255, 255, 0.95);
+  color: #ffffff;
 }
 
 .cp-footer-legal a {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease;
 }
