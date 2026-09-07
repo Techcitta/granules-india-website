@@ -93,6 +93,7 @@ import CookiePolicyPage from './pages/CookiePolicyPage.tsx';
 import DisclaimerPage from './pages/DisclaimerPage.tsx';
 import DataProtectionNoticePage from './pages/DataProtectionNoticePage.tsx';
 import TermsConditionsPage from './pages/TermsConditionsPage.tsx';
+import ProductPortfolioPage from './pages/ProductPortfolioPage.tsx';
 import BackToTopButton from './components/common/BackToTopButton';
 
 function App() {
@@ -123,6 +124,8 @@ function App() {
         <Route path="/business/api" element={<ApiPage />} />
         <Route path="/business/pfi" element={<PfiPage />} />
         <Route path="/business/fd" element={<FdPage />} />
+        <Route path="/business/product-portfolio" element={<ProductPortfolioPage />} />
+        <Route path="/business/products" element={<ProductPortfolioPage />} />
         <Route path="/business/rd" element={<RdPage />} />
         <Route path="/business/quality-compliance" element={<QualityCompliancePage />} />
         <Route path="/company/facilities" element={<FacilitiesPage />} />
