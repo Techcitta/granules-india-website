@@ -196,11 +196,15 @@ export default function PeptidesPage() {
       {/* Hero Visual Banner */}
       <div className="senn-hero-wrap">
         <div className="cp-hero-banner">
-          <img
-            src="/assets/peptides/hero-banner.webp"
-            alt="Custom peptide development and manufacturing, from feasibility to commercial supply"
-            loading="eager"
-            decoding="async"
+          <video
+            className="senn-hero-video"
+            src="/assets/peptides/hero-banner.mp4"
+            poster="/assets/peptides/hero-banner-poster.webp"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-label="Custom peptide development and manufacturing, from feasibility to commercial supply"
           />
           <div className="senn-hero-scrim" />
           <div className="senn-hero-overlay">

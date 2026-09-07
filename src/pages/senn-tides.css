@@ -46,6 +46,17 @@ h1.senn-page-header {
   display: block;
 }
 
+.senn-hero-wrap .cp-hero-banner video,
+.senn-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .senn-hero-scrim {
   position: absolute;
   inset: 0;
