@@ -1318,17 +1318,6 @@ export default function HomePage() {
       <div className="cp">
         <CompanyFooter />
       </div>
-      <a
-        className={progress > 8 ? 'back-to-top visible' : 'back-to-top'}
-        href="#top"
-        onClick={(e) => {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        aria-label="Back to top"
-      >
-        <Arrow reverse />
-      </a>
     </>
   );
 }

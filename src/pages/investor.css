@@ -1135,6 +1135,197 @@
   display: inline-block;
 }
 
+/* ==========================================================================
+   Investor Custom Filter Dropdowns (Pill trigger + Floating Menu)
+   ========================================================================== */
+.inv-custom-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.inv-custom-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font: 600 13.5px/1 'Manrope', sans-serif;
+  padding: 0 18px 0 20px;
+  border-radius: 9999px;
+  border: 1.5px solid #dbeafe;
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 97, 248, 0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 220px;
+  height: 42px;
+  outline: none;
+}
+
+.inv-custom-dropdown-trigger:hover {
+  border-color: #0061f8;
+  box-shadow: 0 4px 14px rgba(0, 97, 248, 0.12);
+  color: #0061f8;
+}
+
+.inv-custom-dropdown-trigger.open {
+  border-color: #0061f8;
+  box-shadow: 0 0 0 3px rgba(0, 97, 248, 0.16);
+  color: #0061f8;
+}
+
+/* Variant: Year Dropdown */
+.inv-custom-dropdown--year .inv-custom-dropdown-trigger {
+  background: #edf5ff;
+  border-color: rgba(0, 97, 248, 0.25);
+  color: #0061f8;
+  font-weight: 700;
+  min-width: 140px;
+  padding: 0 16px 0 18px;
+}
+
+.inv-custom-dropdown--year .inv-custom-dropdown-trigger:hover {
+  background-color: #e0edff;
+  border-color: #0061f8;
+  box-shadow: 0 4px 14px rgba(0, 97, 248, 0.18);
+}
+
+.inv-custom-dropdown--year .inv-custom-dropdown-trigger.open {
+  background-color: #e0edff;
+  border-color: #0061f8;
+  box-shadow: 0 0 0 3px rgba(0, 97, 248, 0.2);
+}
+
+.inv-custom-dropdown-text {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inv-custom-dropdown-chevron {
+  flex-shrink: 0;
+  color: #0061f8;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inv-custom-dropdown-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+/* Floating Popover Menu */
+.inv-custom-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 100%;
+  width: max-content;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 16px 40px rgba(0, 32, 84, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04);
+  padding: 6px;
+  z-index: 100;
+  animation: invDropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes invDropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.inv-custom-dropdown--subcat .inv-custom-dropdown-menu {
+  min-width: 260px;
+}
+
+.inv-custom-dropdown--year .inv-custom-dropdown-menu {
+  min-width: 140px;
+  right: 0;
+  left: auto;
+}
+
+.inv-custom-dropdown-scroll {
+  max-height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 2px;
+}
+
+.inv-custom-dropdown-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.inv-custom-dropdown-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.inv-custom-dropdown-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.inv-custom-dropdown-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dropdown Menu Item */
+.inv-custom-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font: 500 13.5px/1.4 'Manrope', sans-serif;
+  color: #334155;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.inv-custom-dropdown-item:hover {
+  background: #edf5ff;
+  color: #0061f8;
+  padding-left: 17px;
+}
+
+.inv-custom-dropdown-item.selected {
+  background: #0061f8;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.inv-custom-dropdown-item.selected:hover {
+  background: #004b97;
+  color: #ffffff;
+  padding-left: 14px;
+}
+
+.inv-custom-dropdown-item-label {
+  flex: 1;
+}
+
+.inv-custom-dropdown-check {
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+/* Native Select Fallbacks */
 .inv-header-select {
   appearance: none;
   -webkit-appearance: none;
@@ -1625,10 +1816,10 @@
   background: #004ecc;
 }
 
-/* Contact Cards Grid */
+/* Investor Relations Contact Desk - Matching Contact Page UI */
 .inv-contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 28px;
 }
 
@@ -1636,54 +1827,78 @@
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 4px 16px rgba(0, 34, 90, 0.04);
+  padding: 32px 36px;
+  box-shadow: 0 4px 16px rgba(0, 34, 90, 0.03);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: flex-start;
 }
 
-.inv-contact-card-title {
-  font: 700 16.5px/1.3 'Manrope', sans-serif;
-  color: #0061f8;
+.ct-investor-subsection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ct-investor-subheading {
   margin: 0;
-  padding-bottom: 8px;
-  border-bottom: 1.5px solid rgba(0, 97, 248, 0.15);
+  font: 700 18px/1.3 'Manrope', sans-serif;
+  color: #1e293b;
+  letter-spacing: -0.3px;
 }
 
-.inv-contact-card-sub {
-  font: 700 14px/1.3 'Manrope', sans-serif;
-  color: #004b97;
-  margin: 8px 0 0;
+.ct-address-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.inv-contact-card-divider {
-  height: 1px;
-  background: #f1f5f9;
-  margin: 4px 0;
-}
-
-.inv-contact-card p {
+.ct-address-line {
   margin: 0;
-  font: 400 14.5px/1.6 'Manrope', sans-serif;
+  font: 500 14px/1.55 'Manrope', sans-serif;
   color: #334155;
 }
 
-.inv-contact-card strong {
-  color: #0f172a;
-  font-weight: 600;
+.ct-action-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
 }
 
-.inv-contact-card a {
+.ct-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid #dce7f5;
+  border-radius: 10px;
+  padding: 9px 20px;
+  font: 600 13px/1 'Manrope', sans-serif;
   color: #0061f8;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  background: #ffffff;
+  transition: all 0.2s ease;
 }
 
-.inv-contact-card a:hover {
-  text-decoration: underline;
-  color: #004ecc;
+.ct-action-pill:hover {
+  background: #f0f7ff;
+  border-color: #0061f8;
+  transform: translateY(-1px);
+}
+
+.ct-pill-icon {
+  display: flex;
+  align-items: center;
+}
+
+.ct-section-divider {
+  width: 100%;
+  height: 1px;
+  background: #eaeaea;
+  border: none;
+  margin: 22px 0;
 }
 
 @media (max-width: 900px) {
@@ -1707,6 +1922,22 @@
   .inv-header-select {
     width: 100%;
     min-width: 0;
+  }
+
+  .inv-custom-dropdown-wrap {
+    width: 100%;
+  }
+
+  .inv-custom-dropdown-trigger {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .inv-custom-dropdown-menu {
+    width: 100%;
+    max-width: 100%;
+    left: 0 !important;
+    right: 0 !important;
   }
 
   .inv-filter-container {

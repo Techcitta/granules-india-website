@@ -7376,20 +7376,6 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
     ]
   },
   {
-    "id": "sec-investor-contact",
-    "title": "Investor Relations Contact",
-    "badge": "Investor Relations Contact",
-    "description": "For queries related to equity shares, financial results, annual reports, or shareholder services, please reach out to our dedicated teams.",
-    "isContact": true,
-    "subcategories": [
-      {
-        "id": "contact-desk",
-        "label": "Investor Relations Contact",
-        "items": []
-      }
-    ]
-  },
-  {
     "id": "sec-other-info",
     "title": "Other Information",
     "badge": "Other Information",
@@ -7643,6 +7629,20 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "subcategoryLabel": "Other Information"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "sec-investor-contact",
+    "title": "Investor Relations Contact",
+    "badge": "Investor Relations Contact",
+    "description": "For queries related to equity shares, financial results, annual reports, or shareholder services, please reach out to our dedicated teams.",
+    "isContact": true,
+    "subcategories": [
+      {
+        "id": "contact-desk",
+        "label": "Investor Relations Contact",
+        "items": []
       }
     ]
   }

@@ -21,8 +21,8 @@ const JUMP_SECTIONS = [
   { id: 'sec-corporate-centre', label: 'Corporate Centre' },
   { id: 'sec-financial-highlights', label: 'Financial Highlights & Revenue Break Up' },
   { id: 'sec-notices-disclosures', label: 'Notice & Disclosures' },
-  { id: 'sec-investor-contact', label: 'Investor Relations Contact' },
   { id: 'sec-other-info', label: 'Other Information' },
+  { id: 'sec-investor-contact', label: 'Investor Relations Contact' },
 ];
 
 const CORPORATE_CENTRE: TableRowItem[] = [
@@ -264,17 +264,17 @@ export default function InvestorOverviewPage() {
         />
       </section>
 
-      {/* Section 6: Investor Relations Contact (Screenshot 4) */}
-      <section id="sec-investor-contact" className="inv-doc-section">
-        <InvestorFilteredSection category={investorContactCat} />
-      </section>
-
-      {/* Section 7: Other Information (Screenshot 5) */}
+      {/* Section 6: Other Information (Screenshot 5) */}
       <section id="sec-other-info" className="inv-doc-section">
         <InvestorFilteredSection
           category={otherInfoCat}
           defaultSubcatId={deepParams?.sectionId === 'sec-other-info' ? deepParams.subcatId : undefined}
         />
+      </section>
+
+      {/* Section 7: Investor Relations Contact (Screenshot 4) - Sent to Bottom */}
+      <section id="sec-investor-contact" className="inv-doc-section">
+        <InvestorFilteredSection category={investorContactCat} />
       </section>
 
       <CompanyFooter />

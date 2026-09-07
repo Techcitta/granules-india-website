@@ -93,11 +93,13 @@ import CookiePolicyPage from './pages/CookiePolicyPage.tsx';
 import DisclaimerPage from './pages/DisclaimerPage.tsx';
 import DataProtectionNoticePage from './pages/DataProtectionNoticePage.tsx';
 import TermsConditionsPage from './pages/TermsConditionsPage.tsx';
+import BackToTopButton from './components/common/BackToTopButton';
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollHighlightManager />
+      <BackToTopButton />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/company" element={<CompanyPage />} />
