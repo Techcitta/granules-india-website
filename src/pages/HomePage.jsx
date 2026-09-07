@@ -367,7 +367,6 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
         <button className="search-button" aria-label="Search the page" onClick={onSearch}>
           <img src={`${A}search.svg`} alt="" loading="lazy" decoding="async" />
         </button>
-        <span className="global">🌍 <span>Global</span></span>
       </nav>
     </header>
   );

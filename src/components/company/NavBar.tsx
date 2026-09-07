@@ -320,9 +320,6 @@ export default function NavBar() {
                 {link.label}
               </Link>
             ))}
-            <span className="cp-nav-drawer-global">
-              <img src={asset('group-globe-1.svg')} alt="" loading="lazy" decoding="async" /> Global
-            </span>
           </div>
         )}
       </nav>

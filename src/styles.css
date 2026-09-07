@@ -355,13 +355,6 @@ img {
   height: 24px;
 }
 
-.global {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-}
-
 .menu-button {
   display: none;
   border: 0;
@@ -1951,10 +1944,6 @@ footer[id] {
 
   .site-header nav a {
     width: 100%;
-  }
-
-  .global {
-    padding-block: 10px;
   }
 
   .hero {
