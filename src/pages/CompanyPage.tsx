@@ -8,7 +8,6 @@ import {
   ValuesSection,
   LeadershipSection,
   SubsidiariesCarousel,
-  RegulatoryLogosSection,
   CareerSection,
   CompanyFooter,
 } from '../components/company';
@@ -27,7 +26,6 @@ export default function CompanyPage() {
       <PurposeVisionSection />
       <ValuesSection />
       <LeadershipSection />
-      <RegulatoryLogosSection />
       <SubsidiariesCarousel />
       <CareerSection />
       <CompanyFooter />
