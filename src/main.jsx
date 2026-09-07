@@ -140,8 +140,11 @@ function App() {
         <Route path="/csr" element={<CommunityPage />} />
         <Route path="/community" element={<CommunityPage />} />
         <Route path="/investor" element={<InvestorOverviewPage />} />
+        <Route path="/investors" element={<InvestorOverviewPage />} />
         <Route path="/investor/v2" element={<InvestorOverviewPage />} />
         <Route path="/investor/annual-reports" element={<InvestorAnnualReportsPage />} />
+        <Route path="/investors/*" element={<InvestorOverviewPage />} />
+        <Route path="/investor/*" element={<InvestorOverviewPage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/careers" element={<CareerOverviewPage />} />
         <Route path="/careers/life-at-granules" element={<LifeAtGranulesPage />} />
