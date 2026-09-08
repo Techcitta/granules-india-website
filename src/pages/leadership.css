@@ -3,8 +3,8 @@
 .cp-hero-banner,
 .cp-hero-panel,
 .cp-video-banner {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -13,14 +13,14 @@
    MAIN LEADERSHIP OVERVIEW VIEW
    ========================================================================== */
 .ld-main-breadcrumb {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(60px, 8vw, 118px) auto 0 !important;
 }
 
 .ld-hero {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(24px, 3.5vw, 44px) auto 0 !important;
   display: flex;
   flex-direction: column;
@@ -46,8 +46,8 @@
 
 /* Underline Tab Navigation Bar */
 .ld-tabs-container {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(48px, 6vw, 84px) auto 0 !important;
   border-bottom: 2px solid #e5e7eb;
 }
@@ -99,8 +99,8 @@
 
 /* Leader Cards Grid (3 cards per row) */
 .ld-grid {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(40px, 6vw, 64px) auto 0 !important;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -129,12 +129,12 @@
 
 .ld-photo {
   width: 100%;
-  height: clamp(340px, 28vw, 440px);
-  border-radius: 40px;
+  aspect-ratio: 4 / 5;
+  border-radius: 36px;
   overflow: hidden;
   background: #f4f6fa;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -149,27 +149,14 @@
 .ld-photo img {
   width: 100%;
   height: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: bottom center;
+  object-fit: cover;
+  object-position: center top;
   display: block;
   transition: transform 0.4s ease;
 }
 
 .ld-card:hover .ld-photo img {
   transform: scale(1.05);
-}
-
-/* For square / rectangular headshots */
-.ld-photo img[src*="sankar-rao"],
-.ld-photo img[src*="arun-sawhney"],
-.ld-photo img[src*="saumen-chakraborty"],
-.ld-photo img[src*="sucharita-palepu"],
-.ld-photo img[src*="kapil-mehan"],
-.ld-photo img[src*="sethurathnam-ravi"],
-.ld-photo img[src*="rajiv-kakodkar"] {
-  object-fit: cover;
-  object-position: center 20%;
 }
 
 .ld-photo-badge {
@@ -232,8 +219,8 @@
 }
 
 .ld-profile-breadcrumb {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(60px, 8vw, 118px) auto 0 !important;
 }
 
@@ -253,53 +240,35 @@
 }
 
 .ld-profile-hero {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 28px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: 32px auto 0 !important;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .ld-profile-photo-card {
   width: 100%;
-  height: clamp(340px, 36vw, 420px);
-  border-radius: 40px;
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+  border-radius: 36px;
   background: #f4f6fa;
   overflow: hidden;
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
 .ld-profile-photo-card img {
+  width: 100%;
   height: 100%;
-  max-height: 100%;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: bottom center;
+  object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
-/* Rectangular headshots in profile view */
-.ld-profile-photo-card img[src*="sankar-rao"],
-.ld-profile-photo-card img[src*="arun-sawhney"],
-.ld-profile-photo-card img[src*="saumen-chakraborty"],
-.ld-profile-photo-card img[src*="sucharita-palepu"],
-.ld-profile-photo-card img[src*="kapil-mehan"],
-.ld-profile-photo-card img[src*="sethurathnam-ravi"],
-.ld-profile-photo-card img[src*="rajiv-kakodkar"] {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center;
-  transform: none;
-}
-
 .ld-profile-details {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(36px, 4.5vw, 56px) auto 0 !important;
 }
 
@@ -387,7 +356,7 @@
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  margin-top: 40px;
+  margin-top: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -401,20 +370,54 @@
   box-shadow: 0 6px 18px rgba(0, 97, 248, 0.35);
 }
 
+/* Profile page nav between members */
+.ld-profile-nav-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.ld-profile-nav-btn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font: 600 14px/1 'Manrope', sans-serif;
+  color: #0061f8;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.ld-profile-nav-btn:hover {
+  background: #0061f8;
+  color: #ffffff;
+  border-color: #0061f8;
+  transform: translateY(-1px);
+}
+
+/* Override bullet style for profile view */
+.ld-profile-directorships-list li .ld-profile-bullet {
+  font-size: 8px;
+  color: #0061f8;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
 /* ==========================================================================
    BOTTOM DIVIDER & CTA BANNER (85% Margins)
    ========================================================================== */
 .ld-bottom-divider {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(60px, 8vw, 100px) auto 0 !important;
   height: 1px;
   background: #dbeafe;
 }
 
 .ld-cta {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(40px, 5vw, 60px) auto 0 !important;
   border-radius: 40px;
   padding: clamp(36px, 4.5vw, 56px) clamp(30px, 4.5vw, 64px);
@@ -691,7 +694,8 @@
 
 .ld-modal-avatar {
   width: 120px;
-  height: 120px;
+  height: 150px;
+  aspect-ratio: 4 / 5;
   flex-shrink: 0;
   border-radius: 20px;
   background: #f4f6fa;
@@ -702,21 +706,9 @@
 .ld-modal-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: bottom center;
-}
-
-.ld-modal-avatar img[src*="sankar-rao"],
-.ld-modal-avatar img[src*="arun-sawhney"],
-.ld-modal-avatar img[src*="saumen-chakraborty"],
-.ld-modal-avatar img[src*="sucharita-palepu"],
-.ld-modal-avatar img[src*="kapil-mehan"],
-.ld-modal-avatar img[src*="sethurathnam-ravi"],
-.ld-modal-avatar img[src*="rajiv-kakodkar"],
-.ld-modal-avatar img[src*="robert-cunard"],
-.ld-modal-avatar img[src*="tvsk-vittal"] {
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
+  display: block;
 }
 
 .ld-modal-meta {

@@ -10,7 +10,7 @@ export interface LeadershipMember {
 export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   {
     id: 'krishna-prasad',
-    image: 'krishna-prasad.webp',
+    image: 'CMD.jpg',
     name: 'Dr. Krishna Prasad Chigurupati',
     role: 'Chairman and Managing Director',
     profile: [
@@ -37,7 +37,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'uma-devi',
-    image: 'uma-devi.webp',
+    image: '6V8A5131.JPG (1).jpeg',
     name: 'Mrs. Uma Devi Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -62,7 +62,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'priyanka',
-    image: 'priyanka.webp',
+    image: 'Priyanka (1).jpeg',
     name: 'Ms. Priyanka Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -78,7 +78,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'harsha',
-    image: 'harsha.webp',
+    image: 'Harsha.jpg',
     name: 'Mr. Harsha Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -97,7 +97,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'sankar-rao',
-    image: 'sankar-rao.webp',
+    image: 'Sankar Rao.jpg',
     name: 'Mr. K. B. Sankar Rao',
     role: 'Non-Executive, Non-Independent Director',
     profile: [
@@ -108,7 +108,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'arun-sawhney',
-    image: 'arun-sawhney.webp',
+    image: 'Arun.jpg',
     name: 'Mr. Arun Sawhney',
     role: 'Independent Director',
     profile: [
@@ -132,7 +132,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'saumen-chakraborty',
-    image: 'saumen-chakraborty.webp',
+    image: 'Priyanka (6).jpg',
     name: 'Dr. Saumen Chakraborty',
     role: 'Independent Director',
     profile: [
@@ -147,7 +147,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'sucharita-palepu',
-    image: 'sucharita-palepu.webp',
+    image: 'Priyanka (8).jpg',
     name: 'Mrs. Sucharita Rao Palepu',
     role: 'Independent Director',
     profile: [
@@ -161,7 +161,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'kapil-mehan',
-    image: 'kapil-mehan.webp',
+    image: 'Kapil.jpg',
     name: 'Mr. Kapil Kumar Mehan',
     role: 'Independent Director',
     profile: [
@@ -202,7 +202,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'rajiv-kakodkar',
-    image: 'rajiv-kakodkar.webp',
+    image: 'Rajiv.jpg',
     name: 'Mr. Rajiv Pritidas Kakodkar',
     role: 'Independent Director',
     profile: [
@@ -222,7 +222,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
 export const MANAGEMENT_TEAM: LeadershipMember[] = [
   {
     id: 'krishna-prasad',
-    image: 'krishna-prasad.webp',
+    image: 'CMD.jpg',
     name: 'Dr. Krishna Prasad Chigurupati',
     role: 'Chairman and Managing Director',
     profile: [
@@ -249,7 +249,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'uma-devi',
-    image: 'uma-devi.webp',
+    image: '6V8A5131.JPG (1).jpeg',
     name: 'Mrs. Uma Devi Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -274,7 +274,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'priyanka',
-    image: 'priyanka.webp',
+    image: 'Priyanka (1).jpeg',
     name: 'Ms. Priyanka Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -290,7 +290,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'harsha',
-    image: 'harsha.webp',
+    image: 'Harsha.jpg',
     name: 'Mr. Harsha Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -309,7 +309,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'mukesh-surana',
-    image: 'mukesh-surana.webp',
+    image: 'Mukesh.jpg',
     name: 'Mr. Mukesh Surana',
     role: 'Chief Financial Officer',
     profile: [
@@ -318,7 +318,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'pv-srinivas',
-    image: 'pv-srinivas.webp',
+    image: 'Dr PV.jpg',
     name: 'Dr. PV Srinivas',
     role: 'Chief Technology Officer',
     profile: [
@@ -328,7 +328,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'vinodkumar-parur',
-    image: 'vinodkumar-parur.webp',
+    image: 'Vinod Parur.jpeg',
     name: 'Mr. Vinodkumar Parur',
     role: 'Chief Human Resources Officer',
     profile: [
@@ -337,7 +337,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'ramraj-rangarajalu',
-    image: 'ramraj-rangarajalu.webp',
+    image: 'Ramraj.JPG',
     name: 'Mr. Ramraj Rangarajalu',
     role: 'President and Head - Formulations Operations',
     profile: [
@@ -346,7 +346,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'manikandan-ramalingam',
-    image: 'manikandan-ramalingam.webp',
+    image: 'Mani.jpg',
     name: 'Mr. Manikandan Ramalingam',
     role: 'Senior Vice President & Head Formulation R&D',
     profile: [
@@ -356,7 +356,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'sanjay-kumar',
-    image: 'sanjay-kumar.webp',
+    image: 'Sanjay Kumar.jpg',
     name: 'Mr. Sanjay Kumar',
     role: 'Chief Executive Officer, Senn Tides India Private Limited',
     profile: [
@@ -367,7 +367,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'baskaran-pn',
-    image: 'baskaran-pn.webp',
+    image: 'Baskaran.jpeg',
     name: 'Dr. Baskaran PN',
     role: 'President & Head - API Operations',
     profile: [
@@ -377,7 +377,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'vijay-raghavan',
-    image: 'vijay-raghavan.webp',
+    image: 'Vijay Raghavan (2).jpg',
     name: 'Dr. Vijay Raghavan',
     role: 'President, Global Portfolio',
     profile: [
@@ -386,7 +386,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'rajesh-kapoor',
-    image: 'rajesh-kapoor.webp',
+    image: 'Rajesh Kapoor.jpg',
     name: 'Dr. Rajesh Kapoor',
     role: 'Global Head - Quality',
     profile: [

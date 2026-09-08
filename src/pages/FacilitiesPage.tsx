@@ -142,7 +142,7 @@ export default function FacilitiesPage() {
       <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <Link to="/company">ABOUT US</Link>
+        <Link to="/business">BUSINESS</Link>
         <span className="sep">›</span>
         <span className="current">FACILITIES</span>
       </p>
@@ -159,6 +159,34 @@ export default function FacilitiesPage() {
           With specialized R&amp;D hubs, advanced packaging lines, and regulatory-aligned plants worldwide, Granules delivers on its
           promise of affordable, high-quality, chronic care innovation at scale.
         </p>
+      </div>
+
+      {/* Network Overview Stats Grid (Matching Homepage Signature Ice-Blue Stats) */}
+      <div className="fac-stats-grid">
+        <article className="fac-stat-card">
+          <strong>10</strong>
+          <span>Manufacturing Facilities</span>
+        </article>
+        <article className="fac-stat-card">
+          <strong>3</strong>
+          <span>Countries (India, US &amp; Switzerland)</span>
+        </article>
+        <article className="fac-stat-card">
+          <strong>35+ KTPA</strong>
+          <span>API Manufacturing Capacity</span>
+        </article>
+        <article className="fac-stat-card">
+          <strong>23+ KTPA</strong>
+          <span>PFI Manufacturing Capacity</span>
+        </article>
+        <article className="fac-stat-card">
+          <strong>15+ Bn</strong>
+          <span>Finished Dosages (FD) Capacity</span>
+        </article>
+        <article className="fac-stat-card">
+          <strong>6</strong>
+          <span>R&amp;D Centers of Excellence</span>
+        </article>
       </div>
 
       {/* Facilities Filter Showcase */}

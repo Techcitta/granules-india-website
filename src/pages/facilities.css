@@ -12,44 +12,100 @@
 .fac-intro {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(40px, 6vw, 60px) auto 0 !important;
+  margin: clamp(32px, 5vw, 48px) auto 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 .fac-intro p {
   margin: 0;
-  font: 500 clamp(18px, 2vw, 28px)/1.3 'Manrope', sans-serif;
+  font: 500 clamp(16px, 1.8vw, 24px)/1.4 'Manrope', sans-serif;
   color: var(--n7);
+}
+
+/* ==========================================================================
+   Network Overview Stats Grid (Matching Homepage Signature Ice-Blue Stats)
+   ========================================================================== */
+.fac-stats-grid {
+  width: 85% !important;
+  max-width: 85% !important;
+  margin: clamp(36px, 5vw, 56px) auto 0 !important;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 960px) {
+  .fac-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .fac-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fac-stat-card {
+  background: #edf5ff;
+  border-radius: 22px;
+  padding: 24px 22px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.fac-stat-card:hover {
+  transform: translateY(-3px);
+  background: #e4f0ff;
+  box-shadow: 0 10px 24px rgba(0, 86, 214, 0.12);
+}
+
+.fac-stat-card strong {
+  font: 700 clamp(32px, 2.5vw, 44px)/1.1 'Manrope', sans-serif;
+  color: var(--blue, #0061f8);
+  letter-spacing: -0.02em;
+}
+
+.fac-stat-card span {
+  font: 700 13px/1.35 'Manrope', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--blue, #0061f8);
 }
 
 .fac-filters {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(50px, 7vw, 80px) auto 0 !important;
+  margin: clamp(40px, 6vw, 64px) auto 0 !important;
   display: flex;
-  gap: clamp(20px, 4vw, 44px);
+  gap: clamp(16px, 3vw, 36px);
   justify-content: center;
   flex-wrap: wrap;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
   position: relative;
 }
 .fac-filter {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px 14px;
-  font: 700 clamp(18px, 2.2vw, 24px)/1.2 'Manrope', sans-serif;
+  padding: 8px 16px;
+  font: 700 clamp(16px, 1.8vw, 20px)/1.2 'Manrope', sans-serif;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--blue, #0061f8);
   opacity: 0.45;
   transition: opacity 0.25s ease, color 0.25s ease;
   position: relative;
 }
 .fac-filter:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 .fac-filter.active {
   opacity: 1;
@@ -59,7 +115,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -21px;
+  bottom: -19px;
   height: 4px;
   border-radius: 4px;
   background: linear-gradient(90deg, #016ef7 4.5%, #38b34a 45.6%, #66cef5 98.7%);
@@ -68,10 +124,10 @@
 .fac-grid {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(40px, 6vw, 60px) auto 0 !important;
+  margin: clamp(36px, 5vw, 50px) auto 0 !important;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px 32px;
+  gap: 36px 28px;
 }
 
 .fac-card {
@@ -80,14 +136,15 @@
   gap: 16px;
   background: #ffffff;
   border-radius: 24px;
-  border: 1px solid #eef1f5;
+  border: 1px solid #eef2f7;
   padding: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .fac-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 50, 100, 0.08);
+  border-color: #d0e3ff;
+  box-shadow: 0 16px 36px rgba(0, 86, 214, 0.08);
 }
 
 .fac-card-image {
@@ -141,13 +198,13 @@
 .fac-card-name {
   margin: 0;
   font: 700 clamp(20px, 2vw, 24px)/1.25 'Manrope', sans-serif;
-  color: #0066f5;
+  color: var(--blue, #0061f8);
 }
 .fac-card-loc {
   margin: 6px 0 0;
-  font: 600 14px/1.3 'Manrope', sans-serif;
-  color: #6c757d;
-  letter-spacing: 1.2px;
+  font: 600 13.5px/1.3 'Manrope', sans-serif;
+  color: #64748b;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
@@ -174,12 +231,16 @@
 .fac-cap-pill {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  font: 600 12px/1.2 'Manrope', sans-serif;
-  color: #0f172a;
+  padding: 6px 14px;
+  background: #edf5ff;
+  border: none;
+  border-radius: 9999px;
+  font: 700 12.5px/1.2 'Manrope', sans-serif;
+  color: var(--blue, #0061f8);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.fac-cap-pill:hover {
+  background: #e0eeff;
 }
 
 .fac-card-icon {
