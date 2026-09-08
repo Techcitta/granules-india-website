@@ -155,7 +155,7 @@
 .comm-impact-section {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(56px, 7vw, 90px) auto 0 !important;
+  margin: 75px auto 0 !important;
 }
 
 .comm-impact-header {
@@ -274,7 +274,7 @@
 .comm-sustainability {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(60px, 7vw, 100px) auto 100px !important;
+  margin: 75px auto 75px !important;
   min-height: 720px;
   border-radius: 40px;
   padding: clamp(60px, 6vw, 110px) clamp(40px, 5.5vw, 96px) !important;
@@ -636,7 +636,7 @@
 .comm-docs-section {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(56px, 7vw, 90px) auto clamp(64px, 8vw, 110px) !important;
+  margin: 75px auto 75px !important;
 }
 
 .comm-docs-grid {

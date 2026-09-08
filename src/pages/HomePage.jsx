@@ -9,31 +9,31 @@ const A = '/assets/';
 
 const heroSlides = [
   {
-    image: 'hero-1.webp',
+    image: 'Home/1.jpg',
     title: 'Globally approved. Vertically integrated. Trusted worldwide',
     cta: 'Our Products',
     link: '/business/generics',
   },
   {
-    image: 'hero-5.webp',
+    image: 'Home/2.jpg',
     title: 'Driving innovation in peptides and custom manufacturing solutions',
     cta: 'Peptides & CDMO Business',
     link: '/business/peptides',
   },
   {
-    image: 'hero-4.webp',
+    image: 'Home/3.jpg',
     title: 'Setting global standards in quality, safety, and compliance',
     cta: 'Quality & compliance',
     link: '/business/quality-compliance',
   },
   {
-    image: 'hero-3.webp',
+    image: 'Home/4.jpg',
     title: 'Innovating for health. Committed to the planet',
     cta: 'Sustainability',
     link: '/sustainability',
   },
   {
-    image: 'hero-2.webp',
+    image: 'Home/5.jpg',
     title: 'Accelerating Innovation Through Integration and Digitalization',
     cta: 'R&D',
     link: '/business/rd',
@@ -187,6 +187,19 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
     },
   };
 
+  const isItemActive = (label) => {
+    if (!activeSection || activeSection === 'top') return false;
+    if (label === 'About Us' && (activeSection === 'about' || activeSection === 'company')) return true;
+    if (label === 'Business' && (activeSection === 'business' || activeSection === 'presence')) return true;
+    if (label === 'Sustainability' && activeSection === 'sustainability') return true;
+    if (label === 'Community' && activeSection === 'community') return true;
+    if (label === 'Investor' && activeSection === 'investor') return true;
+    if (label === 'Media' && activeSection === 'media') return true;
+    if (label === 'Careers' && activeSection === 'careers') return true;
+    if (label === 'Contact Us' && activeSection === 'contact') return true;
+    return false;
+  };
+
   const showMenu = (label) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setHoveredMenu(label);
@@ -214,12 +227,13 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
       <nav className={open ? 'open' : ''} aria-label="Primary navigation">
         {links.map(([label, href]) => {
           const sub = submenuData[label];
+          const isActive = isItemActive(label);
           return (
             <div className="home-nav-item" key={label} onMouseEnter={() => sub && showMenu(label)} onMouseLeave={hideMenu}>
               {href.startsWith('#') ? (
                 <a
-                  className={activeSection === href.slice(1) ? 'active' : ''}
-                  aria-current={activeSection === href.slice(1) ? 'page' : undefined}
+                  className={isActive ? 'active' : ''}
+                  aria-current={isActive ? 'page' : undefined}
                   href={href}
                   onClick={(e) => handleSmoothAnchor(e, href)}
                 >
@@ -227,8 +241,8 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
                 </a>
               ) : (
                 <Link
-                  className={activeSection === href.slice(1) ? 'active' : ''}
-                  aria-current={activeSection === href.slice(1) ? 'page' : undefined}
+                  className={isActive ? 'active' : ''}
+                  aria-current={isActive ? 'page' : undefined}
                   to={href}
                   onClick={() => setOpen(false)}
                 >
@@ -544,13 +558,13 @@ function About() {
     <section className="section shell about" id="about">
       <div className="about-copy">
         <h2>Driving global healthcare through scalable pharma leadership</h2>
-        <p>
+        <h4>
           With over four decades of industry leadership, Granules India is committed to delivering
           high-quality, affordable medicines globally, through an integrated manufacturing platform.
           We offer end-to-end solutions for global healthcare needs, built on compliance,
           innovation, and operational scale, across Active Pharmaceutical Ingredients (APIs),
           Pharmaceutical Formulation Intermediates (PFIs), Finished Dosage Forms (FDFs), and Peptide CDMO.
-        </p>
+        </h4>
         <div className="about-cta-wrap">
           <Button href="/company">ABOUT GRANULES &rarr;</Button>
         </div>
@@ -574,18 +588,18 @@ function Business() {
   const navigate = useNavigate();
 
   return (
-    <section className="section shell ruled" id="business">
+    <section className="section shell" id="business">
       <Tag>Business Verticals</Tag>
       <div className="section-heading split-heading">
         <div>
           <h2>Delivering Impact Across Pharmaceutical Value Chain</h2>
-          <p>
+          <h4>
             We serve patients and our partners across the globe with a vertically integrated model
             that brings together innovation, manufacturing excellence, and compliance at scale. With
             established capabilities across APIs, PFIs, finished dosages and peptide CDMO, we are
             also strengthening our portfolio complexity across therapies with high-barrier, early to
             market opportunities in Central Nervous System (CNS), oncology and metabolic disorders.
-          </p>
+          </h4>
         </div>
         <Button href="/business/api">Products &rarr;</Button>
       </div>
@@ -927,10 +941,10 @@ function Sustainability() {
       <div className="sustainability-copy">
         <Tag>Sustainability</Tag>
         <h2>Where science acts responsibly</h2>
-        <p>
+        <h4>
           From reducing our carbon footprint and investing in clean energy to building community
           resilience through skill development, we are shaping a healthier, more sustainable world.
-        </p>
+        </h4>
         <Button href="/sustainability" className="green">Learn More &rarr;</Button>
       </div>
       <div className="accordion">
@@ -1066,7 +1080,7 @@ function Media() {
   const [selected, setSelected] = useState(null);
   return (
     <>
-      <section className="section shell ruled media" id="media">
+      <section className="section shell media" id="media">
         <div className="split-heading">
           <div>
             <Tag>Media</Tag>
@@ -1117,8 +1131,8 @@ function Careers() {
       <div>
         <h2>Shape healthcare with Granules</h2>
         <p>Every role here strengthens access to affordable treatment for millions.</p>
+        <Button href="/careers">Explore Careers &rarr;</Button>
       </div>
-      <Button href="/careers">Explore Careers &rarr;</Button>
     </section>
   );
 }
@@ -1264,16 +1278,39 @@ export default function HomePage() {
     sections.forEach((section) => section.classList.add('reveal-ready'));
     const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('revealed')), { threshold: .08 });
     sections.forEach((section) => reveal.observe(section));
-    const active = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.id && setActiveSection(entry.target.id)), { rootMargin: '-35% 0px -55%', threshold: 0 });
-    [...document.querySelectorAll('[id="about"],[id="business"],[id="presence"],[id="sustainability"],[id="investor"],[id="media"],[id="careers"],[id="footer"]')].forEach((section) => active.observe(section));
+
+    const sectionIds = ['about', 'business', 'presence', 'sustainability', 'investor', 'media', 'careers'];
+
     const onScroll = () => {
-      const current = Math.max(0, scrollY);
-      setProgress(Math.min(100, (current / (document.documentElement.scrollHeight - innerHeight)) * 100));
+      const current = Math.max(0, window.scrollY);
+      setProgress(Math.min(100, (current / (document.documentElement.scrollHeight - window.innerHeight)) * 100));
       setNavCompressed(current > 72);
+
+      if (current < 250) {
+        setActiveSection('top');
+        return;
+      }
+
+      const scrollCheck = current + 240;
+      let matched = null;
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollCheck >= top && scrollCheck < top + height) {
+            matched = id;
+            break;
+          }
+        }
+      }
+      if (matched) {
+        setActiveSection(matched);
+      }
     };
-    addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-    return () => { reveal.disconnect(); active.disconnect(); removeEventListener('scroll', onScroll); };
+    return () => { reveal.disconnect(); window.removeEventListener('scroll', onScroll); };
   }, []);
   return (
     <>

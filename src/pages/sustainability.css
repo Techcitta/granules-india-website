@@ -14,7 +14,7 @@
 .sus-intro {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(60px, 8vw, 118px) auto 0 !important;
+  margin: 75px auto 0 !important;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -35,7 +35,7 @@
 .sus-section-head {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(60px, 8vw, 90px) auto 0 !important;
+  margin: 75px auto 0 !important;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -255,7 +255,7 @@
 .sus-event {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(40px, 5vw, 60px) auto 0 !important;
+  margin: 75px auto 0 !important;
   border-radius: 40px;
   padding: clamp(30px, 5vw, 80px);
   display: grid;
@@ -337,7 +337,7 @@
 .sus-cta {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(80px, 10vw, 120px) auto 0 !important;
+  margin: 75px auto 0 !important;
   border-radius: 40px;
   padding: clamp(30px, 4vw, 60px);
   position: relative;
@@ -393,7 +393,7 @@
 .sus-goals-sec-img1 {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(60px, 8vw, 100px) auto 0 !important;
+  margin: 75px auto 0 !important;
   display: flex;
   flex-direction: column;
 }
@@ -498,7 +498,7 @@
 .sus-kpi-sec-img2 {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(60px, 8vw, 100px) auto 0 !important;
+  margin: 75px auto 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -613,10 +613,7 @@
 }
 
 .sus-kpi-row-divider {
-  width: 100%;
-  height: 1.5px;
-  background: #d5dbed;
-  margin: 6px 0;
+  display: none !important;
 }
 
 @media (max-width: 980px) {
@@ -671,7 +668,7 @@
 .sus-carousel-section {
   width: 85% !important;
   max-width: 85% !important;
-  margin: 0 auto clamp(20px, 3vw, 40px) !important;
+  margin: 75px auto 0 !important;
 }
 
 .sus-carousel-outer {

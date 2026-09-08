@@ -1287,7 +1287,7 @@
 .sus-doc-section {
   width: 85% !important;
   max-width: 85% !important;
-  margin: clamp(70px, 8vw, 110px) auto 0 !important;
+  margin: 75px auto 0 !important;
   display: flex;
   flex-direction: column;
   gap: 36px;

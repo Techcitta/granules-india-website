@@ -142,8 +142,8 @@
 .cp-nav-submenu {
   position: absolute;
   top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-6px);
+  left: 0;
+  transform: translateY(-6px);
   width: max-content;
   min-width: 210px;
   max-width: 320px;
@@ -171,7 +171,12 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
+}
+
+.cp-nav-item:nth-last-child(-n+2) .cp-nav-submenu {
+  left: auto;
+  right: 0;
 }
 
 .cp-nav-submenu-copy {

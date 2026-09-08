@@ -101,9 +101,6 @@ export default function SustainabilityKpisSection() {
                 </div>
               ))}
             </div>
-            {rowIdx < KPI_ROWS.length - 1 && (
-              <div className="sus-kpi-row-divider" />
-            )}
           </React.Fragment>
         ))}
       </div>
