@@ -177,4 +177,84 @@ function App() {
   );
 }
 
-createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Granules App Runtime Error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '2rem',
+          fontFamily: "'Manrope', sans-serif",
+          textAlign: 'center',
+          backgroundColor: '#f8fafc',
+          color: '#0f172a'
+        }}>
+          <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1rem', color: '#0061f8' }}>
+            Something went wrong
+          </h1>
+          <p style={{ maxWidth: '500px', marginBottom: '1.5rem', color: '#64748b' }}>
+            An unexpected error occurred while loading this page. Please try refreshing or return to the homepage.
+          </p>
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              style={{
+                padding: '10px 20px',
+                borderRadius: '999px',
+                backgroundColor: '#0061f8',
+                color: '#fff',
+                border: 'none',
+                fontWeight: 600,
+                cursor: 'pointer'
+              }}
+            >
+              Reload Page
+            </button>
+            <button
+              type="button"
+              onClick={() => { window.location.href = '/'; }}
+              style={{
+                padding: '10px 20px',
+                borderRadius: '999px',
+                backgroundColor: '#e2e8f0',
+                color: '#1e293b',
+                border: 'none',
+                fontWeight: 600,
+                cursor: 'pointer'
+              }}
+            >
+              Go to Home
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </React.StrictMode>
+);

@@ -503,13 +503,13 @@ export default function RdPage() {
         </div>
       </div>
 
-      <p className="rd-eco-note scroll-intro">
+      <h2 className="rd-eco-note scroll-intro">
         <span className="part-1">Our proprietary Eco-Scale framework evaluates processes across six core </span>
         <span className="part-2 muted">
           parameters and 38 sub-parameters, ensuring our chemistries align with operational efficiency,
           global standards, and environmental stewardship.
         </span>
-      </p>
+      </h2>
 
       {/* Built for Global Quality and Compliance */}
       <div className="biz-section-head rd-quality-head">

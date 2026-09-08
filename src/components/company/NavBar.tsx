@@ -21,8 +21,6 @@ type Submenu = {
   quickLinks?: QuickLink[];
   sections?: SubmenuSection[];
   links?: { label: string; href: string }[];
-  image: string;
-  imageHref?: string;
 };
 
 const SUBMENUS: Record<string, Submenu> = {
@@ -35,7 +33,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
       { label: 'Granules Pharmaceuticals Inc', href: 'https://www.granulespharma.com/' },
     ],
-    image: 'company/values-bg-2.webp',
   },
   Company: {
     sections: [
@@ -52,7 +49,6 @@ const SUBMENUS: Record<string, Submenu> = {
       },
     ],
     links: [],
-    image: 'company/values-bg-2.webp',
   },
   Business: {
     sections: [],
@@ -63,7 +59,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Quality & Compliance', href: '/business/quality-compliance' },
       { label: 'Facilities', href: '/company/facilities' },
     ],
-    image: 'company/gpi-facility.webp',
   },
   Careers: {
     sections: [
@@ -76,7 +71,6 @@ const SUBMENUS: Record<string, Submenu> = {
       },
     ],
     links: [],
-    image: 'company/career-bg.webp',
   },
 };
 
@@ -281,22 +275,6 @@ export default function NavBar() {
                           </div>
                         )}
                       </div>
-
-                      {submenu.imageHref ? (
-                        <a
-                          href={submenu.imageHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="cp-nav-submenu-thumb"
-                          title="View Profile"
-                        >
-                          <img src={asset(submenu.image)} alt="" loading="lazy" decoding="async" />
-                        </a>
-                      ) : (
-                        <div className="cp-nav-submenu-thumb">
-                          <img src={asset(submenu.image)} alt="" loading="lazy" decoding="async" />
-                        </div>
-                      )}
                     </div>
                   )}
                 </div>

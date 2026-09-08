@@ -161,34 +161,6 @@ export default function FacilitiesPage() {
         </p>
       </div>
 
-      {/* Network Overview Stats Grid (Matching Homepage Signature Ice-Blue Stats) */}
-      <div className="fac-stats-grid">
-        <article className="fac-stat-card">
-          <strong>10</strong>
-          <span>Manufacturing Facilities</span>
-        </article>
-        <article className="fac-stat-card">
-          <strong>3</strong>
-          <span>Countries (India, US &amp; Switzerland)</span>
-        </article>
-        <article className="fac-stat-card">
-          <strong>35+ KTPA</strong>
-          <span>API Manufacturing Capacity</span>
-        </article>
-        <article className="fac-stat-card">
-          <strong>23+ KTPA</strong>
-          <span>PFI Manufacturing Capacity</span>
-        </article>
-        <article className="fac-stat-card">
-          <strong>15+ Bn</strong>
-          <span>Finished Dosages (FD) Capacity</span>
-        </article>
-        <article className="fac-stat-card">
-          <strong>6</strong>
-          <span>R&amp;D Centers of Excellence</span>
-        </article>
-      </div>
-
       {/* Facilities Filter Showcase */}
       <section className="fac-showcase-section" aria-label="Manufacturing Bases Showcase">
         <div className="fac-filters">

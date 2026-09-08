@@ -205,7 +205,7 @@ export default function InvestorOverviewPage() {
               rel="noopener noreferrer"
               className="inv-hero-cta"
             >
-              READ ARTICLE
+              READ MORE
             </a>
           </div>
         </div>

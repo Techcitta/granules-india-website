@@ -210,31 +210,93 @@ input, textarea, select {
 }
 
 /* ==========================================================================
-   BIG NUMBERS & STAT METRICS (Prominent, Bold & Scaled across all pages)
+   UNIFIED STAT & METRIC BOXES (All boxes with same color, padding, and numbering)
    ========================================================================== */
+.stat,
+.fac-stat-card,
+.peptides-stat-card,
+.senn-stat-card,
+.car-ov-stat-card,
+.qc-metric-card,
+.comm-impact-card,
+[class*='stat-card'],
+[class*='metric-card'] {
+  background: #edf5ff !important;
+  border-radius: 22px !important;
+  border: none !important;
+  padding: 22px 24px !important;
+  min-height: 126px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+}
+
+.stat:hover,
+.fac-stat-card:hover,
+.peptides-stat-card:hover,
+.senn-stat-card:hover,
+.car-ov-stat-card:hover,
+.qc-metric-card:hover,
+.comm-impact-card:hover,
+[class*='stat-card']:hover,
+[class*='metric-card']:hover {
+  transform: translateY(-2px) !important;
+  background: #e3efff !important;
+  box-shadow: 0 8px 20px rgba(0, 97, 248, 0.1) !important;
+}
+
 .stat strong,
 .stats strong,
+.fac-stat-card strong,
+.peptides-stat-val,
+.senn-stat-num,
+.car-ov-stat-value,
+.qc-metric-value,
+.comm-impact-val,
+.esg-env-stat-val,
 .sus-stat-value,
 .sus-card-stat-val,
 .strat-carbon-value,
-.car-ov-stat-value,
-.qc-metric-value,
-.qc-card-highlight-value,
-.peptides-stat-val,
-.senn-stat-num,
-.senn-phase-qty,
 .ov-goal-stat-val,
-.comm-impact-val,
-.esg-env-stat-val,
-.sus-kpi-card-img2-val,
-.sus-kpi-value,
 [class*='stat-val'],
 [class*='stat-value'],
 [class*='stat-num'],
 [class*='metric-val'],
-[class*='metric-value'],
-[class*='card-year']:not(.ms-card-year) {
-  font-weight: 800 !important;
+[class*='metric-value'] {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(38px, 3.2vw, 48px) !important;
+  line-height: 1 !important;
+  font-weight: 500 !important;
+  color: #0061f8 !important;
+  letter-spacing: -0.01em !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+
+.stat span,
+.stats span,
+.fac-stat-card span,
+.peptides-stat-label,
+.senn-stat-tag,
+.car-ov-stat-label,
+.qc-metric-label,
+.comm-impact-label,
+.sus-stat-label,
+[class*='stat-label'],
+[class*='metric-label'] {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(11px, 0.85vw, 12px) !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4px !important;
+  color: #0061f8 !important;
+  margin: 0 !important;
 }
 
 .ms-card-year,
@@ -252,48 +314,6 @@ h3.ms-card-year {
   margin: 0 !important;
   text-align: center !important;
   user-select: none !important;
-}
-
-.stat strong,
-.stats strong {
-  font-size: clamp(46px, 4.2vw, 68px) !important;
-  line-height: 1 !important;
-  font-weight: 800 !important;
-  color: var(--blue, #0061f8) !important;
-  letter-spacing: -0.02em !important;
-}
-
-.peptides-stat-val,
-.senn-stat-num {
-  font-size: clamp(38px, 3.4vw, 54px) !important;
-  line-height: 1.05 !important;
-  font-weight: 800 !important;
-  color: var(--blue, #0061f8) !important;
-}
-
-.senn-phase-qty {
-  font-size: clamp(32px, 2.8vw, 44px) !important;
-  line-height: 1.05 !important;
-  font-weight: 800 !important;
-  color: var(--blue, #0061f8) !important;
-}
-
-.sus-stat-value,
-.sus-card-stat-val,
-.strat-carbon-value,
-.ov-goal-stat-val {
-  font-size: clamp(54px, 6.5vw, 92px) !important;
-  line-height: 1.02 !important;
-  font-weight: 800 !important;
-}
-
-.car-ov-stat-value,
-.qc-metric-value,
-.comm-impact-val,
-.esg-env-stat-val {
-  font-size: clamp(40px, 4.2vw, 60px) !important;
-  line-height: 1.05 !important;
-  font-weight: 800 !important;
 }
 
 .cp-section-badge,

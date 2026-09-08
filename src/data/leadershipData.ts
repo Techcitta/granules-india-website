@@ -37,7 +37,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'uma-devi',
-    image: '6V8A5131.JPG (1).jpeg',
+    image: '6V8A5131.JPG (1).png',
     name: 'Mrs. Uma Devi Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -62,7 +62,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'priyanka',
-    image: 'Priyanka (1).jpeg',
+    image: 'Priyanka (1).jpg',
     name: 'Ms. Priyanka Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -121,16 +121,6 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
     ],
   },
   {
-    id: 'robert-cunard',
-    image: 'robert-cunard.webp',
-    name: 'Mr. Robert George Cunard',
-    role: 'Independent Director',
-    profile: [
-      'Mr. Robert George Cunard holds bachelor’s degree from University of Pittsburgh in Business Economics. Mr. Cunard brings more than 30 years of experience in the areas of Executive Management, Sales & Marketing, Business Development and Supply Chain in the US Market. Mr Cunard possess deep understanding of various business models to serve different customer segments including B2B & B2C. He is a strategic thinker with sharp business acumen.',
-      'Mr. Cunard was CEO of Aurobindo Pharma USA, Inc., the subsidiary of Aurobindo Pharma Limited. In the past, Mr. Cunard also led critical roles in Mylan Laboratories and Teva Pharmaceuticals. Mr. Cunard is currently an Operating Partner with HealthEdge Investment Partners, a US healthcare focused private equity fund in addition to his charitable activities.',
-    ],
-  },
-  {
     id: 'saumen-chakraborty',
     image: 'Priyanka (6).jpg',
     name: 'Dr. Saumen Chakraborty',
@@ -177,30 +167,6 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
     ],
   },
   {
-    id: 'sethurathnam-ravi',
-    image: 'sethurathnam-ravi.webp',
-    name: 'Dr. Sethurathnam Ravi',
-    role: 'Independent Director',
-    profile: [
-      'Dr. Sethurathnam Ravi has a doctorate in finance and is a practising Chartered Accountant, having over 36 years of experience. He holds a diploma in Information Systems Audit (DISA) and is an Associate Member of the Association of Certified Fraud Examiners (CFE), USA. He is also registered as an Insolvency Resolution Professional. He is the Founder of Ravi Rajan & Co. LLP, a chartered accountancy firm specialising in Forensic and Insolvency assignments, Finance & Management, Turnaround Strategies, Business Valuations, Brand and Share Valuation, Assurance, Audit and Taxation. Dr. Ravi is Chairman of Tourism Finance Corporation of India Limited, Spacenet Enterprises India Limited and 360 One Asset Management Limited. He also serves on the Boards of Aditya Birla Health Insurance Company Limited, Aditya Birla ARC Limited, Aditya Birla Money Limited, PCBL Chemicals Limited, Usha Martin Limited, BillMart Fintech Limited, Xander Advisors India Private. Limited., Usha Martin UK Limited. and S Ravi Financial Management Services Private Limited. He has served as the Chairman and Director of BSE Ltd and Chairman and Director of UTI Trustee Company Private Limited.',
-      'Dr. Ravi was the Jury Chair for ICAI’s Awards for Excellence in Financial Reporting 2023-24, was a Special Invitee to ICAI’s Strategy Perspective Planning and Monitoring Committee (SPPMC), he was a member of SEBI’s Takeover Panel as well as its Mutual Fund Advisory Committee. He was also a Member of the Working Group formed by the Reserve Bank of India for the preparation of the Draft Government Securities Regulations within the Framework of the Government Securities Bill 2004. Over the span of his career, Dr. Ravi has served on the Boards of more than 45 Companies across various sectors. He is regularly invited by educational institutions and regulatory bodies to give talks, panel discussions, etc.',
-    ],
-    directorships: [
-      'Aditya Birla ARC Limited, Independent Director',
-      'Aditya Birla Health Insurance Company Limited, Independent Director',
-      'Aditya Birla Money Limited, Independent Director',
-      'Bill Mart Fintech Private Limited, Independent Director',
-      '360 One Asset Management Limited, Non-Executive Director',
-      'PCBL Chemicals Limited, Independent Director',
-      'S Ravi Financial Management Services Private. Limited, Promoter Director',
-      'Spacenet Enterprises India Limited, Non-Executive Director',
-      'Tourism Finance Corporation of India Limited (TFCIL), Non-Executive Director',
-      'Usha Martin Limited, Independent Director',
-      'Usha Martin UK Limited, United Kingdom, Independent Director',
-      'Xander Advisors India Private Limited, Independent Director',
-    ],
-  },
-  {
     id: 'rajiv-kakodkar',
     image: 'Rajiv.jpg',
     name: 'Mr. Rajiv Pritidas Kakodkar',
@@ -215,6 +181,31 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
       'Daiwat Chemicals (India), Founder & Managing Director',
       'Sudaiwa (UAE, Singapore), Founder & Managing Partner',
       'Matal (Singapore), Managing Director',
+    ],
+  },
+  {
+    id: 'sethurathnam-ravi',
+    image: 'DSC05854.jpg',
+    name: 'Dr. Sethurathnam Ravi',
+    role: 'Independent Director',
+    profile: [
+      'Dr. Sethurathnam Ravi has a doctorate in finance and is a practising Chartered Accountant, having over 36 years of experience. He holds a diploma in Information Systems Audit (DISA) and is an Associate Member of the Association of Certified Fraud Examiners (CFE), USA. He is also registered as an Insolvency Resolution Professional. He is the Founder of Ravi Rajan & Co. LLP, a chartered accountancy firm specialising in Forensic and Insolvency assignments, Finance & Management, Turnaround Strategies, Business Valuations, Brand and Share Valuation, Assurance, Audit and Taxation. Dr. Ravi is Chairman of Tourism Finance Corporation of India Limited and 360 One Asset Management Limited.',
+      'He also serves on the Boards of Aditya Birla Health Insurance Company Limited, Aditya Birla ARC Limited, Aditya Birla Money Limited, PCBL Chemicals Limited, Usha Martin Limited, BillMart Fintech Limited, Xander Advisors India Private. Limited., Usha Martin UK Limited. and S Ravi Financial Management Services Private Limited. He has served as the Chairman and Director of BSE Ltd and Chairman and Director of UTI Trustee Company Private Limited.',
+      'Dr. Ravi was the Jury Chair for ICAI’s Awards for Excellence in Financial Reporting 2023-24 and 2024-25, was a Special Invitee to ICAI’s Strategy Perspective Planning and Monitoring Committee (SPPMC), he was a member of SEBI’s Takeover Panel as well as its Mutual Fund Advisory Committee. He was also a Member of the Working Group formed by the Reserve Bank of India for the preparation of the Draft Government Securities Regulations within the Framework of the Government Securities Bill 2004. Over the span of his career, Dr. Ravi has served on the Boards of more than 45 Companies across various sectors. He is regularly invited by educational institutions and regulatory bodies to give talks, panel discussions, etc.',
+    ],
+    directorships: [
+      'Aditya Birla ARC Limited, Independent Director',
+      'Aditya Birla Health Insurance Company Limited, Independent Director',
+      'Aditya Birla Money Limited, Independent Director',
+      'Bill Mart Fintech Private Limited, Independent Director',
+      '360 One Asset Management Limited, Non-Executive Director',
+      'PCBL Chemicals Limited, Independent Director',
+      'S Ravi Financial Management Services Private. Limited, Promoter Director',
+      'String Metaverse Limited, Non- Executive Director',
+      'Tourism Finance Corporation of India Limited (TFCIL), Non-Executive Director',
+      'Usha Martin Limited, Independent Director',
+      'Usha Martin UK Limited, United Kingdom, Independent Director',
+      'Xander Advisors India Private Limited, Independent Director',
     ],
   },
 ];
@@ -249,7 +240,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'uma-devi',
-    image: '6V8A5131.JPG (1).jpeg',
+    image: '6V8A5131.JPG (1).png',
     name: 'Mrs. Uma Devi Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -274,7 +265,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'priyanka',
-    image: 'Priyanka (1).jpeg',
+    image: 'Priyanka (1).jpg',
     name: 'Ms. Priyanka Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -328,7 +319,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'vinodkumar-parur',
-    image: 'Vinod Parur.jpeg',
+    image: 'Vinod Parur.png',
     name: 'Mr. Vinodkumar Parur',
     role: 'Chief Human Resources Officer',
     profile: [
@@ -356,7 +347,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'sanjay-kumar',
-    image: 'Sanjay Kumar.jpg',
+    image: 'Sanjay Kumar.png',
     name: 'Mr. Sanjay Kumar',
     role: 'Chief Executive Officer, Senn Tides India Private Limited',
     profile: [
@@ -392,16 +383,6 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
     profile: [
       'Dr. Kapoor has a distinguished academic background with a Ph.D. in Biochemistry from the University of Lancaster, England, a B.S. in Biochemistry from the University of Essex, England, and an MBA from Suffolk University, Boston. His expertise spans Quality Operations (QA/QC) including aseptic and non-aseptic processes, Technology Transfer, Validation, Clinical Quality Assurance and GAP analysis. He has successfully managed quality operations for contract manufacturing, finished products, and APIs, collaborating effectively with Manufacturing, Regulatory Affairs, and R&D.',
       'His achievements include implementing compliance programs aligned with cGXP standards, overseeing third-party vendors, and managing regulatory submissions while hosting successful inspections by global agencies such as FDA, ANVISA, TGA, Health Canada, Japan Health and MHRA. Additionally, his experience encompasses audits across commercial manufacturing, clinical trials, and CRO operations. He has over 35 years of experience across leading organizations such as P&G, Becton Dickinson, Wyeth, Takeda, Genzyme, Sun Pharma, Jubilant. Dr. Rajesh Kapoor joined Granules Pharmaceuticals, Inc., a wholly owned foreign subsidiary of the Company in 2022 as Head of Quality for North America. In his role as Global Head of Quality, Dr. Kapoor oversees quality across all sites of Granules globally and harmonises systems and practices.',
-    ],
-  },
-  {
-    id: 'tvsk-vittal',
-    image: 'tvsk-vittal.webp',
-    name: 'Dr. TVSK Vittal',
-    role: 'Senior Vice President & Head – API R&D',
-    profile: [
-      'Dr. Vittal has an MSc from University of Hyderabad and a PhD in Synthetic Organic Chemistry from the Osmania University, Hyderabad. He has also done his four years Post-Doctoral at IICT, Hyderabad.',
-      'He has over 30 years of experience in Academics and Pharmaceutical Industry in Synthetic Organic Chemistry, Process Chemistry and Analytical Chemistry. He has expertise in Generics API Development as well as NCE/Chemical Development for CRAMS/ CDMO business. He has filed more than 40 US DMFs and has various Publications and patents to his credit. Dr. Vittal has earlier worked with organizations such as Solara, Strides Shasun, Aurobindo, Sai Life & Dr. Reddy’s.',
     ],
   },
 ];

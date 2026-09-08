@@ -49,7 +49,6 @@ export const SUBSIDIARIES: SubsidiaryCard[] = [
       'Hyderabad facility expanding finished dosage capacity, adding significant annual volume through advanced manufacturing excellence.',
     image: 'gls/hero-banner.webp',
     href: '/company/granules-life-sciences',
-    logoBadge: 'company/nav-logo.webp',
   },
   {
     fullName: 'GRANULES CZRO PRIVATE LIMITED (G-CZRO), INDIA',
@@ -58,7 +57,6 @@ export const SUBSIDIARIES: SubsidiaryCard[] = [
       'Facility advancing sustainable manufacturing, producing green chemicals including Dicyandiamide (DCDA) with pilot operations now in Visakhapatnam.',
     image: 'czro/hero-banner.webp',
     href: '/company/granules-czro',
-    logoBadge: 'company/nav-logo.webp',
   },
   {
     fullName: 'SENN TIDES PRIVATE LIMITED (STPL), SWITZERLAND & INDIA',
@@ -67,7 +65,6 @@ export const SUBSIDIARIES: SubsidiaryCard[] = [
       'Acquired Senn Chemicals, enabling custom peptide development and commercial manufacturing for metabolic, oncology, and specialty therapies',
     image: 'ascelis/hero-banner.webp',
     href: '/company/senn-tides',
-    logoBadge: 'company/nav-logo.webp',
   },
 ];
 

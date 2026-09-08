@@ -146,7 +146,6 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
         { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
         { label: 'Granules Pharmaceuticals Inc', href: 'https://www.granulespharma.com/' },
       ],
-      image: 'company/values-bg-2.webp',
     },
     Company: {
       sections: [
@@ -163,7 +162,6 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
         },
       ],
       links: [],
-      image: 'company/values-bg-2.webp',
     },
     Business: {
       sections: [],
@@ -174,7 +172,6 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
         { label: 'Quality & Compliance', href: '/business/quality-compliance' },
         { label: 'Facilities', href: '/company/facilities' },
       ],
-      image: 'company/gpi-facility.webp',
     },
     Careers: {
       sections: [
@@ -187,7 +184,6 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
         },
       ],
       links: [],
-      image: 'company/career-bg.webp',
     },
   };
 
@@ -345,21 +341,6 @@ function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
                       </div>
                     )}
                   </div>
-                  {sub.imageHref ? (
-                    <a
-                      href={sub.imageHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="home-nav-submenu-thumb"
-                      title="View Profile"
-                    >
-                      <img src={`${A}${sub.image}`} alt="" loading="lazy" decoding="async" />
-                    </a>
-                  ) : (
-                    <div className="home-nav-submenu-thumb">
-                      <img src={`${A}${sub.image}`} alt="" loading="lazy" decoding="async" />
-                    </div>
-                  )}
                 </div>
               )}
             </div>
@@ -576,12 +557,12 @@ function About() {
       </div>
       <div className="about-stats-wrap">
         <div className="stats">
-          <article className="stat"><CountUp to={80} suffix="+" /><span>Countries served</span></article>
-          <article className="stat"><CountUp to={40} suffix="+" /><span>Years of excellence</span></article>
-          <article className="stat"><CountUp to={10} /><span>Manufacturing facilities<br />across India, US & Europe</span></article>
-          <article className="stat"><CountUp to={6} /><span>R&D centers of excellence</span></article>
-          <article className="stat"><CountUp to={150} suffix="+" /><span>Dossiers</span></article>
-          <article className="stat"><CountUp to={100} suffix="+" /><span>DMFs</span></article>
+          <article className="stat"><CountUp to={80} suffix="+" /><span>COUNTRIES SERVED</span></article>
+          <article className="stat"><CountUp to={40} suffix="+" /><span>YEARS OF EXCELLENCE</span></article>
+          <article className="stat"><CountUp to={10} /><span>MANUFACTURING FACILITIES<br />ACROSS INDIA, US &amp; EUROPE</span></article>
+          <article className="stat"><CountUp to={6} /><span>R&amp;D CENTERS OF EXCELLENCE</span></article>
+          <article className="stat"><CountUp to={150} suffix="+" /><span>DOSSIERS</span></article>
+          <article className="stat"><CountUp to={100} suffix="+" /><span>DMFS</span></article>
         </div>
       </div>
     </section>
@@ -1088,7 +1069,7 @@ function Media() {
       <section className="section shell ruled media" id="media">
         <div className="split-heading">
           <div>
-            <Tag>Newsroom</Tag>
+            <Tag>Media</Tag>
             <h2>What’s new at Granules</h2>
           </div>
           <Button href="/media">View all &rarr;</Button>

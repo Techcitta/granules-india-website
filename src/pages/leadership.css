@@ -16,6 +16,34 @@
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   margin: clamp(60px, 8vw, 118px) auto 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font: 700 13px/1 'Manrope', sans-serif;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.ld-main-breadcrumb a {
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.ld-main-breadcrumb a:hover {
+  color: #0061f8;
+}
+
+.ld-main-breadcrumb .sep {
+  color: #94a3b8;
+  font-size: 11px;
+  margin: 0 1px;
+}
+
+.ld-main-breadcrumb .current {
+  color: #0061f8 !important;
+  font-weight: 700;
 }
 
 .ld-hero {
@@ -38,8 +66,9 @@
 
 .ld-main-desc {
   margin: 0;
-  max-width: 960px;
-  font: 500 clamp(17px, 1.35vw, 22px)/1.45 'Manrope', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  font: 500 clamp(17px, 1.35vw, 26px)/1.45 'Manrope', sans-serif;
   color: #4b5563;
   letter-spacing: 0.1px;
 }
@@ -97,14 +126,14 @@
   background: linear-gradient(90deg, #66cef5 0%, #38b34a 45%, #0061f8 100%);
 }
 
-/* Leader Cards Grid (3 cards per row) */
+/* Leader Cards Grid (4 cards per row for smaller, sleeker boxes) */
 .ld-grid {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   margin: clamp(40px, 6vw, 64px) auto 0 !important;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px 28px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px 22px;
 }
 
 .ld-card {
@@ -112,7 +141,7 @@
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -124,39 +153,201 @@
 
 .ld-card:hover,
 .ld-card:focus-visible {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
 }
 
 .ld-photo {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 36px;
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 20px;
   overflow: hidden;
-  background: #f4f6fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #f1f5f9;
   position: relative;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  padding: 0;
+  display: block;
 }
 
 .ld-card:hover .ld-photo,
 .ld-card:focus-visible .ld-photo {
-  box-shadow: 0 16px 36px rgba(0, 97, 248, 0.16);
+  box-shadow: 0 12px 30px rgba(0, 97, 248, 0.15);
 }
 
 .ld-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 12%;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 .ld-card:hover .ld-photo img {
-  transform: scale(1.05);
+  transform: scale(1.03);
+}
+
+/* Individual passport-style headshot calibration & proportion alignments */
+.ld-photo--sankar-rao img,
+.ld-profile-img--sankar-rao img {
+  object-fit: cover !important;
+  object-position: center 4.5% !important;
+  transform: scale(2.25);
+  transform-origin: center 6%;
+}
+
+.ld-card:hover .ld-photo--sankar-rao img {
+  transform: scale(2.32) !important;
+}
+
+.ld-photo--uma-devi img,
+.ld-profile-img--uma-devi img {
+  object-fit: cover !important;
+  object-position: center 8% !important;
+  transform: scale(1.18);
+  transform-origin: center 10%;
+}
+
+.ld-card:hover .ld-photo--uma-devi img {
+  transform: scale(1.23) !important;
+}
+
+.ld-photo--saumen-chakraborty img,
+.ld-profile-img--saumen-chakraborty img {
+  object-fit: cover !important;
+  object-position: center 5% !important;
+  transform: scale(1.32);
+  transform-origin: center 7%;
+}
+
+.ld-card:hover .ld-photo--saumen-chakraborty img {
+  transform: scale(1.37) !important;
+}
+
+.ld-photo--kapil-mehan img,
+.ld-profile-img--kapil-mehan img {
+  object-fit: cover !important;
+  object-position: center 5% !important;
+  transform: scale(1.32);
+  transform-origin: center 7%;
+}
+
+.ld-card:hover .ld-photo--kapil-mehan img {
+  transform: scale(1.37) !important;
+}
+
+.ld-photo--sethurathnam-ravi img,
+.ld-profile-img--sethurathnam-ravi img {
+  object-fit: cover !important;
+  object-position: center 5% !important;
+  transform: scale(1.32);
+  transform-origin: center 7%;
+}
+
+.ld-card:hover .ld-photo--sethurathnam-ravi img {
+  transform: scale(1.37) !important;
+}
+
+.ld-photo--pv-srinivas img,
+.ld-profile-img--pv-srinivas img {
+  object-fit: cover !important;
+  object-position: center 5% !important;
+  transform: scale(1.32);
+  transform-origin: center 7%;
+}
+
+.ld-card:hover .ld-photo--pv-srinivas img {
+  transform: scale(1.37) !important;
+}
+
+.ld-photo--harsha img,
+.ld-profile-img--harsha img {
+  object-fit: cover !important;
+  object-position: center 6% !important;
+  transform: scale(1.18);
+  transform-origin: center 8%;
+}
+
+.ld-card:hover .ld-photo--harsha img {
+  transform: scale(1.23) !important;
+}
+
+.ld-photo--priyanka img,
+.ld-profile-img--priyanka img {
+  object-fit: cover !important;
+  object-position: center 8% !important;
+}
+
+.ld-photo--krishna-prasad img,
+.ld-profile-img--krishna-prasad img {
+  object-fit: cover !important;
+  object-position: center 10% !important;
+}
+
+.ld-photo--arun-sawhney img,
+.ld-profile-img--arun-sawhney img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--sucharita-palepu img,
+.ld-profile-img--sucharita-palepu img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--rajiv-kakodkar img,
+.ld-profile-img--rajiv-kakodkar img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--mukesh-surana img,
+.ld-profile-img--mukesh-surana img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--vinodkumar-parur img,
+.ld-profile-img--vinodkumar-parur img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--ramraj-rangarajalu img,
+.ld-profile-img--ramraj-rangarajalu img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--manikandan-ramalingam img,
+.ld-profile-img--manikandan-ramalingam img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--sanjay-kumar img,
+.ld-profile-img--sanjay-kumar img {
+  object-fit: cover !important;
+  object-position: center 12% !important;
+}
+
+.ld-photo--baskaran-pn img,
+.ld-profile-img--baskaran-pn img {
+  object-fit: cover !important;
+  object-position: center 14% !important;
+}
+
+.ld-photo--vijay-raghavan img,
+.ld-profile-img--vijay-raghavan img {
+  object-fit: cover !important;
+  object-position: center 8% !important;
+}
+
+.ld-photo--rajesh-kapoor img,
+.ld-profile-img--rajesh-kapoor img {
+  object-fit: cover !important;
+  object-position: center 14% !important;
 }
 
 .ld-photo-badge {
@@ -194,7 +385,7 @@
 
 .ld-name {
   margin: 0;
-  font: 700 24px/1.25 'Manrope', sans-serif;
+  font: 700 clamp(18px, 1.3vw, 22px)/1.25 'Manrope', sans-serif;
   color: #0061f8;
   transition: color 0.2s ease;
 }
@@ -204,10 +395,10 @@
 }
 
 .ld-role {
-  margin: 4px 0 0;
-  font: 600 15px/1.35 'Manrope', sans-serif;
+  margin: 2px 0 0;
+  font: 600 clamp(12px, 0.95vw, 13.5px)/1.35 'Manrope', sans-serif;
   color: #6a6a6a;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 
@@ -222,16 +413,40 @@
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   margin: clamp(60px, 8vw, 118px) auto 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font: 700 13px/1 'Manrope', sans-serif;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.ld-profile-breadcrumb a {
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.ld-profile-breadcrumb a:hover {
+  color: #0061f8;
+}
+
+.ld-profile-breadcrumb .sep {
+  color: #94a3b8;
+  font-size: 11px;
+  margin: 0 1px;
 }
 
 .ld-breadcrumb-btn {
   background: none;
   border: none;
   padding: 0;
-  color: inherit;
+  color: #64748b;
   font: inherit;
   cursor: pointer;
   text-transform: uppercase;
+  letter-spacing: inherit;
   transition: color 0.2s ease;
 }
 
@@ -239,77 +454,99 @@
   color: #0061f8;
 }
 
-.ld-profile-hero {
+.ld-profile-breadcrumb .current {
+  color: #0061f8 !important;
+  font-weight: 700;
+}
+
+/* Banner Card with Left Image & Right Text Content */
+.ld-profile-banner {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: 32px auto 0 !important;
+  margin: 28px auto 0 !important;
+  background: #edf5ff;
+  border: 1px solid rgba(0, 97, 248, 0.08);
+  border-radius: clamp(24px, 3vw, 36px);
+  padding: clamp(24px, 3.5vw, 44px);
+  display: grid;
+  grid-template-columns: clamp(160px, 16vw, 210px) 1fr;
+  gap: clamp(28px, 3.5vw, 48px);
+  align-items: start;
+  box-shadow: 0 8px 30px rgba(0, 97, 248, 0.05);
+}
+
+.ld-profile-banner-left {
+  position: sticky;
+  top: 100px;
   display: flex;
-  justify-content: flex-start;
-}
-
-.ld-profile-photo-card {
+  flex-direction: column;
   width: 100%;
-  max-width: 380px;
-  aspect-ratio: 4 / 5;
-  border-radius: 36px;
-  background: #f4f6fa;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  max-width: 210px;
 }
 
-.ld-profile-photo-card img {
+.ld-profile-img-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f1f5f9;
+  box-shadow: 0 6px 24px rgba(0, 97, 248, 0.08);
+  border: 1px solid rgba(0, 97, 248, 0.08);
+  display: block;
+  padding: 0;
+}
+
+.ld-profile-img-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 12%;
   display: block;
 }
 
-.ld-profile-details {
-  width: min(85%, 1632px) !important;
-  max-width: 1632px !important;
-  margin: clamp(36px, 4.5vw, 56px) auto 0 !important;
+.ld-profile-banner-right {
+  display: flex;
+  flex-direction: column;
 }
 
 .ld-profile-name {
   margin: 0;
-  font: 700 clamp(32px, 3.8vw, 48px)/1.15 'Manrope', sans-serif;
+  font: 700 clamp(24px, 2.6vw, 36px)/1.2 'Manrope', sans-serif;
   color: #0061f8;
   letter-spacing: -0.5px;
 }
 
 .ld-profile-role {
   margin: 8px 0 0;
-  font: 600 clamp(13px, 1.2vw, 15px)/1.4 'Manrope', sans-serif;
-  color: #6a6a6a;
+  font: 700 clamp(12.5px, 1vw, 14.5px)/1.4 'Manrope', sans-serif;
+  color: #475569;
   letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
 .ld-profile-divider {
   height: 1px;
-  background: #e5e7eb;
-  margin: 24px 0 32px;
+  background: rgba(0, 97, 248, 0.12);
+  margin: 16px 0 22px;
   width: 100%;
 }
 
 .ld-profile-body {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 100%;
+  gap: 16px;
+  width: 100%;
 }
 
 .ld-profile-paragraph {
   margin: 0;
-  font: 400 clamp(15px, 1.15vw, 17px)/1.7 'Manrope', sans-serif;
-  color: #374151;
-  letter-spacing: 0.1px;
+  font: 400 clamp(14px, 1.05vw, 15.5px)/1.68 'Manrope', sans-serif;
+  color: #334155;
+  letter-spacing: 0.05px;
 }
 
 .ld-profile-directorships {
-  margin-top: 16px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -317,8 +554,8 @@
 
 .ld-profile-directorships-title {
   margin: 0;
-  font: 500 clamp(15px, 1.15vw, 17px)/1.6 'Manrope', sans-serif;
-  color: #374151;
+  font: 600 15px/1.6 'Manrope', sans-serif;
+  color: #1e293b;
 }
 
 .ld-profile-directorships-list {
@@ -333,30 +570,42 @@
 .ld-profile-directorships-list li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font: 400 clamp(14px, 1.1vw, 16px)/1.5 'Manrope', sans-serif;
-  color: #374151;
+  gap: 12px;
+  font: 400 14px/1.5 'Manrope', sans-serif;
+  color: #334155;
 }
 
-.ld-profile-bullet {
-  color: #0061f8;
+.ld-profile-bullet-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.ld-profile-bullet-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.ld-profile-directorship-text {
+  flex: 1;
 }
 
 .ld-back-btn {
   background: #0061f8;
   color: #ffffff;
-  font: 700 14px/1 'Manrope', sans-serif;
+  font: 700 13px/1 'Manrope', sans-serif;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  padding: 14px 40px;
-  border-radius: 50px;
+  padding: 12px 32px;
+  border-radius: 9999px;
   border: none;
   cursor: pointer;
-  margin-top: 12px;
+  margin-top: 14px;
+  width: fit-content;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -370,38 +619,19 @@
   box-shadow: 0 6px 18px rgba(0, 97, 248, 0.35);
 }
 
-/* Profile page nav between members */
-.ld-profile-nav-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-}
+@media (max-width: 960px) {
+  .ld-profile-banner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 24px 20px;
+  }
 
-.ld-profile-nav-btn {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  padding: 10px 24px;
-  border-radius: 50px;
-  font: 600 14px/1 'Manrope', sans-serif;
-  color: #0061f8;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.ld-profile-nav-btn:hover {
-  background: #0061f8;
-  color: #ffffff;
-  border-color: #0061f8;
-  transform: translateY(-1px);
-}
-
-/* Override bullet style for profile view */
-.ld-profile-directorships-list li .ld-profile-bullet {
-  font-size: 8px;
-  color: #0061f8;
-  flex-shrink: 0;
-  margin-top: 3px;
+  .ld-profile-banner-left {
+    position: static;
+    max-width: 280px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 /* ==========================================================================
@@ -497,7 +727,15 @@
   box-shadow: 0 6px 18px rgba(0, 97, 248, 0.35);
 }
 
+@media (max-width: 1200px) {
+  .ld-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 20px;
+  }
+}
+
 @media (max-width: 1100px) {
+
   .ld-main-breadcrumb,
   .ld-profile-breadcrumb,
   .ld-hero,
@@ -515,11 +753,12 @@
 @media (max-width: 860px) {
   .ld-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 36px 20px;
+    gap: 28px 18px;
   }
 }
 
 @media (max-width: 600px) {
+
   .ld-main-breadcrumb,
   .ld-profile-breadcrumb,
   .ld-hero,
@@ -532,20 +771,30 @@
     width: 90% !important;
     max-width: 90% !important;
   }
+
   .ld-grid {
     grid-template-columns: 1fr;
-    gap: 32px 0;
+    gap: 28px 0;
+    max-width: 360px;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
+
   .ld-photo {
-    height: 380px;
+    width: 100%;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
   }
+
   .ld-tabs-bar {
     grid-template-columns: 1fr 1fr;
   }
+
   .ld-tab-nav-btn {
     font-size: 13px;
     padding: 12px 8px 16px;
   }
+
   .ld-cta {
     flex-direction: column;
     align-items: flex-start;
@@ -571,8 +820,13 @@
 }
 
 @keyframes ldFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .ld-modal-dialog {
@@ -594,6 +848,7 @@
     opacity: 0;
     transform: translateY(20px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -694,20 +949,24 @@
 
 .ld-modal-avatar {
   width: 120px;
-  height: 150px;
-  aspect-ratio: 4 / 5;
+  height: 120px;
+  aspect-ratio: 1 / 1;
   flex-shrink: 0;
   border-radius: 20px;
-  background: #f4f6fa;
+  background: #f4f8fe;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 6px 6px 0;
 }
 
 .ld-modal-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: bottom center;
   display: block;
 }
 
@@ -792,11 +1051,12 @@
     flex-direction: column;
     text-align: center;
   }
+
   .ld-modal-content {
     padding: 20px 18px 24px;
   }
+
   .ld-modal-directorships-list {
     grid-template-columns: 1fr;
   }
 }
-

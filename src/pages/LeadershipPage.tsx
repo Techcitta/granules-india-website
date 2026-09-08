@@ -75,10 +75,6 @@ export default function LeadershipPage() {
 
   // ---- PROFILE VIEW ----
   if (selectedMember) {
-    const currentIndex = activeMembers.findIndex((m) => m.id === selectedMember.id);
-    const hasPrev = currentIndex > 0;
-    const hasNext = currentIndex >= 0 && currentIndex < activeMembers.length - 1;
-
     const pronoun =
       selectedMember.name.startsWith('Mrs.') || selectedMember.name.startsWith('Ms.')
         ? 'Her'
@@ -92,87 +88,72 @@ export default function LeadershipPage() {
           {/* Breadcrumb */}
           <p className="cp-breadcrumb ld-profile-breadcrumb">
             <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>HOME</Link>
-            <span className="sep">›</span>
-            <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>ABOUT US</Link>
-            <span className="sep">›</span>
+            <span className="sep">&gt;</span>
+            <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>About us</Link>
+            <span className="sep">&gt;</span>
             <button type="button" className="ld-breadcrumb-btn" onClick={handleBack}>LEADERSHIP</button>
-            <span className="sep">›</span>
+            <span className="sep">&gt;</span>
             <span className="current" style={{ color: '#0061f8', fontWeight: 700 }}>
               {selectedMember.name.toUpperCase()}
             </span>
           </p>
 
-          {/* Photo */}
-          <div className="ld-profile-hero">
-            <div className="ld-profile-photo-card">
-              <img
-                src={`${L}${encodeURIComponent(selectedMember.image).replace(/%2F/g, '/')}`}
-                alt={selectedMember.name}
-                loading="lazy"
-                decoding="async"
-                onError={(e) => handleImageError(e, selectedMember.name)}
-              />
-            </div>
-          </div>
-
-          {/* Name + Role + Bio */}
-          <div className="ld-profile-details">
-            <h1 className="ld-profile-name">{selectedMember.name}</h1>
-            <p className="ld-profile-role">{selectedMember.role}</p>
-            <div className="ld-profile-divider" />
-
-            <div className="ld-profile-body">
-              {selectedMember.profile && selectedMember.profile.length > 0 ? (
-                selectedMember.profile.map((paragraph, idx) => (
-                  <p className="ld-profile-paragraph" key={idx}>{paragraph}</p>
-                ))
-              ) : (
-                <p className="ld-profile-paragraph">
-                  {selectedMember.name} serves as {selectedMember.role} at Granules India Limited.
-                </p>
-              )}
-
-              {selectedMember.directorships && selectedMember.directorships.length > 0 && (
-                <div className="ld-profile-directorships">
-                  <p className="ld-profile-directorships-title">
-                    {pronoun} directorships and other full-time positions in bodies corporate are as follows:
-                  </p>
-                  <ul className="ld-profile-directorships-list">
-                    {selectedMember.directorships.map((dir, idx) => (
-                      <li key={idx}>
-                        <span className="ld-profile-bullet">◆</span>
-                        <span>{dir}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Navigation between members */}
-              <div className="ld-profile-nav-row">
-                {hasPrev && (
-                  <button
-                    type="button"
-                    className="ld-profile-nav-btn"
-                    onClick={() => setSelectedMember(activeMembers[currentIndex - 1])}
-                  >
-                    ‹ Previous
-                  </button>
-                )}
-                {hasNext && (
-                  <button
-                    type="button"
-                    className="ld-profile-nav-btn"
-                    onClick={() => setSelectedMember(activeMembers[currentIndex + 1])}
-                  >
-                    Next ›
-                  </button>
-                )}
+          {/* Photo Banner with Image on Left & Text Content on Banner */}
+          <div className="ld-profile-banner">
+            <div className="ld-profile-banner-left">
+              <div className={`ld-profile-img-frame ld-profile-img--${selectedMember.id}`}>
+                <img
+                  src={`${L}${encodeURIComponent(selectedMember.image).replace(/%2F/g, '/')}`}
+                  alt={selectedMember.name}
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => handleImageError(e, selectedMember.name)}
+                />
               </div>
+            </div>
 
-              <button type="button" className="ld-back-btn" onClick={handleBack}>
-                Back
-              </button>
+            <div className="ld-profile-banner-right">
+              <h1 className="ld-profile-name">{selectedMember.name}</h1>
+              <p className="ld-profile-role">{selectedMember.role.toUpperCase()}</p>
+              <div className="ld-profile-divider" />
+
+              <div className="ld-profile-body">
+                {selectedMember.profile && selectedMember.profile.length > 0 ? (
+                  selectedMember.profile.map((paragraph, idx) => (
+                    <p className="ld-profile-paragraph" key={idx}>{paragraph}</p>
+                  ))
+                ) : (
+                  <p className="ld-profile-paragraph">
+                    {selectedMember.name} serves as {selectedMember.role} at Granules India Limited.
+                  </p>
+                )}
+
+                {selectedMember.directorships && selectedMember.directorships.length > 0 && (
+                  <div className="ld-profile-directorships">
+                    <p className="ld-profile-directorships-title">
+                      {pronoun} directorships and other full-time positions in bodies corporate are as follows :
+                    </p>
+                    <ul className="ld-profile-directorships-list">
+                      {selectedMember.directorships.map((dir, idx) => (
+                        <li key={idx}>
+                          <span className="ld-profile-bullet-icon">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="18" height="18" rx="4" fill="#0061F8" />
+                              <circle cx="9" cy="9" r="3.5" stroke="white" strokeWidth="1.5" />
+                              <circle cx="9" cy="9" r="1.5" fill="white" />
+                            </svg>
+                          </span>
+                          <span className="ld-profile-directorship-text">{dir}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <button type="button" className="ld-back-btn" onClick={handleBack}>
+                  BACK
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -202,16 +183,16 @@ export default function LeadershipPage() {
       <div className="ld-main-view">
         <p className="cp-breadcrumb ld-main-breadcrumb">
           <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>HOME</Link>
-          <span className="sep">›</span>
-          <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>ABOUT US</Link>
-          <span className="sep">›</span>
+          <span className="sep">&gt;</span>
+          <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>About us</Link>
+          <span className="sep">&gt;</span>
           <span className="current">LEADERSHIP</span>
         </p>
 
         <div className="ld-hero">
           <h1 className="ld-main-title">
-            <span>Making Granules</span>
-            <span>Future-Ready</span>
+            <span>Making Granules Future-Ready</span>
+            <span></span>
           </h1>
           <p className="ld-main-desc">
             Granules India is led by a team of seasoned professionals of the pharmaceutical industry. Each leader
@@ -262,7 +243,7 @@ export default function LeadershipPage() {
               }}
               aria-label={`View profile for ${member.name}`}
             >
-              <div className="ld-photo">
+              <div className={`ld-photo ld-photo--${member.id}`}>
                 <img
                   src={`${L}${encodeURIComponent(member.image).replace(/%2F/g, '/')}`}
                   alt={member.name}

@@ -35,11 +35,11 @@ const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
   },
   {
     index: '03',
-    name: 'Granules Pharmaceuticals Inc',
+    name: 'Granules Pharmaceuticals Inc.',
     image: '/assets/company/gpi-facility.webp',
     description:
-      'Strengthening patient access in North America through direct commercial presence and manufacturing base',
-    ctaText: 'Learn More',
+      "R&D and manufacturing facility producing oral solid dosage forms and drives commercialisation of products manufactured at Granules' India facility.",
+    ctaText: 'Visit Website',
     ctaHref: 'https://www.granulespharma.com/',
     isExternal: true,
   },
@@ -88,17 +88,19 @@ export default function GlobalSubsidiariesPage() {
     };
   }, []);
 
-  const renderCard = (sub: SubsidiaryItem) => (
-    <article className="global-sub-card" key={sub.name}>
-      <div className="global-sub-card-media">
-        <img
-          src={sub.image}
-          alt={`${sub.name} facility`}
-          loading="lazy"
-          decoding="async"
-        />
-        <span className="global-sub-card-index">{sub.index}</span>
-      </div>
+  const renderCard = (sub?: SubsidiaryItem) => {
+    if (!sub) return null;
+    return (
+      <article className="global-sub-card" key={sub.name}>
+        <div className="global-sub-card-media">
+          <img
+            src={sub.image}
+            alt={`${sub.name} facility`}
+            loading="lazy"
+            decoding="async"
+          />
+          <span className="global-sub-card-index">{sub.index}</span>
+        </div>
 
       <div className="global-sub-card-content">
         <h2 className="global-sub-card-title">{sub.name}</h2>
@@ -154,7 +156,8 @@ export default function GlobalSubsidiariesPage() {
         </div>
       </div>
     </article>
-  );
+    );
+  };
 
   return (
     <div className="cp">
@@ -170,7 +173,7 @@ export default function GlobalSubsidiariesPage() {
       </p>
 
       {/* Page Title */}
-      <h1 className="cp-page-title">Global Subsidiaries</h1>
+      <h1 className="cp-page-title"></h1>
 
       {/* Hero Visual Banner */}
       <div className="cp-hero-banner global-sub-hero-banner">
