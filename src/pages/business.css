@@ -1,12 +1,12 @@
-/* Strict 85% sides edge spacing for all business pages */
+/* Strict 85% sides edge spacing for all business pages (capped at 1632px for 1920x1080) */
 
 .cp-page-title,
 .api-page-header,
 .cp-hero-banner,
 .cp-hero-panel,
 .cp-video-banner {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -25,13 +25,13 @@ h3.cp-page-title {
 }
 
 .biz-intro {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: clamp(60px, 8vw, 118px) auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(40px, 6vw, 80px) auto 0 !important;
   display: flex; flex-direction: column; gap: 16px;
 }
 .biz-intro p, .biz-intro span {
-  margin: 0; font: 500 clamp(18px, 2vw, 30px)/1.2 'Manrope', sans-serif;
+  margin: 0; font: 500 clamp(16px, 1.8vw, 26px)/1.35 'Manrope', sans-serif;
   transition: color 0.5s cubic-bezier(0.2, 0, 0.2, 1);
 }
 .biz-intro p { color: var(--n9); }
@@ -41,19 +41,19 @@ h3.cp-page-title {
 .biz-intro.is-scrolled p.muted, .biz-intro.is-scrolled .muted, .biz-intro.is-scrolled p:last-child { color: var(--n9); }
 
 .biz-section-head {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: clamp(60px, 8vw, 90px) auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(48px, 6vw, 80px) auto 0 !important;
   display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;
 }
-.biz-section-head .copy { max-width: 1092px; display: flex; flex-direction: column; gap: 24px; }
-.biz-section-head h2 { margin: 0; font: 500 clamp(28px, 4vw, 50px)/1.1 'Manrope', sans-serif; color: var(--n9); }
-.biz-section-head p { margin: 0; font: 500 22px/1.3 'Manrope', sans-serif; color: var(--n7); letter-spacing: 0.22px; }
+.biz-section-head .copy { max-width: 1092px; display: flex; flex-direction: column; gap: 16px; }
+.biz-section-head h2 { margin: 0; font: 700 clamp(26px, 3.2vw, 44px)/1.15 'Manrope', sans-serif; color: var(--n9); }
+.biz-section-head p { margin: 0; font: 500 clamp(16px, 1.2vw, 20px)/1.4 'Manrope', sans-serif; color: var(--n7); letter-spacing: 0.15px; }
 
 .biz-cta {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: clamp(80px, 10vw, 120px) auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(60px, 8vw, 100px) auto 0 !important;
   border-radius: 40px; padding: clamp(30px, 4vw, 60px);
   position: relative; overflow: hidden;
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
@@ -63,8 +63,8 @@ h3.cp-page-title {
 .biz-cta .overlay { position: absolute; inset: 0; z-index: 0; background: linear-gradient(89deg, rgba(190, 237, 250, 0.9) 40%, rgba(0, 186, 234, 0) 80%); }
 .biz-cta--placeholder { background: linear-gradient(89deg, var(--bg-blue) 0%, #f7fbff 100%); }
 .biz-cta-copy { position: relative; z-index: 1; max-width: 905px; }
-.biz-cta-copy h2 { margin: 0; font: 500 clamp(28px, 4vw, 50px)/1.1 'Manrope', sans-serif; color: var(--blue-2); }
-.biz-cta-copy p { margin: 24px 0 0; font: 500 22px/1.3 'Manrope', sans-serif; color: var(--n9); letter-spacing: 0.22px; }
+.biz-cta-copy h2 { margin: 0; font: 700 clamp(26px, 3.2vw, 44px)/1.15 'Manrope', sans-serif; color: var(--blue-2); }
+.biz-cta-copy p { margin: 16px 0 0; font: 500 clamp(16px, 1.2vw, 20px)/1.4 'Manrope', sans-serif; color: var(--n9); letter-spacing: 0.15px; }
 .biz-cta .cp-cta-btn { position: relative; z-index: 1; }
 
 /* PFI hero tagline overlay (mirrors .czro-hero-scrim/-overlay/-heading in czro.css

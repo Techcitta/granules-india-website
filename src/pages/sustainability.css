@@ -248,7 +248,7 @@
 
 /* Generic stat display: big number + uppercase label */
 .sus-stat { display: flex; flex-direction: column; gap: 10px; }
-.sus-stat-value { margin: 0; font: 400 clamp(48px, 6vw, 90px)/1.2 'Manrope', sans-serif; }
+.sus-stat-value { margin: 0; font: 800 clamp(52px, 6.2vw, 92px)/1.02 'Manrope', sans-serif !important; }
 .sus-stat-label { margin: 0; font: 700 18px/24px 'Manrope', sans-serif; letter-spacing: 0.9px; text-transform: uppercase; }
 
 /* Pillar deep-dive event card (Strategy + ESG) */

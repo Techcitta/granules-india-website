@@ -117,7 +117,7 @@
 }
 .qc-metric-value {
   margin: 0;
-  font: 700 clamp(38px, 4.5vw, 56px)/1.05 'Manrope', sans-serif;
+  font: 800 clamp(40px, 4.5vw, 60px)/1.05 'Manrope', sans-serif !important;
   color: #0061f8;
   letter-spacing: -0.03em;
 }

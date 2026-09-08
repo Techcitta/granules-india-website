@@ -81,13 +81,15 @@ export default function MilestonePage() {
                 top: 'clamp(120px, 15vh, 145px)',
               }}
             >
-              <div className="ms-card-copy">
+              <div className="ms-card-content">
                 {entry.eyebrow && <span className="ms-card-eyebrow">{entry.eyebrow}</span>}
-                <h3 className="ms-card-year">{entry.year}</h3>
+                <div className="ms-card-media">
+                  <img src={`${M}${entry.image}`} alt={`Granules milestone ${entry.year}`} />
+                </div>
                 <p className="ms-card-caption">{entry.caption}</p>
               </div>
-              <div className="ms-card-media">
-                <img src={`${M}${entry.image}`} alt={`Granules milestone ${entry.year}`} />
+              <div className="ms-card-year-wrap">
+                <h3 className="ms-card-year">{entry.year}</h3>
               </div>
             </div>
           );

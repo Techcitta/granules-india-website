@@ -102,7 +102,7 @@
 
 .ov-goal-stat-val {
   margin: 0 0 10px;
-  font: 400 clamp(48px, 5.5vw, 76px)/1 'Manrope', sans-serif;
+  font: 800 clamp(52px, 6vw, 84px)/1 'Manrope', sans-serif !important;
   color: #111827;
   letter-spacing: -2px;
   animation: sus-fade-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
