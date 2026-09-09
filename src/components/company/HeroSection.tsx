@@ -10,7 +10,7 @@ export default function HeroSection() {
         <span className="sep">›</span>
         <span className="current">OVERVIEW</span>
       </p>
-      <h1 className="cp-page-title">Built for Scale. Engineered for Precision. Committed to Global Compliance.</h1>
+      <h1 className="cp-page-title">Built for Scale. Driven by Value.</h1>
       <div className="cp-hero-panel">
         <video
           src="/Video/cover-video.mp4"

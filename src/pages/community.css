@@ -295,22 +295,10 @@
 
 .comm-sustainability[data-photo="skill-development"],
 .comm-sustainability[data-photo="healthcare"],
-.comm-sustainability[data-photo="education"] {
-  background-position: center 65%;
-}
-
-@media (min-width: 993px) {
-  .comm-sustainability[data-photo="environment"]::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    background-image: inherit;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.comm-sustainability[data-photo="education"],
+.comm-sustainability[data-photo="environment"] {
+  background-position: center center;
+  background-size: cover;
 }
 
 /* Neutral shading keeps the photographs' natural colors. */

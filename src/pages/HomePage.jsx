@@ -899,6 +899,7 @@ function Credentials() {
 function Sustainability() {
   const items = [
     {
+      tag: 'Sustainability',
       title: 'Target to achieve Net Zero by 2050',
       body: 'We are committed to science-based decarbonization, with SBTi-validated targets guiding our journey toward Net Zero emissions.',
       icon: 'icon-recycle-leaf.svg',
@@ -906,8 +907,10 @@ function Sustainability() {
       href: '/sustainability/strategy',
       cta: 'View Decarbonisation Strategy',
       bg: `${A}sustainability-net-zero.jpg`,
+      learnMoreHref: '/sustainability',
     },
     {
+      tag: 'Community',
       title: 'Granules CZRO',
       body: 'Our greenfield manufacturing unit leads the way in energy-efficient operations and low-emission processes, redefining what large-scale green pharma looks like.',
       icon: 'icon-windmill-sustain.svg',
@@ -915,64 +918,69 @@ function Sustainability() {
       href: '/company/granules-czro',
       cta: 'Explore Granules CZRO',
       bg: `${A}sustainability.webp`,
+      learnMoreHref: '/community',
     },
   ];
   const [open, setOpen] = useState(0);
-  const currentBg = (open >= 0 && items[open]?.bg) ? items[open].bg : items[0].bg;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setOpen((current) => (current === 0 ? 1 : 0));
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [open]);
+
+  const activeItem = items[open] || items[0];
 
   return (
-    <section className="sustainability" id="sustainability" style={{ backgroundImage: `url(${currentBg})` }}>
+    <section className="sustainability" id="sustainability" style={{ backgroundImage: `url(${activeItem.bg})` }}>
       <div className="sustainability-overlay" />
       <div className="sustainability-copy">
-        <Tag>Sustainability</Tag>
+        <Tag>{activeItem.tag}</Tag>
         <h2>Where science acts responsibly</h2>
-        <p>
+        <h4>
           From reducing our carbon footprint and investing in clean energy to building community
           resilience through skill development, we are shaping a healthier, more sustainable world.
-        </p>
-        <Button href="/sustainability" className="green">Learn More &rarr;</Button>
+        </h4>
+        <Button href={activeItem.learnMoreHref} className="green">Learn More &rarr;</Button>
       </div>
       <div className="accordion">
-        {items.map((item, index) => (
-          <article className={open === index ? 'open' : ''} key={item.title}>
-            <button onClick={() => setOpen(open === index ? -1 : index)}>
-              <span className="accordion-head">
-                <i className={`accordion-icon accordion-icon-${item.iconType}`}>
-                  <img src={`${A}${item.icon}`} alt="" loading="lazy" decoding="async" />
-                </i>
-                <span>{item.title}</span>
-              </span>
-              <img
-                className="accordion-toggle"
-                src={`${A}${open === index ? 'icon-minus-round.svg' : 'icon-plus-round.svg'}`}
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-            </button>
-            {open === index && (
-              <div style={{ marginTop: '16px' }}>
-                <p>{item.body}</p>
-                <Link
-                  to={item.href}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    marginTop: '12px',
-                    color: 'var(--green)',
-                    fontWeight: 700,
-                    fontSize: '15px',
-                    textDecoration: 'none',
-                  }}
-                >
-                  <span>{item.cta}</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            )}
-          </article>
-        ))}
+        <article className="open" key={activeItem.title}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+            <span className="accordion-head">
+              <i className={`accordion-icon accordion-icon-${activeItem.iconType}`}>
+                <img src={`${A}${activeItem.icon}`} alt="" loading="lazy" decoding="async" />
+              </i>
+              <span>{activeItem.title}</span>
+            </span>
+            <img
+              className="accordion-toggle"
+              src={`${A}icon-minus-round.svg`}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div style={{ marginTop: '16px' }}>
+            <p>{activeItem.body}</p>
+            <Link
+              to={activeItem.href}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                marginTop: '12px',
+                color: 'var(--green)',
+                fontWeight: 700,
+                fontSize: '15px',
+                textDecoration: 'none',
+              }}
+            >
+              <span>{activeItem.cta}</span>
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        </article>
       </div>
     </section>
   );

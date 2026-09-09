@@ -53,7 +53,7 @@ const FACILITIES: Facility[] = [
     fdCapacity: '10 Bn',
   },
   {
-    name: 'GPI (Granules Pharmaceuticals, Inc.)',
+    name: 'Granules Pharmaceuticals, Inc.',
     location: 'CHANTILLY, VIRGINIA',
     category: 'Formulations',
     country: 'USA',

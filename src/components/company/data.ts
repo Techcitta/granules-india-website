@@ -41,7 +41,7 @@ export const VALUES: ValueItem[] = [
 
 export const SUBSIDIARIES: SubsidiaryCard[] = [
   {
-    fullName: 'GRANULES PHARMACEUTICALS INC. (GPI), US',
+    fullName: 'GRANULES PHARMACEUTICALS INC., US',
     shortName: 'GPI-US',
     description:
       "R&D and manufacturing facility producing oral solid dosage forms and drives commercialisation of products manufactured at Granules' India facility.",

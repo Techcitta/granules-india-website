@@ -40,7 +40,7 @@ const SUBMENUS: Record<string, Submenu> = {
         href: '/company/global-subsidiaries',
         quickLinks: [
           { label: 'LEADERSHIP', href: '/company/leadership' },
-          { label: 'GRANULES PHARMACEUTICALS INC. (GPI)', href: 'https://www.granulespharma.com/' },
+          { label: 'GRANULES PHARMACEUTICALS INC.', href: 'https://www.granulespharma.com/' },
           { label: 'GRANULES LIFE SCIENCES', href: '/company/granules-life-sciences' },
           { label: 'SENN TIDES', href: '/company/senn-tides' },
           { label: 'GRANULES CZRO', href: '/company/granules-czro' },
