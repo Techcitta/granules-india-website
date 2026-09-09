@@ -85,7 +85,7 @@ export default function CompanyFooter() {
             </div>
 
             <div className="cp-footer-col">
-              <h5>Impact</h5>
+              <h5>Quick Links</h5>
               <div className="cp-footer-link-group">
                 {IMPACT_LINKS.map((link) => (
                   <Link to={link.href} key={link.label}>

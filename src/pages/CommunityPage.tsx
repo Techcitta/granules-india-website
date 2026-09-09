@@ -275,26 +275,6 @@ export default function CommunityPage() {
           style={{ backgroundImage: `url(${currentBg})` }}
           aria-label="Core Focus Areas"
         >
-          <div className="sustainability-overlay" />
-          <div className="sustainability-copy comm-sustainability-copy">
-            <span className="comm-section-tag comm-sustain-tag">
-              Key Initiatives
-            </span>
-            <h2>Core Focus Areas</h2>
-            <p>
-              Dedicated social investments creating lasting value across health, skilling, education, and ecology.
-            </p>
-            <div className="comm-sustain-stats-mini">
-              <div className="comm-sustain-stat-item">
-                <strong>3.5L+</strong>
-                <span>Lives Positively Touched</span>
-              </div>
-              <div className="comm-sustain-stat-item">
-                <strong>1M+</strong>
-                <span>Vision 2030 Target</span>
-              </div>
-            </div>
-          </div>
 
           <div className="accordion comm-accordion">
             {CSR_FOCUS_AREAS.map((item, index) => {

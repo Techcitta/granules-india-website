@@ -198,10 +198,12 @@ export default function PeptidesPage() {
           <span className="sep">›</span>
           <Link to="/business">BUSINESS</Link>
           <span className="sep">›</span>
-          <span className="current">PEPTIDES</span>
+          <Link to="/business">Generics</Link>
+          <span className="sep">›</span>
+          <span className="current">PEPTIDE CDMO</span>
         </p>
 
-        <h1 className="cp-page-title">Peptides</h1>
+        <h1 className="cp-page-title">Peptide CDMO</h1>
 
         <div className="cp-hero-panel">
           <video

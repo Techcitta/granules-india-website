@@ -209,15 +209,12 @@ export default function GenericsPage() {
       <section className="gen-strategy-section" aria-label="Portfolio Strategy and Therapies">
         <div className="biz-section-head gen-section-head gen-section-head--therapy">
           <div className="copy">
-            <span className="cp-section-badge">Expanding Horizons</span>
+            <span className="cp-section-badge">Our Portfolio</span>
             <h2>High-Value, Specialized Therapies</h2>
             <h4>
               Strengthening core volume strengths while accelerating complex and niche healthcare solutions.
             </h4>
           </div>
-          <Link to="/business/product-portfolio" className="cp-cta-btn gen-products-btn">
-            Our Products
-          </Link>
         </div>
 
         <div className="gen-therapy-grid">
