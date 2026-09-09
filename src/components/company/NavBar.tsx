@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { asset } from './constants';
 import { NAV_LINKS } from './data';
@@ -63,7 +63,6 @@ const SUBMENUS: Record<string, Submenu> = {
   Careers: {
     sections: [
       {
-        title: 'CAREERS',
         quickLinks: [
           { label: 'Life at Granules', href: '/careers' },
           { label: 'Current Openings', href: '/careers/opportunities' },
@@ -119,11 +118,21 @@ function isActive(link: NavLinkItem, pathname: string) {
   return !!link.matchPrefix && pathname.startsWith(link.matchPrefix);
 }
 
-export default function NavBar() {
+export default function NavBar({ onSearch }: { onSearch?: () => void } = {}) {
   const [open, setOpen] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const showMenu = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -135,8 +144,8 @@ export default function NavBar() {
   };
 
   return (
-    <div className="cp-nav-wrap">
-      <nav className={`cp-nav${open ? ' cp-nav--open' : ''}`} aria-label="Primary navigation">
+    <div className={`cp-nav-wrap${scrolled ? ' is-scrolled' : ''}`}>
+      <nav className={`cp-nav${open ? ' cp-nav--open' : ''}${scrolled ? ' is-scrolled' : ''}`} aria-label="Primary navigation">
         <div className="cp-nav-bar">
           <Link to="/" className="cp-nav-logo" aria-label="Granules home" onClick={() => setOpen(false)}>
             <img src={asset('nav-logo.webp')} alt="Granules" loading="eager" decoding="async" />
@@ -281,7 +290,7 @@ export default function NavBar() {
               );
             })}
 
-            <button className="cp-nav-search" type="button" aria-label="Search">
+            <button className="cp-nav-search" type="button" aria-label="Search" onClick={onSearch}>
               <img src={asset('search-icon.svg')} alt="" loading="lazy" decoding="async" />
             </button>
           </div>

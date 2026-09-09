@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter, CareerSection } from '../components/company';
 import '../components/company/company.css';
 import '../styles.css';
+import './overview.css';
 import './community.css';
 
 const CSR = '/assets/csr/';
@@ -194,41 +195,48 @@ export default function CommunityPage() {
           Driving Meaningful Impact, Enriching Communities
         </h1>
 
-        {/* Executive Speech & Quote Banner */}
-        <section className="comm-speech-banner-wrap" aria-label="Executive Leadership Quote">
-          <div className="comm-speech-banner-card">
-            <div className="comm-speech-banner-left">
-              <div className="comm-speech-banner-img-frame">
-                <img
-                  className="comm-speech-banner-img"
-                  src={`${CSR}banner-1.webp`}
-                  alt="Ms. Uma Devi Chigurupati, Executive Director, Granules India Limited"
-                  loading="eager"
-                  decoding="async"
-                />
+        {/* Executive Leadership Quote Card */}
+        <section
+          style={{
+            width: '85%',
+            maxWidth: '85%',
+            margin: '0 auto',
+            padding: '0',
+            position: 'relative',
+          }}
+          aria-label="Executive Leadership Quote"
+        >
+          <div className="ov-leadership" style={{ width: '100%', maxWidth: '100%', margin: '0' }}>
+            <img
+              className="ov-leadership-bg"
+              src="/assets/sustainability/leadership-bg.webp"
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+            <div className="ov-leadership-overlay" />
+            <img
+              className="ov-leadership-person comm-leadership-person"
+              src="/assets/csr/uma-devi-leadership.webp"
+              alt="Mrs. Uma Devi Chigurupati"
+              width={1600}
+              height={2400}
+              loading="eager"
+              decoding="async"
+            />
+            <div className="ov-quote-card">
+              <div className="ov-quote-mark" aria-hidden="true">
+                <svg width="38" height="28" viewBox="0 0 36 28" fill="#0061f8">
+                  <path d="M0 16.5C0 7.387 6.188 0 15.188 0v6.188c-4.95 0-7.875 3.375-8.438 7.312h8.438V28H0V16.5zm20.812 0C20.812 7.387 27 0 36 0v6.188c-4.95 0-7.875 3.375-8.438 7.312H36V28H20.812V16.5z" />
+                </svg>
               </div>
-            </div>
-
-            <div className="comm-speech-banner-quote-col">
-              <svg
-                className="comm-speech-quote-icon"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-
-              <blockquote className="comm-speech-quote-text">
-                &ldquo;We believe lasting progress comes from strong, meaningful relationships with our
+              <p className="ov-quote-text p4">
+                We believe lasting progress comes from strong, meaningful relationships with our
                 communities and stakeholders. Guided by empathy and responsibility, we support healthcare,
-                education, and social development, creating long-term value beyond business.&rdquo;
-              </blockquote>
-
-              <div className="comm-speech-author">
-                <p className="comm-speech-name">Ms. Uma Chigurupati</p>
-                <p className="comm-speech-role">Executive Director, Granules India Limited</p>
-              </div>
+                education, and social development, creating long-term value beyond business.
+              </p>
+              <p className="ov-quote-name p3">Mrs. Uma Devi Chigurupati</p>
+              <p className="ov-quote-role p4">EXECUTIVE DIRECTOR</p>
             </div>
           </div>
         </section>
@@ -295,7 +303,6 @@ export default function CommunityPage() {
                 <article
                   className={isOpen ? 'open' : ''}
                   key={item.id}
-                  onMouseEnter={() => setActiveBgIndex(index)}
                 >
                   <button
                     type="button"

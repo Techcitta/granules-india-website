@@ -20,17 +20,30 @@
   gap: 16px;
 }
 
-.sus-intro p, .sus-intro span {
+.sus-intro p,
+.sus-intro span {
   margin: 0;
   font: 500 clamp(18px, 2vw, 30px)/1.2 'Manrope', sans-serif;
   transition: color 0.5s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
-.sus-intro p { color: var(--n9); }
-.sus-intro .muted, .sus-intro p.muted { color: var(--n5); }
+.sus-intro p {
+  color: var(--n9);
+}
 
-.sus-intro.is-scrolled p { color: var(--n5); }
-.sus-intro.is-scrolled .muted, .sus-intro.is-scrolled p.muted { color: var(--n9); }
+.sus-intro .muted,
+.sus-intro p.muted {
+  color: var(--n5);
+}
+
+.sus-intro.is-scrolled p {
+  color: var(--n5);
+}
+
+.sus-intro.is-scrolled .muted,
+.sus-intro.is-scrolled p.muted {
+  color: var(--n9);
+}
 
 .sus-section-head {
   width: 85% !important;
@@ -234,6 +247,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
+
   .sus-pillar-bg {
     height: 100%;
   }
@@ -247,9 +261,23 @@
 }
 
 /* Generic stat display: big number + uppercase label */
-.sus-stat { display: flex; flex-direction: column; gap: 10px; }
-.sus-stat-value { margin: 0; font: 800 clamp(52px, 6.2vw, 92px)/1.02 'Manrope', sans-serif !important; }
-.sus-stat-label { margin: 0; font: 700 18px/24px 'Manrope', sans-serif; letter-spacing: 0.9px; text-transform: uppercase; }
+.sus-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sus-stat-value {
+  margin: 0;
+  font: 800 clamp(52px, 6.2vw, 92px)/1.02 'Manrope', sans-serif !important;
+}
+
+.sus-stat-label {
+  margin: 0;
+  font: 700 18px/24px 'Manrope', sans-serif;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+}
 
 /* Pillar deep-dive event card (Strategy + ESG) */
 .sus-event {
@@ -264,7 +292,12 @@
   align-items: center;
 }
 
-.sus-event-copy { display: flex; flex-direction: column; gap: 24px; }
+.sus-event-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .sus-event-badge {
   align-self: flex-start;
   border-radius: 24px;
@@ -275,14 +308,56 @@
   background: #fff;
   border: 1px solid currentColor;
 }
-.sus-event-title { margin: 0; font: 600 clamp(24px, 3vw, 38px)/1.2 'Manrope', sans-serif; letter-spacing: 0.8px; text-transform: uppercase; }
-.sus-event-desc { margin: 0; font: 500 22px/1.3 'Manrope', sans-serif; color: var(--n9); letter-spacing: 0.22px; }
-.sus-event-stats { display: flex; flex-wrap: wrap; gap: 32px 40px; margin-top: 8px; }
-.sus-event-image { border-radius: 40px; overflow: hidden; aspect-ratio: 720 / 560; position: relative; }
-.sus-event-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.sus-event-title {
+  margin: 0;
+  font: 600 clamp(24px, 3vw, 38px)/1.2 'Manrope', sans-serif;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.sus-event-desc {
+  margin: 0;
+  font: 500 22px/1.3 'Manrope', sans-serif;
+  color: var(--n9);
+  letter-spacing: 0.22px;
+}
+
+.sus-event-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 40px;
+  margin-top: 8px;
+}
+
+.sus-event-image {
+  border-radius: 40px;
+  overflow: hidden;
+  aspect-ratio: 720 / 560;
+  position: relative;
+}
+
+.sus-event-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .sus-event-image .arrow-btn {
-  position: absolute; bottom: 24px; right: 24px; width: 50px; height: 50px; border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sus-pillar-tabs {
@@ -338,28 +413,65 @@
   width: 85% !important;
   max-width: 85% !important;
   margin: 75px auto 0 !important;
-  border-radius: 28px;
-  padding: 30px clamp(30px, 4vw, 60px);
+  border-radius: 40px;
+  padding: clamp(30px, 4vw, 60px);
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  min-height: 250px;
-  height: 250px;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 240px;
 }
 
-.sus-cta img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-.sus-cta .overlay { position: absolute; inset: 0; z-index: 0; background: linear-gradient(89deg, rgba(190, 237, 250, 0.9) 35%, rgba(0, 186, 234, 0) 69%); }
-.sus-cta-copy { position: relative; z-index: 1; max-width: 843px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
-.sus-cta-copy h2 { margin: 0; font: 700 clamp(24px, 2.6vw, 36px)/1.15 'Manrope', sans-serif; color: var(--blue-2); }
-.sus-cta-copy p { margin: 0; font: 400 clamp(14px, 1.1vw, 16px)/1.4 'Manrope', sans-serif; color: var(--n9); letter-spacing: 0.2px; }
-.sus-cta .cp-cta-btn { position: relative; z-index: 1; align-self: flex-start; margin-top: 14px; }
+.sus-cta img.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.sus-cta .overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(89deg, rgba(190, 237, 250, 0.9) 35%, rgba(0, 186, 234, 0) 69%);
+}
+
+.sus-cta-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 843px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sus-cta-copy h2 {
+  margin: 0;
+  font: 500 clamp(28px, 4vw, 50px)/1.1 'Manrope', sans-serif;
+  color: var(--blue-2);
+}
+
+.sus-cta-copy p {
+  margin: 0;
+  font: 500 22px/1.3 'Manrope', sans-serif;
+  color: var(--n9);
+  letter-spacing: 0.22px;
+}
+
+.sus-cta .cp-cta-btn {
+  position: relative;
+  z-index: 1;
+}
 
 @media (max-width: 900px) {
-  .sus-event { grid-template-columns: 1fr; }
+  .sus-event {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ESG World Logo Badge */
@@ -425,7 +537,7 @@
 .sus-goal-card-img1 {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #01CD9E 0%, #16148F 76%);
+  background-image: linear-gradient(180deg, #01CD9E 0%, #16148F 76%);
   border-radius: 15px;
   padding: clamp(24px, 2.5vw, 30px) 20px;
   display: flex;
@@ -437,10 +549,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 220px;
   box-sizing: border-box;
-}
-
-.sus-goal-card-img1--has-bg {
-  background: #000;
 }
 
 .sus-goal-card-img1:hover {
@@ -466,7 +574,7 @@
 .sus-goal-card-img1-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+  background: linear-gradient(180deg, rgba(1, 205, 158, 0.82) 0%, rgba(22, 20, 143, 0.90) 76%);
   z-index: 1;
 }
 
@@ -523,6 +631,7 @@
   .sus-goals-row-top {
     grid-template-columns: 1fr;
   }
+
   .sus-goals-row-bottom {
     grid-template-columns: 1fr;
   }
@@ -749,6 +858,7 @@
   .sus-carousel-arrow--prev {
     left: -10px;
   }
+
   .sus-carousel-arrow--next {
     right: -10px;
   }
@@ -779,4 +889,3 @@
   opacity: 1;
   transform: scale(1.35);
 }
-

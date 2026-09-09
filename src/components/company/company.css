@@ -1189,17 +1189,18 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
 .cp-career {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: clamp(60px, 8vw, 100px) auto 0 !important;
-  border-radius: 40px;
-  padding: clamp(30px, 4vw, 60px);
+  margin: 75px auto 0 !important;
+  border-radius: 28px !important;
+  padding: 32px clamp(30px, 4vw, 60px) !important;
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 300px;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  min-height: 250px !important;
+  height: 250px !important;
+  box-sizing: border-box !important;
 }
 
 .cp-career img.cp-bg {
@@ -1215,34 +1216,37 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(89deg, rgba(190, 237, 250, 0.9) 34.8%, rgba(0, 186, 234, 0) 68.9%), rgba(0, 0, 0, 0.1);
+  background: linear-gradient(89deg, rgba(190, 237, 250, 0.9) 35%, rgba(0, 186, 234, 0) 69%);
 }
 
 .cp-career-copy {
   position: relative;
   z-index: 1;
-  max-width: 744px;
+  max-width: 843px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 8px;
+  text-align: left;
 }
 
 .cp-career-copy h2 {
   margin: 0;
-  font: 500 clamp(28px, 4vw, 50px)/1.1 'Manrope', sans-serif;
+  font: 700 clamp(24px, 2.6vw, 36px)/1.15 'Manrope', sans-serif;
   color: var(--blue-2);
 }
 
 .cp-career-copy p {
   margin: 0;
-  font: 500 22px/1.3 'Manrope', sans-serif;
+  font: 400 clamp(14px, 1.1vw, 16px)/1.4 'Manrope', sans-serif;
   color: var(--n9);
-  letter-spacing: 0.22px;
+  letter-spacing: 0.2px;
 }
 
 .cp-career .cp-cta-btn {
   position: relative;
   z-index: 1;
+  align-self: flex-start;
+  margin-top: 14px;
 }
 
 /* ---------- Universal Footer ---------- */

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { asset } from './constants';
+import './company.css';
 
 export default function CareerSection() {
   return (

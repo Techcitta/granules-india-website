@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import worldMapUrl from '@svg-maps/world/world.svg?url';
-import { CompanyFooter } from '../components/company';
+import { NavBar, CompanyFooter } from '../components/company';
 import { REGULATORY_LOGOS } from '../data/regulatoryLogosData';
 import '../components/company/company.css';
 
@@ -118,253 +118,6 @@ function Button({ children, href = '#', className = '', onClick }) {
     <a className={`button ${className}`} href={href} onClick={handleClick}>
       {children}
     </a>
-  );
-}
-
-function Header({ open, setOpen, activeSection, onSearch, scrolled }) {
-  const [hoveredMenu, setHoveredMenu] = useState(null);
-  const closeTimer = useRef(null);
-  const links = [
-    ['About Us', '/company'],
-    ['Business', '/business/generics'],
-    ['Sustainability', '/sustainability'],
-    ['Community', '/community'],
-    ['Investor', '/investor'],
-    ['Media', '/media'],
-    ['Careers', '/careers'],
-    ['Contact Us', '/contact'],
-  ];
-  const resolveLink = (item) => (Array.isArray(item) ? { label: item[0], href: item[1] } : item);
-
-  const submenuData = {
-    'About Us': {
-      sections: [],
-      links: [
-        { label: 'Overview', href: '/company' },
-        { label: 'Our Journey', href: '/company/milestone' },
-        { label: 'Leadership', href: '/company/leadership' },
-        { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
-        { label: 'Granules Pharmaceuticals Inc', href: 'https://www.granulespharma.com/' },
-      ],
-    },
-    Company: {
-      sections: [
-        {
-          title: 'Global Subsidiaries',
-          href: '/company/global-subsidiaries',
-          quickLinks: [
-            { label: 'LEADERSHIP', href: '/company/leadership' },
-            { label: 'GRANULES PHARMACEUTICALS INC. (GPI)', href: 'https://www.granulespharma.com/' },
-            { label: 'GRANULES LIFE SCIENCES', href: '/company/granules-life-sciences' },
-            { label: 'SENN TIDES', href: '/company/senn-tides' },
-            { label: 'GRANULES CZRO', href: '/company/granules-czro' },
-          ],
-        },
-      ],
-      links: [],
-    },
-    Business: {
-      sections: [],
-      links: [
-        { label: 'Generics', href: '/business/generics' },
-        { label: 'Peptides CDMO', href: '/business/peptides' },
-        { label: 'Research & Development', href: '/business/rd' },
-        { label: 'Quality & Compliance', href: '/business/quality-compliance' },
-        { label: 'Facilities', href: '/company/facilities' },
-      ],
-    },
-    Careers: {
-      sections: [
-        {
-          title: 'CAREERS',
-          quickLinks: [
-            { label: 'Life at Granules', href: '/careers' },
-            { label: 'Current Openings', href: '/careers/opportunities' },
-          ],
-        },
-      ],
-      links: [],
-    },
-  };
-
-  const isItemActive = (label) => {
-    if (!activeSection || activeSection === 'top') return false;
-    if (label === 'About Us' && (activeSection === 'about' || activeSection === 'company')) return true;
-    if (label === 'Business' && (activeSection === 'business' || activeSection === 'presence')) return true;
-    if (label === 'Sustainability' && activeSection === 'sustainability') return true;
-    if (label === 'Community' && activeSection === 'community') return true;
-    if (label === 'Investor' && activeSection === 'investor') return true;
-    if (label === 'Media' && activeSection === 'media') return true;
-    if (label === 'Careers' && activeSection === 'careers') return true;
-    if (label === 'Contact Us' && activeSection === 'contact') return true;
-    return false;
-  };
-
-  const showMenu = (label) => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setHoveredMenu(label);
-  };
-
-  const hideMenu = () => {
-    closeTimer.current = setTimeout(() => setHoveredMenu(null), 200);
-  };
-
-  const handleSmoothAnchor = (e, href) => {
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setOpen(false);
-    }
-  };
-
-  return (
-    <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
-      <a className="brand" href="#top" onClick={(e) => handleSmoothAnchor(e, '#top')} aria-label="Granules home">
-        <img src={`${A}logo.webp`} alt="Granules" loading="eager" decoding="async" />
-      </a>
-      <button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open}>Menu</button>
-      <nav className={open ? 'open' : ''} aria-label="Primary navigation">
-        {links.map(([label, href]) => {
-          const sub = submenuData[label];
-          const isActive = isItemActive(label);
-          return (
-            <div className="home-nav-item" key={label} onMouseEnter={() => sub && showMenu(label)} onMouseLeave={hideMenu}>
-              {href.startsWith('#') ? (
-                <a
-                  className={isActive ? 'active' : ''}
-                  aria-current={isActive ? 'page' : undefined}
-                  href={href}
-                  onClick={(e) => handleSmoothAnchor(e, href)}
-                >
-                  {label}
-                </a>
-              ) : (
-                <Link
-                  className={isActive ? 'active' : ''}
-                  aria-current={isActive ? 'page' : undefined}
-                  to={href}
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </Link>
-              )}
-              {sub && (
-                <div className={`home-nav-submenu${hoveredMenu === label ? ' is-open' : ''}`} onMouseEnter={() => showMenu(label)}>
-                  <div className="home-nav-submenu-copy">
-                    {(sub.sections || (sub.title && sub.quickLinks ? [{ title: sub.title, href: sub.href, quickLinks: sub.quickLinks }] : [])).map((section, idx) => (
-                      <div className="home-nav-submenu-header-box" key={section.title || idx}>
-                        {section.title && (
-                          section.href ? (
-                            section.href.startsWith('http') ? (
-                              <a
-                                href={section.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="home-nav-submenu-title"
-                                onClick={() => {
-                                  setHoveredMenu(null);
-                                  setOpen(false);
-                                }}
-                              >
-                                <strong>{section.title}</strong>
-                                <span className="home-nav-arrow-diag" aria-hidden="true" style={{ fontSize: '13px', marginLeft: '6px' }}>↗</span>
-                              </a>
-                            ) : (
-                              <Link
-                                to={section.href}
-                                className="home-nav-submenu-title"
-                                onClick={() => {
-                                  setHoveredMenu(null);
-                                  setOpen(false);
-                                }}
-                              >
-                                <strong>{section.title}</strong>
-                                <span className="home-nav-arrow-diag" aria-hidden="true" style={{ fontSize: '13px', marginLeft: '6px' }}>↗</span>
-                              </Link>
-                            )
-                          ) : (
-                            <strong>{section.title}</strong>
-                          )
-                        )}
-                        <div className="home-nav-quick-links">
-                          {(section.quickLinks || []).map((raw) => {
-                            const item = resolveLink(raw);
-                            return item.href.startsWith('http') ? (
-                              <a
-                                href={item.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                key={item.label}
-                                onClick={() => {
-                                  setHoveredMenu(null);
-                                  setOpen(false);
-                                }}
-                              >
-                                <span>{item.label}</span>
-                                <span className="home-nav-arrow-diag" aria-hidden="true">↗</span>
-                              </a>
-                            ) : (
-                              <Link
-                                to={item.href}
-                                key={item.label}
-                                onClick={() => {
-                                  setHoveredMenu(null);
-                                  setOpen(false);
-                                }}
-                              >
-                                <span>{item.label}</span>
-                                <span className="home-nav-arrow-diag" aria-hidden="true">↗</span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    ))}
-
-                    {sub.links && sub.links.length > 0 && (
-                      <div className="home-nav-submenu-links">
-                        {sub.links.map((raw) => {
-                          const item = resolveLink(raw);
-                          return item.href.startsWith('http') ? (
-                            <a
-                              href={item.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              key={item.label}
-                              onClick={() => {
-                                setHoveredMenu(null);
-                                setOpen(false);
-                              }}
-                            >
-                              {item.label}
-                            </a>
-                          ) : (
-                            <Link
-                              to={item.href}
-                              key={item.label}
-                              onClick={() => {
-                                setHoveredMenu(null);
-                                setOpen(false);
-                              }}
-                            >
-                              {item.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-        <button className="search-button" aria-label="Search the page" onClick={onSearch}>
-          <img src={`${A}search.svg`} alt="" loading="lazy" decoding="async" />
-        </button>
-      </nav>
-    </header>
   );
 }
 
@@ -1055,19 +808,39 @@ function Investor() {
         <div className="investor-side">
           <div className="investor-docs">
             {docs.map((doc) => (
-              <a
-                className="investor-doc"
-                href={doc.href}
-                download={doc.download}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={doc.title}
-              >
-                <span>{doc.title}</span>
-                <i className="download-badge">
-                  <img src={`${A}investor/pdf-icon.svg`} alt="" loading="lazy" decoding="async" />
-                </i>
-              </a>
+              <div className="investor-doc" key={doc.title}>
+                <a
+                  className="investor-doc-title"
+                  href={doc.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Open ${doc.title} in a new tab`}
+                >
+                  {doc.title}
+                </a>
+                <div className="investor-doc-actions">
+                  <a
+                    className="investor-action-link"
+                    href={doc.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`View ${doc.title} in a new tab`}
+                  >
+                    View
+                  </a>
+                  <span className="investor-action-slash">/</span>
+                  <a
+                    className="investor-action-link"
+                    href={doc.href}
+                    download={doc.download}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Download ${doc.title}`}
+                  >
+                    Download
+                  </a>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -1268,60 +1041,28 @@ function SearchOverlay({ open, onClose }) {
 }
 
 export default function HomePage() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('top');
   const [progress, setProgress] = useState(0);
-  const [navCompressed, setNavCompressed] = useState(false);
+
   useEffect(() => {
     const sections = [...document.querySelectorAll('main > section:not(.hero), footer')];
     sections.forEach((section) => section.classList.add('reveal-ready'));
     const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('revealed')), { threshold: .08 });
     sections.forEach((section) => reveal.observe(section));
 
-    const sectionIds = ['about', 'business', 'presence', 'sustainability', 'investor', 'media', 'careers'];
-
     const onScroll = () => {
       const current = Math.max(0, window.scrollY);
       setProgress(Math.min(100, (current / (document.documentElement.scrollHeight - window.innerHeight)) * 100));
-      setNavCompressed(current > 72);
-
-      if (current < 250) {
-        setActiveSection('top');
-        return;
-      }
-
-      const scrollCheck = current + 240;
-      let matched = null;
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollCheck >= top && scrollCheck < top + height) {
-            matched = id;
-            break;
-          }
-        }
-      }
-      if (matched) {
-        setActiveSection(matched);
-      }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => { reveal.disconnect(); window.removeEventListener('scroll', onScroll); };
   }, []);
+
   return (
     <>
       <div className="scroll-progress" style={{ width: `${progress}%` }} />
-      <Header
-        open={menuOpen}
-        setOpen={setMenuOpen}
-        activeSection={activeSection}
-        scrolled={navCompressed}
-        onSearch={() => { setMenuOpen(false); setSearchOpen(true); }}
-      />
+      <NavBar onSearch={() => setSearchOpen(true)} />
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
       <main>
         <Hero />
