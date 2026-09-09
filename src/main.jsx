@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '@fontsource/manrope/400.css';
 import '@fontsource/manrope/500.css';
 import '@fontsource/manrope/600.css';
@@ -8,54 +8,6 @@ import '@fontsource/manrope/700.css';
 import '@fontsource/manrope/800.css';
 import './styles.css';
 import './typography.css';
-
-function ScrollHighlightManager() {
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const selectors = [
-        '.biz-intro',
-        '.gls-intro',
-        '.czro-intro',
-        '.asc-intro',
-        '.senn-intro',
-        '.sus-intro',
-        '.rd-intro',
-        '.qc-intro',
-        '.oe-intro',
-        '.ms-intro',
-        '.ld-hero',
-        '.aw-hero',
-        '.car-intro-copy',
-        '.fac-intro',
-        '.cp-about-desc',
-        '.scroll-intro',
-        '.global-sub-intro',
-      ];
-      const elements = document.querySelectorAll(selectors.join(', '));
-      const threshold = window.innerHeight * 0.45;
-
-      elements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < threshold) {
-          el.classList.add('is-scrolled');
-        } else {
-          el.classList.remove('is-scrolled');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    setTimeout(handleScroll, 50);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [location.pathname]);
-
-  return null;
-}
 
 import HomePage from './pages/HomePage.jsx';
 import CompanyPage from './pages/CompanyPage.tsx';
@@ -100,7 +52,6 @@ import BackToTopButton from './components/common/BackToTopButton';
 function App() {
   return (
     <BrowserRouter>
-      <ScrollHighlightManager />
       <BackToTopButton />
       <Routes>
         <Route path="/" element={<HomePage />} />

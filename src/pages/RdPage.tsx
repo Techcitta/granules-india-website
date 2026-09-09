@@ -13,7 +13,6 @@ type SlideData = {
   desc?: string;
   points?: string[];
   image: string | null;
-  needClarity?: boolean;
   ctaText?: string;
   ctaHref?: string;
 };
@@ -32,7 +31,6 @@ const CENTER_TABS_DATA: TabData[] = [
         title: 'GENOME VALLEY R&D,\nTELANGANA',
         desc: 'Integrated Product Development for APIs and Finished Dosages.',
         image: 'hero-banner.png',
-        needClarity: true,
         ctaText: 'KNOW MORE',
         ctaHref: '/business/rd',
       },
@@ -41,7 +39,6 @@ const CENTER_TABS_DATA: TabData[] = [
         title: 'PRAGATHI NAGAR R&D,\nTELANGANA',
         desc: 'Centre of Excellence for Complex FD, CII API development, KSMs, and Bio Lab (enzymes & fermentation).',
         image: 'centers-bg.png',
-        needClarity: true,
         ctaText: 'KNOW MORE',
         ctaHref: '/business/rd',
       },
@@ -54,8 +51,7 @@ const CENTER_TABS_DATA: TabData[] = [
         index: '01 / 02',
         title: 'VIRGINIA R&D,\nUSA',
         desc: 'US-specific complex FD design, controlled substances and clinical support.',
-        image: null,
-        needClarity: true,
+        image: '/assets/facilities/virginia-usa.png',
         ctaText: 'KNOW MORE',
         ctaHref: '/business/fd',
       },
@@ -64,7 +60,6 @@ const CENTER_TABS_DATA: TabData[] = [
         title: 'SENN CHEMICALS,\nSWITZERLAND',
         desc: 'Peptide & CDMO innovation — decades of peptide synthesis expertise.',
         image: 'capabilities-bg.png',
-        needClarity: true,
         ctaText: 'KNOW MORE',
         ctaHref: '/business/peptides',
       },
@@ -77,8 +72,7 @@ const CENTER_TABS_DATA: TabData[] = [
         index: '01 / 01',
         title: 'PUNE R&D,\nMAHARASHTRA',
         desc: 'New technology platforms with focus on KSM innovation and backward integration.',
-        image: null,
-        needClarity: true,
+        image: 'capabilities-bg.png',
         ctaText: 'KNOW MORE',
         ctaHref: '/business/api',
       },
@@ -142,6 +136,7 @@ type CapabilityItem = {
   body: string;
   icon: string;
   image?: string;
+  position?: string;
 };
 
 const CAPABILITY_ITEMS: CapabilityItem[] = [
@@ -150,12 +145,14 @@ const CAPABILITY_ITEMS: CapabilityItem[] = [
     body: 'Our API R&D is advancing high-barrier products in oncology and metabolic disorders through novel polymorphs, amorphous solid dispersions, and strategic collaborations with the Indian Institute of Technology (IIT) Hyderabad, National Institute of Pharmaceutical Education and Research (NIPER), CSIR-Indian Institute of Chemical Technology, and global partners.',
     icon: 'icon-pills.svg',
     image: 'capabilities-bg.png',
+    position: '50% calc(50% + 10px)',
   },
   {
     title: 'Biocatalysis as a Strategic Platform',
     body: 'Developing clean, enzyme-catalyzed synthesis pathways that replace hazardous reagents, achieve high stereo-selectivity, and reduce environmental impact.',
     icon: 'icon-circles.svg',
     image: 'centers-bg.png',
+    position: '50% calc(50% - 40px)',
   },
   {
     title: 'Enzyme & Biotransformation Technologies',
@@ -255,19 +252,19 @@ export default function RdPage() {
       </div>
 
       <div className="rd-intro">
-        <p>
+        <h4>
           Our integrated R&amp;D ecosystem, spanning APIs, PFIs, Finished Dosages and Peptide
           CDMO, enables us to deliver safe, effective and affordable healthcare solutions
           worldwide.
-        </p>
-        <p>
+        </h4>
+        <h4>
           Granules R&amp;D is powering the transformation of a legacy-scale generics company into
           a differentiated, science-led global pharmaceutical platform &mdash; advancing complex
           generics, oncology, CNS/ADHD, peptides and next-generation drug delivery through a
           global network of six specialised research centres. Our R&amp;D strategy is designed to
           strengthen these capabilities while supporting long-term growth through a diversified
           and differentiated product portfolio
-        </p>
+        </h4>
       </div>
 
       {/* R&D Strategic Priorities */}
@@ -290,7 +287,11 @@ export default function RdPage() {
       <div className="rd-centers">
         {currentSlide.image ? (
           <>
-            <img className="bg" src={`${R}${currentSlide.image}`} alt="" />
+            <img
+              className="bg"
+              src={currentSlide.image.startsWith('/') ? currentSlide.image : `${R}${currentSlide.image}`}
+              alt={currentSlide.title.replace('\n', ' ')}
+            />
             <div className="overlay" />
           </>
         ) : (
@@ -328,16 +329,11 @@ export default function RdPage() {
             <div>
               <span className="rd-center-badge">R&amp;D Center</span>
               <h2>Our Global R&amp;D Network</h2>
-              <p className="rd-centers-intro">
+              <h4 className="rd-centers-intro">
                 Our R&amp;D infrastructure spans multiple centres of excellence, each contributing
                 specialised expertise while operating within an integrated development framework.
-              </p>
+              </h4>
             </div>
-            {currentSlide.needClarity && (
-              <div className="rd-clarity-badge">
-                Need Clarity in facilities images
-              </div>
-            )}
           </div>
 
           <div className="rd-centers-slide">
@@ -399,11 +395,11 @@ export default function RdPage() {
       <div className="rd-tech">
         <div className="rd-tech-head">
           <h2>Innovation Enabled by Technology</h2>
-          <p>
+          <h4>
             We are actively deploying a range of digital tools to support our integrated
             development platform with a more connected, efficient and future-ready innovation
             ecosystem.
-          </p>
+          </h4>
         </div>
         <div className="rd-tech-grid">
           {TECH_ITEMS.map((item, i) => (
@@ -424,6 +420,11 @@ export default function RdPage() {
             openCapability >= 0 && CAPABILITY_ITEMS[openCapability]?.image
               ? `${R}${CAPABILITY_ITEMS[openCapability].image}`
               : `${R}${CAPABILITY_ITEMS[0].image}`
+          }
+          style={
+            openCapability >= 0 && CAPABILITY_ITEMS[openCapability]?.position
+              ? { objectPosition: CAPABILITY_ITEMS[openCapability].position }
+              : undefined
           }
           alt="Complex chemistry and biocatalysis laboratory"
         />
@@ -465,11 +466,11 @@ export default function RdPage() {
       <div className="rd-green-wrapper">
         <div className="rd-green-section">
           <h2>Pioneering Green Pharmaceutical Solutions</h2>
-          <p>
+          <h4>
             At Granules India, sustainability is embedded at the molecular level. We apply green
             chemistry principles, such as atom economy, e-factor optimization, and solvent
             minimization, across every stage of product development. Examples include:
-          </p>
+          </h4>
         </div>
 
         <div className="rd-green-columns">
@@ -503,25 +504,21 @@ export default function RdPage() {
         </div>
       </div>
 
-      <h2 className="rd-eco-note scroll-intro">
-        <span className="part-1">Our proprietary Eco-Scale framework evaluates processes across six core </span>
-        <span className="part-2 muted">
-          parameters and 38 sub-parameters, ensuring our chemistries align with operational efficiency,
-          global standards, and environmental stewardship.
-        </span>
+      <h2 className="rd-eco-note">
+        Our proprietary Eco-Scale framework evaluates processes across six core parameters and 38 sub-parameters, ensuring our chemistries align with operational efficiency, global standards, and environmental stewardship.
       </h2>
 
       {/* Built for Global Quality and Compliance */}
       <div className="biz-section-head rd-quality-head">
         <div className="copy">
           <h2>Built for Global Quality and Compliance</h2>
-          <p>
+          <h4>
             We maintain a strong regulatory track record, driven by a culture of quality
             that&rsquo;s embedded across every phase of our R&amp;D journey. From initial product
             design and development, through early-stage safety and toxicology evaluations, to
             clinical alignment and global regulatory submissions, our processes are built to meet
             the highest standards of compliance, reliability, and global readiness.
-          </p>
+          </h4>
         </div>
       </div>
 

@@ -263,12 +263,12 @@ export default function ProductPortfolioPage() {
         <h1 className="cp-page-title">Our products</h1>
       </section>
 
-      <div className="cp-about-desc pp-intro scroll-intro">
+      <div className="cp-about-desc pp-intro">
         <p>
           Browse the complete Granules portfolio across APIs, PFIs, and finished dosages with
           pharmacopeia grade, regulatory filings, and integration indicators.
         </p>
-        <p className="part-2">
+        <p>
           Filter by segment and therapeutic category to explore the full list.
         </p>
       </div>

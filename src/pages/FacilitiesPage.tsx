@@ -136,7 +136,7 @@ export default function FacilitiesPage() {
   const facilities = filter === 'All' ? FACILITIES : FACILITIES.filter((f) => f.category === filter);
 
   return (
-    <div className="cp">
+    <div className="cp fac-page">
       <NavBar />
 
       <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
@@ -146,7 +146,7 @@ export default function FacilitiesPage() {
         <span className="sep">›</span>
         <span className="current">FACILITIES</span>
       </p>
-      <h1 className="cp-page-title">Our facilities</h1>
+      <h1 className="cp-page-title">Our Facilities</h1>
 
       <div className="fac-intro">
         <p>
@@ -219,10 +219,10 @@ export default function FacilitiesPage() {
         <div className="overlay" />
         <div className="fac-cta-copy">
           <h2>World-Class Global Manufacturing &amp; Supply Resilience</h2>
-          <p>
+          <h4>
             Operating 10 state-of-the-art facilities across India, North America, and Switzerland,
             Granules empowers worldwide healthcare with unmatched pharmaceutical excellence.
-          </p>
+          </h4>
         </div>
         <Link className="cp-cta-btn" to="/company/global-presence">Global Presence</Link>
       </div>

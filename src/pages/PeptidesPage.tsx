@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import { useSwipeScroll } from '../hooks/useSwipeScroll';
@@ -13,27 +13,27 @@ const PORTFOLIO_ITEMS = [
     desc: 'Short sequences to chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
   },
   {
-    title: 'Amino acid derivatives',
+    title: 'Amino Acid Derivatives',
     image: '/assets/ascelis/card-cdmo-services.webp',
     desc: 'More than 190 catalogue SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, N-methylated derivatives and side-chain-modified derivatives.',
   },
   {
-    title: 'Peptide fragments',
+    title: 'Peptide Fragments',
     image: '/assets/peptides/card-generic-apis.webp',
     desc: 'Building blocks supplied to innovators and peptide manufacturers.',
   },
   {
-    title: 'Theranostic peptides',
+    title: 'Theranostic Peptides',
     image: '/assets/ascelis/card-theragnostic-peptides.webp',
     desc: 'Linker-ready peptides, chelator conjugation, purification and characterisation, supported by experience across more than ten GMP campaigns.',
   },
   {
-    title: 'Cosmetic peptides',
+    title: 'Cosmetic Peptides',
     image: '/assets/ascelis/card-cosmetic-peptides.webp',
     desc: 'TFA-free peptide ingredients developed for the European cosmetics market.',
   },
   {
-    title: 'Expanding platform',
+    title: 'Expanding Platform',
     image: '/assets/peptides/card-contract-services.webp',
     desc: 'Alongside its established peptide capabilities, Senn Tides is expanding into oligonucleotides and antibody-drug conjugates.',
   },
@@ -41,12 +41,12 @@ const PORTFOLIO_ITEMS = [
 
 const SYNTHESIS_ROUTES = [
   {
-    route: 'Solid phase (SPPS)',
+    route: 'Solid Phase (SPPS)',
     scale: 'mg to a few kg',
     advantage: 'Complex and lower-volume peptides',
   },
   {
-    route: 'Liquid phase (LPPS)',
+    route: 'Liquid Phase (LPPS)',
     scale: '5 kg to tons',
     advantage: 'Large-scale manufacturing',
   },
@@ -56,7 +56,7 @@ const SYNTHESIS_ROUTES = [
     advantage: 'Combination of SPPS and LPPS',
   },
   {
-    route: 'Tag-assisted (TAPS)',
+    route: 'Tag-Assisted (TAPS)',
     scale: 'Project-dependent',
     advantage: 'Reduced purification burden',
   },
@@ -87,7 +87,7 @@ const PHASES = [
 
 const CAPABILITIES = [
   {
-    title: 'GMP manufacturing',
+    title: 'GMP Manufacturing',
     desc: 'Glass-lined and hydrogenation reactors up to 2,500 L, with SPPS capacity for up to 12 kg of resin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -97,7 +97,7 @@ const CAPABILITIES = [
     ),
   },
   {
-    title: 'Purification and isolation',
+    title: 'Purification and Isolation',
     desc: 'Preparative HPLC using DAC columns up to 30 cm internal diameter, filtration, centrifugation, drying and lyophilisation.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -106,7 +106,7 @@ const CAPABILITIES = [
     ),
   },
   {
-    title: 'Development support',
+    title: 'Development Support',
     desc: 'Route scouting, process development, analytical method development and validation, stability studies, DMF preparation and technology-transfer support.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -115,7 +115,7 @@ const CAPABILITIES = [
     ),
   },
   {
-    title: 'Analytical support',
+    title: 'Analytical Support',
     desc: 'Physical characterisation, impurity identification, residual-solvent and pharmacopeial testing, chromatographic assays, enantiomeric-purity analysis, spectrometric techniques, HPLC, GC, potentiometric titration and Karl Fischer water determination.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -159,9 +159,6 @@ export default function PeptidesPage() {
     scroll,
   } = useSwipeScroll();
 
-  const introRef = useRef<HTMLDivElement>(null);
-  const [isIntroScrolled, setIsIntroScrolled] = useState<boolean>(false);
-
   useEffect(() => {
     document.title = 'Peptides | Senn Tides CDMO Platform | Granules India';
 
@@ -188,20 +185,6 @@ export default function PeptidesPage() {
     );
 
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!introRef.current) return;
-      const rect = introRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const triggerPoint = viewportHeight * 0.45;
-      setIsIntroScrolled(rect.top < triggerPoint);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -239,22 +222,14 @@ export default function PeptidesPage() {
         </div>
       </section>
 
-      {/* About Description with Scroll Highlight - matching About Us / Overview */}
-      <div
-        ref={introRef}
-        className={`cp-about-desc${isIntroScrolled ? ' is-scrolled' : ''}`}
-      >
-        <p>
-          <span className="part-1">
-            Senn Tides is Granules India&rsquo;s dedicated peptide CDMO platform, with an established foundation in Swiss peptide chemistry and complementary large-scale manufacturing infrastructure in India.
-          </span>{' '}
-          <span className="part-2">
-            Operating across Zurich, Switzerland, and Hyderabad, India, we support global innovators and pharmaceutical developers from early route scouting and process development through scale-up, validation, and commercial supply.
-          </span>
-        </p>
-        <p className="part-2">
+      {/* About Description matching standard business typography */}
+      <div className="cp-about-desc senn-intro">
+        <h4>
+          Senn Tides is Granules India&rsquo;s dedicated peptide CDMO platform, with an established foundation in Swiss peptide chemistry and complementary large-scale manufacturing infrastructure in India. Operating across Zurich, Switzerland, and Hyderabad, India, we support global innovators and pharmaceutical developers from early route scouting and process development through scale-up, validation, and commercial supply.
+        </h4>
+        <h4>
           Combining over 60 years of Swiss peptide synthesis heritage with multi-ton industrial scale, continuous flow technology, and green chemistry, Senn Tides provides an integrated, one-partner lifecycle for complex peptide therapeutics, fragments, amino acid derivatives, and advanced modalities.
-        </p>
+        </h4>
       </div>
 
       {/* Highlight Statistics */}
@@ -277,16 +252,14 @@ export default function PeptidesPage() {
         </div>
       </div>
 
-      <div className="cp-divider" />
-
-      {/* Our portfolio Section */}
-      <section className="senn-section-head" aria-label="Our portfolio">
+      {/* Our Portfolio Section */}
+      <section className="senn-section-head" aria-label="Our Portfolio">
         <div className="copy">
           <span className="cp-section-badge">Portfolio</span>
-          <h2>Our portfolio</h2>
-          <p>
+          <h2>Our Portfolio</h2>
+          <h4>
             Custom peptide APIs, catalogue building blocks, and emerging modalities supporting development from feasibility to commercial supply.
-          </p>
+          </h4>
         </div>
       </section>
 
@@ -357,15 +330,15 @@ export default function PeptidesPage() {
         </div>
       </div>
 
-      {/* Four synthesis routes Section */}
-      <section className="senn-routes-section" aria-label="Four synthesis routes">
+      {/* Four Synthesis Routes Section */}
+      <section className="senn-routes-section" aria-label="Four Synthesis Routes">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Synthesis Methodologies</span>
-            <h2>Four synthesis routes</h2>
-            <p>
+            <h2>Four Synthesis Routes</h2>
+            <h4>
               Our platform brings together four synthesis approaches, enabling route selection based on the molecule, target scale and purification requirements.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -375,8 +348,8 @@ export default function PeptidesPage() {
             <thead>
               <tr>
                 <th>Route</th>
-                <th>Typical scale</th>
-                <th>Key application or advantage</th>
+                <th>Typical Scale</th>
+                <th>Key Application or Advantage</th>
               </tr>
             </thead>
             <tbody>
@@ -393,31 +366,31 @@ export default function PeptidesPage() {
           </table>
         </div>
 
-        {/* Why liquid phase matters Hero Callout */}
+        {/* Why Liquid Phase Matters Hero Callout */}
         <div className="senn-lpps-callout">
-          <h4>
+          <h3 className="callout-title">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
               <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
-            Why liquid phase matters
-          </h4>
-          <p>
+            Why Liquid Phase Matters
+          </h3>
+          <h4>
             For suitable molecules, LPPS can offer substantially lower process mass intensity than SPPS and may reduce or eliminate chromatography, supporting the commercial viability of large-scale peptide manufacturing.
-          </p>
+          </h4>
         </div>
       </section>
 
-      {/* From feasibility to commercial supply */}
-      <section className="senn-phases-section" aria-label="From feasibility to commercial supply">
+      {/* From Feasibility to Commercial Supply */}
+      <section className="senn-phases-section" aria-label="From Feasibility to Commercial Supply">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Lifecycle Progression</span>
-            <h2>From feasibility to commercial supply</h2>
-            <p>
+            <h2>From Feasibility to Commercial Supply</h2>
+            <h4>
               Programs can progress within the same CDMO platform, reducing the need for an external vendor transfer as volumes grow.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -432,15 +405,15 @@ export default function PeptidesPage() {
         </div>
       </section>
 
-      {/* Manufacturing and development capabilities */}
-      <section className="senn-capacity-section" aria-label="Manufacturing and development capabilities">
+      {/* Manufacturing and Development Capabilities */}
+      <section className="senn-capacity-section" aria-label="Manufacturing and Development Capabilities">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Infrastructure &amp; Capabilities</span>
-            <h2>Manufacturing and development capabilities</h2>
-            <p>
+            <h2>Manufacturing and Development Capabilities</h2>
+            <h4>
               Scalable equipment trains engineered for small-scale development, kilo-scale pilot trials, and commercial cGMP campaigns.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -457,15 +430,15 @@ export default function PeptidesPage() {
         </div>
       </section>
 
-      {/* Quality and compliance */}
-      <section className="senn-compliance-section" aria-label="Quality and compliance">
+      {/* Quality and Compliance */}
+      <section className="senn-compliance-section" aria-label="Quality and Compliance">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Standards &amp; Regulatory</span>
-            <h2>Quality and compliance</h2>
-            <p>
+            <h2>Quality and Compliance</h2>
+            <h4>
               Quality systems, documentation practices, and change-control processes designed to support customer filings in the United States, Europe, and other regulated markets.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -511,15 +484,15 @@ export default function PeptidesPage() {
         </div>
       </section>
 
-      {/* Switzerland and India footprint */}
-      <section className="senn-footprint-section" aria-label="Switzerland and India footprint">
+      {/* Switzerland and India Footprint */}
+      <section className="senn-footprint-section" aria-label="Switzerland and India Footprint">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Global Footprint</span>
-            <h2>Switzerland and India footprint</h2>
-            <p>
+            <h2>Switzerland and India Footprint</h2>
+            <h4>
               Combining over 60 years of Swiss peptide synthesis heritage with multi-ton industrial scale and R&amp;D infrastructure in India.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -534,13 +507,13 @@ export default function PeptidesPage() {
         </div>
       </section>
 
-      {/* Discuss your peptide program */}
-      <section className="senn-cta" aria-label="Discuss your peptide program">
+      {/* Discuss Your Peptide Program */}
+      <section className="senn-cta" aria-label="Discuss Your Peptide Program">
         <div className="senn-cta-copy">
-          <h2>Discuss your peptide program</h2>
-          <p>
+          <h2>Discuss Your Peptide Program</h2>
+          <h4>
             Connect with our CDMO team for peptide feasibility, process development, scale-up or commercial supply.
-          </p>
+          </h4>
         </div>
 
         <div className="senn-cta-actions">

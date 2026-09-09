@@ -206,7 +206,6 @@ const LEADERSHIP_TEAM = [
 
 export default function SennTidesPage() {
   const [openCard, setOpenCard] = useState<number>(-1);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const {
     swipeProps,
     isDragging,
@@ -231,18 +230,7 @@ export default function SennTidesPage() {
     }
     metaDescription.setAttribute('content', descriptionContent);
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setIsScrolled(scrollY > 220);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     window.scrollTo(0, 0);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   return (
@@ -286,21 +274,16 @@ export default function SennTidesPage() {
       </div>
 
       {/* Overview Intro */}
-      <section className={`senn-intro ${isScrolled ? 'is-scrolled' : ''}`} aria-label="Overview">
-        <p>
-          <span>
-            Senn Tides is a wholly owned subsidiary of Granules India and its integrated CDMO platform, with an established foundation in peptides and expansion into oligonucleotides and antibody-drug conjugates underway.{' '}
-          </span>
-          <span className="muted">
-            It was incorporated in June 2025 following Granules India&rsquo;s acquisition of Senn Chemicals AG, a Swiss peptide CDMO founded in Dielsdorf, Zurich, in 1963.
-          </span>
-        </p>
-        <p>
+      <section className="senn-intro" aria-label="Overview">
+        <h4>
+          Senn Tides is a wholly owned subsidiary of Granules India and its integrated CDMO platform, with an established foundation in peptides and expansion into oligonucleotides and antibody-drug conjugates underway. It was incorporated in June 2025 following Granules India&rsquo;s acquisition of Senn Chemicals AG, a Swiss peptide CDMO founded in Dielsdorf, Zurich, in 1963.
+        </h4>
+        <h4>
           We operate development and manufacturing capabilities across Dielsdorf, Switzerland, and Hyderabad, India. Zurich operations form the core of our CDMO offerings, with a long track record in R&amp;D, process development and small-scale manufacturing of peptide APIs, peptide fragments and protected AADs for pharmaceutical innovators, cosmetic companies and theranostic developers. Building on this Swiss foundation, Senn Tides is developing a two-continent operating model, with complementary large-scale infrastructure, R&amp;D and manufacturing in India.
-        </p>
-        <p>
+        </h4>
+        <h4>
           Customers are supported by one integrated platform and project team across both geographies.
-        </p>
+        </h4>
       </section>
 
       {/* What We Do Section */}
@@ -308,9 +291,9 @@ export default function SennTidesPage() {
         <div className="copy">
           <span className="cp-section-badge">What We Do</span>
           <h2>What We Do</h2>
-          <p>
+          <h4>
             We provide custom development and manufacturing services for peptide ingredients, from route selection and process development through scale-up, validation and commercial supply.
-          </p>
+          </h4>
         </div>
         <a className="cp-cta-btn" href="https://www.sennchem.com" target="_blank" rel="noreferrer">
           Visit Senn Chemicals ↗
@@ -405,9 +388,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">Synthesis Methodologies</span>
             <h2>Four Synthesis Routes</h2>
-            <p>
+            <h4>
               Most peptide manufacturers run one synthesis platform and fit every molecule to it. Our platform brings together four synthesis approaches, enabling route selection based on the molecule, target scale and purification requirements.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -436,17 +419,17 @@ export default function SennTidesPage() {
 
         {/* Why Liquid Phase Matters Callout */}
         <div className="senn-lpps-callout">
-          <h4>
+          <h3 className="callout-title">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
               <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
             Why Liquid Phase Matters
+          </h3>
+          <h4>
+            For suitable molecules, LPPS can offer substantially lower process mass intensity than SPPS and may reduce or eliminate chromatography, supporting the commercial viability of large-scale peptide manufacturing.
           </h4>
-          <p>
-            For suitable molecules, LPPS can offer substantially lower process mass intensity than SPPS and may reduce or eliminate chromatography. This can materially improve the commercial viability of large-scale peptide manufacturing. It is where Senn Chemicals built its reputation and it remains our core strength.
-          </p>
         </div>
       </section>
 
@@ -456,9 +439,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">Development Lifecycle</span>
             <h2>From Feasibility to Commercial Supply</h2>
-            <p>
+            <h4>
               Programs can progress from feasibility to commercial supply within the same CDMO platform, reducing the need for an external vendor transfer.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -479,9 +462,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">Infrastructure &amp; Scale</span>
             <h2>Manufacturing Capacity</h2>
-            <p>
+            <h4>
               Comprehensive pilot, clinical, and commercial equipment trains operating under Swissmedic cGMP standards.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -512,9 +495,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">R&amp;D &amp; Analytics</span>
             <h2>Development and Analytical Support</h2>
-            <p>
+            <h4>
               An experienced R&amp;D team, including doctoral-level scientists, provides route scouting, process development, analytical method development and validation, stability studies, DMF preparation and technology-transfer support.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -540,9 +523,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">Quality Systems</span>
             <h2>Quality and Compliance</h2>
-            <p>
+            <h4>
               Operating to the highest global standards with authorization from Swissmedic and alignment with international regulatory frameworks.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -563,9 +546,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">Locations</span>
             <h2>Footprint</h2>
-            <p>
+            <h4>
               Operating across Switzerland and India with established European facilities and major capacity additions underway.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -586,9 +569,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">India Expansion</span>
             <h2>Building Capacity in India</h2>
-            <p>
+            <h4>
               Scaling next-generation development infrastructure and commercial manufacturing in India.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -616,9 +599,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">Leadership</span>
             <h2>Executive Leadership</h2>
-            <p>
+            <h4>
               Guided by experienced scientific and commercial leaders driving peptide CDMO innovation worldwide.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -638,9 +621,9 @@ export default function SennTidesPage() {
           <div className="copy">
             <span className="cp-section-badge">Contact</span>
             <h2>Connect with Our CDMO Team</h2>
-            <p>
+            <h4>
               Discuss your development and manufacturing program with Senn Tides across our Swiss and Indian headquarters.
-            </p>
+            </h4>
           </div>
         </div>
 
@@ -671,9 +654,9 @@ export default function SennTidesPage() {
       <section className="senn-cta" aria-label="Connect with Senn Tides">
         <div className="senn-cta-copy">
           <h2>Discuss Your Development and Manufacturing Program with Senn Tides</h2>
-          <p>
+          <h4>
             Connect with our CDMO team for peptide feasibility, process development, scale-up or commercial supply.
-          </p>
+          </h4>
           <div className="senn-cta-links">
             <span>Email: <a href="mailto:sales@sennchem.com">sales@sennchem.com</a></span>
             <span>Web: <a href="https://www.sennchem.com" target="_blank" rel="noreferrer">www.sennchem.com</a></span>

@@ -67,8 +67,6 @@ const THERAPY_EXPANSION = [
 
 export default function GenericsPage() {
   const [openProduct, setOpenProduct] = useState<number>(-1);
-  const introRef = useRef<HTMLDivElement>(null);
-  const [isIntroScrolled, setIsIntroScrolled] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -85,20 +83,6 @@ export default function GenericsPage() {
     metaDescription.setAttribute('content', descriptionContent);
 
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!introRef.current) return;
-      const rect = introRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const triggerPoint = viewportHeight * 0.45;
-      setIsIntroScrolled(rect.top < triggerPoint);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -130,142 +114,134 @@ export default function GenericsPage() {
         </div>
       </section>
 
-      <div
-        ref={introRef}
-        className={`cp-about-desc${isIntroScrolled ? ' is-scrolled' : ''}`}
-      >
-        <p>
-          <span className="part-1">
-            Granules India offers a diverse and continually evolving portfolio to the global
-            pharmaceutical market, spanning Active Pharmaceutical Ingredients (APIs), Pharmaceutical
-            Formulation Intermediates (PFIs), Finished Dosages (FDs) and Peptides CDMO products.
-          </span>{' '}
-          <span className="part-2">
-            Guided by science and a clear focus on advancing high-value, specialised therapies, our
-            teams are committed to delivering safe, effective and affordable medicines that meet the
-            expectations of partners and patients across geographies.
-          </span>
-        </p>
-        <p className="part-2">
+      <div className="gen-intro-desc">
+        <h4>
+          Granules India offers a diverse and continually evolving portfolio to the global
+          pharmaceutical market, spanning Active Pharmaceutical Ingredients (APIs), Pharmaceutical
+          Formulation Intermediates (PFIs), Finished Dosages (FDs) and Peptides CDMO products.
+          Guided by science and a clear focus on advancing high-value, specialised therapies, our
+          teams are committed to delivering safe, effective and affordable medicines that meet the
+          expectations of partners and patients across geographies.
+        </h4>
+        <h4>
           Our portfolio strategy encompasses our core strength of scale, while expanding into complex
           generics, controlled substances, oncology therapies, CNS/ADHD treatments, peptides and
           advanced drug delivery systems. Supported by a global manufacturing and R&amp;D network,
           Granules continues to strengthen its position as a trusted partner to customers worldwide.
-        </p>
+        </h4>
       </div>
-      <div className="cp-divider" />
 
       <section className="gen-verticals-wrap" id="three-verticals" aria-label="Core Generic Verticals">
-          <div className="biz-section-head gen-section-head">
-            <div className="copy">
-              <span className="cp-section-badge">Core Verticals</span>
-              <h2>Integrated Across the Value Chain</h2>
-              <p>
-                From pure API molecules to ready-to-compress PFIs and finished patient-ready dosages.
-              </p>
-            </div>
+        <div className="biz-section-head gen-section-head">
+          <div className="copy">
+            <span className="cp-section-badge">Core Verticals</span>
+            <h2>Integrated Across the Value Chain</h2>
+            <h4>
+              From pure API molecules to ready-to-compress PFIs and finished patient-ready dosages.
+            </h4>
           </div>
-
-          <div className="product-grid gen-product-grid">
-            {products.map((product, index) => {
-              const isOpen = openProduct === index;
-              return (
-                <article
-                  className={`product-card${isOpen ? ' is-open' : ''}`}
-                  key={product.title}
-                  onMouseEnter={() => setOpenProduct(index)}
-                  onMouseLeave={() => setOpenProduct(-1)}
-                >
-                  <button
-                    className="product-toggle"
-                    type="button"
-                    onClick={() => {
-                      if (isOpen) {
-                        navigate(product.href);
-                      } else {
-                        setOpenProduct(index);
-                      }
-                    }}
-                    aria-expanded={isOpen}
-                    aria-label={`${isOpen ? 'Close' : 'Explore'} ${product.title}`}
-                  >
-                    {/* Background product image */}
-                    <div className="product-img-wrap">
-                      <img
-                        src={`/assets/${product.image}`}
-                        alt={product.title}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-
-                    {/* Sliding blue drawer sheet */}
-                    <div className="product-sheet">
-                      <div className="product-sheet-head">
-                        <span className="product-sheet-title">{product.title}</span>
-                        <span className="product-symbol" aria-hidden="true">
-                          {isOpen ? '−' : '+'}
-                        </span>
-                      </div>
-
-                      <div className="product-sheet-body">
-                        <p className="product-description">{product.body}</p>
-                        <Link
-                          to={product.href}
-                          className="product-learn"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                          }}
-                        >
-                          <span>{product.cta}</span>
-                          <span aria-hidden="true" style={{ marginLeft: '6px' }}>&rarr;</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </button>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Portfolio Strategy & Specialized Therapies */}
-        <section className="gen-strategy-section" aria-label="Portfolio Strategy and Therapies">
-          <div className="biz-section-head gen-section-head gen-section-head--therapy">
-            <div className="copy">
-              <span className="cp-section-badge">Expanding Horizons</span>
-              <h2>High-Value, Specialized Therapies</h2>
-              <p>
-                Strengthening core volume strengths while accelerating complex and niche healthcare solutions.
-              </p>
-            </div>
-            <Link to="/business/product-portfolio" className="cp-cta-btn gen-products-btn">
-              Our Products
-            </Link>
-          </div>
-
-          <div className="gen-therapy-grid">
-            {THERAPY_EXPANSION.map((t, idx) => (
-              <div key={idx} className="gen-therapy-card">
-                <div className="gen-therapy-icon-wrap">
-                  <img src={`/assets/api/${t.icon}`} alt="" />
-                </div>
-                <h3 className="gen-therapy-title">{t.title}</h3>
-                <p className="gen-therapy-desc">{t.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="biz-cta biz-cta--placeholder gen-cta">
-          <div className="biz-cta-copy">
-            <h2>Partner with Granules on Generic Innovation</h2>
-            <p>
-              Leverage our end-to-end scale, global regulatory compliance, and formulation science to bring high-quality medicines to market faster.
-            </p>
-          </div>
-          <Link to="/contact" className="cp-cta-btn">Connect With Us</Link>
         </div>
+
+        <div className="product-grid gen-product-grid">
+          {products.map((product, index) => {
+            const isOpen = openProduct === index;
+            return (
+              <article
+                className={`product-card${isOpen ? ' is-open' : ''}`}
+                key={product.title}
+                onMouseEnter={() => setOpenProduct(index)}
+                onMouseLeave={() => setOpenProduct(-1)}
+              >
+                <button
+                  className="product-toggle"
+                  type="button"
+                  onClick={() => {
+                    if (isOpen) {
+                      navigate(product.href);
+                    } else {
+                      setOpenProduct(index);
+                    }
+                  }}
+                  aria-expanded={isOpen}
+                  aria-label={`${isOpen ? 'Close' : 'Explore'} ${product.title}`}
+                >
+                  {/* Background product image */}
+                  <div className="product-img-wrap">
+                    <img
+                      src={`/assets/${product.image}`}
+                      alt={product.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+
+                  {/* Sliding blue drawer sheet */}
+                  <div className="product-sheet">
+                    <div className="product-sheet-head">
+                      <span className="product-sheet-title">{product.title}</span>
+                      <span className="product-symbol" aria-hidden="true">
+                        {isOpen ? '−' : '+'}
+                      </span>
+                    </div>
+
+                    <div className="product-sheet-body">
+                      <p className="product-description">{product.body}</p>
+                      <Link
+                        to={product.href}
+                        className="product-learn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                      >
+                        <span>{product.cta}</span>
+                        <span aria-hidden="true" style={{ marginLeft: '6px' }}>&rarr;</span>
+                      </Link>
+                    </div>
+                  </div>
+                </button>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Portfolio Strategy & Specialized Therapies */}
+      <section className="gen-strategy-section" aria-label="Portfolio Strategy and Therapies">
+        <div className="biz-section-head gen-section-head gen-section-head--therapy">
+          <div className="copy">
+            <span className="cp-section-badge">Expanding Horizons</span>
+            <h2>High-Value, Specialized Therapies</h2>
+            <h4>
+              Strengthening core volume strengths while accelerating complex and niche healthcare solutions.
+            </h4>
+          </div>
+          <Link to="/business/product-portfolio" className="cp-cta-btn gen-products-btn">
+            Our Products
+          </Link>
+        </div>
+
+        <div className="gen-therapy-grid">
+          {THERAPY_EXPANSION.map((t, idx) => (
+            <div key={idx} className="gen-therapy-card">
+              <div className="gen-therapy-icon-wrap">
+                <img src={`/assets/api/${t.icon}`} alt="" />
+              </div>
+              <h3 className="gen-therapy-title">{t.title}</h3>
+              <p className="gen-therapy-desc">{t.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="biz-cta biz-cta--placeholder gen-cta">
+        <div className="biz-cta-copy">
+          <h2>Partner with Granules on Generic Innovation</h2>
+          <h4>
+            Leverage our end-to-end scale, global regulatory compliance, and formulation science to bring high-quality medicines to market faster.
+          </h4>
+        </div>
+        <Link to="/contact" className="cp-cta-btn">Connect With Us</Link>
+      </div>
 
       <CompanyFooter />
     </div>

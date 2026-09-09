@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
@@ -55,9 +55,6 @@ const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
 ];
 
 export default function GlobalSubsidiariesPage() {
-  const introRef = useRef<HTMLDivElement>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     document.title = 'Global Subsidiaries — Granules India';
 
@@ -71,21 +68,7 @@ export default function GlobalSubsidiariesPage() {
     }
     metaDescription.setAttribute('content', descriptionContent);
 
-    const handleScroll = () => {
-      if (!introRef.current) return;
-      const rect = introRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const triggerPoint = viewportHeight * 0.45;
-      setIsScrolled(rect.top < triggerPoint);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     window.scrollTo(0, 0);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   const renderCard = (sub?: SubsidiaryItem) => {
@@ -93,78 +76,30 @@ export default function GlobalSubsidiariesPage() {
     return (
       <article className="global-sub-card" key={sub.name}>
         <div className="global-sub-card-media">
-          <img
-            src={sub.image}
-            alt={`${sub.name} facility`}
-            loading="lazy"
-            decoding="async"
-          />
-          <span className="global-sub-card-index">{sub.index}</span>
+          <img src={sub.image} alt={sub.name} loading="lazy" decoding="async" />
         </div>
-
-      <div className="global-sub-card-content">
-        <h2 className="global-sub-card-title">{sub.name}</h2>
-        <p className="global-sub-card-desc">{sub.description}</p>
-
-        <div className="global-sub-card-action">
-          {sub.isExternal ? (
-            <a
-              href={sub.ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="global-sub-card-cta"
-            >
+        <div className="global-sub-card-body">
+          <h3 className="global-sub-card-title">{sub.name}</h3>
+          <p className="global-sub-card-desc">{sub.description}</p>
+          <div className="global-sub-card-footer">
+            <Link to={sub.ctaHref} className="global-sub-card-btn">
               <span>{sub.ctaText}</span>
-              <span className="global-sub-cta-icon-circle">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
-            </a>
-          ) : (
-            <Link to={sub.ctaHref} className="global-sub-card-cta">
-              <span>{sub.ctaText}</span>
-              <span className="global-sub-cta-icon-circle">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14" />
+                <path d="M12 5l7 7-7 7" />
+              </svg>
             </Link>
-          )}
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
     );
   };
 
   return (
-    <div className="cp">
+    <div className="cp global-subsidiaries-page">
       <NavBar />
 
-      {/* Breadcrumb Navigation */}
-      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb">
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
         <Link to="/company">ABOUT US</Link>
@@ -172,11 +107,9 @@ export default function GlobalSubsidiariesPage() {
         <span className="current">GLOBAL SUBSIDIARIES</span>
       </p>
 
-      {/* Page Title */}
-      <h1 className="cp-page-title"></h1>
+      <h1 className="global-sub-page-title">Global Subsidiaries</h1>
 
-      {/* Hero Visual Banner */}
-      <div className="cp-hero-banner global-sub-hero-banner">
+      <div className="global-sub-hero-banner">
         <img
           src="/assets/company/values-bg-2.webp"
           alt="Granules India Global Subsidiaries"
@@ -186,18 +119,10 @@ export default function GlobalSubsidiariesPage() {
         <div className="global-sub-hero-overlay" />
       </div>
 
-      {/* Intro Scroll Highlight Section */}
-      <div
-        ref={introRef}
-        className={`global-sub-intro ${isScrolled ? 'is-scrolled' : ''}`}
-      >
+      {/* Intro Section */}
+      <div className="global-sub-intro">
         <p>
-          <span className="part-1">
-            With strategically differentiated offerings, our subsidiaries play a vital role in enabling us to deliver high-quality, affordable, and sustainable healthcare solutions to patients worldwide.
-          </span>{' '}
-          <span className="part-2">
-            Beyond driving business growth, our subsidiaries help drive a shared commitment to common values, consistent standards, and a collective focus on creating long-term value for patients, partners, communities, and the planet.
-          </span>
+          With strategically differentiated offerings, our subsidiaries play a vital role in enabling us to deliver high-quality, affordable, and sustainable healthcare solutions to patients worldwide. Beyond driving business growth, our subsidiaries help drive a shared commitment to common values, consistent standards, and a collective focus on creating long-term value for patients, partners, communities, and the planet.
         </p>
       </div>
 
