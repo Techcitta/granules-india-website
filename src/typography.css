@@ -15,7 +15,7 @@
   --fs-feature: clamp(20px, 1.8vw, 30px);
   --fs-subsection: clamp(18px, 1.4vw, 24px);
   --fs-card: 20px;
-  --fs-intro: clamp(16px, 1.1vw, 20px);
+  --fs-intro: clamp(18px, 1.3vw, 22px);
   --fs-body-lg: clamp(16px, 1.05vw, 18px);
   --fs-body: 16px;
   --fs-body-sm: 14px;
@@ -30,7 +30,7 @@
   --lh-page-title: 1.2;
   --lh-section: 1.2;
   --lh-feature: 1.35;
-  --lh-intro: 1.55;
+  --lh-intro: 1.5;
   --lh-body-lg: 1.55;
   --lh-body: 1.55;
   --lh-body-sm: 1.5;
@@ -301,16 +301,17 @@ input, textarea, select {
 
 .ms-card-year,
 h3.ms-card-year {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: clamp(100px, 15vw, 220px) !important;
-  line-height: 0.95 !important;
-  font-weight: 500 !important;
-  color: #d7e8fe !important;
-  -webkit-text-fill-color: #d7e8fe !important;
+  font-family: 'DM Sans', 'Manrope', sans-serif !important;
+  font-size: clamp(68px, 7.5vw, 136px) !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  color: #e1effe !important;
+  -webkit-text-fill-color: #e1effe !important;
   -webkit-text-stroke: 1.5px #0061f8 !important;
   text-stroke: 1.5px #0061f8 !important;
   paint-order: stroke fill;
-  letter-spacing: -0.01em !important;
+  letter-spacing: -0.02em !important;
+  white-space: nowrap !important;
   margin: 0 !important;
   text-align: center !important;
   user-select: none !important;
@@ -327,11 +328,12 @@ h3.ms-card-year {
   font-weight: 700 !important;
 }
 
-[class*='intro'] p, [class*='lead'] {
+[class*='intro'] p, [class*='intro'] h4, [class*='lead'], .cp-about-desc p, .cp-about-desc h4 {
   font-size: var(--fs-intro) !important;
   line-height: var(--lh-intro) !important;
-  font-weight: 500 !important;
-  letter-spacing: var(--track-body) !important;
+  font-weight: 400 !important;
+  letter-spacing: var(--track-body, -0.2px) !important;
+  color: var(--n9, #070707) !important;
 }
 
 [class*='meta'], [class*='eyebrow'], [class*='label'], [class*='breadcrumb'] {

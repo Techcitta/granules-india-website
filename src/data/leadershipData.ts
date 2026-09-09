@@ -10,7 +10,7 @@ export interface LeadershipMember {
 export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   {
     id: 'krishna-prasad',
-    image: 'CMD.jpg',
+    image: 'krishna-prasad.jpg',
     name: 'Dr. Krishna Prasad Chigurupati',
     role: 'Chairman and Managing Director',
     profile: [
@@ -37,7 +37,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'uma-devi',
-    image: '6V8A5131.JPG (1).png',
+    image: 'uma-devi.jpg',
     name: 'Mrs. Uma Devi Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -62,7 +62,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'priyanka',
-    image: 'Priyanka (1).jpg',
+    image: 'priyanka.jpg',
     name: 'Ms. Priyanka Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -78,7 +78,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'harsha',
-    image: 'Harsha.jpg',
+    image: 'harsha-chigurupati.jpg',
     name: 'Mr. Harsha Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -97,7 +97,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'sankar-rao',
-    image: 'Sankar Rao.jpg',
+    image: 'sankar-rao.jpg',
     name: 'Mr. K. B. Sankar Rao',
     role: 'Non-Executive, Non-Independent Director',
     profile: [
@@ -122,7 +122,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'saumen-chakraborty',
-    image: 'Priyanka (6).jpg',
+    image: 'saumen-chakraborty.jpg',
     name: 'Dr. Saumen Chakraborty',
     role: 'Independent Director',
     profile: [
@@ -151,7 +151,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'kapil-mehan',
-    image: 'Kapil.jpg',
+    image: 'kapil-mehan.jpg',
     name: 'Mr. Kapil Kumar Mehan',
     role: 'Independent Director',
     profile: [
@@ -185,7 +185,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
   },
   {
     id: 'sethurathnam-ravi',
-    image: 'DSC05854.jpg',
+    image: 'sethurathnam-ravi.jpg',
     name: 'Dr. Sethurathnam Ravi',
     role: 'Independent Director',
     profile: [
@@ -213,7 +213,7 @@ export const BOARD_OF_DIRECTORS: LeadershipMember[] = [
 export const MANAGEMENT_TEAM: LeadershipMember[] = [
   {
     id: 'krishna-prasad',
-    image: 'CMD.jpg',
+    image: 'krishna-prasad.jpg',
     name: 'Dr. Krishna Prasad Chigurupati',
     role: 'Chairman and Managing Director',
     profile: [
@@ -240,7 +240,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'uma-devi',
-    image: '6V8A5131.JPG (1).png',
+    image: 'uma-devi.jpg',
     name: 'Mrs. Uma Devi Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -265,7 +265,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'priyanka',
-    image: 'Priyanka (1).jpg',
+    image: 'priyanka.jpg',
     name: 'Ms. Priyanka Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -281,7 +281,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'harsha',
-    image: 'Harsha.jpg',
+    image: 'harsha-chigurupati.jpg',
     name: 'Mr. Harsha Chigurupati',
     role: 'Executive Director',
     profile: [
@@ -300,7 +300,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'mukesh-surana',
-    image: 'Mukesh.jpg',
+    image: 'mukesh-surana.jpg',
     name: 'Mr. Mukesh Surana',
     role: 'Chief Financial Officer',
     profile: [
@@ -309,7 +309,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'pv-srinivas',
-    image: 'Dr PV.jpg',
+    image: 'pv-srinivas.jpg',
     name: 'Dr. PV Srinivas',
     role: 'Chief Technology Officer',
     profile: [
@@ -328,7 +328,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'ramraj-rangarajalu',
-    image: 'Ramraj.JPG',
+    image: 'ramraj-rangarajalu.jpg',
     name: 'Mr. Ramraj Rangarajalu',
     role: 'President and Head - Formulations Operations',
     profile: [
@@ -347,7 +347,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'sanjay-kumar',
-    image: 'Sanjay Kumar.png',
+    image: 'sanjay-kumar.jpg',
     name: 'Mr. Sanjay Kumar',
     role: 'Chief Executive Officer, Senn Tides India Private Limited',
     profile: [
@@ -358,7 +358,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'baskaran-pn',
-    image: 'Baskaran.jpeg',
+    image: 'baskaran-pn.jpg',
     name: 'Dr. Baskaran PN',
     role: 'President & Head - API Operations',
     profile: [
@@ -368,7 +368,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'vijay-raghavan',
-    image: 'Vijay Raghavan (2).jpg',
+    image: 'vijay-raghavan.jpg',
     name: 'Dr. Vijay Raghavan',
     role: 'President, Global Portfolio',
     profile: [
@@ -377,7 +377,7 @@ export const MANAGEMENT_TEAM: LeadershipMember[] = [
   },
   {
     id: 'rajesh-kapoor',
-    image: 'Rajesh Kapoor.jpg',
+    image: 'rajesh-kapoor.jpg',
     name: 'Dr. Rajesh Kapoor',
     role: 'Global Head - Quality',
     profile: [

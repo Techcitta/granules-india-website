@@ -155,14 +155,15 @@ export default function InvestorOverviewPage() {
     <div className="cp">
       <NavBar />
 
-      <div className="cp-hero-inner" style={{ paddingTop: 'clamp(18px, 2.2vw, 30px)' }}>
-        <p className="cp-breadcrumb">
-          <Link to="/">HOME</Link>
-          <span className="sep">›</span>
-          <span className="current">INVESTOR OVERVIEW</span>
-        </p>
-        <h1 className="cp-page-title">Investor overview</h1>
-      </div>
+      {/* Breadcrumb Navigation */}
+      <p className="cp-breadcrumb" style={{ width: 'min(85%, 1632px)', maxWidth: '1632px', margin: 'clamp(60px, 8vw, 118px) auto 16px' }}>
+        <Link to="/">HOME</Link>
+        <span className="sep">›</span>
+        <span className="current">INVESTOR OVERVIEW</span>
+      </p>
+
+      {/* Page Title */}
+      <h1 className="cp-page-title">Investor overview</h1>
 
       {/* 7 Navigation Jump Boxes at Top of Banner */}
       <section className="inv-jump-nav-wrap" aria-label="Jump to investor sections">

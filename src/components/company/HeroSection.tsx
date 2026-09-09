@@ -21,9 +21,6 @@ export default function HeroSection() {
           playsInline
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
-        <div className="cp-scroll-indicator">
-          <img src={asset('scroll-down-icon.webp')} alt="" loading="lazy" decoding="async" />
-        </div>
       </div>
     </section>
   );

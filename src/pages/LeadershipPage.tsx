@@ -31,20 +31,28 @@ export default function LeadershipPage() {
     }
   }, [selectedMember]);
 
-  // Handle hash on initial load
+  // Handle hash on initial load & on hashchange
   useEffect(() => {
-    const hash = window.location.hash.replace(/^#/, '');
-    if (hash) {
-      const allMembers = [...BOARD_OF_DIRECTORS, ...MANAGEMENT_TEAM];
-      const match = allMembers.find((m) => m.id === hash);
-      if (match) {
-        const isManagement = MANAGEMENT_TEAM.some((m) => m.id === hash);
-        if (isManagement && !BOARD_OF_DIRECTORS.some((m) => m.id === hash)) {
-          setActiveTab('management');
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      if (hash) {
+        const allMembers = [...BOARD_OF_DIRECTORS, ...MANAGEMENT_TEAM];
+        const match = allMembers.find((m) => m.id === hash);
+        if (match) {
+          const isManagement = MANAGEMENT_TEAM.some((m) => m.id === hash);
+          if (isManagement && !BOARD_OF_DIRECTORS.some((m) => m.id === hash)) {
+            setActiveTab('management');
+          }
+          setSelectedMember(match);
         }
-        setSelectedMember(match);
+      } else {
+        setSelectedMember(null);
       }
-    }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const handleSelectMember = (member: LeadershipMember) => {
@@ -88,12 +96,12 @@ export default function LeadershipPage() {
           {/* Breadcrumb */}
           <p className="cp-breadcrumb ld-profile-breadcrumb">
             <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>HOME</Link>
-            <span className="sep">&gt;</span>
-            <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>About us</Link>
-            <span className="sep">&gt;</span>
+            <span className="sep">›</span>
+            <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>ABOUT US</Link>
+            <span className="sep">›</span>
             <button type="button" className="ld-breadcrumb-btn" onClick={handleBack}>LEADERSHIP</button>
-            <span className="sep">&gt;</span>
-            <span className="current" style={{ color: '#0061f8', fontWeight: 700 }}>
+            <span className="sep">›</span>
+            <span className="current">
               {selectedMember.name.toUpperCase()}
             </span>
           </p>
@@ -164,10 +172,10 @@ export default function LeadershipPage() {
           <img className="cp-bg" src={`${L}cta-bg.webp`} alt="" loading="lazy" decoding="async" />
           <div className="cp-bg-overlay" />
           <div className="ld-cta-copy">
+            <Link className="cp-cta-btn" to="/careers">CAREERS &rarr;</Link>
             <h2>Find your next role at Granules</h2>
             <p>Join us in shaping the future of sustainable healthcare.</p>
           </div>
-          <a className="ld-cta-btn" href="/careers">CAREERS</a>
         </div>
 
         <CompanyFooter />
@@ -183,23 +191,24 @@ export default function LeadershipPage() {
       <div className="ld-main-view">
         <p className="cp-breadcrumb ld-main-breadcrumb">
           <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>HOME</Link>
-          <span className="sep">&gt;</span>
-          <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>About us</Link>
-          <span className="sep">&gt;</span>
+          <span className="sep">›</span>
+          <Link to="/company" style={{ color: 'inherit', textDecoration: 'none' }}>ABOUT US</Link>
+          <span className="sep">›</span>
           <span className="current">LEADERSHIP</span>
         </p>
 
         <div className="ld-hero">
-          <h1 className="ld-main-title">
-            <span>Making Granules Future-Ready</span>
-            <span></span>
-          </h1>
-          <p className="ld-main-desc">
-            Granules India is led by a team of seasoned professionals of the pharmaceutical industry. Each leader
-            brings in-depth expertise and a modern outlook to tackle the challenges of today's dynamic business.
-            Collectively, the Granules leadership chalks out strategies that help in building organisational
-            capability while delivering sustainable growth.
-          </p>
+          <h1 className="ld-main-title">Making Granules Future-Ready</h1>
+          <div className="ld-main-desc cp-about-desc">
+            <p>
+              Granules India is led by a team of seasoned professionals of the pharmaceutical industry. Each leader
+              brings in-depth expertise and a modern outlook to tackle the challenges of today's dynamic business.
+            </p>
+            <p>
+              Collectively, the Granules leadership chalks out strategies that help in building organisational
+              capability while delivering sustainable growth.
+            </p>
+          </div>
         </div>
 
         <div className="ld-tabs-container">
@@ -273,10 +282,10 @@ export default function LeadershipPage() {
         <img className="cp-bg" src={`${L}cta-bg.webp`} alt="" loading="lazy" decoding="async" />
         <div className="cp-bg-overlay" />
         <div className="ld-cta-copy">
+          <Link className="cp-cta-btn" to="/careers">CAREERS &rarr;</Link>
           <h2>Find your next role at Granules</h2>
           <p>Join us in shaping the future of sustainable healthcare.</p>
         </div>
-        <a className="ld-cta-btn" href="/careers">CAREERS</a>
       </div>
 
       <CompanyFooter />

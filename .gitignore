@@ -3,4 +3,9 @@ dist/
 work/
 *.log
 .DS_Store
+scratch/
+tmp/
+.vscode/
+.cursor/
 
+server/

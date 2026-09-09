@@ -53,11 +53,15 @@ Mobile: 18 px
 Weight: 700
 Line height: 140%
 
-Intro / lead text
-Desktop: 18 px
-Mobile: 16 px
-Weight: 400-500
-Line height: 160%
+Intro / lead text (e.g. .cp-about-desc, .ms-intro, .ld-main-desc)
+Desktop: 22 px (clamp(18px, 1.3vw, 22px))
+Mobile: 18 px
+Weight: 400
+Line height: 150% (1.5)
+Letter spacing: -0.2 px
+Color: #070707 (var(--n9, #070707))
+Paragraph spacing: 16 px gap between intro paragraphs
+Layout structure: Split multi-sentence intro copy into distinct paragraphs (gap: 16px) for maximum readability and visual breathing room.
 
 Standard body text
 Desktop: 16 px
@@ -108,7 +112,7 @@ USAGE RULES
 2. Section titles use 48 px on desktop and 28 px on mobile.
 3. Card titles use 20 px on desktop and 18 px on mobile.
 4. Normal paragraphs use 16 px on desktop and 14 px on mobile.
-5. Intro paragraphs use 18 px on desktop and 16 px on mobile.
+5. Intro paragraphs use clamp(18px, 1.3vw, 22px) (desktop 22px, mobile 18px), weight 400, line-height 1.5, color #070707, with 16px vertical gap between multiple intro paragraphs.
 6. Navigation remains 16 px on desktop and mobile.
 7. Buttons use 16 px on desktop and 14 px on mobile.
 8. Metadata, labels, and breadcrumbs use 14 px on desktop and 12 px on mobile.
@@ -117,6 +121,13 @@ USAGE RULES
     different typography role.
 11. Page styles may control spacing and color, but typography should come from
     the shared tokens in src/typography.css.
+12. Cross-link / CTA banners (e.g. .cp-career, .ms-leadership):
+    - Shell: width: min(85%, 1632px), margin: 75px auto 0, height: 250px (min-height 250px),
+      border-radius: 40px, padding: 24px clamp(30px, 4vw, 60px).
+    - Button: Pill CTA (.cp-cta-btn) stacked directly ABOVE the heading with margin-bottom: 2px,
+      padding 7px 20px, uppercase, 11-12px Manrope 700 with trailing arrow →.
+    - Heading (h2): 24-36px Manrope 700 line-height 1.2 in #0061f8.
+    - Description (p): 13.5-16px Manrope 500 line-height 1.45 in #2a2a2a.
 
 
 CANONICAL REUSE RULE

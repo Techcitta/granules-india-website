@@ -31,7 +31,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Our Journey', href: '/company/milestone' },
       { label: 'Leadership', href: '/company/leadership' },
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
-      { label: 'Granules Pharmaceuticals Inc', href: 'https://www.granulespharma.com/' },
     ],
   },
   Company: {

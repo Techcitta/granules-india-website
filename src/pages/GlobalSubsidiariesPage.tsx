@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
@@ -55,9 +55,6 @@ const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
 ];
 
 export default function GlobalSubsidiariesPage() {
-  const introRef = useRef<HTMLDivElement>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     document.title = 'Global Subsidiaries — Granules India';
 
@@ -70,22 +67,7 @@ export default function GlobalSubsidiariesPage() {
       document.head.appendChild(metaDescription);
     }
     metaDescription.setAttribute('content', descriptionContent);
-
-    const handleScroll = () => {
-      if (!introRef.current) return;
-      const rect = introRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const triggerPoint = viewportHeight * 0.45;
-      setIsScrolled(rect.top < triggerPoint);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     window.scrollTo(0, 0);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   const renderCard = (sub?: SubsidiaryItem) => {
@@ -164,7 +146,7 @@ export default function GlobalSubsidiariesPage() {
       <NavBar />
 
       {/* Breadcrumb Navigation */}
-      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: 'min(85%, 1632px)', maxWidth: '1632px', margin: 'clamp(60px, 8vw, 118px) auto 16px' }}>
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
         <Link to="/company">ABOUT US</Link>
@@ -173,7 +155,7 @@ export default function GlobalSubsidiariesPage() {
       </p>
 
       {/* Page Title */}
-      <h1 className="cp-page-title"></h1>
+      <h1 className="cp-page-title">Global Subsidiaries</h1>
 
       {/* Hero Visual Banner */}
       <div className="cp-hero-banner global-sub-hero-banner">
@@ -186,19 +168,14 @@ export default function GlobalSubsidiariesPage() {
         <div className="global-sub-hero-overlay" />
       </div>
 
-      {/* Intro Scroll Highlight Section */}
-      <div
-        ref={introRef}
-        className={`global-sub-intro ${isScrolled ? 'is-scrolled' : ''}`}
-      >
-        <p>
-          <span className="part-1">
-            With strategically differentiated offerings, our subsidiaries play a vital role in enabling us to deliver high-quality, affordable, and sustainable healthcare solutions to patients worldwide.
-          </span>{' '}
-          <span className="part-2">
-            Beyond driving business growth, our subsidiaries help drive a shared commitment to common values, consistent standards, and a collective focus on creating long-term value for patients, partners, communities, and the planet.
-          </span>
-        </p>
+      {/* Intro Section - identical to /company/milestone */}
+      <div className="cp-about-desc global-sub-intro">
+        <h4>
+          With strategically differentiated offerings, our subsidiaries play a vital role in enabling us to deliver high-quality, affordable, and sustainable healthcare solutions to patients worldwide.
+        </h4>
+        <h4>
+          Beyond driving business growth, our subsidiaries help drive a shared commitment to common values, consistent standards, and a collective focus on creating long-term value for patients, partners, communities, and the planet.
+        </h4>
       </div>
 
       {/* 4 Featured Subsidiaries Showcase - Staggered Columns matching R&D page */}
