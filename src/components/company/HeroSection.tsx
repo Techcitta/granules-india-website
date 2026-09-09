@@ -1,12 +1,12 @@
-import { asset } from './constants';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
   return (
     <section className="cp-hero">
       <p className="cp-breadcrumb">
-        <a href="/">HOME</a>
+        <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <a href="/company">ABOUT US</a>
+        <Link to="/company">ABOUT US</Link>
         <span className="sep">›</span>
         <span className="current">OVERVIEW</span>
       </p>
@@ -21,9 +21,6 @@ export default function HeroSection() {
           playsInline
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
-        <div className="cp-scroll-indicator">
-          <img src={asset('scroll-down-icon.webp')} alt="" loading="lazy" decoding="async" />
-        </div>
       </div>
     </section>
   );

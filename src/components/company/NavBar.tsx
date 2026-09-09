@@ -31,7 +31,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Our Journey', href: '/company/milestone' },
       { label: 'Leadership', href: '/company/leadership' },
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
-      { label: 'Granules Pharmaceuticals Inc', href: 'https://www.granulespharma.com/' },
     ],
   },
   Company: {
@@ -73,7 +72,10 @@ const SUBMENUS: Record<string, Submenu> = {
   },
 };
 
-function isActive(link: NavLinkItem, pathname: string) {
+function isActive(link: NavLinkItem, pathname: string, activeSection?: string | null) {
+  if (pathname === '/' || pathname === '') {
+    return !!activeSection && link.label === activeSection;
+  }
   if (link.label === 'About Us' || link.label === 'Company') {
     return (
       pathname.startsWith('/company') ||
@@ -122,6 +124,7 @@ export default function NavBar({ onSearch }: { onSearch?: () => void } = {}) {
   const [open, setOpen] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { pathname } = useLocation();
 
@@ -133,6 +136,58 @@ export default function NavBar({ onSearch }: { onSearch?: () => void } = {}) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Homepage scroll-spy to glow current section in navbar
+  useEffect(() => {
+    if (pathname !== '/' && pathname !== '') {
+      setActiveSection(null);
+      return;
+    }
+
+    const SECTIONS = [
+      { id: 'about', label: 'About Us' },
+      { id: 'business', label: 'Business' },
+      { id: 'sustainability', label: 'Sustainability' },
+      { id: 'investor', label: 'Investor' },
+      { id: 'media', label: 'Media' },
+      { id: 'careers', label: 'Careers' },
+    ];
+
+    const handleScrollSpy = () => {
+      if (window.scrollY < 200) {
+        setActiveSection(null);
+        return;
+      }
+
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      if (docHeight - scrollBottom < 100) {
+        setActiveSection('Careers');
+        return;
+      }
+
+      const mid = window.innerHeight * 0.38;
+      let matchedLabel: string | null = null;
+
+      for (let i = SECTIONS.length - 1; i >= 0; i--) {
+        const sec = SECTIONS[i];
+        const el = document.getElementById(sec.id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= mid) {
+            matchedLabel = sec.label;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(matchedLabel);
+    };
+
+    handleScrollSpy();
+    window.addEventListener('scroll', handleScrollSpy, { passive: true });
+    return () => window.removeEventListener('scroll', handleScrollSpy);
+  }, [pathname]);
 
   const showMenu = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -166,7 +221,7 @@ export default function NavBar({ onSearch }: { onSearch?: () => void } = {}) {
           <div className="cp-nav-links" onMouseLeave={hideMenu}>
             {NAV_LINKS.map((link) => {
               const submenu = SUBMENUS[link.label];
-              const active = isActive(link, pathname);
+              const active = isActive(link, pathname, activeSection);
               return (
                 <div
                   className={`cp-nav-item${active ? ' is-active' : ''}`}
@@ -302,7 +357,7 @@ export default function NavBar({ onSearch }: { onSearch?: () => void } = {}) {
               <Link
                 key={link.label}
                 to={link.href}
-                className={`cp-nav-drawer-link${isActive(link, pathname) ? ' active' : ''}`}
+                className={`cp-nav-drawer-link${isActive(link, pathname, activeSection) ? ' active' : ''}`}
                 onClick={() => setOpen(false)}
               >
                 {link.label}

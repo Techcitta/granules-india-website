@@ -73,22 +73,42 @@ export default function GlobalSubsidiariesPage() {
 
   const renderCard = (sub?: SubsidiaryItem) => {
     if (!sub) return null;
+    const ctaInner = (
+      <>
+        <span>{sub.ctaText}</span>
+        <span className="global-sub-cta-icon-circle" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </span>
+      </>
+    );
+
     return (
       <article className="global-sub-card" key={sub.name}>
         <div className="global-sub-card-media">
+          <span className="global-sub-card-index">{sub.index}</span>
           <img src={sub.image} alt={sub.name} loading="lazy" decoding="async" />
         </div>
-        <div className="global-sub-card-body">
+        <div className="global-sub-card-content">
           <h3 className="global-sub-card-title">{sub.name}</h3>
           <p className="global-sub-card-desc">{sub.description}</p>
-          <div className="global-sub-card-footer">
-            <Link to={sub.ctaHref} className="global-sub-card-btn">
-              <span>{sub.ctaText}</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14" />
-                <path d="M12 5l7 7-7 7" />
-              </svg>
-            </Link>
+          <div className="global-sub-card-action">
+            {sub.isExternal ? (
+              <a
+                href={sub.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="global-sub-card-cta"
+              >
+                {ctaInner}
+              </a>
+            ) : (
+              <Link to={sub.ctaHref} className="global-sub-card-cta">
+                {ctaInner}
+              </Link>
+            )}
           </div>
         </div>
       </article>
@@ -107,7 +127,7 @@ export default function GlobalSubsidiariesPage() {
         <span className="current">GLOBAL SUBSIDIARIES</span>
       </p>
 
-      <h1 className="global-sub-page-title">Global Subsidiaries</h1>
+      <h1 className="cp-page-title">Global Subsidiaries</h1>
 
       <div className="global-sub-hero-banner">
         <img
@@ -121,9 +141,12 @@ export default function GlobalSubsidiariesPage() {
 
       {/* Intro Section */}
       <div className="global-sub-intro">
-        <p>
-          With strategically differentiated offerings, our subsidiaries play a vital role in enabling us to deliver high-quality, affordable, and sustainable healthcare solutions to patients worldwide. Beyond driving business growth, our subsidiaries help drive a shared commitment to common values, consistent standards, and a collective focus on creating long-term value for patients, partners, communities, and the planet.
-        </p>
+        <h4>
+          With strategically differentiated offerings, our subsidiaries play a vital role in enabling us to deliver high-quality, affordable, and sustainable healthcare solutions to patients worldwide.
+        </h4>
+        <h4>
+          Beyond driving business growth, our subsidiaries help drive a shared commitment to common values, consistent standards, and a collective focus on creating long-term value for patients, partners, communities, and the planet.
+        </h4>
       </div>
 
       {/* 4 Featured Subsidiaries Showcase - Staggered Columns matching R&D page */}
