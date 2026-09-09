@@ -83,24 +83,29 @@ const CENTER_TABS_DATA: TabData[] = [
 type InfoItem = {
   title: string;
   body: string;
+  image?: string;
 };
 
 const STRATEGIC_PRIORITIES: InfoItem[] = [
   {
     title: 'Strengthen Scientific Capabilities',
     body: 'Strengthen Scientific Capabilities to deepen expertise across chemistry, formulation and process sciences.',
+    image: 'priority-scientific-capabilities.webp',
   },
   {
     title: 'Building a Differentiated Product Pipeline',
     body: 'Building a differentiated product pipeline focused on complex generics, oncology, CNS and peptides.',
+    image: 'priority-product-pipeline.webp',
   },
   {
     title: 'Accelerate Product Development',
     body: 'Accelerate product development to reduce time-to-market through integrated development and digital tools.',
+    image: 'priority-accelerate-development.webp',
   },
   {
     title: 'Advance Future-Ready Technologies',
     body: 'Advance future-ready technologies through biocatalysis, particle engineering, peptides and digital R&D.',
+    image: 'priority-future-ready-technologies.webp',
   },
 ];
 
@@ -131,36 +136,6 @@ const TECH_ITEMS: InfoItem[] = [
   },
 ];
 
-type CapabilityItem = {
-  title: string;
-  body: string;
-  icon: string;
-  image?: string;
-  position?: string;
-};
-
-const CAPABILITY_ITEMS: CapabilityItem[] = [
-  {
-    title: 'Targeting High Barrier Segments',
-    body: 'Our API R&D is advancing high-barrier products in oncology and metabolic disorders through novel polymorphs, amorphous solid dispersions, and strategic collaborations with the Indian Institute of Technology (IIT) Hyderabad, National Institute of Pharmaceutical Education and Research (NIPER), CSIR-Indian Institute of Chemical Technology, and global partners.',
-    icon: 'icon-pills.svg',
-    image: 'capabilities-bg.png',
-    position: '50% calc(50% + 10px)',
-  },
-  {
-    title: 'Biocatalysis as a Strategic Platform',
-    body: 'Developing clean, enzyme-catalyzed synthesis pathways that replace hazardous reagents, achieve high stereo-selectivity, and reduce environmental impact.',
-    icon: 'icon-circles.svg',
-    image: 'centers-bg.png',
-    position: '50% calc(50% - 40px)',
-  },
-  {
-    title: 'Enzyme & Biotransformation Technologies',
-    body: 'Leveraging immobilized enzymes, engineered biocatalysts, and continuous flow biotransformations for sustainable, commercial-scale production.',
-    icon: 'icon-dna.svg',
-    image: 'hero-banner.png',
-  },
-];
 
 type GreenCard = {
   title: string;
@@ -192,7 +167,6 @@ const GREEN_CARDS: GreenCard[] = [
 ];
 
 export default function RdPage() {
-  const [openCapability, setOpenCapability] = useState<number>(0);
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
@@ -274,7 +248,12 @@ export default function RdPage() {
         </div>
         <div className="rd-priorities-grid">
           {STRATEGIC_PRIORITIES.map((item, i) => (
-            <div className="rd-info-card" key={item.title}>
+            <div className={`rd-info-card${item.image ? ' rd-info-card--has-media' : ''}`} key={item.title}>
+              {item.image && (
+                <div className="rd-info-card-media">
+                  <img src={`${R}${item.image}`} alt={item.title} loading="lazy" decoding="async" />
+                </div>
+              )}
               <span className="rd-info-index">{String(i + 1).padStart(2, '0')}</span>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
@@ -356,10 +335,6 @@ export default function RdPage() {
                 ))}
               </ul>
             )}
-
-            <a className="rd-know-more-btn" href={currentSlide.ctaHref || '/business/rd'}>
-              {currentSlide.ctaText || 'KNOW MORE'}
-            </a>
           </div>
         </div>
 
@@ -383,14 +358,6 @@ export default function RdPage() {
         </div>
       </div>
 
-      <div className="rd-iit-note">
-        <span className="rd-iit-badge">Also</span>
-        <p>
-          Complemented by Two Strategic Centres of Excellence at <strong>IIT Hyderabad, Telangana</strong>
-          {' '}focused on Peptide Development and Particle Engineering.
-        </p>
-      </div>
-
       {/* Innovation Enabled by Technology */}
       <div className="rd-tech">
         <div className="rd-tech-head">
@@ -409,56 +376,6 @@ export default function RdPage() {
               <p>{item.body}</p>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Building capabilities in complex and sustainable chemistry */}
-      <div className="biz-panel">
-        <img
-          className="bg"
-          src={
-            openCapability >= 0 && CAPABILITY_ITEMS[openCapability]?.image
-              ? `${R}${CAPABILITY_ITEMS[openCapability].image}`
-              : `${R}${CAPABILITY_ITEMS[0].image}`
-          }
-          style={
-            openCapability >= 0 && CAPABILITY_ITEMS[openCapability]?.position
-              ? { objectPosition: CAPABILITY_ITEMS[openCapability].position }
-              : undefined
-          }
-          alt="Complex chemistry and biocatalysis laboratory"
-        />
-        <div className="overlay" />
-        <div className="biz-panel-grid">
-          <div className="biz-panel-head">
-            <h2>Building capabilities in complex and sustainable chemistry</h2>
-          </div>
-          <div className="biz-accordion">
-            {CAPABILITY_ITEMS.map((item, index) => {
-              const isOpen = openCapability === index;
-              return (
-                <button
-                  key={item.title}
-                  type="button"
-                  className={`biz-accordion-item${isOpen ? '' : ' collapsed'}`}
-                  onClick={() => setOpenCapability(isOpen ? -1 : index)}
-                >
-                  <div className="biz-accordion-head">
-                    <div className="biz-accordion-icon-row">
-                      <span className="biz-accordion-icon">
-                        <img src={`${R}${item.icon}`} alt="" />
-                      </span>
-                      <p className="biz-accordion-title">{item.title}</p>
-                    </div>
-                    <span className="biz-accordion-toggle">
-                      <img src={`${R}${isOpen ? 'icon-minus.svg' : 'icon-plus.svg'}`} alt={isOpen ? 'Collapse' : 'Expand'} />
-                    </span>
-                  </div>
-                  {isOpen && item.body && <p className="biz-accordion-body">{item.body}</p>}
-                </button>
-              );
-            })}
-          </div>
         </div>
       </div>
 
@@ -528,9 +445,7 @@ export default function RdPage() {
         <div className="rd-cta-copy">
           <h2>Discover Our Innovation Platforms</h2>
           <div className="rd-cta-links">
-            <a className="rd-know-more-btn" href="/business/api">API R&amp;D</a>
-            <a className="rd-know-more-btn" href="/business/fd">FD R&amp;D</a>
-            <a className="rd-know-more-btn" href="/business/peptides">Peptides</a>
+            <Link className="rd-know-more-btn" to="/business/generics">Visit</Link>
           </div>
         </div>
       </div>
