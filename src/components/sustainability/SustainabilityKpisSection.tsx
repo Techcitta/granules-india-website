@@ -74,12 +74,7 @@ const KPI_ROWS = [
 export default function SustainabilityKpisSection() {
   return (
     <section className="sus-kpi-sec-img2">
-      <div className="sus-kpi-eyebrow-container">
-        <div className="sus-kpi-eyebrow-line" />
-        <span className="sus-kpi-eyebrow-star">★</span>
-        <div className="sus-kpi-eyebrow-line" />
-      </div>
-      <p className="sus-kpi-eyebrow-text">Key Performance Indicators</p>
+      <span className="tag">Key Performance Indicators</span>
       <h2 className="sus-kpi-title-img2">Progressing With Purpose</h2>
 
       <div className="sus-kpi-rows-wrap">

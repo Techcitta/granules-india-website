@@ -4,6 +4,7 @@ const GOALS_TOP = [
   {
     title: 'Emissions',
     desc: 'Achieve Net Zero by 2050\nReduce Scope 1 and Scope 2 absolute emissions by 42% by FY30 from FY23 baseline\nReduce Scope 3 absolute emissions by 42% by FY30 from FY23 baseline',
+    bgImg: '/assets/sustainability/sus/1.jpg',
     svg: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">
         <path d="m20 2c-1.863 0-3.517 1.036-4.377 2.614-.812-.397-1.699-.614-2.623-.614-3.309 0-6 2.691-6 6 0 2.967 2.167 5.431 5 5.91v2.09h2v-2h3v-2h-4c-2.206 0-4-1.794-4-4s1.794-4 4-4c.874 0 1.704.276 2.399.799 1.018.765 1.601 1.931 1.601 3.201h2c0-1.609-.63-3.102-1.742-4.219.474-1.069 1.54-1.781 2.742-1.781 1.654 0 3 1.346 3 3h2c0-2.757-2.243-5-5-5zm-3.98 3.973-.02.027z" />
@@ -103,7 +104,16 @@ export default function SustainabilityGoalsSection() {
 
       <div className="sus-goals-row-top">
         {GOALS_TOP.map((g) => (
-          <div key={g.title} className="sus-goal-card-img1">
+          <div
+            key={g.title}
+            className={`sus-goal-card-img1${g.bgImg ? ' sus-goal-card-img1--has-bg' : ''}`}
+          >
+            {g.bgImg && (
+              <>
+                <img className="sus-goal-card-img1-bg" src={g.bgImg} alt="" loading="lazy" />
+                <div className="sus-goal-card-img1-overlay" />
+              </>
+            )}
             <div className="sus-goal-card-img1-icon">{g.svg}</div>
             <h3 className="sus-goal-card-img1-title">{g.title}</h3>
             <p className="sus-goal-card-img1-desc">{g.desc}</p>
@@ -113,7 +123,16 @@ export default function SustainabilityGoalsSection() {
 
       <div className="sus-goals-row-bottom">
         {GOALS_BOTTOM.map((g) => (
-          <div key={g.title} className="sus-goal-card-img1">
+          <div
+            key={g.title}
+            className={`sus-goal-card-img1${g.bgImg ? ' sus-goal-card-img1--has-bg' : ''}`}
+          >
+            {g.bgImg && (
+              <>
+                <img className="sus-goal-card-img1-bg" src={g.bgImg} alt="" loading="lazy" />
+                <div className="sus-goal-card-img1-overlay" />
+              </>
+            )}
             <div className="sus-goal-card-img1-icon">{g.svg}</div>
             <h3 className="sus-goal-card-img1-title">{g.title}</h3>
             <p className="sus-goal-card-img1-desc">{g.desc}</p>

@@ -95,11 +95,7 @@ export default function SustainabilityCarousel({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="sus-hatched-heading">
-        <div className="sus-hatched-line" />
-        <h2 className="sus-hatched-title">{title}</h2>
-        <div className="sus-hatched-line" />
-      </div>
+      <h2 className="sus-carousel-title">{title}</h2>
 
       <div className="sus-carousel-outer">
         <button
