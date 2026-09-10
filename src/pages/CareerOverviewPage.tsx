@@ -8,7 +8,7 @@ const A = '/assets/career/';
 
 const OVERVIEW_STATS = [
   { id: 'employees', value: '5,000+', label: 'Employees globally' },
-  { id: 'countries', value: '80+', label: 'Countries reached' },
+  { id: 'countries', value: '100+', label: 'Countries reached' },
   { id: 'filings', value: '150+', label: 'Product filings' },
   { id: 'students', value: '1,000+', label: 'Students educated' },
 ];
@@ -18,32 +18,41 @@ const CAREER_AREAS = [
     id: 'rnd',
     tag: 'R&D',
     title: 'Research & Development',
-    desc: 'Turn scientific possibilities into scalable, patient-focused solutions across APIs, formulations, peptides and complex generics.',
+    desc: 'Turn scientific possibilities into scalable, patient-focused solutions through research, analytical thinking and responsible innovation.',
+    cta: 'Explore R&D Roles',
+    bg: `${A}panel-science-1.webp`,
   },
   {
     id: 'mfg',
     tag: 'OPERATIONS',
     title: 'Manufacturing & Operations',
-    desc: 'Deliver quality medicines reliably and responsibly through shop-floor excellence, continuous manufacturing and operational discipline.',
+    desc: 'Make quality medicines reliably and responsibly through shop-floor excellence, process discipline and strong EHS practices.',
+    cta: 'Explore Operations Roles',
+    bg: `${A}work-matters-bg.webp`,
   },
   {
     id: 'qa',
     tag: 'COMPLIANCE',
     title: 'Quality & Regulatory',
-    desc: 'Uphold global quality systems, regulatory discipline and a right-first-time mindset that partners and patients rely on.',
+    desc: 'Protect patients and earn trust through quality systems, regulatory discipline and a strong compliance mindset.',
+    cta: 'Explore Quality & Regulatory Roles',
+    bg: `${A}panel-innovation.webp`,
   },
   {
     id: 'commercial',
     tag: 'COMMERCIAL',
-    title: 'Sales, Marketing, & Supply Chain',
-    desc: 'Connect customer needs with reliable supply, commercial acumen and trusted relationships across global markets.',
+    title: 'Sales, Marketing, & Supply chain',
+    desc: 'Understand customer needs, build market connections and strengthen supply networks to take Granules’ solutions reliably across the globe.',
+    cta: 'Explore Commercial Roles',
+    bg: `${A}hero-real.webp`,
   },
   {
     id: 'enabling',
     tag: 'CORPORATE',
     title: 'Enabling Functions',
-    desc: 'Power the business through technology, finance, legal, people practices and sustainable business systems.',
-    wide: true,
+    desc: 'Strengthen Granules through technology, finance, compliance, people practices and the support systems that enable sustainable growth.',
+    cta: 'Explore Enabling Functions',
+    bg: `${A}panel-grow-purpose.webp`,
   },
 ];
 
@@ -167,29 +176,32 @@ const TESTIMONIALS = [
   },
 ];
 
-// Duplicate items 3x for seamless infinite CSS marquee scrolling
-const MARQUEE_TESTIMONIALS = [
-  ...TESTIMONIALS.map((t, i) => ({ ...t, key: `t1-${i}` })),
-  ...TESTIMONIALS.map((t, i) => ({ ...t, key: `t2-${i}` })),
-  ...TESTIMONIALS.map((t, i) => ({ ...t, key: `t3-${i}` })),
-];
+
 
 const BENEFITS = [
   {
+    id: 'health',
     title: 'Health and wellbeing',
     desc: 'We support employees through medical benefits, safe workplaces and wellbeing initiatives that help people stay healthy and perform at their best.',
+    image: `${A}panel-people-first.webp`,
   },
   {
+    id: 'beyond',
     title: 'Beyond the workday',
     desc: 'We bring people together through sports tournaments, festival celebrations and team events that build connection, wellbeing and a shared sense of belonging.',
+    image: `${A}beyond-workday-bg.webp`,
   },
   {
+    id: 'learning',
     title: 'Learning and recognition',
     desc: 'We encourage continuous growth through learning opportunities, career development support and recognize meaningful contributions.',
+    image: `${A}panel-grow-purpose.webp`,
   },
   {
+    id: 'inclusion',
     title: 'Inclusion and support',
     desc: 'We foster an inclusive workplace with equal opportunity, collaboration, and safe channels for employees to raise concerns.',
+    image: `${A}work-matters-bg.webp`,
   },
 ];
 
@@ -213,11 +225,15 @@ const CANDIDATE_FAQS = [
 ];
 
 export default function CareerOverviewPage() {
+  const [activeArea, setActiveArea] = useState<number>(0);
   const [practiceIdx, setPracticeIdx] = useState(0);
   const [lifeEventIdx, setLifeEventIdx] = useState(0);
+  const [openBenefit, setOpenBenefit] = useState<number>(0);
   const [activeVoiceKey, setActiveVoiceKey] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number>(0);
   const [talentSubmitted, setTalentSubmitted] = useState<boolean>(false);
+
+  const currentAreaBg = (activeArea >= 0 && CAREER_AREAS[activeArea]?.bg) ? CAREER_AREAS[activeArea].bg : CAREER_AREAS[0].bg;
 
   useEffect(() => {
     document.title = 'Make Better Health. Build a Bolder Career. — Careers at Granules';
@@ -252,17 +268,13 @@ export default function CareerOverviewPage() {
         </div>
 
         {/* Narrative / Intro Section */}
-        <div className="car-intro-row">
-          <div className="car-intro-copy">
-            <p className="lede">
-              At Granules, your work goes beyond a role. It helps improve health outcomes for people around the globe.
-              <span className="muted"> Join teams who turn science, scale and responsible innovation into medicines that support healthier lives worldwide.</span>
-            </p>
-            <p className="sub">
-              Bring your curiosity. Build real expertise. See your impact take shape. Whether you improve a process, protect quality, solve a scientific challenge or support a team, your contribution helps make reliable medicines possible.
-            </p>
-          </div>
-          <Link className="car-cta-btn" to="/careers/opportunities">Explore Career Opportunities</Link>
+        <div className="cp-about-desc">
+          <h4>
+            At Granules, your work goes beyond a role. It helps improve health outcomes for people around the globe. Join teams who turn science, scale and responsible innovation into medicines that support healthier lives worldwide.
+          </h4>
+          <h4>
+            Bring your curiosity. Build real expertise. See your impact take shape.
+          </h4>
         </div>
 
         {/* Impact in Numbers Stats Grid */}
@@ -277,34 +289,58 @@ export default function CareerOverviewPage() {
           </div>
         </div>
 
-        {/* Career Areas */}
-        <div className="car-why-head" style={{ marginTop: 'clamp(60px, 8vw, 100px)' }}>
-          <div className="car-why-copy">
-            <span className="car-why-tag">DISCOVER YOUR PATH</span>
-            <h2>Career Areas</h2>
-            <p>Explore opportunities across our core scientific, manufacturing, and operational disciplines.</p>
-          </div>
-        </div>
+        {/* Career Areas — Interactive Banner with Function Accordion (Matching Sustainability Card Design) */}
+        <section
+          className="car-areas-banner"
+          style={{ backgroundImage: `url(${currentAreaBg})` }}
+        >
+          <div className="car-areas-banner-overlay" />
 
-        <div className="car-areas-section">
-          <div className="car-areas-grid">
-            {CAREER_AREAS.map((area) => (
-              <div key={area.id} className={`car-area-card ${area.wide ? 'wide' : ''}`}>
-                <span className="car-area-tag">{area.tag}</span>
-                <h3 className="car-area-title">{area.title}</h3>
-                <p className="car-area-desc">{area.desc}</p>
-              </div>
-            ))}
+          <div className="car-areas-banner-copy">
+            <span className="cp-section-badge">Discover Your Path</span>
+            <h2>Where science, scale &amp; purpose meet</h2>
+            <h4>
+              Explore opportunities across our core scientific, manufacturing, and operational disciplines.
+            </h4>
+            <Link to="/careers/opportunities" className="car-areas-banner-cta">
+              Discover Roles &rarr;
+            </Link>
           </div>
-        </div>
+
+          <div className="car-areas-accordion">
+            {CAREER_AREAS.map((item, idx) => {
+              const isOpen = activeArea === idx;
+              return (
+                <article className={`car-areas-acc-item ${isOpen ? 'open' : ''}`} key={item.id}>
+                  <button
+                    type="button"
+                    className="car-areas-acc-btn"
+                    onClick={() => setActiveArea(isOpen ? -1 : idx)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="car-areas-acc-title">{item.title}</span>
+                    <span className="car-areas-acc-toggle" aria-hidden="true">
+                      {isOpen ? '−' : '+'}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="car-areas-acc-body">
+                      <p>{item.desc}</p>
+                    </div>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+        </section>
 
         {/* WHY GRANULES? The Employee Value Proposition (Stacking Panels) */}
         <div className="car-why">
           <div className="car-why-head">
             <div className="car-why-copy">
-              <span className="car-why-tag">WHY GRANULES?</span>
+              <span className="cp-section-badge">Why Granules?</span>
               <h2>The Employee Value Proposition</h2>
-              <p>Build depth. Take ownership. Grow with purpose.</p>
+              <h4>Build depth. Take ownership. Grow with purpose.</h4>
             </div>
           </div>
 
@@ -346,7 +382,7 @@ export default function CareerOverviewPage() {
                       <circle cx="12" cy="12" r="4" fill="#0061f8" />
                     </svg>
                   </span>
-                  <p><strong>Grow in more than one direction:</strong> Deepen your expertise, broaden your experience or explore a new path as the business evolves. Career stories show real moves across roles, teams and geographies.</p>
+                  <p><strong>Grow in more than one direction:</strong> Deepen your expertise, broaden your experience or explore a new path as the business evolves. Career stories should show real moves across roles, teams and geographies.</p>
                 </div>
               </div>
             </div>
@@ -429,38 +465,23 @@ export default function CareerOverviewPage() {
             </div>
 
             {/* Growth You Can Picture — Learning & Mobility Spotlight Card */}
-            <div className="car-why-head" style={{ marginTop: 'clamp(60px, 8vw, 100px)' }}>
+            <div className="car-why-head">
               <div className="car-why-copy">
-                <span className="car-why-tag">GROWTH YOU CAN PICTURE</span>
+                <span className="cp-section-badge">Growth You Can Picture</span>
                 <h2>Learning and Mobility</h2>
-                <p>
-                  At Granules, learning is built into everyday work through structured training, capability building, cross-functional exposure and opportunities to grow across roles, teams and locations.
-                </p>
+                <h4>
+                  At Granules, learning is built into everyday work through structured training, capability building, cross-functional exposure and opportunities to grow across roles, teams and locations. One example is the Self-Managed Team Trainee Program, a future-ready talent program that gives young trainees early ownership, guided shop-floor exposure and hands-on learning across manufacturing operations, helping them build technical confidence, operational discipline and a strong foundation for long-term careers.
+                </h4>
               </div>
             </div>
 
-            <div className="car-learning-spotlight">
-              <div className="car-learning-copy">
-                <span className="car-area-tag" style={{ alignSelf: 'flex-start' }}>FLAGSHIP TALENT PROGRAM</span>
-                <h3>Self-Managed Team Trainee Program</h3>
-                <p>
-                  A future-ready talent initiative giving young trainees early ownership, guided shop-floor exposure and hands-on operational learning across manufacturing facilities.
-                </p>
-                <p>
-                  Designed for ITI, Diploma and Class 12 pass-outs, trainees gain real-world industrial mastery while Granules sponsors their graduation from the Tata Institute of Social Sciences (TISS)—building technical confidence, operational discipline and a solid foundation for long-term careers.
-                </p>
-              </div>
-              <div className="car-learning-image">
-                <img src={`${A}panel-grow-purpose.webp`} alt="Self-Managed Team Trainee Program at Granules" />
-              </div>
-            </div>
 
             {/* Life at Granules — Real People. Real Moments. */}
-            <div className="car-why-head" style={{ marginTop: 'clamp(60px, 8vw, 100px)' }}>
+            <div className="car-why-head">
               <div className="car-why-copy">
-                <span className="car-why-tag">LIFE AT GRANULES</span>
+                <span className="cp-section-badge">Life at Granules</span>
                 <h2>Real People. Real Moments.</h2>
-                <p>Serious about science does not mean serious all the time. Our teams connect through shared experiences that create energy, wellbeing and belonging.</p>
+                <h4>Serious about science does not mean serious all the time. Our teams connect through shared experiences that create energy, wellbeing and belonging.</h4>
               </div>
             </div>
 
@@ -520,90 +541,121 @@ export default function CareerOverviewPage() {
             </div>
 
             {/* Meet the People Behind the Progress — Voices from Granules */}
-            <div className="car-testimonials-section" style={{ marginTop: 'clamp(70px, 9vw, 110px)' }}>
+            <div className="car-testimonials-section">
               <div className="car-testimonials-header">
-                <h2>Meet the People Behind the Progress</h2>
+                <div className="car-why-copy">
+                  <span className="cp-section-badge">Voices from Granules</span>
+                  <h2>Meet the People Behind the Progress</h2>
+                </div>
               </div>
 
-              <div className="car-testimonial-marquee-wrap">
-                <div className="car-testimonial-marquee-track">
-                  {MARQUEE_TESTIMONIALS.map((t) => {
-                    const isFlipped = activeVoiceKey === t.key;
-                    return (
-                      <div
-                        className={`car-voice-card ${isFlipped ? 'is-active' : ''}`}
-                        key={t.key}
-                        onClick={() => setActiveVoiceKey(isFlipped ? null : t.key)}
-                      >
-                        <div className="car-voice-card-top">
-                          <div className="car-voice-card-inner">
-                            <div className="car-voice-face car-voice-front">
-                              <img src={t.image} alt={t.name} />
-                            </div>
-                            <div className="car-voice-face car-voice-back">
-                              <div className="car-voice-quote-icon">
-                                <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                                </svg>
-                              </div>
-                              <p className="car-voice-quote-text">{t.quote}</p>
-                            </div>
+              <div className="car-voices-grid">
+                {TESTIMONIALS.map((t) => {
+                  const isFlipped = activeVoiceKey === t.id;
+                  return (
+                    <div
+                      className={`car-voice-card ${isFlipped ? 'is-active' : ''}`}
+                      key={t.id}
+                      onClick={() => setActiveVoiceKey(isFlipped ? null : t.id)}
+                    >
+                      <div className="car-voice-card-top">
+                        <div className="car-voice-card-inner">
+                          <div className="car-voice-face car-voice-front">
+                            <img src={t.image} alt={t.name} />
                           </div>
-                        </div>
-
-                        <div className="car-voice-foot">
-                          <div className="car-voice-info">
-                            <p className="name">{t.name}</p>
-                            <p className="role">{t.role}</p>
-                          </div>
-                          <div className="car-voice-toggle-btn" aria-label="Toggle quote">
-                            <span className="icon-plus">
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
+                          <div className="car-voice-face car-voice-back">
+                            <div className="car-voice-quote-icon">
+                              <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                               </svg>
-                            </span>
-                            <span className="icon-minus">
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                              </svg>
-                            </span>
+                            </div>
+                            <p className="car-voice-quote-text">{t.quote}</p>
                           </div>
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
+
+                      <div className="car-voice-foot">
+                        <div className="car-voice-info">
+                          <p className="name">{t.name}</p>
+                          <p className="role">{t.role}</p>
+                        </div>
+                        <div className="car-voice-toggle-btn" aria-label="Toggle quote">
+                          <span className="icon-plus">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="12" y1="5" x2="12" y2="19" />
+                              <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                          </span>
+                          <span className="icon-minus">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
             {/* What Helps You Do Your Best — Recognition, Wellbeing & Belonging */}
-            <div className="car-why-head" style={{ marginTop: 'clamp(60px, 8vw, 100px)' }}>
+            <div className="car-why-head">
               <div className="car-why-copy">
-                <span className="car-why-tag">RECOGNITION, WELLBEING &amp; BELONGING</span>
+                <span className="cp-section-badge">Recognition, Wellbeing &amp; Belonging</span>
                 <h2>What Helps You Do Your Best</h2>
-                <p>Candidates expect practical clarity. We provide comprehensive support across every dimension of employee life.</p>
+                <h4>Candidates expect practical clarity. We provide comprehensive support across every dimension of employee life.</h4>
               </div>
             </div>
 
             <div className="car-benefits-grid">
-              {BENEFITS.map((b) => (
-                <div className="car-benefit-card" key={b.title}>
-                  <h3 className="car-benefit-title">{b.title}</h3>
-                  <p className="car-benefit-desc">{b.desc}</p>
-                </div>
-              ))}
+              {BENEFITS.map((b, idx) => {
+                const isOpen = openBenefit === idx;
+                return (
+                  <article
+                    className={`car-benefit-card${isOpen ? ' is-open' : ''}`}
+                    key={b.title}
+                    onMouseEnter={() => setOpenBenefit(idx)}
+                    onMouseLeave={() => setOpenBenefit(-1)}
+                  >
+                    <button
+                      className="car-benefit-toggle"
+                      type="button"
+                      onClick={() => setOpenBenefit(isOpen ? -1 : idx)}
+                      aria-expanded={isOpen}
+                      aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${b.title}`}
+                    >
+                      <div className="car-benefit-img-wrap">
+                        <img src={b.image} alt={b.title} loading="lazy" decoding="async" />
+                      </div>
+
+                      <div className="car-benefit-sheet">
+                        <div className="car-benefit-sheet-head">
+                          <span className="car-benefit-sheet-title">{b.title}</span>
+                          <span className="car-benefit-symbol" aria-hidden="true">
+                            {isOpen ? '−' : '+'}
+                          </span>
+                        </div>
+
+                        <div className="car-benefit-sheet-body">
+                          <p className="car-benefit-sheet-desc">{b.desc}</p>
+                        </div>
+                      </div>
+                    </button>
+                  </article>
+                );
+              })}
             </div>
 
             {/* Candidate FAQ */}
-            <div className="car-faq-section">
-              <div className="car-why-head" style={{ width: '100% !important', maxWidth: '100% !important', margin: '0 0 clamp(20px, 3vw, 32px) 0 !important', padding: '0 !important' }}>
-                <div className="car-why-copy">
-                  <span className="car-why-tag">NEED CLARITY?</span>
-                  <h2>Candidate FAQ</h2>
-                </div>
+            <div className="car-why-head">
+              <div className="car-why-copy">
+                <span className="cp-section-badge">Need Clarity?</span>
+                <h2>Candidate FAQ</h2>
               </div>
+            </div>
 
+            <div className="car-faq-section">
               <div className="car-faq-wrap">
                 {CANDIDATE_FAQS.map((faq, idx) => {
                   const isOpen = openFaq === idx;
@@ -615,12 +667,12 @@ export default function CareerOverviewPage() {
                         onClick={() => setOpenFaq(isOpen ? -1 : idx)}
                         aria-expanded={isOpen}
                       >
-                        <span>{faq.q}</span>
+                        <h4>{faq.q}</h4>
                         <span className="car-faq-toggle">{isOpen ? '−' : '+'}</span>
                       </button>
                       {isOpen && (
                         <div className="car-faq-answer">
-                          <p style={{ margin: 0 }}>{faq.a}</p>
+                          <h4>{faq.a}</h4>
                         </div>
                       )}
                     </div>
@@ -633,11 +685,11 @@ export default function CareerOverviewPage() {
             <div className="car-talent-wrap">
               <div className="car-talent-card">
                 <div className="car-talent-card-copy">
-                  <span className="car-talent-tag">NOT READY TO APPLY? STAY CURIOUS.</span>
+                  <span className="cp-section-badge">NOT READY TO APPLY? STAY CURIOUS.</span>
                   <h2>Join Our Talent Community</h2>
-                  <p>
+                  <h4>
                     Join the Granules Talent Community to receive relevant opportunities, career stories, and updates tailored to your professional interests.
-                  </p>
+                  </h4>
                 </div>
 
                 <form
@@ -648,9 +700,9 @@ export default function CareerOverviewPage() {
                   }}
                 >
                   {talentSubmitted ? (
-                    <div style={{ gridColumn: '1 / -1', background: 'rgba(255,255,255,0.15)', borderRadius: '16px', padding: '24px', textAlign: 'center' }}>
-                      <h4 style={{ margin: '0 0 8px 0', fontSize: '20px', color: '#fff' }}>Thank you for connecting!</h4>
-                      <p style={{ margin: 0, color: 'rgba(255,255,255,0.9)' }}>You will receive career stories and opportunity alerts from Granules India.</p>
+                    <div className="car-talent-success">
+                      <h4>Thank you for connecting!</h4>
+                      <p>You will receive career stories and opportunity alerts from Granules India.</p>
                     </div>
                   ) : (
                     <>
@@ -690,7 +742,7 @@ export default function CareerOverviewPage() {
 
                       <div className="car-talent-btn-row">
                         <button type="submit" className="car-talent-submit-btn">Join Talent Community</button>
-                        <Link to="/careers/opportunities" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'underline', fontSize: '14px', fontWeight: 600 }}>
+                        <Link to="/careers/opportunities" className="car-talent-link">
                           Or view active job openings &rarr;
                         </Link>
                       </div>
@@ -710,7 +762,7 @@ export default function CareerOverviewPage() {
                   Step into a career with impact. Whether you’re a scientist, operator, or strategist, your journey starts here.
                 </p>
               </div>
-              <Link className="car-cta-apply-btn" to="/careers/opportunities">Explore Open Roles</Link>
+              <Link className="car-cta-apply-btn" to="/careers/opportunities">Apply for Roles &rarr;</Link>
             </div>
           </div>
         </div>

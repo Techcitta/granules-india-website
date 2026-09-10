@@ -9,32 +9,32 @@ import './senn-tides.css';
 const PORTFOLIO_ITEMS = [
   {
     title: 'Peptide APIs',
-    image: '/assets/ascelis/card-peptide-apis.webp',
+    image: '/assets/rd/card-synthesis.webp',
     desc: 'Short sequences to chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
   },
   {
     title: 'Amino Acid Derivatives',
-    image: '/assets/ascelis/card-cdmo-services.webp',
+    image: '/assets/rd/card-catalysis.webp',
     desc: 'More than 190 catalogue SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, N-methylated derivatives and side-chain-modified derivatives.',
   },
   {
     title: 'Peptide Fragments',
-    image: '/assets/peptides/card-generic-apis.webp',
+    image: '/assets/rd/card-solvents.webp',
     desc: 'Building blocks supplied to innovators and peptide manufacturers.',
   },
   {
     title: 'Theranostic Peptides',
-    image: '/assets/ascelis/card-theragnostic-peptides.webp',
+    image: '/assets/rd/priority-future-ready-technologies.webp',
     desc: 'Linker-ready peptides, chelator conjugation, purification and characterisation, supported by experience across more than ten GMP campaigns.',
   },
   {
     title: 'Cosmetic Peptides',
-    image: '/assets/ascelis/card-cosmetic-peptides.webp',
+    image: '/assets/rd/card-biocatalysis.webp',
     desc: 'TFA-free peptide ingredients developed for the European cosmetics market.',
   },
   {
     title: 'Expanding Platform',
-    image: '/assets/peptides/card-contract-services.webp',
+    image: '/assets/rd/priority-scientific-capabilities.webp',
     desc: 'Alongside its established peptide capabilities, Senn Tides is expanding into oligonucleotides and antibody-drug conjugates.',
   },
 ];
@@ -67,21 +67,56 @@ const PHASES = [
     phase: '1',
     quantity: 'Under 1 g',
     activity: 'Feasibility, analytical sample and route finding',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 2v7.5L4.5 19.5A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.5L14 9.5V2" />
+        <line x1="8.5" y1="2" x2="15.5" y2="2" />
+        <path d="M7 16h10" />
+      </svg>
+    ),
   },
   {
     phase: '2',
     quantity: 'Under 100 g',
     activity: 'Process and purification development',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2.5" />
+        <circle cx="5" cy="5" r="2.5" />
+        <circle cx="12" cy="20.5" r="2.5" />
+        <line x1="12" y1="9" x2="12" y2="6.5" />
+        <line x1="10" y1="10.5" x2="6.8" y2="6.8" />
+        <line x1="14" y1="10.5" x2="17.2" y2="6.8" />
+        <line x1="12" y1="15" x2="12" y2="18" />
+      </svg>
+    ),
   },
   {
     phase: '3',
     quantity: '1 to 10 kg',
     activity: 'Scale-up, pilot or initial production batch',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="4" width="14" height="16" rx="3" />
+        <line x1="9" y1="9" x2="15" y2="9" />
+        <line x1="9" y1="13" x2="15" y2="13" />
+        <line x1="12" y1="2" x2="12" y2="4" />
+        <line x1="12" y1="20" x2="12" y2="22" />
+      </svg>
+    ),
   },
   {
     phase: '4',
     quantity: 'Above 10 kg',
     activity: 'Commercial production with capability extending to ton scale',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+        <line x1="12" y1="22.08" x2="12" y2="12" />
+      </svg>
+    ),
   },
 ];
 
@@ -95,6 +130,7 @@ const CAPABILITIES = [
         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </svg>
     ),
+    bg: '/assets/facilities/senn-chemicals-dielsdorf.jpg',
   },
   {
     title: 'Purification and Isolation',
@@ -104,6 +140,7 @@ const CAPABILITIES = [
         <path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0" />
       </svg>
     ),
+    bg: '/assets/peptides/offers-bg.webp',
   },
   {
     title: 'Development Support',
@@ -113,6 +150,7 @@ const CAPABILITIES = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
+    bg: '/assets/ascelis/card-cdmo-services.webp',
   },
   {
     title: 'Analytical Support',
@@ -126,6 +164,7 @@ const CAPABILITIES = [
         <line x1="12" y1="22" x2="12" y2="18" />
       </svg>
     ),
+    bg: '/assets/peptides/hero-banner.webp',
   },
 ];
 
@@ -134,21 +173,50 @@ const FOOTPRINT_ITEMS = [
     country: 'Switzerland',
     title: 'Dielsdorf, Switzerland',
     desc: 'R&D, kilo-scale development, GMP production, QC, QA and warehousing. The site has been operational since 1963 and employs more than 80 people.',
+    image: '/assets/peptides/footprint-dielsdorf.jpg',
+    flag: (
+      <svg width="22" height="22" viewBox="0 0 512 512" style={{ borderRadius: '6px', flexShrink: 0 }}>
+        <rect width="512" height="512" fill="#d52b1e" />
+        <rect width="115" height="300" x="198.5" y="106" fill="#ffffff" />
+        <rect width="300" height="115" x="106" y="198.5" fill="#ffffff" />
+      </svg>
+    ),
   },
   {
     country: 'India',
     title: 'Hyderabad, India',
     desc: 'Development, process optimisation, structural characterisation, analytical capabilities and access to large-scale manufacturing.',
+    image: '/assets/peptides/footprint-hyderabad.jpg',
+    flag: (
+      <svg width="22" height="22" viewBox="0 0 512 512" style={{ borderRadius: '6px', flexShrink: 0 }}>
+        <rect width="512" height="170.7" fill="#ff9933" />
+        <rect y="170.7" width="512" height="170.6" fill="#ffffff" />
+        <rect y="341.3" width="512" height="170.7" fill="#138808" />
+        <circle cx="256" cy="256" r="46" fill="none" stroke="#000080" strokeWidth="8" />
+        <circle cx="256" cy="256" r="14" fill="#000080" />
+      </svg>
+    ),
   },
   {
     country: 'India',
     title: 'Vizag, India',
     desc: 'A large-scale peptide manufacturing facility is being developed on a 283,000 sq. ft. site, with completion expected by December 2027.',
+    image: '/assets/peptides/footprint-vizag.jpg',
+    flag: (
+      <svg width="22" height="22" viewBox="0 0 512 512" style={{ borderRadius: '6px', flexShrink: 0 }}>
+        <rect width="512" height="170.7" fill="#ff9933" />
+        <rect y="170.7" width="512" height="170.6" fill="#ffffff" />
+        <rect y="341.3" width="512" height="170.7" fill="#138808" />
+        <circle cx="256" cy="256" r="46" fill="none" stroke="#000080" strokeWidth="8" />
+        <circle cx="256" cy="256" r="14" fill="#000080" />
+      </svg>
+    ),
   },
 ];
 
 export default function PeptidesPage() {
   const [openCard, setOpenCard] = useState<number>(-1);
+  const [openCapability, setOpenCapability] = useState<number>(0);
   const {
     swipeProps,
     isDragging,
@@ -237,19 +305,19 @@ export default function PeptidesPage() {
       {/* Highlight Statistics */}
       <div className="peptides-stats-grid">
         <div className="peptides-stat-card">
-          <span className="peptides-stat-val">60+</span>
+          <strong className="peptides-stat-val">60+</strong>
           <span className="peptides-stat-label">Years of Peptide Synthesis</span>
         </div>
         <div className="peptides-stat-card">
-          <span className="peptides-stat-val">2,500 L</span>
+          <strong className="peptides-stat-val">2,500 L</strong>
           <span className="peptides-stat-label">Maximum Reactor Capacity</span>
         </div>
         <div className="peptides-stat-card">
-          <span className="peptides-stat-val">190+</span>
+          <strong className="peptides-stat-val">190+</strong>
           <span className="peptides-stat-label">Catalogue Amino Acid Derivatives</span>
         </div>
         <div className="peptides-stat-card">
-          <span className="peptides-stat-val">2 Continents</span>
+          <strong className="peptides-stat-val">2 Continents</strong>
           <span className="peptides-stat-label">Integrated Swiss &amp; India Network</span>
         </div>
       </div>
@@ -376,7 +444,7 @@ export default function PeptidesPage() {
               <line x1="12" y1="16" x2="12" y2="12" />
               <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
-            Why Liquid Phase Matters
+            Why liquid phase matters
           </h3>
           <h4>
             For suitable molecules, LPPS can offer substantially lower process mass intensity than SPPS and may reduce or eliminate chromatography, supporting the commercial viability of large-scale peptide manufacturing.
@@ -384,8 +452,8 @@ export default function PeptidesPage() {
         </div>
       </section>
 
-      {/* From Feasibility to Commercial Supply */}
-      <section className="senn-phases-section" aria-label="From Feasibility to Commercial Supply">
+      {/* From Feasibility to Commercial Supply (Ascending Staircase / Step Progression) */}
+      <section className="senn-staircase-section" aria-label="From Feasibility to Commercial Supply">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Lifecycle Progression</span>
@@ -396,115 +464,134 @@ export default function PeptidesPage() {
           </div>
         </div>
 
-        <div className="senn-phases-grid">
-          {PHASES.map((p) => (
-            <div className="senn-phase-card" key={p.phase}>
-              <span className="senn-phase-num-badge">Phase {p.phase}</span>
-              <span className="senn-phase-qty">{p.quantity}</span>
-              <p className="senn-phase-act">{p.activity}</p>
+        <div className="senn-staircase-card">
+          <div className="senn-staircase-track-wrap">
+            <svg className="cdmo-staircase-svg" viewBox="0 0 1000 350" preserveAspectRatio="none" aria-hidden="true">
+              <path
+                d="M 0,315 L 230,315 Q 248,315 248,297 L 248,270 Q 248,252 266,252 L 480,252 Q 498,252 498,234 L 498,207 Q 498,189 516,189 L 730,189 Q 748,189 748,171 L 748,144 Q 748,126 766,126 L 1000,126"
+                fill="none"
+                stroke="#d8e9ff"
+                strokeWidth="20"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+
+            <div className="senn-staircase-grid">
+              {PHASES.map((p, idx) => (
+                <div className={`cdmo-step-card step-${idx + 1}`} key={p.phase}>
+                  <div className="cdmo-step-icon-wrap">{p.icon}</div>
+                  <span className="cdmo-step-phase">Phase {p.phase}</span>
+                  <h3 className="cdmo-step-qty">{p.quantity}</h3>
+                  <p className="cdmo-step-desc">{p.activity}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* Manufacturing and Development Capabilities */}
-      <section className="senn-capacity-section" aria-label="Manufacturing and Development Capabilities">
+      {/* Manufacturing and Development Capabilities (Interactive Hero Accordion Card) */}
+      <section
+        className="peptides-capabilities-section"
+        aria-label="Manufacturing and Development Capabilities"
+      >
         <div className="senn-section-head">
-          <div className="copy">
-            <span className="cp-section-badge">Infrastructure &amp; Capabilities</span>
+          <span className="cp-section-badge">Infrastructure &amp; Capabilities</span>
+        </div>
+
+        <div
+          className="peptides-capabilities-hero"
+          style={{
+            backgroundImage: `url(${CAPABILITIES[openCapability]?.bg || CAPABILITIES[0].bg})`,
+          }}
+        >
+          <div className="peptides-cap-overlay" />
+          <div className="peptides-cap-copy">
             <h2>Manufacturing and Development Capabilities</h2>
             <h4>
               Scalable equipment trains engineered for small-scale development, kilo-scale pilot trials, and commercial cGMP campaigns.
             </h4>
           </div>
-        </div>
 
-        <div className="peptides-capacity-grid">
-          {CAPABILITIES.map((cap) => (
-            <div className="senn-capacity-card" key={cap.title}>
-              <h3>
-                <span className="senn-capacity-icon-badge">{cap.icon}</span>
-                {cap.title}
-              </h3>
-              <p>{cap.desc}</p>
-            </div>
-          ))}
+          <div className="peptides-cap-accordion">
+            {CAPABILITIES.map((cap, idx) => (
+              <article
+                className={openCapability === idx ? 'open' : ''}
+                key={cap.title}
+              >
+                <button
+                  type="button"
+                  className="peptides-cap-btn-row"
+                  onClick={() => setOpenCapability(openCapability === idx ? -1 : idx)}
+                >
+                  <span className="peptides-cap-accordion-head">
+                    <span className="peptides-cap-icon-circle">
+                      {cap.icon}
+                    </span>
+                    <span className="peptides-cap-title">{cap.title}</span>
+                  </span>
+                  <span className="peptides-cap-toggle">
+                    {openCapability === idx ? (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    ) : (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+
+                {openCapability === idx && (
+                  <div className="peptides-cap-body">
+                    <p>{cap.desc}</p>
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Quality and Compliance */}
-      <section className="senn-compliance-section" aria-label="Quality and Compliance">
-        <div className="senn-section-head">
-          <div className="copy">
-            <span className="cp-section-badge">Standards &amp; Regulatory</span>
-            <h2>Quality and Compliance</h2>
-            <h4>
-              Quality systems, documentation practices, and change-control processes designed to support customer filings in the United States, Europe, and other regulated markets.
-            </h4>
-          </div>
-        </div>
-
-        <div className="senn-compliance-grid">
-          <div className="senn-compliance-card">
-            <h4>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              ISO 9001 &amp; Swissmedic cGMP
-            </h4>
-            <p>
-              Senn Chemicals is ISO 9001:2015 certified and authorized by Swissmedic for cGMP manufacturing of peptide APIs and specialized derivatives.
-            </p>
-          </div>
-
-          <div className="senn-compliance-card">
-            <h4>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-              Switzerland–US GMP MRA
-            </h4>
-            <p>
-              Operations align with the Switzerland–United States GMP Mutual Recognition Agreement, facilitating seamless regulatory recognition for US programs.
-            </p>
-          </div>
-
-          <div className="senn-compliance-card">
-            <h4>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 11 12 14 22 4" />
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-              </svg>
-              Global Filings &amp; Audits
-            </h4>
-            <p>
-              Comprehensive DMF submission support, full analytical batch data, and a 60-year successful track record of customer and regulatory audits.
-            </p>
+      <section className="peptides-compliance-section" aria-label="Quality and compliance">
+        <div className="peptides-compliance-panel">
+          <img src="/assets/company/purpose-bg.webp" alt="Quality and compliance" loading="lazy" decoding="async" />
+          <div className="peptides-compliance-overlay" />
+          <div className="peptides-compliance-content">
+            <span className="peptides-compliance-badge">QUALITY &amp; COMPLIANCE</span>
+            <h3>
+              Senn Chemicals is ISO 9001:2015 certified and authorized by Swissmedic for cGMP manufacturing. Quality systems, documentation practices and change-control processes are designed to support customer filings in the United States, Europe and other regulated markets.
+            </h3>
           </div>
         </div>
       </section>
 
       {/* Switzerland and India Footprint */}
-      <section className="senn-footprint-section" aria-label="Switzerland and India Footprint">
+      <section className="senn-footprint-section" aria-label="Switzerland and India footprint">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Global Footprint</span>
-            <h2>Switzerland and India Footprint</h2>
-            <h4>
-              Combining over 60 years of Swiss peptide synthesis heritage with multi-ton industrial scale and R&amp;D infrastructure in India.
-            </h4>
+            <h2>Switzerland and India footprint</h2>
           </div>
         </div>
 
         <div className="senn-footprint-grid">
           {FOOTPRINT_ITEMS.map((loc) => (
-            <div className="senn-footprint-card" key={loc.title}>
-              <span className="senn-footprint-country">{loc.country}</span>
-              <h3>{loc.title}</h3>
-              <p>{loc.desc}</p>
-            </div>
+            <article className="senn-footprint-card" key={loc.title}>
+              <div className="senn-footprint-card-head">
+                <div className="senn-footprint-flag-wrap">{loc.flag}</div>
+                <span className="senn-footprint-tag">{loc.country}</span>
+              </div>
+              <h3 className="senn-footprint-title">{loc.title}</h3>
+              <p className="senn-footprint-desc">{loc.desc}</p>
+              <div className="senn-footprint-img-wrap">
+                <img src={loc.image} alt={loc.title} loading="lazy" decoding="async" />
+              </div>
+            </article>
           ))}
         </div>
       </section>
