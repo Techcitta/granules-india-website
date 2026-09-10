@@ -42,13 +42,15 @@
 .comm-leadership-person {
   position: absolute !important;
   right: clamp(10px, 4.5vw, 60px) !important;
-  top: 20px !important;
+  top: -10px !important;
   bottom: auto !important;
-  height: 172% !important;
+  height: 205% !important;
   max-height: none !important;
   width: auto !important;
   object-fit: contain !important;
   object-position: top center !important;
+  transform: scale(1.1) !important;
+  transform-origin: top right !important;
   z-index: 2 !important;
   display: block !important;
   visibility: visible !important;
@@ -67,11 +69,13 @@
     right: auto !important;
     bottom: auto !important;
     top: auto !important;
-    height: 380px !important;
+    height: 420px !important;
     width: 100% !important;
     object-fit: contain !important;
     order: 1;
     margin: 20px 0 0 !important;
+    transform: scale(1.1) !important;
+    transform-origin: center top !important;
   }
 }
 

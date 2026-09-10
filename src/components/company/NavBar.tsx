@@ -31,7 +31,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Our Journey', href: '/company/milestone' },
       { label: 'Leadership', href: '/company/leadership' },
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
-      { label: 'Awards & Recognitions', href: '/company/awards' },
     ],
   },
   Company: {
@@ -41,7 +40,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Our Journey', href: '/company/milestone' },
       { label: 'Leadership', href: '/company/leadership' },
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
-      { label: 'Awards & Recognitions', href: '/company/awards' },
     ],
   },
   Business: {
@@ -52,29 +50,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Research & Development', href: '/business/rd' },
       { label: 'Quality & Compliance', href: '/business/quality-compliance' },
       { label: 'Facilities', href: '/company/facilities' },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-      { label: 'Product Portfolio', href: '/business/product-portfolio' },
->>>>>>> ca7dc34332fd17892faf11e80ac512de5c4f4fd5
-    ],
-  },
-  Sustainability: {
-    sections: [],
-    links: [
-      { label: 'Overview', href: '/sustainability' },
-      { label: 'Strategy & Roadmap', href: '/sustainability/strategy' },
-      { label: 'ESG Profile', href: '/sustainability/esg-profile' },
-      { label: 'ESG in Action', href: '/sustainability/esg-in-action' },
-    ],
-  },
-  Investor: {
-    sections: [],
-    links: [
-      { label: 'Overview', href: '/investor' },
-      { label: 'Annual Reports', href: '/investor/annual-reports' },
->>>>>>> 3cd2bb4c25931a7f3fdbc4efa949758ecc1f79a8
     ],
   },
   Careers: {
