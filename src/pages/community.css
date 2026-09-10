@@ -41,14 +41,14 @@
    ========================================================================== */
 .comm-leadership-person {
   position: absolute !important;
-  right: clamp(30px, 8vw, 140px) !important;
-  bottom: clamp(-65px, -4.2vw, -40px) !important;
-  top: auto !important;
-  height: 115% !important;
+  right: clamp(20px, 6vw, 90px) !important;
+  top: 20px !important;
+  bottom: auto !important;
+  height: 100% !important;
   max-height: none !important;
   width: auto !important;
   object-fit: contain !important;
-  object-position: bottom center !important;
+  object-position: top center !important;
   z-index: 5 !important;
   display: block !important;
   visibility: visible !important;
@@ -329,23 +329,16 @@
 }
 
 .comm-sustainability[data-photo="skill-development"],
-.comm-sustainability[data-photo="healthcare"],
-.comm-sustainability[data-photo="education"] {
+.comm-sustainability[data-photo="healthcare"] {
   background-position: center 65%;
 }
 
-@media (min-width: 993px) {
-  .comm-sustainability[data-photo="environment"]::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    background-image: inherit;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.comm-sustainability[data-photo="education"] {
+  background-position: center 18%;
+}
+
+.comm-sustainability[data-photo="environment"] {
+  background-position: center 35%;
 }
 
 /* Neutral shading keeps the photographs' natural colors. */
@@ -487,14 +480,15 @@
 }
 
 .comm-accordion-icon {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #0061f8 0%, #004ecc 100%) !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 4px 12px rgba(0, 97, 248, 0.25);
   transition: transform 0.3s ease;
 }
 
@@ -529,9 +523,6 @@
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   animation: commAccordionFade 0.35s ease;
 }
 
@@ -547,62 +538,11 @@
   }
 }
 
-.comm-accordion-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.comm-accordion-tag {
-  padding: 4px 10px;
-  border-radius: 9999px;
-  font: 700 10.5px/1.2 'Manrope', sans-serif;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-.comm-accordion-metric {
-  font: 600 13px/1.2 'Manrope', sans-serif;
-  color: #102e4a;
-}
-
-.comm-accordion-metric strong {
-  font-size: 16px;
-  font-weight: 800;
-  color: #0048bc;
-  margin-right: 4px;
-}
-
 .comm-accordion-desc {
   margin: 0;
-  font: 500 13px/1.45 'Manrope', sans-serif !important;
+  font: 400 clamp(14px, 1.05vw, 16px)/1.55 'Manrope', sans-serif !important;
   color: #102e4a !important;
-}
-
-.comm-accordion-highlights {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.comm-accordion-highlights li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font: 500 12px/1.35 'Manrope', sans-serif;
-  color: #102e4a;
-}
-
-.comm-accordion-bullet {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
+  letter-spacing: 0.1px;
 }
 
 .comm-pillar-item-stat-box {
@@ -810,9 +750,6 @@
     background-repeat: no-repeat;
   }
 
-  .comm-sustainability[data-photo="environment"]::before {
-    aspect-ratio: 2 / 3;
-  }
 
   .comm-sustainability .sustainability-overlay {
     display: none;

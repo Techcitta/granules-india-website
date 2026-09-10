@@ -17,7 +17,7 @@ const heroSlides = [
   {
     image: 'Home/2.jpg',
     title: 'Driving innovation in peptides and custom manufacturing solutions',
-    cta: 'Peptides & CDMO Business',
+    cta: 'Peptide CDMO',
     link: '/business/peptides',
   },
   {
@@ -35,7 +35,7 @@ const heroSlides = [
   {
     image: 'Home/5.jpg',
     title: 'Accelerating Innovation Through Integration and Digitalization',
-    cta: 'R&D',
+    cta: 'Research & Development',
     link: '/business/rd',
   },
 ];
@@ -354,7 +354,7 @@ function Business() {
             market opportunities in Central Nervous System (CNS), oncology and metabolic disorders.
           </h4>
         </div>
-        <Button href="/business/api">Products &rarr;</Button>
+        <Button href="/business">Generics &rarr;</Button>
       </div>
 
       <div className="product-grid">
@@ -418,7 +418,7 @@ function Business() {
 }
 
 function Presence() {
-  const tabs = ['Our Locations', 'Our Key Subsidiaries', 'Our Facilities'];
+  const tabs = ['Our Locations', 'Our Global Subsidiaries'];
   const [active, setActive] = useState(0);
 
   return (
@@ -664,46 +664,53 @@ function Credentials() {
   );
 }
 
-function Sustainability() {
+function Sustainability({ open = 0, setOpen }) {
   const items = [
     {
       title: 'Target to achieve Net Zero by 2050',
+      tag: 'Sustainability',
+      heading: 'Where science acts responsibly',
+      heroBody: 'From reducing our carbon footprint and investing in clean energy to building community resilience through skill development, we are shaping a healthier, more sustainable world.',
+      href: '/sustainability',
       body: 'We are committed to science-based decarbonization, with SBTi-validated targets guiding our journey toward Net Zero emissions.',
       icon: 'icon-recycle-leaf.svg',
       iconType: 'plain',
-      href: '/sustainability/strategy',
+      linkHref: '/sustainability',
       cta: 'View Decarbonisation Strategy',
       bg: `${A}sustainability-net-zero.jpg`,
     },
     {
-      title: 'Granules CZRO',
-      body: 'Our greenfield manufacturing unit leads the way in energy-efficient operations and low-emission processes, redefining what large-scale green pharma looks like.',
+      title: 'Community',
+      tag: 'Community',
+      heading: 'Driving meaningful impact, enriching communities',
+      heroBody: 'Guided by empathy and responsibility, we support healthcare access, quality education, rural development, and specialised skill training at Pharma Patashala to transform lives.',
+      href: '/community',
+      body: 'Through healthcare initiatives, education, and skill development at Pharma Patashala, we empower underserved communities and create long-term social value.',
       icon: 'icon-windmill-sustain.svg',
       iconType: 'circle',
-      href: '/company/granules-czro',
-      cta: 'Explore Granules CZRO',
+      linkHref: '/community',
+      cta: 'Explore Community Initiatives',
       bg: `${A}sustainability.webp`,
     },
   ];
-  const [open, setOpen] = useState(0);
-  const currentBg = (open >= 0 && items[open]?.bg) ? items[open].bg : items[0].bg;
+
+  const activeIndex = open >= 0 && open < items.length ? open : 0;
+  const currentItem = items[activeIndex];
+  const currentBg = currentItem.bg;
 
   return (
     <section className="sustainability" id="sustainability" style={{ backgroundImage: `url(${currentBg})` }}>
       <div className="sustainability-overlay" />
-      <div className="sustainability-copy">
-        <Tag>Sustainability</Tag>
-        <h2>Where science acts responsibly</h2>
-        <h4>
-          From reducing our carbon footprint and investing in clean energy to building community
-          resilience through skill development, we are shaping a healthier, more sustainable world.
-        </h4>
-        <Button href="/sustainability" className="green">Learn More &rarr;</Button>
+      <div className="sustainability-copy" key={currentItem.tag}>
+        <Tag>{currentItem.tag}</Tag>
+        <h2>{currentItem.heading}</h2>
+        <h4>{currentItem.heroBody}</h4>
+        <Button href={currentItem.href} className="green">Learn More &rarr;</Button>
       </div>
       <div className="accordion">
         {items.map((item, index) => (
           <article className={open === index ? 'open' : ''} key={item.title}>
-            <button onClick={() => setOpen(open === index ? -1 : index)}>
+            <button onClick={() => setOpen && setOpen(index)}>
               <span className="accordion-head">
                 <i className={`accordion-icon accordion-icon-${item.iconType}`}>
                   <img src={`${A}${item.icon}`} alt="" loading="lazy" decoding="async" />
@@ -722,7 +729,7 @@ function Sustainability() {
               <div style={{ marginTop: '16px' }}>
                 <p>{item.body}</p>
                 <Link
-                  to={item.href}
+                  to={item.linkHref}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -783,7 +790,7 @@ function Investor() {
     <section className="section shell investor" id="investor">
       <div className="investor-copy">
         <Tag>Investor Relations</Tag>
-        <h2>Transparent. Trusted. Future-focused.</h2>
+        <h2>Transparent. Trusted. Future focused.</h2>
         <p>
           Driven by operational excellence and responsible growth, we remain focused on creating
           sustainable value for our investors.
@@ -1043,6 +1050,9 @@ function SearchOverlay({ open, onClose }) {
 export default function HomePage() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [sustainabilityTab, setSustainabilityTab] = useState(0);
+
+  const activeNavSection = sustainabilityTab === 1 ? 'Community' : 'Sustainability';
 
   useEffect(() => {
     const sections = [...document.querySelectorAll('main > section:not(.hero), footer')];
@@ -1062,7 +1072,7 @@ export default function HomePage() {
   return (
     <>
       <div className="scroll-progress" style={{ width: `${progress}%` }} />
-      <NavBar onSearch={() => setSearchOpen(true)} />
+      <NavBar onSearch={() => setSearchOpen(true)} activeSectionOverride={activeNavSection} />
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
       <main>
         <Hero />
@@ -1070,7 +1080,7 @@ export default function HomePage() {
         <Business />
         <Presence />
         <Credentials />
-        <Sustainability />
+        <Sustainability open={sustainabilityTab} setOpen={setSustainabilityTab} />
         <Investor />
         <Media />
         <Careers />

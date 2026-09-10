@@ -120,7 +120,13 @@ function isActive(link: NavLinkItem, pathname: string, activeSection?: string | 
   return !!link.matchPrefix && pathname.startsWith(link.matchPrefix);
 }
 
-export default function NavBar({ onSearch }: { onSearch?: () => void } = {}) {
+export default function NavBar({
+  onSearch,
+  activeSectionOverride,
+}: {
+  onSearch?: () => void;
+  activeSectionOverride?: string | null;
+} = {}) {
   const [open, setOpen] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -181,13 +187,29 @@ export default function NavBar({ onSearch }: { onSearch?: () => void } = {}) {
         }
       }
 
+      if (matchedLabel === 'Sustainability' && activeSectionOverride) {
+        matchedLabel = activeSectionOverride;
+      }
+
       setActiveSection(matchedLabel);
     };
 
     handleScrollSpy();
     window.addEventListener('scroll', handleScrollSpy, { passive: true });
     return () => window.removeEventListener('scroll', handleScrollSpy);
-  }, [pathname]);
+  }, [pathname, activeSectionOverride]);
+
+  useEffect(() => {
+    if (pathname === '/' || pathname === '') {
+      const el = document.getElementById('sustainability');
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 120) {
+          setActiveSection(activeSectionOverride || 'Sustainability');
+        }
+      }
+    }
+  }, [activeSectionOverride, pathname]);
 
   const showMenu = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);

@@ -880,17 +880,18 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
 .cp-leadership-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: calc(46px + 75px);
+  margin-bottom: 75px;
 }
 
 .cp-leadership-banner {
   position: relative;
   width: 100%;
   aspect-ratio: 2400 / 1039;
-  border-radius: clamp(22px, 2.4vw, 32px);
+  min-height: 520px;
+  border-radius: clamp(24px, 3vw, 40px);
   overflow: hidden;
   background: #0b1b3a;
-  box-shadow: 0 16px 44px -12px rgba(0, 34, 90, 0.12);
+  box-shadow: 0 20px 50px -12px rgba(0, 34, 90, 0.15), 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .cp-leadership-banner-img {
@@ -899,87 +900,92 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 22%;
   display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
-  transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .cp-leadership-banner:hover .cp-leadership-banner-img {
-  transform: scale(1.015);
+  transform: scale(1.02);
 }
 
 .cp-leadership-overlay-block {
   position: absolute;
-  left: 6.8%;
-  bottom: -46px;
+  left: clamp(28px, 4vw, 64px);
+  bottom: clamp(28px, 4vw, 52px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 14px;
+  gap: 16px;
   z-index: 3;
 }
 
 .cp-quote-card {
-  width: clamp(340px, 51%, 620px);
+  width: clamp(380px, 48vw, 580px);
+  max-width: calc(100% - 48px);
   background: #ffffff;
   border: 1.5px solid #0061f8;
-  border-radius: clamp(16px, 1.8vw, 22px);
-  padding: clamp(18px, 1.9vw, 24px) clamp(22px, 2.2vw, 28px);
-  box-shadow: 0 18px 40px -10px rgba(0, 34, 90, 0.12), 0 4px 14px rgba(0, 0, 0, 0.03);
+  border-radius: clamp(24px, 2.5vw, 32px);
+  padding: clamp(26px, 3vw, 40px) clamp(26px, 3.2vw, 44px);
+  box-shadow: 0 16px 44px rgba(0, 34, 90, 0.09);
   display: flex;
   flex-direction: column;
-  gap: 11px;
   box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
 
 .cp-quote-card:hover {
-  border-color: #004ecc;
-  box-shadow: 0 24px 48px -10px rgba(0, 97, 248, 0.18);
+  transform: translateY(-3px);
+  box-shadow: 0 24px 50px -8px rgba(0, 97, 248, 0.18);
 }
 
 .cp-quote-icon {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  color: #0061f8;
-  margin-bottom: 2px;
+  margin-bottom: 14px;
 }
 
 .cp-quote-icon svg {
-  width: 22px;
-  height: 17px;
-  fill: #0061f8;
+  display: block;
 }
 
 .cp-quote-card p.cp-quote-text {
   margin: 0;
-  font: 500 clamp(11.5px, 0.88vw, 13.8px)/1.55 var(--font-primary, 'Manrope', sans-serif);
-  color: #0f172a;
-  letter-spacing: -0.01em;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(16px, 1.25vw, 18.5px) !important;
+  font-weight: 700 !important;
+  line-height: 1.52 !important;
+  color: #111827 !important;
+  letter-spacing: -0.01em !important;
 }
 
 .cp-quote-author {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin-top: 2px;
+  margin-top: 20px;
 }
 
 .cp-quote-name {
-  margin: 0;
-  font: 700 clamp(13px, 0.95vw, 15px)/1.25 var(--font-primary, 'Manrope', sans-serif);
-  color: #0061f8;
-  letter-spacing: -0.01em;
+  margin: 0 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(17px, 1.3vw, 20px) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  color: #0061f8 !important;
+  letter-spacing: 0 !important;
 }
 
 .cp-quote-role {
-  margin: 0;
-  font: 600 clamp(9px, 0.65vw, 10.5px)/1.35 var(--font-primary, 'Manrope', sans-serif);
-  color: #828282;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  margin: 5px 0 0 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(12.5px, 0.95vw, 13.5px) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  color: #64748b !important;
+  letter-spacing: 0.7px !important;
+  text-transform: uppercase !important;
 }
 
 .cp-cta-btn {
@@ -988,23 +994,32 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
   color: #ffffff !important;
   border: none;
   border-radius: 9999px;
-  padding: 8px 22px;
-  font: 700 clamp(10.5px, 0.74vw, 11.5px)/1 var(--font-primary, 'Manrope', sans-serif);
+  padding: 10px 26px;
+  font: 700 clamp(11px, 0.8vw, 12.5px)/1 var(--font-primary, 'Manrope', sans-serif);
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.8px;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 97, 248, 0.32);
-  transition: transform .2s cubic-bezier(0.2, 0, 0.2, 1), background .2s ease, box-shadow .2s ease;
+  box-shadow: 0 6px 18px rgba(0, 97, 248, 0.32);
+  transition: transform .25s cubic-bezier(0.2, 0, 0.2, 1), background .2s ease, box-shadow .25s ease;
+}
+
+.cp-cta-btn svg {
+  transition: transform 0.2s ease;
 }
 
 .cp-cta-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   background: #004ecc;
-  box-shadow: 0 8px 22px rgba(0, 64, 162, 0.45);
+  box-shadow: 0 10px 26px rgba(0, 64, 162, 0.45);
   color: #ffffff !important;
+}
+
+.cp-cta-btn:hover svg {
+  transform: translateX(3px);
 }
 
 /* ---------- Subsidiaries carousel ---------- */
@@ -1596,16 +1611,29 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
   }
 
   .cp-leadership-wrapper {
-    margin-bottom: calc(46px + 75px);
+    margin-bottom: 75px;
+  }
+
+  .cp-leadership-banner {
+    aspect-ratio: auto;
+    min-height: 480px;
   }
 
   .cp-leadership-overlay-block {
-    left: clamp(16px, 4vw, 32px);
-    bottom: -46px;
+    left: clamp(16px, 3.5vw, 36px);
+    bottom: clamp(16px, 3.5vw, 36px);
+    top: auto;
   }
 
   .cp-quote-card {
-    width: clamp(300px, 55%, 520px);
+    width: clamp(300px, 60vw, 500px);
+    padding: clamp(20px, 2.5vw, 28px) clamp(20px, 2.8vw, 32px);
+    border-radius: 24px;
+  }
+
+  .cp-quote-card p.cp-quote-text {
+    font-size: clamp(14px, 1.5vw, 16.5px) !important;
+    line-height: 1.5 !important;
   }
 
   .cp-values-grid {
@@ -1669,7 +1697,31 @@ a.cp-nav-submenu-title:hover .cp-nav-arrow-diag {
   }
 
   .cp-leadership-banner {
-    min-height: 320px;
+    min-height: clamp(520px, 65vh, 580px);
+    border-radius: 24px;
+  }
+
+  .cp-leadership-overlay-block {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .cp-quote-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .cp-quote-card p.cp-quote-text {
+    font-size: 15px !important;
+    line-height: 1.48 !important;
+  }
+
+  .cp-quote-name {
+    font-size: 16px !important;
+    margin-top: 16px !important;
   }
 
   .cp-sub-featured-card {

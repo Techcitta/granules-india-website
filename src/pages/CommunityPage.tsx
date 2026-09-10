@@ -33,109 +33,58 @@ const IMPACT_GOALS: CSRStat[] = [
 interface FocusArea {
   id: string;
   title: string;
-  tag: string;
-  tagBg: string;
-  tagColor: string;
-  metric: string;
-  unit: string;
   desc: string;
   image: string;
-  iconGradient: string;
   icon: React.ReactNode;
-  highlights: string[];
 }
 
 const CSR_FOCUS_AREAS: FocusArea[] = [
   {
     id: 'skill-development',
     title: 'Skill Development',
-    tag: 'Vocational Skilling',
-    tagBg: 'rgba(0, 97, 248, 0.08)',
-    tagColor: '#0061f8',
-    iconGradient: 'linear-gradient(135deg, #0061f8 0%, #004ecc 100%)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
         <path d="M6 12v5c3 3 9 3 12 0v-5" />
       </svg>
     ),
-    metric: '1,600+',
-    unit: 'Individuals Trained',
-    desc: '1,600+ Individuals trained through Pharma Patashala since its inception in 2017 with hands-on pharmaceutical manufacturing and analytical curriculum.',
+    desc: 'Through Pharma Patashala, our specialized technical academy established in 2017, we have trained over 1,600 individuals with hands-on pharmaceutical manufacturing and analytical curriculum, delivering 100% employment linkages and career mentorship programs.',
     image: 'skill-development.webp',
-    highlights: [
-      'Pharma Patashala specialized technical academy for youth',
-      'Hands-on cGMP equipment and laboratory operations training',
-      '100% employment linkages and career mentorship programs',
-    ],
   },
   {
     id: 'healthcare',
     title: 'Healthcare',
-    tag: 'Preventive & Community Health',
-    tagBg: 'rgba(13, 148, 136, 0.08)',
-    tagColor: '#0d9488',
-    iconGradient: 'linear-gradient(135deg, #0d9488 0%, #0f766e 100%)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
       </svg>
     ),
-    metric: '15,000+',
-    unit: 'Beneficiaries Reached',
-    desc: '15,000+ Beneficiaries reached through Breast Cancer Screening Camps, awareness sessions and eye screening programmes for school children.',
+    desc: 'Over 15,000 beneficiaries reached through mobile mammography early cancer detection screening, comprehensive pediatric eye examinations with prescription spectacles, and preventive health diagnostic camps across underserved communities.',
     image: 'healthcare.webp',
-    highlights: [
-      'State-of-the-art mobile mammography and early cancer detection bus',
-      'Comprehensive pediatric eye examinations & prescription spectacles',
-      'Preventive health diagnostic camps across underserved rural clusters',
-    ],
   },
   {
     id: 'education',
     title: 'Education',
-    tag: 'Quality Learning Support',
-    tagBg: 'rgba(217, 119, 6, 0.08)',
-    tagColor: '#d97706',
-    iconGradient: 'linear-gradient(135deg, #d97706 0%, #b45309 100%)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
       </svg>
     ),
-    metric: '2,000+',
-    unit: 'Students Benefited',
-    desc: '2,000+ Students benefited through Vidya Volunteers and educational support initiatives implemented through NGO partnerships.',
+    desc: 'Empowering more than 2,000 students through Vidya Volunteers grassroots classroom mentoring, government school infrastructure refurbishment, digital learning aids, and non-profit partnerships to curb dropout rates and promote girls’ education.',
     image: 'education.webp',
-    highlights: [
-      'Vidya Volunteers grassroots classroom teaching and mentoring',
-      'Government school infrastructure refurbishment and digital learning aids',
-      'Non-profit partnerships to curb dropout rates and promote girls’ education',
-    ],
   },
   {
     id: 'environment',
     title: 'Environment',
-    tag: 'Afforestation & Ecology',
-    tagBg: 'rgba(5, 150, 105, 0.08)',
-    tagColor: '#059669',
-    iconGradient: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
         <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
       </svg>
     ),
-    metric: '18,000+',
-    unit: 'Native Trees Planted',
-    desc: '18,000+ Native trees planted across community green belts, schools, and factory buffer zones to nurture local biodiversity.',
+    desc: 'Over 18,000 native trees planted across community green belts, schools, and factory buffer zones through Miyawaki dense afforestation drives, groundwater recharge structures, and rural watershed conservation initiatives.',
     image: 'environment.webp',
-    highlights: [
-      'Miyawaki dense native forestation drives in peri-urban corridors',
-      'Groundwater recharge structures and rural watershed conservation',
-      'Community ownership and geotagged tree survival monitoring',
-    ],
   },
 ];
 
@@ -219,8 +168,8 @@ export default function CommunityPage() {
               className="ov-leadership-person comm-leadership-person"
               src="/assets/csr/uma-devi-leadership.webp"
               alt="Mrs. Uma Devi Chigurupati"
-              width={1600}
-              height={2400}
+              width={930}
+              height={1090}
               loading="eager"
               decoding="async"
             />
@@ -294,7 +243,7 @@ export default function CommunityPage() {
                     aria-controls={`comm-pillar-panel-${item.id}`}
                   >
                     <span className="accordion-head">
-                      <i className="accordion-icon comm-accordion-icon" style={{ background: item.iconGradient }}>
+                      <i className="accordion-icon comm-accordion-icon">
                         {item.icon}
                       </i>
                       <span>{item.title}</span>
@@ -319,25 +268,7 @@ export default function CommunityPage() {
 
                   {isOpen && (
                     <div id={`comm-pillar-panel-${item.id}`} className="comm-accordion-body">
-                      <div className="comm-accordion-meta">
-                        <span className="comm-accordion-tag" style={{ background: item.tagBg, color: item.tagColor }}>
-                          {item.tag}
-                        </span>
-                        <div className="comm-accordion-metric">
-                          <strong>{item.metric}</strong> <span>{item.unit}</span>
-                        </div>
-                      </div>
-
                       <p className="comm-accordion-desc">{item.desc}</p>
-
-                      <ul className="comm-accordion-highlights">
-                        {item.highlights.map((h, i) => (
-                          <li key={i}>
-                            <span className="comm-accordion-bullet" style={{ background: item.tagColor }} />
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
                   )}
                 </article>

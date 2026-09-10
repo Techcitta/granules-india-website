@@ -53,7 +53,7 @@ const FACILITIES: Facility[] = [
     fdCapacity: '10 Bn',
   },
   {
-    name: 'GPI (Granules Pharmaceuticals, Inc.)',
+    name: 'Granules Pharmaceuticals, Inc.',
     location: 'CHANTILLY, VIRGINIA',
     category: 'Formulations',
     country: 'USA',
@@ -219,10 +219,10 @@ export default function FacilitiesPage() {
         <div className="overlay" />
         <div className="fac-cta-copy">
           <h2>World-Class Global Manufacturing &amp; Supply Resilience</h2>
-          <h4>
+          <p>
             Operating 10 state-of-the-art facilities across India, North America, and Switzerland,
             Granules empowers worldwide healthcare with unmatched pharmaceutical excellence.
-          </h4>
+          </p>
         </div>
         <Link className="cp-cta-btn" to="/company/global-presence">Global Presence</Link>
       </div>
