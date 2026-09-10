@@ -2439,6 +2439,7 @@
 }
 
 @media (max-width: 900px) {
+
   .car-areas-grid,
   .car-benefits-grid,
   .car-talent-form-grid,
@@ -2446,5 +2447,3 @@
     grid-template-columns: 1fr !important;
   }
 }
-
-
