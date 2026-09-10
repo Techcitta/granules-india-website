@@ -190,6 +190,16 @@ export default function GlobalSubsidiariesPage() {
         </div>
       </section>
 
+      {/* CTA Banner Section */}
+      <div className="cp-career" style={{ width: 'min(85%, 1632px)', margin: '75px auto 0' }}>
+        <img className="cp-bg" src="/assets/company/career-bg.webp" alt="" loading="lazy" decoding="async" />
+        <div className="cp-bg-overlay" />
+        <div className="cp-career-copy">
+          <Link className="cp-cta-btn" to="/business/generics">GENERICS &rarr;</Link>
+          <h2>Advancing healthcare through a growing portfolio of complex, high-value pharmaceutical products.</h2>
+        </div>
+      </div>
+
       <CompanyFooter />
     </div>
   );
