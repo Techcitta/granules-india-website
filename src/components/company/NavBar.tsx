@@ -50,6 +50,25 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Research & Development', href: '/business/rd' },
       { label: 'Quality & Compliance', href: '/business/quality-compliance' },
       { label: 'Facilities', href: '/company/facilities' },
+<<<<<<< HEAD
+=======
+    ],
+  },
+  Sustainability: {
+    sections: [],
+    links: [
+      { label: 'Overview', href: '/sustainability' },
+      { label: 'Strategy & Roadmap', href: '/sustainability/strategy' },
+      { label: 'ESG Profile', href: '/sustainability/esg-profile' },
+      { label: 'ESG in Action', href: '/sustainability/esg-in-action' },
+    ],
+  },
+  Investor: {
+    sections: [],
+    links: [
+      { label: 'Overview', href: '/investor' },
+      { label: 'Annual Reports', href: '/investor/annual-reports' },
+>>>>>>> 3cd2bb4c25931a7f3fdbc4efa949758ecc1f79a8
     ],
   },
   Careers: {
