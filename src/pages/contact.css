@@ -402,41 +402,42 @@
 
 /* Address — blue tint matching reference */
 .ct-panel-addr {
-  margin: 0 0 6px;
-  font: 400 14px/1.7 'Manrope', sans-serif;
-  color: #3a5a9b;
-  /* medium blue — matches reference */
+  margin: 0 0 10px;
+  font: 400 clamp(18px, 1.3vw, 22px)/1.5 'Manrope', sans-serif !important;
+  color: #3a5a9b !important;
+  letter-spacing: -0.2px !important;
 }
 
-/* CIN line — same blue, smaller */
+/* CIN line — same blue, clean subtitle style */
 .ct-panel-cin {
   margin: 0 0 24px;
-  font: 400 12px/1 'Manrope', sans-serif;
-  color: #3a5a9b;
+  font: 400 clamp(16px, 1.15vw, 18px)/1.5 'Manrope', sans-serif !important;
+  color: #64748b !important;
+  letter-spacing: -0.1px !important;
 }
 
 /* Contact chips row — side by side, generous spacing */
 .ct-contact-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* Each chip: icon left, text right, clean bordered pill */
 .ct-contact-chip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  border: 1px solid #d6e2f0;
-  border-radius: 8px;
-  padding: 9px 16px;
-  font: 500 13px/1 'Manrope', sans-serif;
+  gap: 10px;
+  border: 1.5px solid #d6e2f0;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font: 600 15px/1 'Manrope', sans-serif;
   color: #1e293b;
   text-decoration: none;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 40, 140, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 40, 140, 0.04);
   transition: border-color 0.18s, color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s;
 }
 
@@ -444,14 +445,14 @@
 .ct-contact-chip svg {
   flex-shrink: 0;
   color: var(--blue, #0061f8);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .ct-contact-chip:hover {
   border-color: var(--blue, #0061f8);
   color: var(--blue, #0061f8);
   background: #f0f6ff;
-  box-shadow: 0 2px 10px rgba(0, 97, 248, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 97, 248, 0.15);
   transform: translateY(-1px);
 }
 
@@ -475,16 +476,16 @@
 
 /* Sub-heading like "General Enquiries", "Media Enquiries" */
 .ct-sub-heading {
-  margin: 0 0 12px;
-  font: 600 14.5px/1.2 'Manrope', sans-serif;
+  margin: 0 0 14px;
+  font: 700 clamp(18px, 1.3vw, 22px)/1.35 'Manrope', sans-serif !important;
   color: var(--n9, #070707);
   letter-spacing: -0.01em;
 }
 
 /* Small description under sub-heading */
 .ct-sub-desc {
-  margin: -4px 0 12px;
-  font: 400 13px/1.55 'Manrope', sans-serif;
+  margin: -4px 0 14px;
+  font: 400 clamp(16px, 1.15vw, 18px)/1.55 'Manrope', sans-serif !important;
   color: #6b7280;
 }
 
@@ -518,20 +519,25 @@
 
 
 .ct-adverse-card {
-  border-radius: 16px;
+  min-height: 250px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
   /* Light grey background exactly as in reference image */
   background: #f5f8fb;
   border: 1px solid #dfe6ef;
-  padding: clamp(24px, 3vw, 36px) clamp(24px, 3vw, 40px);
+  padding: clamp(32px, 4vw, 48px) clamp(28px, 4vw, 56px);
 }
 
 /* Blue link heading — "For Adverse Event Reporting" */
 .ct-adverse-title-link {
   display: inline-block;
-  font: 600 18px/1.3 'Manrope', sans-serif;
+  font: 700 clamp(20px, 1.4vw, 24px)/1.3 'Manrope', sans-serif;
   color: var(--blue, #0061f8);
   text-decoration: none;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   transition: color 0.18s;
 }
 
@@ -541,17 +547,18 @@
 }
 
 .ct-adverse-p {
-  margin: 0 0 16px;
-  font: 400 13px/1.65 'Manrope', sans-serif;
-  color: #333;
-  max-width: 480px;
+  margin: 0 0 20px;
+  font: 400 clamp(18px, 1.3vw, 22px)/1.5 'Manrope', sans-serif !important;
+  color: #475569 !important;
+  letter-spacing: -0.2px !important;
+  max-width: 860px;
 }
 
 /* Pills row — side by side exactly like reference */
 .ct-adverse-pills {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -560,9 +567,9 @@
   display: inline-flex;
   align-items: center;
   border: 1.5px solid #b8cef8;
-  border-radius: 6px;
-  padding: 7px 14px;
-  font: 500 12.5px/1 'Manrope', sans-serif;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font: 600 15px/1 'Manrope', sans-serif;
   color: var(--blue, #0061f8);
   text-decoration: none;
   background: #fff;
@@ -572,7 +579,7 @@
 .ct-adverse-contact-pill:hover {
   border-color: var(--blue, #0061f8);
   background: #eef4ff;
-  box-shadow: 0 2px 8px rgba(0, 97, 248, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 97, 248, 0.15);
 }
 
 /* ══════════════════════════════════════════════════════════════════

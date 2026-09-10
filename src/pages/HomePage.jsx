@@ -756,9 +756,9 @@ function Sustainability({ open = 0, setOpen }) {
 function Investor() {
   const docs = [
     {
-      title: 'Integrated annual report 2024-25',
-      href: '/documents/Granules_Integrated-Report-2024-25-6f0e58611b3c.pdf',
-      download: 'Granules_Integrated_Annual_Report_2024-25.pdf',
+      title: 'Integrated annual report 2025-26',
+      href: '/documents/Granules_Annual-Report-FY26-8dce345b8083.pdf',
+      download: 'Granules_Annual_Report_FY26.pdf',
     },
     {
       title: 'Q2 Results for 2026',
@@ -799,7 +799,7 @@ function Investor() {
       </div>
       <div className="investor-panel">
         <a
-          href="/documents/Granules_Integrated-Report-2024-25-6f0e58611b3c.pdf"
+          href="/documents/Granules_Annual-Report-FY26-8dce345b8083.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="investor-cover"
