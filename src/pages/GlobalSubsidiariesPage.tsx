@@ -196,7 +196,10 @@ export default function GlobalSubsidiariesPage() {
         <div className="cp-bg-overlay" />
         <div className="cp-career-copy">
           <Link className="cp-cta-btn" to="/business/generics">GENERICS &rarr;</Link>
-          <h2>Advancing healthcare through a growing portfolio of complex, high-value pharmaceutical products.</h2>
+          <h2>Advancing Healthcare Through Science &amp; Scale</h2>
+          <p>
+            Advancing healthcare through a growing portfolio of complex, high-value pharmaceutical products.
+          </p>
         </div>
       </div>
 
