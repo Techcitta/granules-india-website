@@ -519,6 +519,7 @@ export default function ProductPortfolioPage() {
                 <tr>
                   <th scope="col">Sr. No</th>
                   <th scope="col">Product</th>
+                  <th scope="col">Segment</th>
                   {showConcentration && <th scope="col">Concentration / Strength</th>}
                   <th scope="col">Therapeutic Category</th>
                   {showGrade && <th scope="col">Pharmacopeia Grade / Rx-OTC</th>}
@@ -534,6 +535,7 @@ export default function ProductPortfolioPage() {
                       {useSectionSrNo ? product.srNo : index + 1}
                     </td>
                     <td className="pp-product">{product.name}</td>
+                    <td>{product.segment || '—'}</td>
                     {showConcentration && <td>{formatConcentration(product.concentration)}</td>}
                     <td>{product.therapy || '—'}</td>
                     {showGrade && <td>{product.grade || '—'}</td>}
