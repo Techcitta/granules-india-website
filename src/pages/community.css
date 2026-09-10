@@ -41,15 +41,15 @@
    ========================================================================== */
 .comm-leadership-person {
   position: absolute !important;
-  right: clamp(20px, 4vw, 80px) !important;
-  bottom: 0 !important;
-  top: auto !important;
-  height: 105% !important;
-  max-height: 105% !important;
+  right: clamp(10px, 4vw, 70px) !important;
+  top: -24% !important;
+  bottom: auto !important;
+  height: 190% !important;
+  max-height: none !important;
   width: auto !important;
-  max-width: 55% !important;
+  max-width: 60% !important;
   object-fit: contain !important;
-  object-position: bottom center !important;
+  object-position: top center !important;
   z-index: 2 !important;
   display: block !important;
   visibility: visible !important;
@@ -68,19 +68,56 @@
 }
 
 @media (max-width: 960px) {
+  .comm-root .ov-leadership {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 32px !important;
+  }
+
   .comm-leadership-person {
     position: relative !important;
     right: auto !important;
     bottom: auto !important;
-    top: auto !important;
-    height: 460px !important;
+    top: 0 !important;
+    height: 340px !important;
     max-height: none !important;
     width: 100% !important;
     max-width: 100% !important;
-    object-fit: contain !important;
-    object-position: top center !important;
-    order: 1;
+    object-fit: cover !important;
+    object-position: 50% 16% !important;
+    order: 0 !important;
     margin: 20px auto 0 !important;
+  }
+
+  .comm-root .ov-quote-card {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
+    margin: 16px auto 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .comm-root .ov-leadership {
+    padding-bottom: 24px !important;
+  }
+
+  .comm-leadership-person {
+    height: 280px !important;
+    object-position: 50% 16% !important;
+    margin: 16px auto 0 !important;
+  }
+
+  .comm-root .ov-quote-card {
+    width: calc(100% - 24px) !important;
+    padding: 24px 20px !important;
+    margin: 12px auto 0 !important;
   }
 }
 

@@ -245,11 +245,11 @@ function IntegrationMark({ type }: { type: Integration }) {
 
 const products = [
   {
-    image: 'api.webp',
-    title: 'Active Pharmaceutical Ingredients (APIs)',
-    eyebrow: 'API',
-    body: 'Large-scale manufacturing capabilities, integrated operations, and deep process chemistry delivering high-volume legacy molecules and complex niche APIs across 80+ countries.',
-    href: '/business/api',
+    image: 'finished-dosage.webp',
+    title: 'Finished Dosages (FDs)',
+    eyebrow: 'FD',
+    body: 'Scale and complexity supported by multi-site supply capabilities, comprehensive oral solid dosage solutions engineered for affordability, patient safety, and global compliance.',
+    href: '/business/fd',
     cta: 'Click here to know more',
   },
   {
@@ -261,11 +261,11 @@ const products = [
     cta: 'Click here to know more',
   },
   {
-    image: 'finished-dosage.webp',
-    title: 'Finished Dosages (FDs)',
-    eyebrow: 'FD',
-    body: 'Scale and complexity supported by multi-site supply capabilities, comprehensive oral solid dosage solutions engineered for affordability, patient safety, and global compliance.',
-    href: '/business/fd',
+    image: 'api.webp',
+    title: 'Active Pharmaceutical Ingredients (APIs)',
+    eyebrow: 'API',
+    body: 'Large-scale manufacturing capabilities, integrated operations, and deep process chemistry delivering high-volume legacy molecules and complex niche APIs across 80+ countries.',
+    href: '/business/api',
     cta: 'Click here to know more',
   },
 ];

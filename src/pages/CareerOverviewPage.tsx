@@ -245,9 +245,9 @@ export default function CareerOverviewPage() {
       <div className="car-why">
         <div className="car-why-head">
           <div className="car-why-copy">
-            <span className="car-why-tag">Your Future at Granules</span>
-            <h2>Why build your career at Granules?</h2>
-            <p>We invest in building a capable, resilient, and future-ready workforce through</p>
+            <span className="car-why-tag">WHY GRANULES?</span>
+            <h2>The Employee Value Proposition</h2>
+            <p>Build depth. Take ownership. Grow with purpose.</p>
           </div>
         </div>
 
@@ -353,6 +353,17 @@ export default function CareerOverviewPage() {
                 ))}
               </div>
             </div>
+          </div>
+
+          <div className="car-discover-copy">
+            <span className="car-discover-tag">GROWTH YOU CAN PICTURE</span>
+            <h2>Learning and Mobility</h2>
+            <p>
+              At Granules, learning is built into everyday work through structured training, capability building, cross-functional exposure and opportunities to grow across roles, teams and locations. One example is the Self-Managed Team Trainee Program, a future-ready talent program that gives young trainees early ownership, guided shop-floor exposure and hands-on learning across manufacturing operations, helping them build technical confidence, operational discipline and a strong foundation for long-term careers.
+            </p>
+            <Link className="car-discover-btn" to="/careers/opportunities">
+              <span>DISCOVER ROLES &rarr;</span>
+            </Link>
           </div>
 
           <div className="car-cta-photo">

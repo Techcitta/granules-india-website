@@ -17,25 +17,6 @@ type SubsidiaryItem = {
 const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
   {
     index: '01',
-    name: 'Granules Pharmaceuticals Inc.',
-    image: '/assets/company/gpi-facility.webp',
-    description:
-      "R&D and manufacturing facility producing oral solid dosage forms and drives commercialisation of products manufactured at Granules' India facility.",
-    ctaText: 'Visit Website',
-    ctaHref: 'https://www.granulespharma.com/',
-    isExternal: true,
-  },
-  {
-    index: '02',
-    name: 'Senn Tides India Private Limited',
-    image: '/assets/ascelis/hero-banner.webp',
-    description:
-      'Advancing peptide-based therapies through specialized CDMO capabilities.',
-    ctaText: 'Learn More',
-    ctaHref: '/company/senn-tides',
-  },
-  {
-    index: '03',
     name: 'Granules Life Sciences',
     image: '/assets/gls/hero-banner.webp',
     description:
@@ -44,11 +25,30 @@ const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
     ctaHref: '/company/granules-life-sciences',
   },
   {
+    index: '02',
+    name: 'Granules Pharmaceuticals Inc.',
+    image: '/assets/company/gpi-facility.webp',
+    description:
+      "Strengthening patient access in North America through direct commercial presence and manufacturing base.",
+    ctaText: 'Visit Website',
+    ctaHref: 'https://www.granulespharma.com/',
+    isExternal: true,
+  },
+  {
+    index: '03',
+    name: 'Senn Tides India Private Limited',
+    image: '/assets/ascelis/hero-banner.webp',
+    description:
+      'Advancing peptide-based therapies through specialized CDMO capabilities.',
+    ctaText: 'Learn More',
+    ctaHref: '/company/senn-tides',
+  },
+  {
     index: '04',
     name: 'Granules CZRO',
     image: '/assets/czro/hero-banner.webp',
     description:
-      'Integrating sustainability through green chemistry, circular manufacturing, and net-zero innovation.',
+      "Integrating sustainability through green chemistry, circular manufacturing, and net-zero innovation.",
   },
 ];
 
@@ -82,11 +82,10 @@ export default function GlobalSubsidiariesPage() {
           <span className="global-sub-card-index">{sub.index}</span>
         </div>
 
-      <div className="global-sub-card-content">
-        <h2 className="global-sub-card-title">{sub.name}</h2>
-        <p className="global-sub-card-desc">{sub.description}</p>
+        <div className="global-sub-card-content">
+          <h2 className="global-sub-card-title">{sub.name}</h2>
+          <p className="global-sub-card-desc">{sub.description}</p>
 
-        {sub.ctaHref && sub.ctaText && (
           <div className="global-sub-card-action">
             {sub.isExternal ? (
               <a
@@ -135,9 +134,8 @@ export default function GlobalSubsidiariesPage() {
               </Link>
             )}
           </div>
-        )}
-      </div>
-    </article>
+        </div>
+      </article>
     );
   };
 
@@ -146,7 +144,7 @@ export default function GlobalSubsidiariesPage() {
       <NavBar />
 
       {/* Breadcrumb Navigation */}
-      <p className="cp-breadcrumb">
+      <p className="cp-breadcrumb" style={{ width: 'min(85%, 1632px)', maxWidth: '1632px', margin: 'clamp(60px, 8vw, 118px) auto 16px' }}>
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
         <Link to="/company">ABOUT US</Link>
@@ -158,13 +156,14 @@ export default function GlobalSubsidiariesPage() {
       <h1 className="cp-page-title">Global Subsidiaries</h1>
 
       {/* Hero Visual Banner */}
-      <div className="cp-hero-banner">
+      <div className="cp-hero-banner global-sub-hero-banner">
         <img
-          src="/assets/oe/hero-banner.webp"
+          src="/assets/company/values-bg-2.webp"
           alt="Granules India Global Subsidiaries"
           loading="eager"
           decoding="async"
         />
+        <div className="global-sub-hero-overlay" />
       </div>
 
       {/* Intro Section - identical to /company/milestone */}
