@@ -31,7 +31,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Our Journey', href: '/company/milestone' },
       { label: 'Leadership', href: '/company/leadership' },
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
-      { label: 'Awards & Recognitions', href: '/company/awards' },
     ],
   },
   Company: {
@@ -41,7 +40,6 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Our Journey', href: '/company/milestone' },
       { label: 'Leadership', href: '/company/leadership' },
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
-      { label: 'Awards & Recognitions', href: '/company/awards' },
     ],
   },
   Business: {
@@ -52,30 +50,12 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Research & Development', href: '/business/rd' },
       { label: 'Quality & Compliance', href: '/business/quality-compliance' },
       { label: 'Facilities', href: '/company/facilities' },
-      { label: 'Product Portfolio', href: '/business/product-portfolio' },
-    ],
-  },
-  Sustainability: {
-    sections: [],
-    links: [
-      { label: 'Overview', href: '/sustainability' },
-      { label: 'Strategy & Roadmap', href: '/sustainability/strategy' },
-      { label: 'ESG Profile', href: '/sustainability/esg-profile' },
-      { label: 'ESG in Action', href: '/sustainability/esg-in-action' },
-    ],
-  },
-  Investor: {
-    sections: [],
-    links: [
-      { label: 'Overview', href: '/investor' },
-      { label: 'Annual Reports', href: '/investor/annual-reports' },
     ],
   },
   Careers: {
     sections: [],
     links: [
       { label: 'Overview', href: '/careers' },
-      { label: 'Life at Granules', href: '/careers/life-at-granules' },
       { label: 'Current Openings', href: '/careers/opportunities' },
     ],
   },
