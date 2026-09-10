@@ -31,23 +31,18 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Our Journey', href: '/company/milestone' },
       { label: 'Leadership', href: '/company/leadership' },
       { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
+      { label: 'Awards & Recognitions', href: '/company/awards' },
     ],
   },
   Company: {
-    sections: [
-      {
-        title: 'Global Subsidiaries',
-        href: '/company/global-subsidiaries',
-        quickLinks: [
-          { label: 'LEADERSHIP', href: '/company/leadership' },
-          { label: 'GRANULES PHARMACEUTICALS INC. (GPI)', href: 'https://www.granulespharma.com/' },
-          { label: 'GRANULES LIFE SCIENCES', href: '/company/granules-life-sciences' },
-          { label: 'SENN TIDES', href: '/company/senn-tides' },
-          { label: 'GRANULES CZRO', href: '/company/granules-czro' },
-        ],
-      },
+    sections: [],
+    links: [
+      { label: 'Overview', href: '/company' },
+      { label: 'Our Journey', href: '/company/milestone' },
+      { label: 'Leadership', href: '/company/leadership' },
+      { label: 'Global Subsidiaries', href: '/company/global-subsidiaries' },
+      { label: 'Awards & Recognitions', href: '/company/awards' },
     ],
-    links: [],
   },
   Business: {
     sections: [],
@@ -57,18 +52,32 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Research & Development', href: '/business/rd' },
       { label: 'Quality & Compliance', href: '/business/quality-compliance' },
       { label: 'Facilities', href: '/company/facilities' },
+      { label: 'Product Portfolio', href: '/business/product-portfolio' },
+    ],
+  },
+  Sustainability: {
+    sections: [],
+    links: [
+      { label: 'Overview', href: '/sustainability' },
+      { label: 'Strategy & Roadmap', href: '/sustainability/strategy' },
+      { label: 'ESG Profile', href: '/sustainability/esg-profile' },
+      { label: 'ESG in Action', href: '/sustainability/esg-in-action' },
+    ],
+  },
+  Investor: {
+    sections: [],
+    links: [
+      { label: 'Overview', href: '/investor' },
+      { label: 'Annual Reports', href: '/investor/annual-reports' },
     ],
   },
   Careers: {
-    sections: [
-      {
-        quickLinks: [
-          { label: 'Life at Granules', href: '/careers' },
-          { label: 'Current Openings', href: '/careers/opportunities' },
-        ],
-      },
+    sections: [],
+    links: [
+      { label: 'Overview', href: '/careers' },
+      { label: 'Life at Granules', href: '/careers/life-at-granules' },
+      { label: 'Current Openings', href: '/careers/opportunities' },
     ],
-    links: [],
   },
 };
 
@@ -199,17 +208,6 @@ export default function NavBar({
     return () => window.removeEventListener('scroll', handleScrollSpy);
   }, [pathname, activeSectionOverride]);
 
-  useEffect(() => {
-    if (pathname === '/' || pathname === '') {
-      const el = document.getElementById('sustainability');
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 120) {
-          setActiveSection(activeSectionOverride || 'Sustainability');
-        }
-      }
-    }
-  }, [activeSectionOverride, pathname]);
 
   const showMenu = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);

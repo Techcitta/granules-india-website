@@ -9,32 +9,14 @@ type SubsidiaryItem = {
   name: string;
   image: string;
   description: string;
-  ctaText: string;
-  ctaHref: string;
+  ctaText?: string;
+  ctaHref?: string;
   isExternal?: boolean;
 };
 
 const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
   {
     index: '01',
-    name: 'Granules Life Sciences',
-    image: '/assets/gls/hero-banner.webp',
-    description:
-      'State-of-the-art oral solid facility designed to accelerate the next phase of growth in regulated markets through quality, innovation and manufacturing excellence.',
-    ctaText: 'Learn More',
-    ctaHref: '/company/granules-life-sciences',
-  },
-  {
-    index: '02',
-    name: 'Granules CZRO',
-    image: '/assets/czro/hero-banner.webp',
-    description:
-      'Integrating sustainability through green chemistry, circular manufacturing, and net-zero innovation.',
-    ctaText: 'Learn More',
-    ctaHref: '/company/granules-czro',
-  },
-  {
-    index: '03',
     name: 'Granules Pharmaceuticals Inc.',
     image: '/assets/company/gpi-facility.webp',
     description:
@@ -44,13 +26,29 @@ const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
     isExternal: true,
   },
   {
-    index: '04',
+    index: '02',
     name: 'Senn Tides India Private Limited',
     image: '/assets/ascelis/hero-banner.webp',
     description:
       'Advancing peptide-based therapies through specialized CDMO capabilities.',
     ctaText: 'Learn More',
     ctaHref: '/company/senn-tides',
+  },
+  {
+    index: '03',
+    name: 'Granules Life Sciences',
+    image: '/assets/gls/hero-banner.webp',
+    description:
+      'State-of-the-art oral solid facility designed to accelerate the next phase of growth in regulated markets through quality, innovation and manufacturing excellence.',
+    ctaText: 'Learn More',
+    ctaHref: '/company/granules-life-sciences',
+  },
+  {
+    index: '04',
+    name: 'Granules CZRO',
+    image: '/assets/czro/hero-banner.webp',
+    description:
+      'Integrating sustainability through green chemistry, circular manufacturing, and net-zero innovation.',
   },
 ];
 
@@ -88,54 +86,56 @@ export default function GlobalSubsidiariesPage() {
         <h2 className="global-sub-card-title">{sub.name}</h2>
         <p className="global-sub-card-desc">{sub.description}</p>
 
-        <div className="global-sub-card-action">
-          {sub.isExternal ? (
-            <a
-              href={sub.ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="global-sub-card-cta"
-            >
-              <span>{sub.ctaText}</span>
-              <span className="global-sub-cta-icon-circle">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
-            </a>
-          ) : (
-            <Link to={sub.ctaHref} className="global-sub-card-cta">
-              <span>{sub.ctaText}</span>
-              <span className="global-sub-cta-icon-circle">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
-            </Link>
-          )}
-        </div>
+        {sub.ctaHref && sub.ctaText && (
+          <div className="global-sub-card-action">
+            {sub.isExternal ? (
+              <a
+                href={sub.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="global-sub-card-cta"
+              >
+                <span>{sub.ctaText}</span>
+                <span className="global-sub-cta-icon-circle">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </span>
+              </a>
+            ) : (
+              <Link to={sub.ctaHref} className="global-sub-card-cta">
+                <span>{sub.ctaText}</span>
+                <span className="global-sub-cta-icon-circle">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </span>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
     </article>
     );
@@ -146,7 +146,7 @@ export default function GlobalSubsidiariesPage() {
       <NavBar />
 
       {/* Breadcrumb Navigation */}
-      <p className="cp-breadcrumb" style={{ width: 'min(85%, 1632px)', maxWidth: '1632px', margin: 'clamp(60px, 8vw, 118px) auto 16px' }}>
+      <p className="cp-breadcrumb">
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
         <Link to="/company">ABOUT US</Link>
@@ -158,14 +158,13 @@ export default function GlobalSubsidiariesPage() {
       <h1 className="cp-page-title">Global Subsidiaries</h1>
 
       {/* Hero Visual Banner */}
-      <div className="cp-hero-banner global-sub-hero-banner">
+      <div className="cp-hero-banner">
         <img
-          src="/assets/company/values-bg-2.webp"
+          src="/assets/oe/hero-banner.webp"
           alt="Granules India Global Subsidiaries"
           loading="eager"
           decoding="async"
         />
-        <div className="global-sub-hero-overlay" />
       </div>
 
       {/* Intro Section - identical to /company/milestone */}
