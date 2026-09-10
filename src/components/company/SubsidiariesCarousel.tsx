@@ -52,7 +52,17 @@ export default function SubsidiariesCarousel() {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      <h2>Global Subsidiaries</h2>
+      <div className="cp-sub-header">
+        <h2>Global Subsidiaries</h2>
+        <h4>
+          Our subsidiaries play a vital role in advancing Granules’ integrated business model across the pharmaceutical value chain. Strategically located, they enhance our ability to deliver affordable, high-quality healthcare solutions while maintaining a reliable and agile global supply chain.
+        </h4>
+        <div className="cp-sub-cta-wrap">
+          <Link to="/company/global-subsidiaries" className="cp-cta-btn">
+            EXPLORE GLOBAL SUBSIDIARIES &rarr;
+          </Link>
+        </div>
+      </div>
 
       <div className="cp-subsidiaries-stage">
         {/* Left preview card */}
@@ -78,24 +88,21 @@ export default function SubsidiariesCarousel() {
         </button>
 
         {/* Center active featured card */}
-        <article className="cp-sub-featured-card" key={activeIndex}>
+        <article className="cp-sub-featured-card cp-sub-featured-card--no-img" key={activeIndex}>
           <div className="cp-sub-featured-info">
             <h3>
               <Link to={current.href}>{current.fullName}</Link>
             </h3>
             <p>{current.description}</p>
-          </div>
-
-          <div className="cp-sub-featured-visual">
-            <Link to={current.href} className="cp-sub-img-link" tabIndex={-1} aria-hidden="true">
-              <img
-                src={getImgUrl(current.image)}
-                alt={current.fullName}
-                className="cp-sub-facility-img"
-                loading="lazy"
-                decoding="async"
-              />
-            </Link>
+            <div className="cp-sub-card-action-wrap">
+              <Link to={current.href} className="cp-sub-card-action-link">
+                <span>Learn More</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </article>
 

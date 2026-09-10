@@ -324,7 +324,7 @@ function About() {
       </div>
       <div className="about-stats-wrap">
         <div className="stats">
-          <article className="stat"><CountUp to={80} suffix="+" /><span>COUNTRIES SERVED</span></article>
+          <article className="stat"><CountUp to={100} suffix="+" /><span>COUNTRIES SERVED</span></article>
           <article className="stat"><CountUp to={40} suffix="+" /><span>YEARS OF EXCELLENCE</span></article>
           <article className="stat"><CountUp to={10} /><span>MANUFACTURING FACILITIES<br />ACROSS INDIA, US &amp; EUROPE</span></article>
           <article className="stat"><CountUp to={6} /><span>R&amp;D CENTERS OF EXCELLENCE</span></article>
@@ -425,7 +425,7 @@ function Presence() {
     <section className={`presence presence-state-${active}`} id="presence">
       <div className="presence-copy">
         <Tag>Our Presence</Tag>
-        <h2>Trusted healthcare partner in 80+ countries</h2>
+        <h2>Trusted healthcare partner in 100+ countries</h2>
       </div>
 
       <div className="map-wrap">
