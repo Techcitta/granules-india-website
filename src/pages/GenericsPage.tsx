@@ -590,7 +590,7 @@ export default function GenericsPage() {
       <section className="gen-portfolio-section" aria-label="Our Portfolio">
         <div className="biz-section-head pp-section-head">
           <div className="copy">
-            <span className="cp-section-badge">Portfolio</span>
+            <span className="cp-section-badge">Our Portfolio</span>
             <h2>{TABLE_TITLES[segment]}</h2>
           </div>
         </div>
