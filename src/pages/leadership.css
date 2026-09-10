@@ -137,14 +137,14 @@
   background: linear-gradient(90deg, #66cef5 0%, #38b34a 45%, #0061f8 100%);
 }
 
-/* Leader Cards Grid (4 cards per row for clean, well-proportioned corporate cards) */
+/* Leader Cards Grid (3 cards per row for clean, well-proportioned corporate cards) */
 .ld-grid {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   margin: clamp(36px, 4vw, 56px) auto 0 !important;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(28px, 3vw, 44px) clamp(20px, 2vw, 32px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 36px);
 }
 
 .ld-card {
