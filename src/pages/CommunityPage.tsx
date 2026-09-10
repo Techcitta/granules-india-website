@@ -165,11 +165,9 @@ export default function CommunityPage() {
             />
             <div className="ov-leadership-overlay" />
             <img
-              className="ov-leadership-person comm-leadership-person"
+              className="comm-leadership-person"
               src="/assets/csr/uma-devi-leadership.webp"
               alt="Mrs. Uma Devi Chigurupati"
-              width={930}
-              height={1090}
               loading="eager"
               decoding="async"
             />

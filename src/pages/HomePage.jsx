@@ -665,9 +665,11 @@ function Credentials() {
 }
 
 function Sustainability({ open = 0, setOpen }) {
+  const [isPaused, setIsPaused] = useState(false);
+
   const items = [
     {
-      title: 'Target to achieve Net Zero by 2050',
+      title: open === 0 ? 'Target to achieve Net Zero by 2050' : 'Sustainability',
       tag: 'Sustainability',
       heading: 'Where science acts responsibly',
       heroBody: 'From reducing our carbon footprint and investing in clean energy to building community resilience through skill development, we are shaping a healthier, more sustainable world.',
@@ -694,18 +696,36 @@ function Sustainability({ open = 0, setOpen }) {
     },
   ];
 
+  // Auto-shift between Sustainability and Community every 5 seconds (pauses on hover)
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setOpen?.((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, setOpen]);
+
   const activeIndex = open >= 0 && open < items.length ? open : 0;
   const currentItem = items[activeIndex];
   const currentBg = currentItem.bg;
+  const isCommunity = activeIndex === 1;
 
   return (
-    <section className="sustainability" id="sustainability" style={{ backgroundImage: `url(${currentBg})` }}>
+    <section
+      className={`sustainability ${isCommunity ? 'theme-community' : ''}`}
+      id="sustainability"
+      style={{ backgroundImage: `url(${currentBg})` }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+    >
       <div className="sustainability-overlay" />
       <div className="sustainability-copy" key={currentItem.tag}>
-        <Tag>{currentItem.tag}</Tag>
+        <Tag className={isCommunity ? 'tag-teal' : ''}>{currentItem.tag}</Tag>
         <h2>{currentItem.heading}</h2>
         <h4>{currentItem.heroBody}</h4>
-        <Button href={currentItem.href} className="green">Learn More &rarr;</Button>
+        <Button href={currentItem.href} className={isCommunity ? 'teal' : 'green'}>Learn More &rarr;</Button>
       </div>
       <div className="accordion">
         {items.map((item, index) => (
@@ -735,7 +755,7 @@ function Sustainability({ open = 0, setOpen }) {
                     alignItems: 'center',
                     gap: '6px',
                     marginTop: '12px',
-                    color: 'var(--green)',
+                    color: isCommunity ? '#0d9488' : 'var(--green)',
                     fontWeight: 700,
                     fontSize: '15px',
                     textDecoration: 'none',

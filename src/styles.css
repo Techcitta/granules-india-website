@@ -1215,14 +1215,39 @@ p {
   margin-top: 18px;
 }
 
+.sustainability.theme-community .sustainability-overlay {
+  background: linear-gradient(90deg, rgba(0, 75, 100, .72), rgba(0, 140, 160, .14));
+}
+
+.sustainability.theme-community .sustainability-copy .tag,
+.tag.tag-teal {
+  background: #d4f7f5 !important;
+  color: #00827b !important;
+}
+
 .button.green {
   background: linear-gradient(#00c21c, #008714);
+}
+
+.button.teal {
+  background: linear-gradient(135deg, #0ea5a0 0%, #0d9488 50%, #0f766e 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+}
+
+.button.teal:hover {
+  background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.45);
 }
 
 .accordion {
   display: grid;
   gap: 16px;
   color: var(--green);
+}
+
+.sustainability.theme-community .accordion {
+  color: #0d9488;
 }
 
 .accordion article {
@@ -1236,6 +1261,10 @@ p {
 .accordion article.open {
   background: #f2fff3;
   backdrop-filter: none;
+}
+
+.sustainability.theme-community .accordion article.open {
+  background: #f0fdfa;
 }
 
 .accordion button {
@@ -1254,8 +1283,16 @@ p {
   color: var(--green);
 }
 
+.sustainability.theme-community .accordion button {
+  color: #0d9488;
+}
+
 .accordion article.open button {
   font-size: 26px;
+}
+
+.sustainability.theme-community .accordion article.open button {
+  color: #0f766e;
 }
 
 .accordion-head {
@@ -1276,6 +1313,10 @@ p {
   height: 40px;
   border-radius: 24px;
   background: linear-gradient(#6cff81, #19c308);
+}
+
+.sustainability.theme-community .accordion-icon-circle {
+  background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%);
 }
 
 article.open .accordion-icon-circle {
@@ -1311,6 +1352,10 @@ article.open .accordion-icon-circle {
   line-height: 1.45;
   letter-spacing: .01em;
   color: var(--green);
+}
+
+.sustainability.theme-community .accordion p {
+  color: #0f766e;
 }
 
 .investor {
