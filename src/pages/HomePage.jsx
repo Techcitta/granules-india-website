@@ -11,7 +11,7 @@ const heroSlides = [
   {
     image: 'Home/1.jpg',
     title: 'Globally approved. Vertically integrated. Trusted worldwide',
-    cta: 'Our Products',
+    cta: 'Generics',
     link: '/business/generics',
   },
   {
@@ -27,16 +27,16 @@ const heroSlides = [
     link: '/business/quality-compliance',
   },
   {
-    image: 'Home/4.jpg',
-    title: 'Innovating for health. Committed to the planet',
-    cta: 'Sustainability',
-    link: '/sustainability',
-  },
-  {
     image: 'Home/5.jpg',
     title: 'Accelerating Innovation Through Integration and Digitalization',
     cta: 'Research & Development',
     link: '/business/rd',
+  },
+  {
+    image: 'Home/4.jpg',
+    title: 'Innovating for health. Committed to the planet',
+    cta: 'Sustainability',
+    link: '/sustainability',
   },
 ];
 
@@ -310,7 +310,7 @@ function About() {
   return (
     <section className="section shell about" id="about">
       <div className="about-copy">
-        <h2>Driving global healthcare through scalable pharma leadership</h2>
+        <h2>Global healthcare through scalable pharma leadership</h2>
         <h4>
           With over four decades of industry leadership, Granules India is committed to delivering
           high-quality, affordable medicines globally, through an integrated manufacturing platform.
@@ -349,9 +349,9 @@ function Business() {
           <h4>
             We serve patients and our partners across the globe with a vertically integrated model
             that brings together innovation, manufacturing excellence, and compliance at scale. With
-            established capabilities across APIs, PFIs, finished dosages and peptide CDMO, we are
+            established capabilities across APIs, PFIs, Finished Dosages and Peptide CDMO, we are
             also strengthening our portfolio complexity across therapies with high-barrier, early to
-            market opportunities in Central Nervous System (CNS), oncology and metabolic disorders.
+            market opportunities in (CNS), oncology and metabolic disorders.
           </h4>
         </div>
         <Button href="/business">Generics &rarr;</Button>
@@ -672,26 +672,24 @@ function Sustainability({ open = 0, setOpen }) {
       title: open === 0 ? 'Target to achieve Net Zero by 2050' : 'Sustainability',
       tag: 'Sustainability',
       heading: 'Where science acts responsibly',
-      heroBody: 'From reducing our carbon footprint and investing in clean energy to building community resilience through skill development, we are shaping a healthier, more sustainable world.',
+      heroBody: 'We are committed to science-based decarbonization, with SBTi-validated targets guiding our journey toward Net Zero emissions..',
       href: '/sustainability',
-      body: 'We are committed to science-based decarbonization, with SBTi-validated targets guiding our journey toward Net Zero emissions.',
       icon: 'icon-recycle-leaf.svg',
       iconType: 'plain',
       linkHref: '/sustainability',
-      cta: 'View Decarbonisation Strategy',
+      cta: 'Learn More',
       bg: `${A}sustainability-net-zero.jpg`,
     },
     {
       title: 'Community',
       tag: 'Community',
-      heading: 'Driving meaningful impact, enriching communities',
-      heroBody: 'Guided by empathy and responsibility, we support healthcare access, quality education, rural development, and specialised skill training at Pharma Patashala to transform lives.',
+      heading: 'Purpose Beyond Business',
+      heroBody: 'Guided by our responsibility to society, we support initiatives that improve access to healthcare, enable education, enhance employability, and promote environmental awareness, helping create stronger and more resilient communities.',
       href: '/community',
-      body: 'Through healthcare initiatives, education, and skill development at Pharma Patashala, we empower underserved communities and create long-term social value.',
       icon: 'icon-windmill-sustain.svg',
       iconType: 'circle',
       linkHref: '/community',
-      cta: 'Explore Community Initiatives',
+      cta: 'Learn More',
       bg: `${A}sustainability.webp`,
     },
   ];
@@ -815,7 +813,7 @@ function Investor() {
           Driven by operational excellence and responsible growth, we remain focused on creating
           sustainable value for our investors.
         </p>
-        <Button href="/investor">ABOUT INVESTORS &rarr;</Button>
+        <Button href="/investor">INVESTORS &rarr;</Button>
       </div>
       <div className="investor-panel">
         <a
@@ -930,8 +928,8 @@ function Careers() {
     <section className="careers shell" id="careers" style={{ backgroundImage: `url(${A}career.webp)` }}>
       <div>
         <h2>Shape healthcare with Granules</h2>
-        <p>Every role here strengthens access to affordable treatment for millions.</p>
-        <Button href="/careers">Explore Careers &rarr;</Button>
+        <p>Every role here strengthens access to affordable healthcare for millions.</p>
+        <Button href="/careers">Careers &rarr;</Button>
       </div>
     </section>
   );

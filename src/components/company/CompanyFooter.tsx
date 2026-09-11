@@ -43,8 +43,8 @@ export default function CompanyFooter() {
               <img src="/assets/footer-logo.webp" alt="Granules" loading="eager" decoding="async" />
             </Link>
             <p>
-              Granules India, headquartered in Hyderabad, is a vertically integrated pharma
-              manufacturer delivering APIs, PFIs, FDs and peptides/CDMO globally with
+              Granules India, headquartered in Hyderabad, India is a vertically integrated pharma
+              manufacturer delivering APIs, PFIs, FDs and Peptides CDMO globally with
               regulatory-compliant operations in India, U.S. and Europe, ensuring quality, scale,
               and sustainability.
             </p>
