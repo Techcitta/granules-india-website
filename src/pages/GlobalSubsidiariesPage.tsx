@@ -86,54 +86,56 @@ export default function GlobalSubsidiariesPage() {
           <h2 className="global-sub-card-title">{sub.name}</h2>
           <p className="global-sub-card-desc">{sub.description}</p>
 
-          <div className="global-sub-card-action">
-            {sub.isExternal ? (
-              <a
-                href={sub.ctaHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="global-sub-card-cta"
-              >
-                <span>{sub.ctaText}</span>
-                <span className="global-sub-cta-icon-circle">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                  </svg>
-                </span>
-              </a>
-            ) : (
-              <Link to={sub.ctaHref} className="global-sub-card-cta">
-                <span>{sub.ctaText}</span>
-                <span className="global-sub-cta-icon-circle">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                  </svg>
-                </span>
-              </Link>
-            )}
-          </div>
+          {sub.ctaHref && (
+            <div className="global-sub-card-action">
+              {sub.isExternal ? (
+                <a
+                  href={sub.ctaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="global-sub-card-cta"
+                >
+                  <span>{sub.ctaText}</span>
+                  <span className="global-sub-cta-icon-circle">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </span>
+                </a>
+              ) : (
+                <Link to={sub.ctaHref} className="global-sub-card-cta">
+                  <span>{sub.ctaText}</span>
+                  <span className="global-sub-cta-icon-circle">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </span>
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </article>
     );
