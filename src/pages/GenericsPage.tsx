@@ -475,7 +475,7 @@ export default function GenericsPage() {
         </p>
 
         <h1 className="cp-page-title">
-          Advancing Healthcare through Science, Scale and Integrated Excellence
+          Science, Scale and Integrated Excellence
         </h1>
 
         <div className="cp-hero-panel">
@@ -498,7 +498,7 @@ export default function GenericsPage() {
           <span className="part-1">
             Granules India offers a diverse and continually evolving portfolio to the global
             pharmaceutical market, spanning Active Pharmaceutical Ingredients (APIs), Pharmaceutical
-            Formulation Intermediates (PFIs), Finished Dosages (FDs) and Peptides CDMO products.
+            Formulation Intermediates (PFIs)and Finished Dosages (FDs).
           </span>{' '}
           <span className="part-2">
             Guided by science and a clear focus on advancing high-value, specialised therapies, our
@@ -769,7 +769,7 @@ export default function GenericsPage() {
 
       <div className="biz-cta biz-cta--placeholder gen-cta">
         <div className="biz-cta-copy">
-          <h2>Partner with Granules on Generic Innovation</h2>
+          <h2>Ready to Partner?</h2>
           <p>
             Leverage our end-to-end scale, global regulatory compliance, and formulation science to bring high-quality medicines to market faster.
           </p>

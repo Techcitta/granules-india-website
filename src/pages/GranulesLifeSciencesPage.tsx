@@ -43,7 +43,7 @@ export default function GranulesLifeSciencesPage() {
     document.title = 'Granules Life Sciences | Pharmaceutical Manufacturing in India';
 
     const descriptionContent =
-      'A state-of-the-art vertically integrated manufacturing facility in Genome Valley, Hyderabad, capable of producing 10 billion oral solid dosage units annually.';
+      'A state-of-the-art vertically integrated manufacturing facility in Genome Valley, Hyderabad, capable of delivering 10 billion oral solid dosage units annually.';
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
@@ -79,12 +79,13 @@ export default function GranulesLifeSciencesPage() {
 
       <div className="gls-intro">
         <p>
-          <span>Granules Life Sciences (GLS) is a wholly owned subsidiary of Granules India, located in Genome Valley, Hyderabad. GLS is a state-of-the-art vertically integrated manufacturing facility capable of producing <strong>10 billion oral solid dosage (OSD) units annually</strong>, </span>
-          <span className="muted">approved by the USFDA and with EU GMP certification underway.</span>
+          <span>Granules Life Sciences (GLS) is a wholly owned subsidiary of Granules India, located in Genome Valley, Hyderabad. GLS is a state-of-the-art formulations manufacturing facility capable of delivering <strong>10 billion oral solid dosage (OSD) units annually</strong>, </span>
+          <span>This facility is approved by the USFDA and with EU GMP certification underway.</span>
         </p>
-        <p>
+        <span>
           Strategically designed layout in five acres of land to produce 10 billion oral solid dosages/annum, with additional 14 acres of land reserved for future expansion—ensuring we are equipped to meet growing global demand with speed, flexibility, and compliance. With advanced automation, GMP-compliant infrastructure, and green manufacturing systems at its core, GLS is built for precision, reliability, and sustained growth.
-        </p>
+        </span>
+        <span>We have developed a state-of-the-art pharmaceutical manufacturing facility capable of delivering 10 billion dosage units annually.in 5 acres out of 19.6 acres lay out. This site is approved by USFDA and we are in a process of obtaining EU GMP certification in this calendar year. The remaining 14.6 acres have been strategically reserved for future expansion, ensuring scalability and long-term growth potential. </span>
       </div>
 
       <div className="gls-section">

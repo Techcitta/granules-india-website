@@ -155,7 +155,7 @@ export default function GlobalSubsidiariesPage() {
       </p>
 
       {/* Page Title */}
-      <h1 className="cp-page-title">Global Subsidiaries</h1>
+      <h1 className="cp-page-title">Expanding Horizons. Enhancing Access</h1>
 
       {/* Hero Visual Banner */}
       <div className="cp-hero-banner global-sub-hero-banner">
