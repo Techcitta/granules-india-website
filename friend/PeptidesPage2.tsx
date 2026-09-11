@@ -67,9 +67,8 @@ const PHASES = [
     phase: '1',
     quantity: 'Under 1 g',
     activity: 'Feasibility, analytical sample and route finding',
-    image: '/assets/peptides/step-1.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M10 2v7.5L4.5 19.5A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.5L14 9.5V2" />
         <line x1="8.5" y1="2" x2="15.5" y2="2" />
         <path d="M7 16h10" />
@@ -80,15 +79,16 @@ const PHASES = [
     phase: '2',
     quantity: 'Under 100 g',
     activity: 'Process and purification development',
-    image: '/assets/peptides/step-2.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="6" cy="7" r="2.4" />
-        <circle cx="18" cy="7" r="2.4" />
-        <circle cx="12" cy="17" r="2.4" />
-        <line x1="7.8" y1="8.6" x2="10.4" y2="15.2" />
-        <line x1="16.2" y1="8.6" x2="13.6" y2="15.2" />
-        <line x1="8.4" y1="7" x2="15.6" y2="7" />
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2.5" />
+        <circle cx="5" cy="5" r="2.5" />
+        <circle cx="12" cy="20.5" r="2.5" />
+        <line x1="12" y1="9" x2="12" y2="6.5" />
+        <line x1="10" y1="10.5" x2="6.8" y2="6.8" />
+        <line x1="14" y1="10.5" x2="17.2" y2="6.8" />
+        <line x1="12" y1="15" x2="12" y2="18" />
       </svg>
     ),
   },
@@ -96,12 +96,13 @@ const PHASES = [
     phase: '3',
     quantity: '1 to 10 kg',
     activity: 'Scale-up, pilot or initial production batch',
-    image: '/assets/peptides/step-3.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="6" y="4" width="12" height="16" rx="2" />
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="4" width="14" height="16" rx="3" />
         <line x1="9" y1="9" x2="15" y2="9" />
         <line x1="9" y1="13" x2="15" y2="13" />
+        <line x1="12" y1="2" x2="12" y2="4" />
+        <line x1="12" y1="20" x2="12" y2="22" />
       </svg>
     ),
   },
@@ -109,9 +110,8 @@ const PHASES = [
     phase: '4',
     quantity: 'Above 10 kg',
     activity: 'Commercial production with capability extending to ton scale',
-    image: '/assets/peptides/step-4.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
         <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
         <line x1="12" y1="22.08" x2="12" y2="12" />
@@ -266,6 +266,8 @@ export default function PeptidesPage() {
           <span className="sep">›</span>
           <Link to="/business">BUSINESS</Link>
           <span className="sep">›</span>
+          <Link to="/business">Generics</Link>
+          <span className="sep">›</span>
           <span className="current">PEPTIDE CDMO</span>
         </p>
 
@@ -315,8 +317,8 @@ export default function PeptidesPage() {
           <span className="peptides-stat-label">Catalogue Amino Acid Derivatives</span>
         </div>
         <div className="peptides-stat-card">
-          <strong className="peptides-stat-val">2</strong>
-          <span className="peptides-stat-label">Continents Integrated Swiss &amp; India Network</span>
+          <strong className="peptides-stat-val">2 Continents</strong>
+          <span className="peptides-stat-label">Integrated Swiss &amp; India Network</span>
         </div>
       </div>
 
@@ -451,41 +453,37 @@ export default function PeptidesPage() {
       </section>
 
       {/* From Feasibility to Commercial Supply (Ascending Staircase / Step Progression) */}
-      <section className="senn-staircase-section peptides-lifecycle" aria-label="From Feasibility to Commercial Supply">
-        <div className="senn-staircase-card">
-          <div className="senn-staircase-head">
+      <section className="senn-staircase-section" aria-label="From Feasibility to Commercial Supply">
+        <div className="senn-section-head">
+          <div className="copy">
             <span className="cp-section-badge">Lifecycle Progression</span>
             <h2>From Feasibility to Commercial Supply</h2>
             <h4>
               Programs can progress within the same CDMO platform, reducing the need for an external vendor transfer as volumes grow.
             </h4>
           </div>
+        </div>
 
+        <div className="senn-staircase-card">
           <div className="senn-staircase-track-wrap">
-            <svg className="cdmo-staircase-svg" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+            <svg className="cdmo-staircase-svg" viewBox="0 0 1000 350" preserveAspectRatio="none" aria-hidden="true">
               <path
-                d="M 82,122 C 210,112 250,92 338,82 S 560,58 688,50 S 840,40 922,36"
+                d="M 0,315 L 230,315 Q 248,315 248,297 L 248,270 Q 248,252 266,252 L 480,252 Q 498,252 498,234 L 498,207 Q 498,189 516,189 L 730,189 Q 748,189 748,171 L 748,144 Q 748,126 766,126 L 1000,126"
                 fill="none"
-                stroke="#5aa6ff"
-                strokeWidth="2.75"
-                strokeDasharray="7 10"
+                stroke="#d8e9ff"
+                strokeWidth="20"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
 
             <div className="senn-staircase-grid">
               {PHASES.map((p, idx) => (
                 <div className={`cdmo-step-card step-${idx + 1}`} key={p.phase}>
-                  <div className="cdmo-step-media">
-                    <img src={p.image} alt={`${p.quantity} — ${p.activity}`} />
-                    <span className="cdmo-step-node" />
-                  </div>
-                  <div className="cdmo-step-body">
-                    <div className="cdmo-step-icon-wrap">{p.icon}</div>
-                    <span className="cdmo-step-phase">Phase {p.phase}</span>
-                    <h3 className="cdmo-step-qty">{p.quantity}</h3>
-                    <p className="cdmo-step-desc">{p.activity}</p>
-                  </div>
+                  <div className="cdmo-step-icon-wrap">{p.icon}</div>
+                  <span className="cdmo-step-phase">Phase {p.phase}</span>
+                  <h3 className="cdmo-step-qty">{p.quantity}</h3>
+                  <p className="cdmo-step-desc">{p.activity}</p>
                 </div>
               ))}
             </div>
@@ -561,7 +559,7 @@ export default function PeptidesPage() {
       {/* Quality and Compliance */}
       <section className="peptides-compliance-section" aria-label="Quality and compliance">
         <div className="peptides-compliance-panel">
-          <img src="/assets/peptides/quality-compliance-bg.png" alt="Quality and compliance" loading="lazy" decoding="async" />
+          <img src="/assets/company/purpose-bg.webp" alt="Quality and compliance" loading="lazy" decoding="async" />
           <div className="peptides-compliance-overlay" />
           <div className="peptides-compliance-content">
             <span className="peptides-compliance-badge">QUALITY &amp; COMPLIANCE</span>

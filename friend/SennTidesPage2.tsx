@@ -74,9 +74,8 @@ const PHASES_DATA = [
     quantity: 'Under 1 g',
     stage: 'Feasibility & Scouting',
     activity: 'Feasibility, analytical sample, route finding',
-    image: '/assets/peptides/step-1.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M10 2v7.5L4.5 19.5A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.5L14 9.5V2" />
         <line x1="8.5" y1="2" x2="15.5" y2="2" />
         <path d="M7 16h10" />
@@ -88,15 +87,16 @@ const PHASES_DATA = [
     quantity: 'Under 100 g',
     stage: 'Process Development',
     activity: 'Process and purification development, representative sample',
-    image: '/assets/peptides/step-2.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="6" cy="7" r="2.4" />
-        <circle cx="18" cy="7" r="2.4" />
-        <circle cx="12" cy="17" r="2.4" />
-        <line x1="7.8" y1="8.6" x2="10.4" y2="15.2" />
-        <line x1="16.2" y1="8.6" x2="13.6" y2="15.2" />
-        <line x1="8.4" y1="7" x2="15.6" y2="7" />
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2.5" />
+        <circle cx="5" cy="5" r="2.5" />
+        <circle cx="12" cy="20.5" r="2.5" />
+        <line x1="12" y1="9" x2="12" y2="6.5" />
+        <line x1="10" y1="10.5" x2="6.8" y2="6.8" />
+        <line x1="14" y1="10.5" x2="17.2" y2="6.8" />
+        <line x1="12" y1="15" x2="12" y2="18" />
       </svg>
     ),
   },
@@ -105,12 +105,13 @@ const PHASES_DATA = [
     quantity: '1 to 10 kg',
     stage: 'Scale-Up & Pilot',
     activity: 'Scale-up, pilot or initial production batch',
-    image: '/assets/peptides/step-3.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="6" y="4" width="12" height="16" rx="2" />
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="4" width="14" height="16" rx="3" />
         <line x1="9" y1="9" x2="15" y2="9" />
         <line x1="9" y1="13" x2="15" y2="13" />
+        <line x1="12" y1="2" x2="12" y2="4" />
+        <line x1="12" y1="20" x2="12" y2="22" />
       </svg>
     ),
   },
@@ -119,9 +120,8 @@ const PHASES_DATA = [
     quantity: 'Above 10 kg',
     stage: 'Commercial Production',
     activity: 'Commercial production with capability extending to ton scale',
-    image: '/assets/peptides/step-4.webp',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
         <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
         <line x1="12" y1="22.08" x2="12" y2="12" />
@@ -479,41 +479,37 @@ export default function SennTidesPage() {
       </section>
 
       {/* From Feasibility to Commercial Supply (Ascending Staircase / Step Progression) */}
-      <section className="senn-staircase-section peptides-lifecycle" aria-label="From feasibility to commercial supply">
-        <div className="senn-staircase-card">
-          <div className="senn-staircase-head">
+      <section className="senn-staircase-section" aria-label="From feasibility to commercial supply">
+        <div className="senn-section-head">
+          <div className="copy">
             <span className="cp-section-badge">Lifecycle Progression</span>
             <h2>From feasibility to commercial supply</h2>
             <h4>
               Programs can progress from feasibility to commercial supply within the same CDMO platform, reducing the need for an external vendor transfer.
             </h4>
           </div>
+        </div>
 
+        <div className="senn-staircase-card">
           <div className="senn-staircase-track-wrap">
-            <svg className="cdmo-staircase-svg" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+            <svg className="cdmo-staircase-svg" viewBox="0 0 1000 350" preserveAspectRatio="none" aria-hidden="true">
               <path
-                d="M 82,122 C 210,112 250,92 338,82 S 560,58 688,50 S 840,40 922,36"
+                d="M 0,315 L 230,315 Q 248,315 248,297 L 248,270 Q 248,252 266,252 L 480,252 Q 498,252 498,234 L 498,207 Q 498,189 516,189 L 730,189 Q 748,189 748,171 L 748,144 Q 748,126 766,126 L 1000,126"
                 fill="none"
-                stroke="#5aa6ff"
-                strokeWidth="2.75"
-                strokeDasharray="7 10"
+                stroke="#d8e9ff"
+                strokeWidth="20"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
 
             <div className="senn-staircase-grid">
               {PHASES_DATA.map((p, idx) => (
                 <div className={`cdmo-step-card step-${idx + 1}`} key={p.phase}>
-                  <div className="cdmo-step-media">
-                    <img src={p.image} alt={`${p.quantity} — ${p.activity}`} />
-                    <span className="cdmo-step-node" />
-                  </div>
-                  <div className="cdmo-step-body">
-                    <div className="cdmo-step-icon-wrap">{p.icon}</div>
-                    <span className="cdmo-step-phase">Phase {p.phase}</span>
-                    <h3 className="cdmo-step-qty">{p.quantity}</h3>
-                    <p className="cdmo-step-desc">{p.activity}</p>
-                  </div>
+                  <div className="cdmo-step-icon-wrap">{p.icon}</div>
+                  <span className="cdmo-step-phase">Phase {p.phase}</span>
+                  <h3 className="cdmo-step-qty">{p.quantity}</h3>
+                  <p className="cdmo-step-desc">{p.activity}</p>
                 </div>
               ))}
             </div>
@@ -589,33 +585,37 @@ export default function SennTidesPage() {
         </div>
       </section>
 
-      {/* Development & Analytics + Quality & Compliance Sticky Overlapping Stack */}
-      <section className="senn-stack-wrap" aria-label="Development, Analytics, Quality & Compliance">
+      {/* Development and Analytical Support */}
+      <section className="senn-block-section" aria-label="Development and analytical support">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Development &amp; Analytics</span>
+            <h2>Development and analytical support</h2>
+            <h4>
+              An experienced R&amp;D team, including doctoral-level scientists, provides route scouting, process development, analytical method development and validation, stability studies, DMF preparation and technology-transfer support.
+            </h4>
+            <h4>
+              Analytical capabilities include physical characterisation, impurity identification, residual-solvent testing, pharmacopeial testing, chromatographic assays, enantiomeric-purity analysis, spectrometric techniques, HPLC, GC, potentiometric titration and Karl Fischer water determination.
+            </h4>
           </div>
         </div>
+      </section>
 
-        <div className="senn-stack-panel senn-stack-panel--dev">
-          <img src="/assets/company/vision-bg.webp" alt="Development and analytical support" loading="lazy" decoding="async" />
-          <div className="senn-stack-overlay" />
-          <div className="senn-stack-content">
-            <span className="senn-stack-badge">DEVELOPMENT &amp; ANALYTICS</span>
-            <h3>
-              An experienced R&amp;D team, including doctoral-level scientists, provides route scouting, process development, analytical method development and validation, stability studies, DMF preparation and technology-transfer support. Analytical capabilities include physical characterisation, impurity identification, residual-solvent testing, pharmacopeial testing, chromatographic assays, enantiomeric-purity analysis, spectrometric techniques, HPLC, GC, potentiometric titration and Karl Fischer water determination.
-            </h3>
-          </div>
-        </div>
-
-        <div className="senn-stack-panel senn-stack-panel--quality">
-          <img src="/assets/peptides/quality-compliance-bg.png" alt="Quality and compliance" loading="lazy" decoding="async" />
-          <div className="senn-stack-overlay" />
-          <div className="senn-stack-content">
-            <span className="senn-stack-badge">QUALITY &amp; COMPLIANCE</span>
-            <h3>
-              Senn Chemicals is ISO 9001:2015 certified and authorized by Swissmedic for cGMP manufacturing. The site also operates within the regulatory context of the Switzerland–United States GMP Mutual Recognition Agreement. We operate quality systems, documentation practices and change-control processes designed to support customer filings in the United States, Europe and other regulated markets.
-            </h3>
+      {/* Quality and Compliance */}
+      <section className="senn-block-section" aria-label="Quality and compliance">
+        <div className="senn-section-head">
+          <div className="copy">
+            <span className="cp-section-badge">Quality &amp; Compliance</span>
+            <h2>Quality and compliance</h2>
+            <h4>
+              Senn Chemicals is ISO 9001:2015 certified and authorized by Swissmedic for cGMP manufacturing.
+            </h4>
+            <h4>
+              The site also operates within the regulatory context of the Switzerland–United States GMP Mutual Recognition Agreement.
+            </h4>
+            <h4>
+              We operate quality systems, documentation practices and change-control processes designed to support customer filings in the United States, Europe and other regulated markets.
+            </h4>
           </div>
         </div>
       </section>
@@ -738,14 +738,6 @@ export default function SennTidesPage() {
               CH-8157 Dielsdorf, Zurich<br />
               Switzerland
             </address>
-            <div className="senn-contact-img-wrap">
-              <img
-                src="/assets/peptides/footprint-dielsdorf.jpg"
-                alt="Senn Chemicals AG - Dielsdorf, Zurich, Switzerland"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
           </article>
           <article className="senn-feature-card">
             <span className="senn-stat-tag">India Headquarters</span>
@@ -756,14 +748,6 @@ export default function SennTidesPage() {
               Hyderabad 500084, Telangana<br />
               India
             </address>
-            <div className="senn-contact-img-wrap">
-              <img
-                src="/assets/peptides/footprint-hyderabad.jpg"
-                alt="Senn Tides Private Limited - Hyderabad, India"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
           </article>
         </div>
       </section>
@@ -782,6 +766,10 @@ export default function SennTidesPage() {
         </div>
 
         <div className="senn-cta-actions">
+          <Link to="/contact" className="senn-cta-btn senn-cta-btn--primary">
+            <span>Connect With Us</span>
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
           <a
             href="https://www.sennchem.com"
             target="_blank"
