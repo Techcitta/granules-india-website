@@ -39,23 +39,24 @@
 /* ==========================================================================
    1. EXECUTIVE SPEECH & QUOTE BANNER (Dual-Column Signature Hero)
    ========================================================================== */
+.comm-root .ov-leadership-bg {
+  filter: none !important;
+  transform: none !important;
+  object-fit: cover !important;
+  object-position: 82% 42% !important;
+}
+
+.comm-root .ov-leadership-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.58) 0%,
+    rgba(255, 255, 255, 0.18) 38%,
+    rgba(255, 255, 255, 0) 58%
+  ) !important;
+}
+
 .comm-leadership-person {
-  position: absolute !important;
-  right: clamp(10px, 4vw, 70px) !important;
-  top: -24% !important;
-  bottom: auto !important;
-  height: 190% !important;
-  max-height: none !important;
-  width: auto !important;
-  max-width: 60% !important;
-  object-fit: contain !important;
-  object-position: top center !important;
-  z-index: 2 !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: none;
-  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.12));
+  display: none !important;
 }
 
 .comm-root .ov-quote-card {
@@ -69,55 +70,48 @@
 
 @media (max-width: 960px) {
   .comm-root .ov-leadership {
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    aspect-ratio: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    padding-bottom: 32px !important;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
   }
 
-  .comm-leadership-person {
+  .comm-root .ov-leadership-bg {
     position: relative !important;
-    right: auto !important;
-    bottom: auto !important;
-    top: 0 !important;
-    height: 340px !important;
-    max-height: none !important;
+    inset: auto !important;
     width: 100% !important;
-    max-width: 100% !important;
+    height: 340px !important;
     object-fit: cover !important;
-    object-position: 50% 16% !important;
-    order: 0 !important;
-    margin: 20px auto 0 !important;
+    object-position: 82% 28% !important;
+  }
+
+  .comm-root .ov-leadership-overlay {
+    display: none !important;
   }
 
   .comm-root .ov-quote-card {
     position: relative !important;
     left: auto !important;
+    right: auto !important;
     bottom: auto !important;
     width: calc(100% - 32px) !important;
     max-width: 100% !important;
-    margin: 16px auto 0 !important;
+    margin: 16px auto 20px !important;
   }
 }
 
 @media (max-width: 640px) {
-  .comm-root .ov-leadership {
-    padding-bottom: 24px !important;
-  }
-
-  .comm-leadership-person {
+  .comm-root .ov-leadership-bg {
     height: 280px !important;
-    object-position: 50% 16% !important;
-    margin: 16px auto 0 !important;
+    object-position: 84% 26% !important;
   }
 
   .comm-root .ov-quote-card {
     width: calc(100% - 24px) !important;
     padding: 24px 20px !important;
-    margin: 12px auto 0 !important;
+    margin: 12px auto 16px !important;
   }
 }
 

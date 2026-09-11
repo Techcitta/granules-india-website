@@ -158,19 +158,12 @@ export default function CommunityPage() {
           <div className="ov-leadership" style={{ width: '100%', maxWidth: '100%', margin: '0' }}>
             <img
               className="ov-leadership-bg"
-              src="/assets/sustainability/leadership-bg.webp"
-              alt=""
-              loading="eager"
-              decoding="async"
-            />
-            <div className="ov-leadership-overlay" />
-            <img
-              className="comm-leadership-person"
-              src="/assets/csr/uma-devi-leadership.webp"
+              src="/assets/csr/uma-devi-hero.webp"
               alt="Mrs. Uma Devi Chigurupati"
               loading="eager"
               decoding="async"
             />
+            <div className="ov-leadership-overlay" />
             <div className="ov-quote-card">
               <div className="ov-quote-mark" aria-hidden="true">
                 <svg width="38" height="28" viewBox="0 0 36 28" fill="#0061f8">
