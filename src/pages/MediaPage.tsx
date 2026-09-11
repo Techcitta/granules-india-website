@@ -136,7 +136,7 @@ export default function MediaPage() {
 
       <div className="med-hero">
         <img
-          src="/assets/1.webp"
+          src="/assets/media/hero-banner.webp"
           alt="Granules Global Media and Communications"
           className="med-hero-img"
           loading="eager"
