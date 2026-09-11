@@ -725,47 +725,27 @@ function Sustainability({ open = 0, setOpen }) {
         <h4>{currentItem.heroBody}</h4>
         <Button href={currentItem.href} className={isCommunity ? 'teal' : 'green'}>Learn More &rarr;</Button>
       </div>
-      <div className="accordion">
-        {items.map((item, index) => (
-          <article className={open === index ? 'open' : ''} key={item.title}>
-            <button onClick={() => setOpen && setOpen(index)}>
-              <span className="accordion-head">
-                <i className={`accordion-icon accordion-icon-${item.iconType}`}>
-                  <img src={`${A}${item.icon}`} alt="" loading="lazy" decoding="async" />
-                </i>
-                <span>{item.title}</span>
-              </span>
-              <img
-                className="accordion-toggle"
-                src={`${A}${open === index ? 'icon-minus-round.svg' : 'icon-plus-round.svg'}`}
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
+      {/* Bottom Corner Icon Toggles */}
+      <div className="sustainability-toggles" role="tablist" aria-label="Select sustainability topic">
+        {items.map((item, index) => {
+          const isActive = open === index;
+          return (
+            <button
+              key={item.tag}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              aria-label={`Switch to ${item.tag}`}
+              title={item.tag}
+              className={`sustain-toggle-btn ${isActive ? 'active' : ''} sustain-toggle-${item.tag.toLowerCase()}`}
+              onClick={() => setOpen && setOpen(index)}
+            >
+              <i className={`accordion-icon accordion-icon-${item.iconType}`}>
+                <img src={`${A}${item.icon}`} alt="" loading="lazy" decoding="async" />
+              </i>
             </button>
-            {open === index && (
-              <div style={{ marginTop: '16px' }}>
-                <p>{item.body}</p>
-                <Link
-                  to={item.linkHref}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    marginTop: '12px',
-                    color: isCommunity ? '#0d9488' : 'var(--green)',
-                    fontWeight: 700,
-                    fontSize: '15px',
-                    textDecoration: 'none',
-                  }}
-                >
-                  <span>{item.cta}</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            )}
-          </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

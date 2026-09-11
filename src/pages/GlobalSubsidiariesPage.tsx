@@ -27,7 +27,7 @@ const SUBSIDIARY_ITEMS: SubsidiaryItem[] = [
   {
     index: '02',
     name: 'Granules Pharmaceuticals Inc.',
-    image: '/assets/company/gpi-facility.webp',
+    image: '/assets/company/GPI-Cover.jpeg',
     description:
       "Strengthening patient access in North America through direct commercial presence and manufacturing base.",
     ctaText: 'Visit Website',

@@ -46,37 +46,25 @@ h3.gls-page-header {
 }
 
 .gls-intro {
-  width: 85% !important;
-  max-width: 85% !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
   margin: clamp(60px, 8vw, 118px) auto 0 !important;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  box-sizing: border-box;
 }
 
 .gls-intro p,
-.gls-intro span {
+.gls-intro span,
+.gls-intro h4 {
   margin: 0;
-  font: 500 clamp(18px, 2vw, 30px)/1.2 'Manrope', sans-serif;
-  transition: color 0.5s cubic-bezier(0.2, 0, 0.2, 1);
-}
-
-.gls-intro p:first-child span:first-child {
-  color: var(--n9);
-}
-
-.gls-intro p:first-child .muted,
-.gls-intro p:last-child {
-  color: var(--n5);
-}
-
-.gls-intro.is-scrolled p:first-child span:first-child {
-  color: var(--n5);
-}
-
-.gls-intro.is-scrolled p:first-child .muted,
-.gls-intro.is-scrolled p:last-child {
-  color: var(--n9);
+  font-family: var(--font-primary, 'Manrope', sans-serif) !important;
+  font-size: clamp(18px, 1.3vw, 22px) !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: var(--track-body, -0.2px) !important;
+  color: var(--n9, #070707) !important;
 }
 
 .gls-section {
