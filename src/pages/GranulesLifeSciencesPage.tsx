@@ -27,15 +27,6 @@ const CAPABILITY_CARDS: CapabilityCard[] = [
   },
 ];
 
-const RESPONSIBILITY_ITEMS = [
-  'Sustainable design & green manufacturing systems',
-  'Energy-efficient systems & low-emission footprint',
-  'Advanced safety protocols & workforce standards',
-  'GMP-compliant infrastructure & USFDA approvals',
-  'Advanced automation & high-throughput robotics',
-  'Digital oversight & end-to-end quality assurance',
-];
-
 export default function GranulesLifeSciencesPage() {
   const [openCard, setOpenCard] = useState(-1);
 
@@ -92,12 +83,13 @@ export default function GranulesLifeSciencesPage() {
 
       <div className="gls-section">
         <div className="gls-section-head">
-          <span className="cp-section-badge">Operational Excellence</span>
+          <span className="cp-section-badge" style={{ alignSelf: 'flex-start', width: 'fit-content' }}>Operational Excellence</span>
           <h2>High-Performance Formulation Manufacturing</h2>
           <p>
             With automated production lines, lean process design, and digital oversight, we deliver
             consistent quality with high throughput and shorter lead time for supplies into regulated markets.
           </p>
+          <p>Built for long-term responsibility, the site integrates sustainable design, energy-efficient systems, and advanced safety protocols, ensuring operational excellence without compromising environmental or workforce safety standards. GLS reflects our commitment to building a future-ready pharmaceutical supply chain. </p>
         </div>
         <div className="gls-cards-grid">
           {CAPABILITY_CARDS.map((card, idx) => {
@@ -124,35 +116,6 @@ export default function GranulesLifeSciencesPage() {
               </article>
             );
           })}
-        </div>
-      </div>
-
-      <div className="gls-culture">
-        <img className="bg" src={`${G}culture-of-action-bg.png`} alt="" />
-        <div className="overlay" />
-        <div className="gls-culture-inner">
-          <h3>Built for Long-Term Responsibility</h3>
-          <div className="gls-culture-card">
-            <p>
-              Built for long-term responsibility, the site integrates sustainable design, energy-efficient
-              systems, and advanced safety protocols, ensuring operational excellence without compromising
-              environmental or workforce safety standards. GLS reflects our commitment to building a
-              future-ready pharmaceutical supply chain.
-            </p>
-            <div className="gls-culture-list">
-              {RESPONSIBILITY_ITEMS.map((item) => (
-                <div className="gls-culture-list-item" key={item}>
-                  <span className="gls-culture-bullet">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.5">
-                      <circle cx="12" cy="12" r="9" />
-                      <circle cx="12" cy="12" r="4" fill="#0061f8" />
-                    </svg>
-                  </span>
-                  <p>{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 

@@ -149,7 +149,7 @@ export default function CommunityPage() {
           style={{
             width: '85%',
             maxWidth: '85%',
-            margin: '0 auto',
+            margin: '20px auto 0',
             padding: '0',
             position: 'relative',
           }}
@@ -212,7 +212,7 @@ export default function CommunityPage() {
           className="sustainability comm-sustainability"
           data-photo={CSR_FOCUS_AREAS[activeBgIndex].id}
           id="initiatives"
-          style={{ backgroundImage: `url(${currentBg})` }}
+          style={{ backgroundImage: `url("${encodeURI(currentBg)}")` }}
           aria-label="Core Focus Areas"
         >
 

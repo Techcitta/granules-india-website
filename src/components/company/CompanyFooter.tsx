@@ -12,7 +12,7 @@ const SOLUTIONS_LINKS = [
   { label: 'Peptides', href: '/business/peptides' },
   { label: 'R&D', href: '/business/rd' },
   { label: 'Quality', href: '/business/quality-compliance' },
-  { label: 'Facilities', href: '/company/facilities' },
+  { label: 'Facilities', href: '/business/facilities' },
 ];
 
 const IMPACT_LINKS = [

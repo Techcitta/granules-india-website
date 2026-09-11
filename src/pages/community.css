@@ -43,7 +43,7 @@
   filter: none !important;
   transform: none !important;
   object-fit: cover !important;
-  object-position: 82% 42% !important;
+  object-position: 82% 18% !important;
 }
 
 .comm-root .ov-leadership-overlay {
@@ -84,7 +84,7 @@
     width: 100% !important;
     height: 340px !important;
     object-fit: cover !important;
-    object-position: 82% 28% !important;
+    object-position: 82% 16% !important;
   }
 
   .comm-root .ov-leadership-overlay {
@@ -105,7 +105,7 @@
 @media (max-width: 640px) {
   .comm-root .ov-leadership-bg {
     height: 280px !important;
-    object-position: 84% 26% !important;
+    object-position: 84% 14% !important;
   }
 
   .comm-root .ov-quote-card {
