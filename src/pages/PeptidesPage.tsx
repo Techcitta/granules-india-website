@@ -561,7 +561,7 @@ export default function PeptidesPage() {
       {/* Quality and Compliance */}
       <section className="peptides-compliance-section" aria-label="Quality and compliance">
         <div className="peptides-compliance-panel">
-          <img src="/assets/company/purpose-bg.webp" alt="Quality and compliance" loading="lazy" decoding="async" />
+          <img src="/assets/peptides/quality-compliance-bg.png" alt="Quality and compliance" loading="lazy" decoding="async" />
           <div className="peptides-compliance-overlay" />
           <div className="peptides-compliance-content">
             <span className="peptides-compliance-badge">QUALITY &amp; COMPLIANCE</span>

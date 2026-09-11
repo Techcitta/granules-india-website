@@ -589,37 +589,33 @@ export default function SennTidesPage() {
         </div>
       </section>
 
-      {/* Development and Analytical Support */}
-      <section className="senn-block-section" aria-label="Development and analytical support">
+      {/* Development & Analytics + Quality & Compliance Sticky Overlapping Stack */}
+      <section className="senn-stack-wrap" aria-label="Development, Analytics, Quality & Compliance">
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Development &amp; Analytics</span>
-            <h2>Development and analytical support</h2>
-            <h4>
-              An experienced R&amp;D team, including doctoral-level scientists, provides route scouting, process development, analytical method development and validation, stability studies, DMF preparation and technology-transfer support.
-            </h4>
-            <h4>
-              Analytical capabilities include physical characterisation, impurity identification, residual-solvent testing, pharmacopeial testing, chromatographic assays, enantiomeric-purity analysis, spectrometric techniques, HPLC, GC, potentiometric titration and Karl Fischer water determination.
-            </h4>
           </div>
         </div>
-      </section>
 
-      {/* Quality and Compliance */}
-      <section className="senn-block-section" aria-label="Quality and compliance">
-        <div className="senn-section-head">
-          <div className="copy">
-            <span className="cp-section-badge">Quality &amp; Compliance</span>
-            <h2>Quality and compliance</h2>
-            <h4>
-              Senn Chemicals is ISO 9001:2015 certified and authorized by Swissmedic for cGMP manufacturing.
-            </h4>
-            <h4>
-              The site also operates within the regulatory context of the Switzerland–United States GMP Mutual Recognition Agreement.
-            </h4>
-            <h4>
-              We operate quality systems, documentation practices and change-control processes designed to support customer filings in the United States, Europe and other regulated markets.
-            </h4>
+        <div className="senn-stack-panel senn-stack-panel--dev">
+          <img src="/assets/company/vision-bg.webp" alt="Development and analytical support" loading="lazy" decoding="async" />
+          <div className="senn-stack-overlay" />
+          <div className="senn-stack-content">
+            <span className="senn-stack-badge">DEVELOPMENT &amp; ANALYTICS</span>
+            <h3>
+              An experienced R&amp;D team, including doctoral-level scientists, provides route scouting, process development, analytical method development and validation, stability studies, DMF preparation and technology-transfer support. Analytical capabilities include physical characterisation, impurity identification, residual-solvent testing, pharmacopeial testing, chromatographic assays, enantiomeric-purity analysis, spectrometric techniques, HPLC, GC, potentiometric titration and Karl Fischer water determination.
+            </h3>
+          </div>
+        </div>
+
+        <div className="senn-stack-panel senn-stack-panel--quality">
+          <img src="/assets/peptides/quality-compliance-bg.png" alt="Quality and compliance" loading="lazy" decoding="async" />
+          <div className="senn-stack-overlay" />
+          <div className="senn-stack-content">
+            <span className="senn-stack-badge">QUALITY &amp; COMPLIANCE</span>
+            <h3>
+              Senn Chemicals is ISO 9001:2015 certified and authorized by Swissmedic for cGMP manufacturing. The site also operates within the regulatory context of the Switzerland–United States GMP Mutual Recognition Agreement. We operate quality systems, documentation practices and change-control processes designed to support customer filings in the United States, Europe and other regulated markets.
+            </h3>
           </div>
         </div>
       </section>
@@ -742,6 +738,14 @@ export default function SennTidesPage() {
               CH-8157 Dielsdorf, Zurich<br />
               Switzerland
             </address>
+            <div className="senn-contact-img-wrap">
+              <img
+                src="/assets/peptides/footprint-dielsdorf.jpg"
+                alt="Senn Chemicals AG - Dielsdorf, Zurich, Switzerland"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </article>
           <article className="senn-feature-card">
             <span className="senn-stat-tag">India Headquarters</span>
@@ -752,6 +756,14 @@ export default function SennTidesPage() {
               Hyderabad 500084, Telangana<br />
               India
             </address>
+            <div className="senn-contact-img-wrap">
+              <img
+                src="/assets/peptides/footprint-hyderabad.jpg"
+                alt="Senn Tides Private Limited - Hyderabad, India"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </article>
         </div>
       </section>
