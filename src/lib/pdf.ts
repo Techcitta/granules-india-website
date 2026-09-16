@@ -94,6 +94,8 @@ export function getAssetUrl(path?: string | null): string {
 }
 
 const WP_UPLOADS = /^(?:https?:\/\/(?:www\.)?granulesindia\.com)?(?:\[home_url\])?\/+wp-content\/uploads/i;
+const SUSTAINABILITY_UPLOADS =
+  /^https?:\/\/(?:www\.)?granulesindia\.com\/sustainability\/wp-content\/uploads/i;
 
 const DOCUMENT_PDF_MAP: Record<string, string> = {
   "/documents/03-01-2022-NSEBSE-5f23fc10d148.pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2022/02/03-01-2022-NSEBSE.pdf",
@@ -200,6 +202,10 @@ export function toCdnPdf(url?: string | null): string {
   }
   if (decoded.startsWith(PDF_CDN_BASE) || decoded.includes('d16d47oyl512wy.cloudfront.net')) {
     return getAssetUrl(decoded);
+  }
+  // Sustainability microsite files are hosted on granulesindia.com, not the main CDN bucket.
+  if (SUSTAINABILITY_UPLOADS.test(decoded)) {
+    return decoded;
   }
   if (WP_UPLOADS.test(decoded)) {
     return getAssetUrl(decoded.replace(WP_UPLOADS, PDF_CDN_BASE));
