@@ -3,7 +3,7 @@ import { NavBar, CompanyFooter, CareerSection } from '../components/company';
 import '../components/company/company.css';
 import './media.css';
 import { MEDIA_DATA, MediaArticle } from '../data/mediaData';
-import { toCdnPdf } from '../lib/pdf';
+import { getAssetUrl, toCdnPdf } from '../lib/pdf';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -605,7 +605,7 @@ export default function MediaPage() {
             </p>
             <a
               className="med-report-btn"
-              href="https://d16d47oyl512wy.cloudfront.net/pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf"
+              href={getAssetUrl('pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf')}
               target="_blank"
               rel="noopener noreferrer"
               download="Granules_Integrated-Report-2024-25.pdf"

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter, CareerSection } from '../components/company';
+import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 import '../styles.css';
 import './overview.css';
@@ -92,21 +93,21 @@ const CSR_DOCUMENTS = [
   {
     title: 'Corporate Social Responsibility Policy',
     meta: 'Statutory Board-Approved Policy Framework',
-    pdf: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/12/CSR-Policy.pdf',
+    pdf: getAssetUrl('pdfs/2025/12/CSR-Policy.pdf'),
     filename: 'Granules_CSR_Policy.pdf',
     badge: 'Policy',
   },
   {
     title: 'Social Policy & Human Rights Standards',
     meta: 'Community & Workplace Ethical Guidelines',
-    pdf: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/12/CSR-Policy.pdf',
+    pdf: getAssetUrl('pdfs/2025/12/CSR-Policy.pdf'),
     filename: 'Granules_Social_Standards_Policy.pdf',
     badge: 'Standards',
   },
   {
     title: 'Integrated Annual Report FY 24-25',
     meta: 'Comprehensive CSR & ESG Performance Disclosures',
-    pdf: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf',
+    pdf: getAssetUrl('pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf'),
     filename: 'Granules_Integrated_Annual_Report_FY24-25.pdf',
     badge: 'Annual Report',
   },

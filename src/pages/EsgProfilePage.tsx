@@ -3,7 +3,7 @@ import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
 import './esg-profile.css';
 import { COMPLETE_ESG_DATA, ESG_FACTORS_ORDER, EsgSubfactorItem } from '../data/esgData';
-import { toCdnPdf } from '../lib/pdf';
+import { getAssetUrl, toCdnPdf } from '../lib/pdf';
 
 const ESG_DASHBOARD_URL =
   'https://esg.churchgatepartners.com/login/companyprofile?id=3100350036003500240024004100530048004F004B0041004E0041004E00590041004100560041004E004900410053004800570049004E00490024002400';
@@ -397,7 +397,7 @@ export default function EsgProfilePage() {
           <div className="esg-toolbar-right">
             {/* Excel Download Icon */}
             <a
-              href="https://d16d47oyl512wy.cloudfront.net/pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf"
+              href={getAssetUrl('pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf')}
               target="_blank"
               rel="noopener noreferrer"
               className="esg-file-btn excel"
@@ -410,7 +410,7 @@ export default function EsgProfilePage() {
 
             {/* PDF Download Icon */}
             <a
-              href="https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26.pdf"
+              href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26.pdf')}
               target="_blank"
               rel="noopener noreferrer"
               className="esg-file-btn pdf"

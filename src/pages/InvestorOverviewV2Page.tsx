@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
+import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 import './investor.css';
 
@@ -157,7 +158,7 @@ export default function InvestorOverviewV2Page() {
             ) : row.pdf ? (
               <a
                 className="inv-data-row"
-                href={row.pdf}
+                href={getAssetUrl(row.pdf)}
                 target="_blank"
                 rel="noopener noreferrer"
                 download={`${row.label.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`}

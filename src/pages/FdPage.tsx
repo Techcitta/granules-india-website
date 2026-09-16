@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
+import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 import './business.css';
 
@@ -142,7 +143,7 @@ export default function FdPage() {
         </div>
         <a
           className="cp-cta-btn"
-          href="https://d16d47oyl512wy.cloudfront.net/pdfs/2025/06/GIL_Product_Brochure_May_20_2025_Master_FD.pdf"
+          href={getAssetUrl('pdfs/2025/06/GIL_Product_Brochure_May_20_2025_Master_FD.pdf')}
           target="_blank"
           rel="noopener noreferrer"
         >

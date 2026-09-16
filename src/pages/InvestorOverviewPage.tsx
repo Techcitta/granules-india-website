@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { NavBar, CompanyFooter, CareerSection } from '../components/company';
 import InvestorFilteredSection from '../components/investor/InvestorFilteredSection';
 import { INVESTOR_SECTIONS_DATA } from '../data/investorData';
-import { toCdnPdf } from '../lib/pdf';
+import { getAssetUrl, toCdnPdf } from '../lib/pdf';
 import '../components/company/company.css';
 import './investor.css';
 
@@ -36,10 +36,10 @@ const CORPORATE_CENTRE: TableRowItem[] = [
 ];
 
 const FINANCIAL_HIGHLIGHTS: TableRowItem[] = [
-  { title: 'Annual Financial Highlights', detail: 'Revenue, EBITDA & PAT Multi-Year Growth Metrics', period: 'FY 2022-26', pdf: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf' },
-  { title: 'Revenue Breakup Analysis', detail: 'API, PFI & Finished Dosages Segment Revenue', period: 'Annual Breakup', pdf: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf' },
-  { title: 'Quarterly Earnings Presentation', detail: 'Operational Review & Management Commentary', period: 'Q1 FY27', pdf: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf' },
-  { title: 'Quarterly Financial Results', detail: 'Financial Performance Release & Results Summary', period: 'Q1 FY27', pdf: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/FY-Result-Jun26.pdf' },
+  { title: 'Annual Financial Highlights', detail: 'Revenue, EBITDA & PAT Multi-Year Growth Metrics', period: 'FY 2022-26', pdf: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf') },
+  { title: 'Revenue Breakup Analysis', detail: 'API, PFI & Finished Dosages Segment Revenue', period: 'Annual Breakup', pdf: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf') },
+  { title: 'Quarterly Earnings Presentation', detail: 'Operational Review & Management Commentary', period: 'Q1 FY27', pdf: getAssetUrl('pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf') },
+  { title: 'Quarterly Financial Results', detail: 'Financial Performance Release & Results Summary', period: 'Q1 FY27', pdf: getAssetUrl('pdfs/2026/07/FY-Result-Jun26.pdf') },
 ];
 
 export default function InvestorOverviewPage() {

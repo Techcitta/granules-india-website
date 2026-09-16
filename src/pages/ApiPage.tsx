@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavBar, CompanyFooter } from '../components/company';
+import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 import './business.css';
 
@@ -145,7 +146,7 @@ export default function ApiPage() {
         </div>
         <a
           className="cp-cta-btn"
-          href="https://d16d47oyl512wy.cloudfront.net/pdfs/2025/05/Granules_Product_Brochure_API.pdf"
+          href={getAssetUrl('pdfs/2025/05/Granules_Product_Brochure_API.pdf')}
           target="_blank"
           rel="noopener noreferrer"
         >

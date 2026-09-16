@@ -113,7 +113,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "scope": "Granules India Limited (Group)",
             "period": "FY 19-20",
             "year": "2020",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/4302GranulesAR2019-20.pdf",
+            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/4302Granules AR 2019-20.pdf",
             "category": "sec-financial-reports",
             "subcategoryId": "annual-reports",
             "subcategoryLabel": "Annual Reports"

@@ -1,4 +1,49 @@
-export const PDF_CDN_BASE = "https://d16d47oyl512wy.cloudfront.net/pdfs";
+export const CLOUDFRONT_URL = "https://d16d47oyl512wy.cloudfront.net";
+export const PDF_CDN_BASE = `${CLOUDFRONT_URL}/pdfs`;
+
+function decodePathSegment(segment: string): string {
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    return segment;
+  }
+}
+
+/** Encode each CloudFront path segment so spaces and special characters work in the browser. */
+export function getAssetUrl(path?: string | null): string {
+  if (!path) return "";
+
+  let raw = path.trim();
+  let query = "";
+
+  if (/^https?:\/\//i.test(raw)) {
+    try {
+      const parsed = new URL(raw);
+      raw = parsed.pathname;
+      query = parsed.search;
+    } catch {
+      const [pathname, search] = raw.replace(/^https?:\/\/[^/]+/i, "").split("?");
+      raw = pathname;
+      query = search ? `?${search}` : "";
+    }
+  } else {
+    const qIndex = raw.indexOf("?");
+    if (qIndex >= 0) {
+      query = raw.slice(qIndex);
+      raw = raw.slice(0, qIndex);
+    }
+  }
+
+  const cleanPath = raw.replace(/^\/+/, "");
+  if (!cleanPath) return query ? `${CLOUDFRONT_URL}/${query}` : CLOUDFRONT_URL;
+
+  const encoded = cleanPath
+    .split("/")
+    .map((segment) => encodeURIComponent(decodePathSegment(segment)))
+    .join("/");
+
+  return `${CLOUDFRONT_URL}/${encoded}${query}`;
+}
 
 const WP_UPLOADS = /^(?:https?:\/\/(?:www\.)?granulesindia\.com)?(?:\[home_url\])?\/+wp-content\/uploads/i;
 
@@ -100,11 +145,17 @@ export function toCdnPdf(url?: string | null): string {
   if (!url) return '';
   const decoded = decodePdfEntities(url);
   if (decoded.startsWith(PDF_CDN_BASE) || decoded.includes('d16d47oyl512wy.cloudfront.net')) {
-    return decoded;
+    return getAssetUrl(decoded);
   }
   if (WP_UPLOADS.test(decoded)) {
-    return decoded.replace(WP_UPLOADS, PDF_CDN_BASE);
+    return getAssetUrl(decoded.replace(WP_UPLOADS, PDF_CDN_BASE));
   }
   const pathOnly = decoded.split('?')[0];
-  return DOCUMENT_PDF_MAP[pathOnly] || decoded;
+  if (DOCUMENT_PDF_MAP[pathOnly]) {
+    return getAssetUrl(DOCUMENT_PDF_MAP[pathOnly]);
+  }
+  if (/^\/?pdfs\//i.test(decoded)) {
+    return getAssetUrl(decoded);
+  }
+  return decoded;
 }

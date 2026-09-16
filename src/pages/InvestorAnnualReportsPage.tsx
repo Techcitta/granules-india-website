@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter, CareerSection } from '../components/company';
+import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 import './investor.css';
 
@@ -52,7 +53,7 @@ export default function InvestorAnnualReportsPage() {
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
           <a
             className="inv-action-link"
-            href="https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26.pdf"
+            href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26.pdf')}
             target="_blank"
             rel="noopener noreferrer"
             title="View Latest Annual Report in new tab"
@@ -62,7 +63,7 @@ export default function InvestorAnnualReportsPage() {
           <span className="inv-action-slash">/</span>
           <a
             className="inv-action-link"
-            href="https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26.pdf"
+            href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26.pdf')}
             download="Granules_Annual-Report-FY26.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -80,7 +81,7 @@ export default function InvestorAnnualReportsPage() {
             <div className="inv-detail-actions" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               <a
                 className="inv-action-link"
-                href={report.pdf}
+                href={getAssetUrl(report.pdf)}
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`View Annual Report ${report.year} in new tab`}
@@ -90,7 +91,7 @@ export default function InvestorAnnualReportsPage() {
               <span className="inv-action-slash">/</span>
               <a
                 className="inv-action-link"
-                href={report.pdf}
+                href={getAssetUrl(report.pdf)}
                 download={`Annual-Report-${report.year}.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"

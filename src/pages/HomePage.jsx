@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import worldMapUrl from '@svg-maps/world/world.svg?url';
 import { NavBar, CompanyFooter } from '../components/company';
 import { REGULATORY_LOGOS } from '../data/regulatoryLogosData';
+import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 
 const A = '/assets/';
@@ -758,32 +759,32 @@ function Investor() {
   const docs = [
     {
       title: 'Integrated annual report 2025-26',
-      href: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26.pdf',
+      href: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26.pdf'),
       download: 'Granules_Annual_Report_FY26.pdf',
     },
     {
       title: 'Q2 Results for 2026',
-      href: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/11/Press-Release-Q2-FY26.pdf',
+      href: getAssetUrl('pdfs/2025/11/Press-Release-Q2-FY26.pdf'),
       download: 'Granules_Q2_FY26_Results.pdf',
     },
     {
       title: 'Investor presentation',
-      href: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/11/Earnings-Presentation-Q2FY26-Circulation.pdf',
+      href: getAssetUrl('pdfs/2025/11/Earnings-Presentation-Q2FY26-Circulation.pdf'),
       download: 'Granules_Investor_Presentation.pdf',
     },
     {
       title: 'Earnings call transcript (Q2 FY26)',
-      href: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/11/GranulesIndia-Q2-FY26-Transcript-Clean-Version.pdf',
+      href: getAssetUrl('pdfs/2025/11/GranulesIndia-Q2-FY26-Transcript-Clean-Version.pdf'),
       download: 'Granules_Earnings_Call_Transcript_Q2_FY26.pdf',
     },
     {
       title: 'Shareholding pattern',
-      href: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/01/Third-Quarter-SHP-2025.pdf',
+      href: getAssetUrl('pdfs/2025/01/Third-Quarter-SHP-2025.pdf'),
       download: 'Granules_Shareholding_Pattern.pdf',
     },
     {
       title: 'Sustainability report 2024-25',
-      href: 'https://d16d47oyl512wy.cloudfront.net/pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf',
+      href: getAssetUrl('pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf'),
       download: 'Granules_Sustainability_Report_2024-25.pdf',
     },
   ];
@@ -800,7 +801,7 @@ function Investor() {
       </div>
       <div className="investor-panel">
         <a
-          href="https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26.pdf"
+          href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26.pdf')}
           target="_blank"
           rel="noopener noreferrer"
           className="investor-cover"
