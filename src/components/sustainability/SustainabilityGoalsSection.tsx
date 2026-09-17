@@ -20,12 +20,12 @@ const GOALS_ITEMS: GoalCard[] = [
   },
   {
     title: 'DEI',
-    image: '/assets/sustainability/sus/3.png',
+    image: '/assets/sustainability/sus/dei.jpg',
     desc: 'Achieve a 100% increase in women’s employment across operational and leadership levels by 2030 compared to FY24.',
   },
   {
     title: 'Community',
-    image: '/assets/sustainability/sus/4.jpg',
+    image: '/assets/sustainability/sus/community.jpg',
     desc: 'Touch 1 Million+ lives through targeted CSR programs in healthcare, education, skill development, and rural ecosystems by 2030.',
   },
   {
@@ -35,7 +35,7 @@ const GOALS_ITEMS: GoalCard[] = [
   },
   {
     title: 'Water',
-    image: '/assets/esg/esg-water.webp',
+    image: '/assets/sustainability/sus/water.jpg',
     desc: 'Achieve Water Positivity by 2032 through zero liquid discharge (ZLD), rainwater harvesting, and closed-loop process wastewater recycling.',
   },
   {
@@ -45,7 +45,7 @@ const GOALS_ITEMS: GoalCard[] = [
   },
   {
     title: 'Energy',
-    image: '/assets/czro/card-carbon-free.webp',
+    image: '/assets/sustainability/sus/energy.jpg',
     desc: 'Sourcing 100% renewable electricity by 2030 across all manufacturing facilities and transitioning thermal demand to green fuels.',
   },
 ];
