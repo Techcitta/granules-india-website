@@ -10,7 +10,7 @@ const A = '/assets/';
 
 const heroSlides = [
   {
-    image: 'Home/1.jpg',
+    image: 'Home/generics.jpg',
     title: 'Globally Approved.\nVertically Integrated.\nTrusted Worldwide',
     cta: 'Generics',
     link: '/business/generics',
@@ -34,7 +34,7 @@ const heroSlides = [
     link: '/business/rd',
   },
   {
-    image: 'Home/4.jpg',
+    image: 'Home/sustainability.jpg',
     title: 'Innovating for Health. \nCommitted to the Planet',
     cta: 'Sustainability',
     link: '/sustainability',
