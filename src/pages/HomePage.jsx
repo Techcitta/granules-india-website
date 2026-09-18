@@ -28,7 +28,7 @@ const heroSlides = [
     link: '/business/quality-compliance',
   },
   {
-    image: 'Home/5.jpg',
+    image: 'Home/rd.jpg',
     title: 'Accelerating Innovation Through Integrated R&D Platform',
     cta: 'Research & Development',
     link: '/business/rd',
@@ -43,7 +43,7 @@ const heroSlides = [
 
 const products = [
   {
-    image: 'pfi.webp',
+    image: 'fd/fd-card.jpg',
     title: 'Finished Dosages (FDs)',
     eyebrow: 'FD',
     body: 'Scale and complexity supported by multi-site supply capabilities.',

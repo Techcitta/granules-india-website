@@ -137,7 +137,7 @@ export default function MediaPage() {
 
       <div className="med-hero">
         <img
-          src="/assets/media/67.jpg"
+          src="/assets/media/media-hero.jpg"
           alt="Granules Global Media and Communications"
           className="med-hero-img"
           loading="eager"

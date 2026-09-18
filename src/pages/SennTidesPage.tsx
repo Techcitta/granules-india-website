@@ -302,16 +302,20 @@ export default function SennTidesPage() {
       </p>
 
       {/* Page Title */}
-      <h1 className="senn-page-header">Senn Tides Private Limited</h1>
+      <h1 className="senn-page-header">Senn Tides India Private Limited</h1>
 
       {/* Hero Banner */}
       <div className="senn-hero-wrap">
         <div className="cp-hero-banner">
-          <img
-            src="/assets/ascelis/hero-banner.webp"
-            alt="Senn Tides Integrated CDMO Facility"
-            loading="eager"
-            decoding="async"
+          <video
+            className="senn-hero-video"
+            src="/assets/senn/hero-banner.mp4"
+            poster="/assets/senn/hero-banner-poster.webp"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-label="Senn Tides integrated CDMO platform in Switzerland and India"
           />
           <div className="senn-hero-scrim" />
           <div className="senn-hero-overlay">
