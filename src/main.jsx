@@ -32,6 +32,7 @@ import SustainabilityOverviewPage from './pages/SustainabilityOverviewPage.tsx';
 import SustainabilityStrategyPage from './pages/SustainabilityStrategyPage.tsx';
 import EsgInActionPage from './pages/EsgInActionPage.tsx';
 import EsgProfilePage from './pages/EsgProfilePage.tsx';
+import EhsSubmissionsPage from './pages/EhsSubmissionsPage.tsx';
 import CommunityPage from './pages/CommunityPage.tsx';
 import InvestorOverviewPage from './pages/InvestorOverviewPage.tsx';
 import InvestorAnnualReportsPage from './pages/InvestorAnnualReportsPage.tsx';
@@ -91,6 +92,12 @@ function App() {
         <Route path="/esg-profile" element={<EsgProfilePage />} />
         <Route path="/sustainability/esg-world" element={<EsgProfilePage />} />
         <Route path="/esg-world" element={<EsgProfilePage />} />
+        <Route path="/sustainability/ehs-submissions" element={<EhsSubmissionsPage />} />
+        <Route path="/sustainability/ehs-documents" element={<EhsSubmissionsPage />} />
+        <Route path="/ehs-submissions" element={<EhsSubmissionsPage />} />
+        <Route path="/ehs-documents" element={<EhsSubmissionsPage />} />
+        <Route path="/investors/ehs-documents" element={<EhsSubmissionsPage />} />
+        <Route path="/investor/ehs-documents" element={<EhsSubmissionsPage />} />
         <Route path="/sustainability/esg-in-action/community" element={<CommunityPage />} />
         <Route path="/sustainability/corporate-social-responsibility" element={<CommunityPage />} />
         <Route path="/sustainability/csr" element={<CommunityPage />} />

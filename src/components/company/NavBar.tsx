@@ -52,6 +52,15 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Facilities', href: '/business/facilities' },
     ],
   },
+  Sustainability: {
+    sections: [],
+    links: [
+      { label: 'Overview', href: '/sustainability' },
+      { label: 'ESG in Action', href: '/sustainability/esg-in-action' },
+      { label: 'ESG World', href: '/sustainability/esg-world' },
+      { label: 'EHS Submissions', href: '/sustainability/ehs-submissions' },
+    ],
+  },
   Careers: {
     sections: [],
     links: [

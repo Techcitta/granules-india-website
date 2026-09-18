@@ -246,7 +246,7 @@ function IntegrationMark({ type }: { type: Integration }) {
 
 const products = [
   {
-    image: 'fd/fd-card.jpg',
+    image: 'news-3.webp',
     title: 'Finished Dosages (FDs)',
     eyebrow: 'FD',
     body: 'Scale and complexity supported by multi-site supply capabilities, comprehensive oral solid dosage solutions engineered for affordability, patient safety, and global compliance.',

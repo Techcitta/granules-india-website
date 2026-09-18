@@ -15,7 +15,7 @@
 .ld-main-breadcrumb {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: clamp(84px, 7.5vw, 120px) auto 16px !important;
+  margin: clamp(100px, 8vw, 125px) auto 16px !important;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -24,6 +24,12 @@
   letter-spacing: 0.9px;
   text-transform: uppercase;
   color: #7b8898;
+}
+
+@media (min-width: 768px) {
+  .ld-main-breadcrumb {
+    margin: clamp(135px, 9vw, 160px) auto 16px !important;
+  }
 }
 
 .ld-main-breadcrumb a {
@@ -465,7 +471,7 @@
 .ld-profile-breadcrumb {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: clamp(60px, 8vw, 118px) auto 16px !important;
+  margin: clamp(100px, 8vw, 125px) auto 16px !important;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -475,6 +481,12 @@
   letter-spacing: 0.9px;
   text-transform: uppercase;
   color: #7b8898;
+}
+
+@media (min-width: 768px) {
+  .ld-profile-breadcrumb {
+    margin: clamp(135px, 9vw, 160px) auto 16px !important;
+  }
 }
 
 .ld-profile-breadcrumb a {

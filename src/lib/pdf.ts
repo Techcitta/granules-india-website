@@ -203,10 +203,9 @@ export function toCdnPdf(url?: string | null): string {
   if (decoded.startsWith(PDF_CDN_BASE) || decoded.includes('d16d47oyl512wy.cloudfront.net')) {
     return getAssetUrl(decoded);
   }
-  // Sustainability microsite uploads mirror the main CDN bucket under /pdfs/.
+  // Sustainability microsite files are hosted on granulesindia.com, not the main CDN bucket.
   if (SUSTAINABILITY_UPLOADS.test(decoded)) {
-    const rel = decoded.replace(SUSTAINABILITY_UPLOADS, '').replace(/^\/+/, '');
-    return getAssetUrl(`pdfs/${rel}`);
+    return decoded;
   }
   if (WP_UPLOADS.test(decoded)) {
     return getAssetUrl(decoded.replace(WP_UPLOADS, PDF_CDN_BASE));
