@@ -541,7 +541,7 @@ button.cp-nav-drawer-link {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: clamp(60px, 8vw, 118px) auto 16px !important;
+  margin: clamp(84px, 7.5vw, 120px) auto 16px !important;
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   padding: 0;
@@ -1775,6 +1775,47 @@ button.cp-nav-drawer-link {
 }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 1440px) {
+  .cp-nav {
+    padding: 8px clamp(14px, 2.2vw, 28px);
+  }
+
+  .cp-nav-links {
+    gap: clamp(8px, 1.1vw, 16px);
+  }
+
+  .cp-nav-link {
+    font-size: 14.5px;
+    padding: 3px 2px;
+  }
+
+  .cp-nav-logo {
+    width: 152px;
+    height: 52px;
+  }
+
+  .cp-nav-logo img {
+    width: 128px;
+    height: 44px;
+  }
+
+  .cp-nav-search {
+    margin-left: 4px;
+  }
+
+  .cp-quote-card {
+    width: clamp(320px, 42vw, 480px);
+    max-width: 46%;
+    padding: clamp(20px, 2vw, 32px) clamp(20px, 2.2vw, 36px);
+    border-radius: clamp(20px, 2.2vw, 28px);
+  }
+
+  .cp-quote-card p.cp-quote-text {
+    font-size: clamp(14px, 1.1vw, 17px) !important;
+    line-height: 1.48 !important;
+  }
+}
+
 @media (max-width: 1100px) {
   .cp-nav-links {
     display: none;

@@ -55,8 +55,9 @@ const SUBMENUS: Record<string, Submenu> = {
   Careers: {
     sections: [],
     links: [
-      { label: 'Overview', href: '/careers' },
-      { label: 'Current Openings', href: 'https://careers.mygranules.com' },
+      { label: 'Our Culture & Values', href: '/careers#culture-values' },
+      { label: 'Life at Granules', href: '/careers/life-at-granules' },
+      { label: 'Work with us', href: '/careers/opportunities' },
     ],
   },
 };
@@ -107,7 +108,7 @@ function isActive(link: NavLinkItem, pathname: string, activeSection?: string | 
     return pathname.startsWith('/media');
   }
   if (link.label === 'Careers') {
-    return pathname.startsWith('/careers');
+    return pathname.startsWith('/career') || pathname.startsWith('/work-with-us');
   }
   if (link.label === 'Contact Us') {
     return pathname.startsWith('/contact');

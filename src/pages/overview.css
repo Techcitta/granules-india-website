@@ -343,7 +343,35 @@
   text-transform: uppercase !important;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1440px) {
+  .ov-quote-card {
+    left: clamp(20px, 2.5vw, 44px);
+    bottom: clamp(20px, 2.5vw, 40px);
+    width: clamp(340px, 42vw, 500px);
+    max-width: 46%;
+    padding: clamp(22px, 2.2vw, 36px) clamp(22px, 2.4vw, 40px);
+    border-radius: clamp(22px, 2.4vw, 32px);
+  }
+
+  .ov-quote-text,
+  .ov-quote-text.p4 {
+    font-size: clamp(14px, 1.15vw, 17.5px) !important;
+    line-height: 1.5 !important;
+  }
+
+  .ov-quote-name,
+  .ov-quote-name.p3 {
+    margin: clamp(14px, 1.5vw, 20px) 0 0 !important;
+    font-size: clamp(16px, 1.3vw, 20px) !important;
+  }
+
+  .ov-quote-role,
+  .ov-quote-role.p4 {
+    font-size: clamp(11.5px, 0.9vw, 13.5px) !important;
+  }
+}
+
+@media (max-width: 1080px) {
   .ov-leadership {
     aspect-ratio: auto;
     min-height: auto;
@@ -1653,7 +1681,14 @@
   }
 
   .sus-jump-nav-grid {
-    grid-template-columns: repeat(6, 1fr) !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .sus-jump-nav-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
   }
 
   .sus-goals-top-grid {

@@ -15,7 +15,7 @@
 .ld-main-breadcrumb {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: clamp(60px, 8vw, 118px) auto 16px !important;
+  margin: clamp(84px, 7.5vw, 120px) auto 16px !important;
   display: flex;
   align-items: center;
   gap: 8px;

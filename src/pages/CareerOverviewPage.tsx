@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
 import './career.css';
@@ -236,10 +236,22 @@ export default function CareerOverviewPage() {
 
   const currentAreaBg = (activeArea >= 0 && CAREER_AREAS[activeArea]?.bg) ? CAREER_AREAS[activeArea].bg : CAREER_AREAS[0].bg;
 
+  const location = useLocation();
+
   useEffect(() => {
     document.title = 'Make Better Health. Build a Bolder Career. — Careers at Granules';
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, []);
+  }, [location.hash]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -368,7 +380,7 @@ export default function CareerOverviewPage() {
         </section>
 
         {/* WHY GRANULES? The Employee Value Proposition (Stacking Panels) */}
-        <div className="car-why">
+        <div className="car-why" id="culture-values" style={{ scrollMarginTop: '100px' }}>
           <div className="car-why-head">
             <div className="car-why-copy">
               <span className="car-why-tag">WHY GRANULES?</span>
