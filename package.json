@@ -16,10 +16,13 @@
     "react-router-dom": "^7.18.2"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "@vitejs/plugin-react": "^5.0.2",
     "playwright": "^1.62.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vite": "^7.1.3"
   }
