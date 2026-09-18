@@ -33,21 +33,21 @@ const WORKDAY_TABS = [
     tabLabel: 'Granules Family Fest',
     title: 'GRANULES FAMILY FEST',
     desc: 'An annual celebration that brings together employees and their families for cultural activities and fun.',
-    image: 'beyond-workday-bg.png',
+    image: 'Granuals Festival-493.JPG',
   },
   {
     id: 'sports-fest',
     tabLabel: 'Sports Fest and 5K Run',
     title: 'SPORTS FEST AND 5K RUN',
     desc: 'A company-wide tournament that promotes health, energy, and teamwork.',
-    image: 'hero-photo.png',
+    image: '5k run.jpeg',
   },
   {
     id: 'womens-day',
     tabLabel: "Women's day Celebrations",
     title: "WOMEN'S DAY CELEBRATIONS",
     desc: 'Acknowledging the achievements of women across the organization through events, awards, and conversations.',
-    image: 'panel-people-first.png',
+    image: "Women'sday.JPG",
   },
 ];
 

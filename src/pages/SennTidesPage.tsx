@@ -15,11 +15,6 @@ interface CapabilityCard {
 
 const CAPABILITY_CARDS: CapabilityCard[] = [
   {
-    title: 'Peptide APIs',
-    image: '/assets/rd/card-synthesis.webp',
-    desc: 'Peptides ranging from short sequences to chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
-  },
-  {
     title: 'Amino Acid Derivatives',
     image: '/assets/rd/card-catalysis.webp',
     desc: 'Senn Chemicals pioneered AAD synthesis and it remains a core capability. Our catalogue includes more than 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, N-methylated derivatives and side-chain-modified derivatives. Selected derivatives can be manufactured under the same cGMP quality systems applied to our peptide APIs.',
@@ -28,6 +23,11 @@ const CAPABILITY_CARDS: CapabilityCard[] = [
     title: 'Peptide Fragments',
     image: '/assets/rd/card-solvents.webp',
     desc: 'Building blocks supplied to innovators and to other peptide manufacturers.',
+  },
+  {
+    title: 'Peptide APIs',
+    image: '/assets/rd/card-synthesis.webp',
+    desc: 'Peptides ranging from short sequences to chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
   },
   {
     title: 'Theranostic Peptides',
@@ -47,7 +47,7 @@ const CAPABILITY_CARDS: CapabilityCard[] = [
         <strong>Expansion is underway.</strong>
         <br />
         <br />
-        We work with pharmaceutical innovators, cosmetic brand owners and specialty therapeutic developers.
+
       </>
     ),
   },
@@ -302,7 +302,7 @@ export default function SennTidesPage() {
       </p>
 
       {/* Page Title */}
-      <h1 className="senn-page-header">Senn Tides India Private Limited</h1>
+      <h1 className="senn-page-header">Senn Tides</h1>
 
       {/* Hero Banner */}
       <div className="senn-hero-wrap">
@@ -533,7 +533,7 @@ export default function SennTidesPage() {
         <div className="senn-mfg-grid-3">
           {MANUFACTURING_DATA.map((block, idx) => (
             <div
-              className={`senn-mfg-flip-card ${flippedMfgCard === idx ? 'flipped' : ''}`}
+              className={`senn-mfg-card ${flippedMfgCard === idx ? 'is-active' : ''}`}
               key={block.category}
               onClick={() => setFlippedMfgCard((prev) => (prev === idx ? null : idx))}
               onKeyDown={(e) => {
@@ -543,36 +543,35 @@ export default function SennTidesPage() {
                 }
               }}
               tabIndex={0}
-              role="region">
+              role="region"
+              aria-label={block.category}>
 
-              <div className="senn-mfg-flip-inner">
-                {/* Front Face with Image and Summary Header */}
-                <div className="senn-mfg-card-front">
-                  <img src={block.image} alt={block.category} className="senn-mfg-front-img" loading="lazy" decoding="async" />
-                  <div className="senn-mfg-front-overlay" />
-                  <div className="senn-mfg-front-content">
-                    <span className="senn-front-badge">{block.badge}</span>
-                    <h3 className="senn-mfg-front-title">{block.category}</h3>
-                    <p className="senn-mfg-front-desc">{block.description}</p>
-                  </div>
-                </div>
+              {/* Background Image */}
+              <img src={block.image} alt={block.category} className="senn-mfg-card-bg" loading="lazy" decoding="async" />
+              <div className="senn-mfg-card-overlay" />
 
-                {/* Back Face with Full Technical Specifications */}
-                <div className="senn-mfg-card-back">
-                  <div className="senn-mfg-box-head">
-                    <span className="senn-stat-tag">{block.badge}</span>
-                    <h3 className="senn-mfg-box-title">{block.category}</h3>
-                    <p className="senn-mfg-box-desc">{block.description}</p>
-                  </div>
-                  <ul className="senn-mfg-box-list">
-                    {block.items.map((item, itemIdx) => (
-                      <li key={itemIdx}>
-                        <span className="senn-box-bullet" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Default Front View (Bottom scrim with badge, title, desc) */}
+              <div className="senn-mfg-card-idle">
+                <span className="senn-front-badge">{block.badge}</span>
+                <h3 className="senn-mfg-front-title">{block.category}</h3>
+                <p className="senn-mfg-front-desc">{block.description}</p>
+              </div>
+
+              {/* Hover / Active Sheet (Frosted overlay revealed without 3D rotation) */}
+              <div className="senn-mfg-card-hover-sheet">
+                <div className="senn-mfg-box-head">
+                  <span className="senn-stat-tag">{block.badge}</span>
+                  <h3 className="senn-mfg-box-title">{block.category}</h3>
+                  <p className="senn-mfg-box-desc">{block.description}</p>
                 </div>
+                <ul className="senn-mfg-box-list">
+                  {block.items.map((item, itemIdx) => (
+                    <li key={itemIdx}>
+                      <span className="senn-box-bullet" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

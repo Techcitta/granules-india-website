@@ -7,11 +7,7 @@ import './business.css';
 import './senn-tides.css';
 
 const PORTFOLIO_ITEMS = [
-  {
-    title: 'Peptide APIs',
-    image: '/assets/rd/card-synthesis.webp',
-    desc: 'Short sequences to chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
-  },
+
   {
     title: 'Amino Acid Derivatives',
     image: '/assets/rd/card-catalysis.webp',
@@ -21,6 +17,11 @@ const PORTFOLIO_ITEMS = [
     title: 'Peptide Fragments',
     image: '/assets/rd/card-solvents.webp',
     desc: 'Building blocks supplied to innovators and peptide manufacturers.',
+  },
+  {
+    title: 'Peptide APIs',
+    image: '/assets/rd/card-synthesis.webp',
+    desc: 'Short sequences to chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
   },
   {
     title: 'Theranostic Peptides',
@@ -310,7 +311,7 @@ export default function PeptidesPage() {
           <span className="peptides-stat-label">Maximum Reactor Capacity</span>
         </div>
         <div className="peptides-stat-card">
-          <strong className="peptides-stat-val">190+</strong>
+          <strong className="peptides-stat-val">200+</strong>
           <span className="peptides-stat-label">Catalogue Amino Acid Derivatives</span>
         </div>
         <div className="peptides-stat-card">

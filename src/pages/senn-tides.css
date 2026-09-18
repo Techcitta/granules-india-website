@@ -583,54 +583,29 @@ h1.senn-page-header {
   }
 }
 
-.senn-mfg-flip-card {
-  perspective: 1200px;
+.senn-mfg-card {
+  position: relative;
   height: 580px;
   width: 100%;
-  cursor: pointer;
-  outline: none;
-}
-
-.senn-mfg-flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 26px;
-}
-
-.senn-mfg-flip-card:hover .senn-mfg-flip-inner,
-.senn-mfg-flip-card:focus-visible .senn-mfg-flip-inner,
-.senn-mfg-flip-card.flipped .senn-mfg-flip-inner {
-  transform: rotateY(180deg);
-}
-
-/* Front Face: Image with balanced gradient scrim and summary */
-.senn-mfg-card-front {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   border-radius: 26px;
   overflow: hidden;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   box-shadow: 0 10px 32px rgba(0, 30, 80, 0.08);
   border: 1.5px solid rgba(0, 97, 248, 0.14);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   background: #001a40;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.senn-mfg-flip-card:hover .senn-mfg-card-front {
+.senn-mfg-card:hover,
+.senn-mfg-card:focus-visible,
+.senn-mfg-card.is-active {
   border-color: #0061f8;
-  box-shadow: 0 18px 44px rgba(0, 97, 248, 0.2);
+  box-shadow: 0 18px 44px rgba(0, 97, 248, 0.22);
+  transform: translateY(-4px);
 }
 
-.senn-mfg-front-img {
+.senn-mfg-card-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -640,11 +615,13 @@ h1.senn-page-header {
   transition: transform 0.65s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
-.senn-mfg-flip-card:hover .senn-mfg-front-img {
+.senn-mfg-card:hover .senn-mfg-card-bg,
+.senn-mfg-card:focus-visible .senn-mfg-card-bg,
+.senn-mfg-card.is-active .senn-mfg-card-bg {
   transform: scale(1.05);
 }
 
-.senn-mfg-front-overlay {
+.senn-mfg-card-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
@@ -653,15 +630,28 @@ h1.senn-page-header {
       rgba(0, 35, 95, 0.82) 68%,
       rgba(0, 25, 75, 0.97) 100%);
   z-index: 1;
+  transition: opacity 0.35s ease;
 }
 
-.senn-mfg-front-content {
-  position: relative;
+.senn-mfg-card-idle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
   padding: 28px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.senn-mfg-card:hover .senn-mfg-card-idle,
+.senn-mfg-card:focus-visible .senn-mfg-card-idle,
+.senn-mfg-card.is-active .senn-mfg-card-idle {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
 }
 
 .senn-front-badge {
@@ -691,53 +681,41 @@ h1.senn-page-header {
   letter-spacing: -0.01em;
 }
 
-.senn-mfg-flip-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 4px;
-  font: 700 11.5px/1 'Manrope', sans-serif;
-  color: #67e8f9;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.senn-mfg-flip-hint svg {
-  transition: transform 0.4s ease;
-}
-
-.senn-mfg-flip-card:hover .senn-mfg-flip-hint svg {
-  transform: rotate(180deg);
-}
-
-/* Back Face: Clean Ice-Blue card with full specifications list */
-.senn-mfg-card-back {
+/* Hover reveal sheet (frosted glass overlay revealed without 3D rotation, matching About Us page) */
+.senn-mfg-card-hover-sheet {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 26px;
-  overflow-y: auto;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: rotateY(180deg);
-  background: #edf5ff;
-  border: 1.5px solid rgba(0, 97, 248, 0.22);
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   padding: 26px 22px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   box-sizing: border-box;
-  box-shadow: 0 14px 36px rgba(0, 97, 248, 0.12);
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow-y: auto;
 }
 
-.senn-mfg-card-back::-webkit-scrollbar {
+.senn-mfg-card-hover-sheet::-webkit-scrollbar {
   width: 4px;
 }
 
-.senn-mfg-card-back::-webkit-scrollbar-thumb {
+.senn-mfg-card-hover-sheet::-webkit-scrollbar-thumb {
   background: rgba(0, 97, 248, 0.3);
   border-radius: 4px;
+}
+
+.senn-mfg-card:hover .senn-mfg-card-hover-sheet,
+.senn-mfg-card:focus-visible .senn-mfg-card-hover-sheet,
+.senn-mfg-card.is-active .senn-mfg-card-hover-sheet {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .senn-mfg-box-head {

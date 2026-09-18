@@ -512,7 +512,7 @@
   border-top-left-radius: 44px;
   border-top-right-radius: 44px;
   margin-top: 0;
-  padding-top: 100px !important;
+  padding-top: 75px !important;
   padding-bottom: 0 !important;
   box-shadow: 0 -28px 60px rgba(0, 20, 60, 0.08);
 }
@@ -1279,9 +1279,9 @@
 
 /* ---------- Way in Practice (Interactive 5-Slide Banner with Real HTML Boxes) ---------- */
 .car-practice-wrap {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 0 auto !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: 75px auto 0 !important;
   position: relative;
   border-radius: 40px;
   overflow: hidden;
@@ -2133,6 +2133,86 @@
   background-position: right 20px center;
   padding-right: 46px;
   cursor: pointer;
+}
+
+.car-talent-field--full {
+  grid-column: 1 / -1;
+}
+
+.car-talent-file-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.car-talent-file-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.car-talent-file-custom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #ffffff;
+  border: 1.5px dashed #b8d2f2;
+  border-radius: 16px;
+  padding: 13px 20px;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.car-talent-file-wrap:hover .car-talent-file-custom,
+.car-talent-file-input:focus + .car-talent-file-custom {
+  border-color: #0061f8;
+  background: #f8fbff;
+  box-shadow: 0 0 0 3px rgba(0, 97, 248, 0.12);
+}
+
+.car-talent-file-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.car-talent-file-name {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(14.5px, 1.1vw, 16px) !important;
+  color: #94a3b8;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.car-talent-file-name.has-file {
+  color: #0061f8 !important;
+  font-weight: 700;
+}
+
+.car-talent-file-btn {
+  flex-shrink: 0;
+  background: #edf5ff;
+  color: #0061f8;
+  border: 1px solid rgba(0, 97, 248, 0.2);
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease;
+}
+
+.car-talent-file-wrap:hover .car-talent-file-btn {
+  background: #0061f8;
+  color: #ffffff;
 }
 
 .car-talent-consent {
