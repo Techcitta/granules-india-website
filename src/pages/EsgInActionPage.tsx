@@ -30,7 +30,7 @@ const ENV_TABS_DATA: EnvSubTabItem[] = [
     desc: 'Granules is decoupling emissions from production, building a future-proof, low-carbon pharma platform.',
     statValue: '32.2%',
     statLabel: 'ABSOLUTE REDUCTION IN SCOPE 1 & 2 EMISSIONS SINCE FY23',
-    image: 'hero-banner.webp',
+    image: 'env-1.webp',
   },
   {
     tabLabel: 'WATER MANAGEMENT',
@@ -101,7 +101,7 @@ export default function EsgInActionPage() {
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb">
         <a href="/">HOME</a>
         <span className="sep">›</span>
         <a href="/sustainability">SUSTAINABILITY</a>
@@ -224,7 +224,7 @@ export default function EsgInActionPage() {
             sustainable business growth.
           </p>
         </div>
-        <div className="sus-pillar-tabs" style={{ marginBottom: 28 }}>
+        <div className="sus-pillar-tabs">
           {SOCIAL_SUB_TABS.map((tab, index) =>
             tab === 'Community' ? (
               <Link
@@ -314,7 +314,7 @@ export default function EsgInActionPage() {
         </div>
       </section>
 
-      <div className="sus-cta" style={{ marginTop: 'clamp(100px, 12vw, 140px)' }}>
+      <div className="sus-cta">
         <img className="bg" src={`${S}cta-bg.webp`} alt="" loading="lazy" decoding="async" />
         <div className="overlay" />
         <div className="sus-cta-copy">
