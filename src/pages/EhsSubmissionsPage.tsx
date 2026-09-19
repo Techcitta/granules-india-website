@@ -1,43 +1,247 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
 import './ehs.css';
-import { EHS_DOCUMENTS, EHS_FACILITIES, EHS_CATEGORIES, EhsDocument } from '../data/ehsData';
+import './investor.css';
+import { EHS_DOCUMENTS, EhsDocument } from '../data/ehsData';
+import { toCdnPdf } from '../lib/pdf';
+
+interface DropdownOption {
+  value: string;
+  label: string;
+}
+
+interface CustomDropdownProps {
+  id: string;
+  value: string;
+  options: DropdownOption[];
+  onChange: (value: string) => void;
+  variant?: 'subcat' | 'year';
+  ariaLabel: string;
+}
+
+function CustomDropdown({
+  id,
+  value,
+  options,
+  onChange,
+  variant = 'subcat',
+  ariaLabel,
+}: CustomDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
+  const selectedOption = options.find((opt) => opt.value === value) || options[0];
+
+  return (
+    <div
+      className={`inv-custom-dropdown-wrap inv-custom-dropdown--${variant}`}
+      ref={dropdownRef}
+    >
+      <button
+        id={id}
+        type="button"
+        className={`inv-custom-dropdown-trigger ${isOpen ? 'open' : ''}`}
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-label={ariaLabel}
+      >
+        <span className="inv-custom-dropdown-text">
+          {selectedOption ? selectedOption.label : 'Select'}
+        </span>
+        <svg
+          className={`inv-custom-dropdown-chevron ${isOpen ? 'rotate' : ''}`}
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div className="inv-custom-dropdown-menu" role="listbox" aria-labelledby={id}>
+          <div className="inv-custom-dropdown-scroll">
+            {options.map((opt) => {
+              const isSelected = opt.value === value;
+              return (
+                <div
+                  key={opt.value}
+                  role="option"
+                  aria-selected={isSelected}
+                  className={`inv-custom-dropdown-item ${isSelected ? 'selected' : ''}`}
+                  onClick={() => {
+                    onChange(opt.value);
+                    setIsOpen(false);
+                  }}
+                >
+                  <span className="inv-custom-dropdown-item-label">{opt.label}</span>
+                  {isSelected && (
+                    <svg
+                      className="inv-custom-dropdown-check"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#0061f8"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function getEntityScope(doc: EhsDocument): string {
+  if (doc.facility === 'Corporate') {
+    return 'Granules India Limited (Group)';
+  }
+  if (doc.facility === 'Granules Life Sciences') {
+    return 'Granules Life Sciences (GLS)';
+  }
+  return `Granules India Limited (${doc.facility})`;
+}
+
+function getReportingPeriod(doc: EhsDocument): string {
+  if (doc.period && doc.period.startsWith('FY')) {
+    if (doc.period.includes('2025-26')) return 'FY 25-26';
+    if (doc.period.includes('2024-25') || doc.period === 'FY 2025') return 'FY 24-25';
+    if (doc.period.includes('2023-24') || doc.period === 'FY 2024') return 'FY 23-24';
+    if (doc.period.includes('2022-23') || doc.period === 'FY 2023') return 'FY 22-23';
+    return doc.period;
+  }
+  if (doc.year === '2026') return 'FY 25-26';
+  if (doc.year === '2025') return 'FY 24-25';
+  if (doc.year === '2024') return 'FY 23-24';
+  if (doc.year === '2021') return 'FY 20-21';
+  return doc.period || `FY ${doc.year}`;
+}
 
 export default function EhsSubmissionsPage() {
-  const [selectedFacility, setSelectedFacility] = useState<string>('ALL');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedYear, setSelectedYear] = useState<string>('ALL');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageSize = 10;
 
   useEffect(() => {
     document.title = 'EHS Submissions | Granules India Sustainability';
     window.scrollTo(0, 0);
   }, []);
 
+  // Reset to page 1 whenever any filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, selectedYear]);
+
+  const categoryOptions: DropdownOption[] = useMemo(() => {
+    return [
+      { value: 'ALL', label: 'All Categories' },
+      { value: 'Bio-Medical Waste', label: 'Bio-Medical Waste' },
+      { value: 'Hazardous & E-Waste', label: 'Hazardous & E-Waste' },
+      { value: 'Consent & Orders', label: 'Consent & Orders (PCB)' },
+      { value: 'Certifications', label: 'Certifications (ISO 14001/45001)' },
+      { value: 'Audit & Compliance', label: 'Audit & Compliance' },
+      { value: 'FAC_Gagillapur', label: 'Facility: Gagillapur' },
+      { value: 'FAC_Jeedimetla', label: 'Facility: Jeedimetla' },
+      { value: 'FAC_GLS', label: 'Facility: Granules Life Sciences' },
+      { value: 'FAC_Unit4', label: 'Facility: Unit IV (Bonthapally)' },
+      { value: 'FAC_Unit5', label: 'Facility: Unit V (Vizag)' },
+      { value: 'FAC_Corporate', label: 'Facility: Corporate / Group' },
+    ];
+  }, []);
+
+  const yearOptions: DropdownOption[] = useMemo(() => {
+    return [
+      { value: 'ALL', label: 'All Years' },
+      { value: '2026', label: 'FY 25-26' },
+      { value: '2025', label: 'FY 24-25' },
+      { value: '2024', label: 'FY 23-24' },
+      { value: '2021', label: 'FY 20-21' },
+    ];
+  }, []);
+
   const filteredDocs = useMemo(() => {
     return EHS_DOCUMENTS.filter((doc) => {
-      const matchFacility =
-        selectedFacility === 'ALL' || doc.facility.toLowerCase() === selectedFacility.toLowerCase();
-      const matchCategory =
-        selectedCategory === 'ALL' || doc.category.toLowerCase() === selectedCategory.toLowerCase();
-      const matchSearch =
-        searchQuery.trim() === '' ||
-        doc.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doc.facility.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doc.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (doc.scope && doc.scope.toLowerCase().includes(searchQuery.toLowerCase()));
+      let matchCat = true;
+      if (selectedCategory !== 'ALL') {
+        if (selectedCategory.startsWith('FAC_')) {
+          const facKey = selectedCategory.replace('FAC_', '');
+          if (facKey === 'Gagillapur') matchCat = doc.facility === 'Gagillapur';
+          else if (facKey === 'Jeedimetla') matchCat = doc.facility === 'Jeedimetla';
+          else if (facKey === 'GLS') matchCat = doc.facility === 'Granules Life Sciences';
+          else if (facKey === 'Unit4') matchCat = doc.facility === 'Unit IV';
+          else if (facKey === 'Unit5') matchCat = doc.facility === 'Unit V';
+          else if (facKey === 'Corporate') matchCat = doc.facility === 'Corporate';
+        } else {
+          matchCat = doc.category.toLowerCase() === selectedCategory.toLowerCase();
+        }
+      }
 
-      return matchFacility && matchCategory && matchSearch;
+      let matchYear = true;
+      if (selectedYear !== 'ALL') {
+        matchYear = doc.year === selectedYear || Boolean(doc.period && doc.period.includes(selectedYear));
+      }
+
+      return matchCat && matchYear;
     });
-  }, [selectedFacility, selectedCategory, searchQuery]);
+  }, [selectedCategory, selectedYear]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredDocs.length / pageSize));
+  const pagedDocs = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return filteredDocs.slice(start, start + pageSize);
+  }, [filteredDocs, currentPage, pageSize]);
 
   return (
     <div className="ehs-root">
       <NavBar />
 
       <main className="ehs-main">
-        <p className="cp-breadcrumb">
+        <p className="cp-breadcrumb ehs-breadcrumb">
           <Link to="/">HOME</Link>
           <span className="sep">›</span>
           <Link to="/sustainability">SUSTAINABILITY</Link>
@@ -45,176 +249,185 @@ export default function EhsSubmissionsPage() {
           <span className="current">EHS SUBMISSIONS</span>
         </p>
 
-        <div className="ehs-container">
-          {/* Hero Banner */}
-          <section className="ehs-hero-banner" aria-label="EHS Submissions Overview">
+        <h1 className="cp-page-title ehs-page-title">EHS Submissions</h1>
+
+        {/* Hero Banner */}
+        <div className="cp-hero-banner ehs-hero-banner-wrap">
+          <img
+            src="/assets/sustainability/ehs-hero-banner.jpg"
+            alt="Granules EHS Submissions and Sustainable Manufacturing Campus"
+            loading="eager"
+            decoding="async"
+          />
+          <div className="ehs-hero-scrim" />
+          <div className="ehs-hero-overlay">
             <div className="ehs-hero-badge">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
-              <span>Statutory Compliance & Filings</span>
+              <span>Statutory Compliance &amp; Filings</span>
             </div>
-            <h1 className="ehs-hero-title">EHS Submissions</h1>
+            <h2 className="ehs-hero-heading">
+              Rigorous Environmental, Health &amp; Safety Standards Across All Facilities
+            </h2>
             <p className="ehs-hero-desc">
               Granules India maintains rigorous environmental, health, and safety standards across all manufacturing
               facilities. Explore our verified annual returns, biomedical and hazardous waste statements, environmental audit
               disclosures, and regulatory certifications.
             </p>
-          </section>
-
-          {/* Quick Metrics */}
-          <div className="ehs-stat-strip">
-            <div className="ehs-stat-card">
-              <span className="ehs-stat-num">19</span>
-              <span className="ehs-stat-label">Statutory Filings Available</span>
-            </div>
-            <div className="ehs-stat-card">
-              <span className="ehs-stat-num">6+</span>
-              <span className="ehs-stat-label">Manufacturing Sites Covered</span>
-            </div>
-            <div className="ehs-stat-card">
-              <span className="ehs-stat-num">100%</span>
-              <span className="ehs-stat-label">Pollution Board Compliance</span>
-            </div>
-            <div className="ehs-stat-card">
-              <span className="ehs-stat-num">Dual</span>
-              <span className="ehs-stat-label">ISO 14001 & 45001 Certified</span>
-            </div>
           </div>
+        </div>
 
-          {/* Filter Toolbar */}
-          <div className="ehs-toolbar">
-            <div className="ehs-facility-pills" role="tablist" aria-label="Facility filter">
-              {EHS_FACILITIES.map((fac) => {
-                const count =
-                  fac === 'ALL'
-                    ? EHS_DOCUMENTS.length
-                    : EHS_DOCUMENTS.filter((d) => d.facility.toLowerCase() === fac.toLowerCase()).length;
-                return (
-                  <button
-                    key={fac}
-                    type="button"
-                    role="tab"
-                    aria-selected={selectedFacility === fac}
-                    className={`ehs-pill-btn ${selectedFacility === fac ? 'active' : ''}`}
-                    onClick={() => setSelectedFacility(fac)}
-                  >
-                    <span>{fac}</span>
-                    <span style={{ opacity: 0.75, fontSize: '11px' }}>({count})</span>
-                  </button>
-                );
-              })}
+        <div className="ehs-container" style={{ marginTop: 'clamp(40px, 4.5vw, 64px)' }}>
+          {/* Section Header with Side-by-Side Filters (Matching the Reference UI) */}
+          <div className="inv-doc-section-head">
+            <div className="inv-doc-head-left">
+              <span className="inv-section-badge">Statutory Filings</span>
+              <h2>EHS SUBMISSIONS &amp; COMPLIANCE REPORTS</h2>
+              <p>
+                Explore our statutory environmental returns, bio-medical waste audits, hazardous waste declarations, and Pollution Control Board compliance reports across all facilities.
+              </p>
             </div>
 
-            <div className="ehs-search-row">
-              <div className="ehs-search-box">
-                <svg
-                  className="ehs-search-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Search submissions, reports, units..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  aria-label="Search EHS documents"
+            {/* Side-by-Side Pill Dropdowns: All Categories & All Years */}
+            <div className="inv-doc-head-filters" aria-label="Filter EHS Documents">
+              <div className="inv-header-filter-group">
+                <CustomDropdown
+                  id="ehs-category-dropdown"
+                  variant="subcat"
+                  value={selectedCategory}
+                  onChange={setSelectedCategory}
+                  options={categoryOptions}
+                  ariaLabel="Select document category"
                 />
               </div>
 
-              <select
-                className="ehs-cat-select"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                aria-label="Filter by document category"
-              >
-                {EHS_CATEGORIES.map((cat) => (
-                  <option key={cat} value={cat}>
-                    Category: {cat}
-                  </option>
-                ))}
-              </select>
+              <div className="inv-header-filter-group">
+                <CustomDropdown
+                  id="ehs-year-dropdown"
+                  variant="year"
+                  value={selectedYear}
+                  onChange={setSelectedYear}
+                  options={yearOptions}
+                  ariaLabel="Select reporting year"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Document Table */}
-          <div className="ehs-table-wrap">
-            {filteredDocs.length === 0 ? (
-              <div className="ehs-empty-msg">
-                No EHS documents match your selected filters. Please adjust your search criteria or select &quot;ALL&quot;.
-              </div>
-            ) : (
-              <table className="ehs-table" aria-label="EHS Submissions Document Table">
-                <thead>
-                  <tr>
-                    <th style={{ width: '42%' }}>Document Title & Description</th>
-                    <th style={{ width: '18%' }}>Facility / Unit</th>
-                    <th style={{ width: '16%' }}>Category</th>
-                    <th style={{ width: '10%' }}>Period</th>
-                    <th style={{ width: '14%', textAlign: 'right' }}>Action</th>
+          {/* Document Table (Exact Investor / Sustainability Theme from Screenshot) */}
+          <div className="inv-table-wrap">
+            <table className="inv-data-table" aria-label="EHS Submissions Document Table">
+              <thead>
+                <tr>
+                  <th style={{ width: '42%' }}>REPORT / DOCUMENT NAME</th>
+                  <th style={{ width: '28%' }}>ENTITY / REPORTING SCOPE</th>
+                  <th style={{ width: '15%' }}>REPORTING PERIOD</th>
+                  <th style={{ width: '15%', textAlign: 'right' }}>ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pagedDocs.map((doc) => (
+                  <tr key={doc.id}>
+                    <td className="inv-table-title-cell">
+                      <span>{doc.title}</span>
+                    </td>
+                    <td className="inv-table-detail-cell">
+                      {getEntityScope(doc)}
+                    </td>
+                    <td className="inv-table-period-cell">
+                      {getReportingPeriod(doc)}
+                    </td>
+                    <td className="inv-table-action-cell">
+                      <div className="inv-table-actions">
+                        <a
+                          className="inv-action-link"
+                          href={toCdnPdf(doc.pdf)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={`View ${doc.title} in a new tab`}
+                        >
+                          VIEW
+                        </a>
+                        <span className="inv-action-slash">/</span>
+                        <a
+                          className="inv-action-link"
+                          href={toCdnPdf(doc.pdf)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          download={`${doc.title.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`}
+                          title={`Download ${doc.title}`}
+                        >
+                          DOWNLOAD
+                        </a>
+                      </div>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {filteredDocs.map((doc) => (
-                    <tr key={doc.id}>
-                      <td>
-                        <span className="ehs-doc-title">{doc.title}</span>
-                        {doc.scope && <span className="ehs-doc-scope">{doc.scope}</span>}
-                      </td>
-                      <td>
-                        <span className="ehs-badge ehs-badge-facility">{doc.facility}</span>
-                      </td>
-                      <td>
-                        <span className="ehs-badge ehs-badge-cat">{doc.category}</span>
-                      </td>
-                      <td>
-                        <strong style={{ color: '#0061f8' }}>{doc.period}</strong>
-                      </td>
-                      <td style={{ textAlign: 'right' }}>
-                        <div className="ehs-actions" style={{ justifyContent: 'flex-end' }}>
-                          <a
-                            href={doc.pdf}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="ehs-btn-download"
-                            aria-label={`Download ${doc.title}`}
-                          >
-                            <svg
-                              width="13"
-                              height="13"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                              <polyline points="7 10 12 15 17 10" />
-                              <line x1="12" y1="15" x2="12" y2="3" />
-                            </svg>
-                            <span>Download PDF</span>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                ))}
+
+                {filteredDocs.length === 0 && (
+                  <tr>
+                    <td colSpan={4} style={{ textAlign: 'center', padding: '48px 24px', color: '#64748b' }}>
+                      <p style={{ margin: '0 0 12px', fontSize: '15.5px', fontWeight: 500 }}>
+                        No EHS documents match your selected filters.
+                      </p>
+                      <button
+                        type="button"
+                        className="inv-doc-reset-btn"
+                        onClick={() => {
+                          setSelectedCategory('ALL');
+                          setSelectedYear('ALL');
+                        }}
+                      >
+                        Reset All Filters
+                      </button>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+
+            {/* Pagination & Count Strip */}
+            {filteredDocs.length > 0 && (
+              <div className="inv-table-pagination">
+                <span className="inv-pagination-count">
+                  Showing {Math.min((currentPage - 1) * pageSize + 1, filteredDocs.length)}–
+                  {Math.min(currentPage * pageSize, filteredDocs.length)} of {filteredDocs.length} documents
+                  {selectedCategory !== 'ALL' && ` • Filter: ${categoryOptions.find(o => o.value === selectedCategory)?.label || selectedCategory}`}
+                  {selectedYear !== 'ALL' && ` • Year: ${selectedYear}`}
+                </span>
+
+                {totalPages > 1 && (
+                  <div className="inv-pagination-actions">
+                    <button
+                      type="button"
+                      className="inv-page-btn"
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                    >
+                      Previous
+                    </button>
+
+                    <span className="inv-page-info">
+                      Page {currentPage} of {totalPages}
+                    </span>
+
+                    <button
+                      type="button"
+                      className="inv-page-btn"
+                      disabled={currentPage === totalPages}
+                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                    >
+                      Next
+                    </button>
+                  </div>
+                )}
+              </div>
             )}
           </div>
 
-          {/* Bottom Gradient Call-to-Action Banner matching site-wide style */}
-          <div className="ct-cta-box" style={{ marginBottom: '75px' }}>
+          {/* Bottom Gradient Call-to-Action Banner */}
+          <div className="ct-cta-box" style={{ marginTop: '64px', marginBottom: '75px' }}>
             <h2 className="ct-cta-title">Committed to Zero-Harm &amp; Sustainable Operations</h2>
             <p className="ct-cta-text">
               Discover how Granules India integrates green chemistry, energy efficiency, and community stewardship into
@@ -224,7 +437,7 @@ export default function EhsSubmissionsPage() {
               <Link to="/sustainability" className="ct-cta-btn ct-cta-btn--primary">
                 Explore Sustainability Overview
               </Link>
-              <Link to="/sustainability/esg-world" className="ct-cta-btn ct-cta-btn--secondary">
+              <Link to="/sustainability/esg-profile" className="ct-cta-btn ct-cta-btn--secondary">
                 View ESG World Profile
               </Link>
             </div>

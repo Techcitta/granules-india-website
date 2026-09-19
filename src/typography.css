@@ -538,16 +538,13 @@ h3.ms-card-year {
   position: relative !important;
   overflow: hidden !important;
 
-  /* Rich, vibrant Blue Gradient with soft corner illumination */
-  background:
-    radial-gradient(ellipse 70% 80% at 92% 18%, rgba(0, 97, 248, 0.22) 0%, transparent 65%),
-    radial-gradient(ellipse 60% 70% at 8% 85%, rgba(0, 186, 234, 0.2) 0%, transparent 60%),
-    linear-gradient(115deg, #b9dcff 0%, #d8ecff 38%, #cae4ff 72%, #b5dbff 100%) !important;
-  border: 1.5px solid rgba(0, 97, 248, 0.22) !important;
+  /* Blue and gray gradient from left to right */
+  background: linear-gradient(90deg, #b8dcff 0%, #cee4fc 32%, #e0e9f4 68%, #e9edf2 100%) !important;
+  border: 1.5px solid rgba(0, 97, 248, 0.16) !important;
   box-shadow: 
-    0 16px 44px rgba(0, 97, 248, 0.12),
-    0 2px 8px rgba(0, 0, 0, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+    0 12px 36px rgba(0, 34, 90, 0.07),
+    0 2px 8px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
 }
 
 /* Hide background photos and legacy dark/cyan overlays so the blue gradient is prominent */
@@ -777,7 +774,8 @@ h3.ms-card-year {
 .med-hero,
 .inv-hero,
 .senn-hero-wrap,
-.senn-hero-wrap .cp-hero-banner {
+.senn-hero-wrap .cp-hero-banner,
+.ehs-hero-banner-wrap {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   margin-inline: auto !important;

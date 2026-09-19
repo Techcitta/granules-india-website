@@ -7,3 +7,5 @@ Thumbs.db
 .env.*
 scratch_*.cjs
 scratch_*.js
+public/uploads/
+public/documents/

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import SustainabilityGoalsSection from '../components/sustainability/SustainabilityGoalsSection';
@@ -592,6 +592,19 @@ const CERTIFICATIONS: CertItem[] = [
 export default function SustainabilityOverviewPage() {
   const [membershipTab, setMembershipTab] = useState<'commitments' | 'ratings'>('commitments');
 
+  const groupedCertifications = useMemo(() => {
+    const groups: { category: string; items: CertItem[] }[] = [];
+    CERTIFICATIONS.forEach((cert) => {
+      let group = groups.find((g) => g.category === cert.category);
+      if (!group) {
+        group = { category: cert.category, items: [] };
+        groups.push(group);
+      }
+      group.items.push(cert);
+    });
+    return groups;
+  }, []);
+
   useEffect(() => {
     document.title = 'Sustainability Overview — Granules India';
     window.scrollTo(0, 0);
@@ -606,8 +619,8 @@ export default function SustainabilityOverviewPage() {
 
   interface DocRowItem {
     title: string;
-    detail: string;
-    period: string;
+    detail?: string;
+    period?: string;
     pdf?: string | null;
     filename?: string;
     href?: string;
@@ -616,25 +629,25 @@ export default function SustainabilityOverviewPage() {
   const renderDocTable = (
     items: DocRowItem[],
     col1 = 'Document / Report Name',
-    col2 = 'Framework / Scope',
-    col3 = 'Review / Period'
+    col2: string | null = 'Framework / Scope',
+    col3: string | null = 'Review / Period'
   ) => (
     <div className="inv-table-wrap">
       <table className="inv-data-table">
         <thead>
           <tr>
-            <th>{col1}</th>
-            <th>{col2}</th>
-            <th>{col3}</th>
-            <th style={{ textAlign: 'right' }}>Action</th>
+            <th style={!col2 && !col3 ? { width: '80%' } : !col2 ? { width: '56%' } : undefined}>{col1}</th>
+            {col2 && <th>{col2}</th>}
+            {col3 && <th style={!col2 ? { width: '24%' } : undefined}>{col3}</th>}
+            <th style={{ textAlign: 'right', width: !col2 && !col3 ? '20%' : !col2 ? '20%' : undefined }}>Action</th>
           </tr>
         </thead>
         <tbody>
           {items.map((row, idx) => (
             <tr key={idx}>
               <td className="inv-table-title-cell">{row.title}</td>
-              <td className="inv-table-detail-cell">{row.detail}</td>
-              <td className="inv-table-period-cell">{row.period}</td>
+              {col2 && <td className="inv-table-detail-cell">{row.detail}</td>}
+              {col3 && <td className="inv-table-period-cell">{row.period}</td>}
               <td className="inv-table-action-cell">
                 {row.href ? (
                   <Link className="inv-action-link" to={row.href} title={`View ${row.title}`}>
@@ -758,6 +771,20 @@ export default function SustainabilityOverviewPage() {
           </button>
 
           <Link
+            to="/sustainability/ehs-documents"
+            className="sus-jump-card"
+            title="View Statutory EHS Documents & Submissions"
+          >
+            <span className="sus-jump-label">EHS Documents</span>
+            <span className="sus-jump-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </span>
+          </Link>
+
+          <Link
             to="/sustainability/esg-profile"
             className="sus-jump-card sus-jump-card--esg"
             title="View Granules ESG Profile on ESG World"
@@ -855,13 +882,12 @@ export default function SustainabilityOverviewPage() {
         {renderDocTable(
           SUSTAINABILITY_POLICIES.map((item) => ({
             title: item.title,
-            detail: item.detail || 'Corporate Governance & Statutory Framework',
             period: item.meta,
             pdf: item.pdf,
             filename: item.filename,
           })),
           'Policy / Document Name',
-          'Framework & Scope',
+          null,
           'Review Timeline'
         )}
       </section>
@@ -881,14 +907,12 @@ export default function SustainabilityOverviewPage() {
         {renderDocTable(
           REPORTS_DISCLOSURES.map((item) => ({
             title: item.title,
-            detail: item.meta,
-            period: item.period || 'Annual Disclosure',
             pdf: item.pdf,
             filename: item.filename,
           })),
           'Report / Disclosure Name',
-          'Reporting Scope & Standards',
-          'Reporting Period'
+          null,
+          null
         )}
       </section>
 
@@ -905,14 +929,12 @@ export default function SustainabilityOverviewPage() {
         {renderDocTable(
           ASSURANCE_REPORTS.map((item) => ({
             title: item.title,
-            detail: item.meta,
-            period: item.period || 'Statutory Filing',
             pdf: item.pdf,
             filename: item.filename,
           })),
           'Statement / Assurance Report',
-          'Assurance Scope & Standard',
-          'Period'
+          null,
+          null
         )}
       </section>
 
@@ -928,7 +950,7 @@ export default function SustainabilityOverviewPage() {
         </div>
 
         {/* Tab switch between Commitments and Ratings */}
-        <div className="ld-tabs-wrap" style={{ margin: '0 auto' }}>
+        <div className="ld-tabs-wrap">
           <div className="ld-tabs" role="tablist">
             <button
               type="button"
@@ -982,18 +1004,57 @@ export default function SustainabilityOverviewPage() {
           </p>
         </div>
 
-        {renderDocTable(
-          CERTIFICATIONS.map((cert) => ({
-            title: cert.category,
-            detail: cert.facility,
-            period: cert.validity,
-            pdf: cert.pdf,
-            filename: cert.filename,
-          })),
-          'Standard / Certification',
-          'Unit / Manufacturing Facility',
-          'Validity'
-        )}
+        <div className="sus-cert-groups">
+          {groupedCertifications.map((group) => (
+            <div key={group.category} className="sus-cert-card">
+              <div className="sus-cert-header">
+                <h3 className="sus-cert-title">{group.category}</h3>
+              </div>
+              <div className="sus-cert-table-wrap">
+                <table className="sus-cert-table">
+                  <tbody>
+                    {group.items.map((cert, idx) => (
+                      <tr key={idx}>
+                        <td className="sus-cert-facility">{cert.facility}</td>
+                        <td className="sus-cert-validity">{cert.validity}</td>
+                        <td className="sus-cert-actions">
+                          {cert.pdf ? (
+                            <div className="inv-table-actions">
+                              <a
+                                className="inv-action-link"
+                                href={toCdnPdf(cert.pdf)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title={`View ${cert.category} - ${cert.facility}`}
+                              >
+                                VIEW
+                              </a>
+                              <span className="inv-action-slash">/</span>
+                              <a
+                                className="inv-action-link"
+                                href={toCdnPdf(cert.pdf)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                download={cert.filename || `${cert.facility.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`}
+                                title={`Download ${cert.category} - ${cert.facility}`}
+                              >
+                                DOWNLOAD
+                              </a>
+                            </div>
+                          ) : (
+                            <span className="sus-cert-soon">
+                              Download (Available Soon)
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Bottom CTA to Strategy */}

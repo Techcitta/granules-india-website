@@ -1,134 +1,244 @@
-import { useState } from 'react';
-import { useSwipeScroll } from '../../hooks/useSwipeScroll';
+import React, { useState, useRef, useCallback } from 'react';
 
-export interface GoalCard {
-  title: string;
+export interface SustainabilityGoalItem {
+  id: string;
+  yearTag: string;
+  yearHeading: string;
+  metric: string;
+  label: string;
   image: string;
-  desc: string;
+  imageAlt: string;
 }
 
-const GOALS_ITEMS: GoalCard[] = [
+export const SUSTAINABILITY_GOALS: SustainabilityGoalItem[] = [
   {
-    title: 'Emissions',
-    image: '/assets/sustainability/sus/1.jpg',
-    desc: 'Achieve Net Zero by 2050. Reduce Scope 1 and Scope 2 absolute emissions by 42% by FY30 from FY23 baseline. Reduce Scope 3 absolute emissions by 42% by FY30 from FY23 baseline.',
-  },
-  {
-    title: 'Responsible Sourcing',
-    image: '/assets/sustainability/sus/2.png',
-    desc: 'Implement a comprehensive supplier sustainability framework and encourage suppliers to adopt science-based targets by FY27.',
-  },
-  {
-    title: 'DEI',
-    image: '/assets/sustainability/sus/3.png',
-    desc: 'Achieve a 100% increase in women’s employment across operational and leadership levels by 2030 compared to FY24.',
-  },
-  {
-    title: 'Community',
-    image: '/assets/sustainability/sus/4.jpg',
-    desc: 'Touch 1 Million+ lives through targeted CSR programs in healthcare, education, skill development, and rural ecosystems by 2030.',
-  },
-  {
-    title: 'Safety',
-    image: '/assets/sustainability/sus/5.png',
-    desc: 'Targeting zero workplace fatality and maintaining world-class occupational health and process safety standards across all facilities.',
-  },
-  {
-    title: 'Water',
-    image: '/assets/esg/esg-water.webp',
-    desc: 'Achieve Water Positivity by 2032 through zero liquid discharge (ZLD), rainwater harvesting, and closed-loop process wastewater recycling.',
-  },
-  {
-    title: 'Waste',
-    image: '/assets/esg/esg-waste.webp',
-    desc: 'Achieve Zero waste to landfill by 2030 through circular resource recovery, scrap recycling, co-processing, and material recovery.',
-  },
-  {
-    title: 'Energy',
+    id: 'net-zero',
+    yearTag: '2050',
+    yearHeading: 'By 2050',
+    metric: 'Net Zero',
+    label: 'CARBON NEUTRALITY ACROSS VALUE CHAIN',
     image: '/assets/czro/card-carbon-free.webp',
-    desc: 'Sourcing 100% renewable electricity by 2030 across all manufacturing facilities and transitioning thermal demand to green fuels.',
+    imageAlt: 'Net zero emissions and clean circular chemistry',
+  },
+  {
+    id: 'emissions',
+    yearTag: '2030',
+    yearHeading: 'By 2030',
+    metric: '42%',
+    label: 'REDUCTION IN SCOPE 1 AND 2 EMISSIONS',
+    image: '/assets/strategy/hero-video-poster.webp',
+    imageAlt: 'Wind turbine clean renewable energy field',
+  },
+  {
+    id: 'water',
+    yearTag: '2032',
+    yearHeading: 'By 2032',
+    metric: '100%',
+    label: 'WATER POSITIVITY ACROSS ALL FACILITIES',
+    image: '/assets/sustainability/sus/water.jpg',
+    imageAlt: 'Zero liquid discharge process water conservation',
+  },
+  {
+    id: 'waste',
+    yearTag: '2030',
+    yearHeading: 'By 2030',
+    metric: 'Zero',
+    label: 'WASTE TO LANDFILL CERTIFICATION',
+    image: '/assets/sustainability/sus/5.png',
+    imageAlt: 'Zero waste to landfill and circular resource recovery',
+  },
+  {
+    id: 'renewable',
+    yearTag: '2030',
+    yearHeading: 'By 2030',
+    metric: '100%',
+    label: 'RENEWABLE ELECTRICITY SOURCING',
+    image: '/assets/sustainability/sus/energy.jpg',
+    imageAlt: 'Solar and clean renewable power across plants',
+  },
+  {
+    id: 'dei',
+    yearTag: '2030',
+    yearHeading: 'By 2030',
+    metric: '100%',
+    label: 'INCREASE IN WOMEN EMPLOYMENT',
+    image: '/assets/sustainability/sus/dei.jpg',
+    imageAlt: 'Diverse workplace and women empowerment at Granules',
+  },
+  {
+    id: 'community',
+    yearTag: '2030',
+    yearHeading: 'By 2030',
+    metric: '1M+',
+    label: 'LIVES TOUCHED THROUGH CSR PROGRAMS',
+    image: '/assets/sustainability/sus/community.jpg',
+    imageAlt: 'Community healthcare and rural development programs',
+  },
+  {
+    id: 'sourcing',
+    yearTag: '2027',
+    yearHeading: 'By 2027',
+    metric: '100%',
+    label: 'KEY SUPPLIERS ON ESG FRAMEWORK',
+    image: '/assets/sustainability/sus/2.png',
+    imageAlt: 'Sustainable supply chain and responsible sourcing',
   },
 ];
 
 export default function SustainabilityGoalsSection() {
-  const [openCard, setOpenCard] = useState<number>(-1);
-  const {
-    isDragging,
-    scrollProgress,
-    canScrollLeft,
-    canScrollRight,
-    thumbWidth,
-    scroll,
-    swipeProps,
-  } = useSwipeScroll();
+  const [activeIndex, setActiveIndex] = useState(1); // Default to index 1 (By 2030, with 2050 on left and 2032 on right)
+  const total = SUSTAINABILITY_GOALS.length;
+  const touchStartX = useRef<number | null>(null);
+
+  const prevIndex = (activeIndex - 1 + total) % total;
+  const nextIndex = (activeIndex + 1) % total;
+
+  const handlePrev = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + total) % total);
+  }, [total]);
+
+  const handleNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % total);
+  }, [total]);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) handleNext();
+      else handlePrev();
+    }
+    touchStartX.current = null;
+  };
+
+  const activeItem = SUSTAINABILITY_GOALS[activeIndex];
+  const prevItem = SUSTAINABILITY_GOALS[prevIndex];
+  const nextItem = SUSTAINABILITY_GOALS[nextIndex];
 
   return (
-    <section className="sus-goals-sec-img1" id="sustainability-goals" aria-label="Sustainability Goals And Targets">
-      <h2 className="sus-goals-title-img1">Sustainability Goals And Targets</h2>
+    <section
+      className="sus-goals-section-v2"
+      id="sustainability-goals"
+      aria-label="Our Sustainability Goals"
+    >
+      <div className="sus-goals-v2-container">
+        <h2 className="sus-goals-v2-title">Our Sustainability Goals</h2>
 
-      <div className="biz-carousel sus-goals-carousel">
-        <div className={`biz-track${isDragging ? ' is-dragging' : ''}`} {...swipeProps}>
-          {GOALS_ITEMS.map((card, idx) => {
-            const isOpen = openCard === idx;
-            return (
-              <article
-                className={`biz-card sus-goal-card${isOpen ? ' is-open' : ''}`}
-                key={card.title}
-                onMouseEnter={() => setOpenCard(idx)}
-                onMouseLeave={() => setOpenCard(-1)}
-                onClick={() => {
-                  if (isDragging) return;
-                  setOpenCard(isOpen ? -1 : idx);
-                }}
-              >
-                <img className="bg" src={card.image} alt={card.title} loading="lazy" decoding="async" />
-                <div className="biz-sheet">
-                  <div className="biz-sheet-head">
-                    <span className="biz-sheet-title">{card.title}</span>
-                    <span className="biz-sheet-symbol" aria-hidden="true">
-                      {isOpen ? '−' : '+'}
-                    </span>
-                  </div>
-                  <div className="biz-sheet-body">
-                    <p className="biz-sheet-desc">{card.desc}</p>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+        <div
+          className="sus-goals-stage"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {/* Left Peek Card */}
+          <div
+            className="sus-goals-peek-card sus-goals-peek-card--left"
+            onClick={handlePrev}
+            role="button"
+            tabIndex={0}
+            aria-label={`Go to goal ${prevItem.yearTag}`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') handlePrev();
+            }}
+          >
+            <span className="sus-goals-peek-year">{prevItem.yearTag}</span>
+          </div>
+
+          {/* Active Center Card */}
+          <div className="sus-goals-active-card">
+            <div className="sus-goals-card-content">
+              <span className="sus-goals-year-heading">{activeItem.yearHeading}</span>
+
+              <div className="sus-goals-metric-block">
+                <span className="sus-goals-metric">{activeItem.metric}</span>
+                <span className="sus-goals-metric-label">{activeItem.label}</span>
+              </div>
+
+              {/* 8-Segment Progress Dashes */}
+              <div className="sus-goals-segments" role="tablist" aria-label="Goals navigation">
+                {SUSTAINABILITY_GOALS.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    role="tab"
+                    aria-selected={idx === activeIndex}
+                    aria-label={`Goal slide ${idx + 1}`}
+                    className={`sus-goals-segment-dash ${idx === activeIndex ? 'active' : ''}`}
+                    onClick={() => setActiveIndex(idx)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="sus-goals-card-img-wrap">
+              <img
+                src={activeItem.image}
+                alt={activeItem.imageAlt}
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          {/* Right Peek Card */}
+          <div
+            className="sus-goals-peek-card sus-goals-peek-card--right"
+            onClick={handleNext}
+            role="button"
+            tabIndex={0}
+            aria-label={`Go to goal ${nextItem.yearTag}`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') handleNext();
+            }}
+          >
+            <span className="sus-goals-peek-year">{nextItem.yearTag}</span>
+          </div>
         </div>
 
-        {/* Dynamic progress bar and smooth arrow navigation */}
-        <div className="biz-carousel-controls">
-          <div className="biz-progress-track">
-            <div
-              className="biz-progress-bar"
-              style={{
-                width: `${thumbWidth}%`,
-                left: `${scrollProgress * (100 - thumbWidth)}%`,
-              }}
-            />
-          </div>
-          <div className="biz-carousel-arrows">
-            <button
-              type="button"
-              className="biz-arrow-btn"
-              onClick={() => scroll(-1)}
-              disabled={!canScrollLeft}
-              aria-label="Scroll left"
+        {/* Bottom Circular Arrow Controls */}
+        <div className="sus-goals-controls-row">
+          <button
+            type="button"
+            className="sus-goals-arrow-btn"
+            onClick={handlePrev}
+            aria-label="Previous sustainability goal"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
-            </button>
-            <button
-              type="button"
-              className="biz-arrow-btn"
-              onClick={() => scroll(1)}
-              disabled={!canScrollRight}
-              aria-label="Scroll right"
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="sus-goals-arrow-btn"
+            onClick={handleNext}
+            aria-label="Next sustainability goal"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-          </div>
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

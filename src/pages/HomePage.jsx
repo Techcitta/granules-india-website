@@ -17,7 +17,7 @@ const heroSlides = [
   },
   {
     image: 'Home/2.jpg',
-    title: 'Driving Innovation in Peptide and Custom Manufacturing Solutions',
+    title: 'Advancing the Future of TIDES',
     cta: 'Peptide CDMO',
     link: '/business/peptides',
   },
@@ -859,44 +859,32 @@ function Investor() {
 }
 
 function Media() {
-  const [selected, setSelected] = useState(null);
   return (
-    <>
-      <section className="section shell media" id="media">
-        <div className="split-heading">
-          <div>
-            <Tag>Media</Tag>
-            <h2>What’s New at Granules</h2>
-          </div>
-          <Button href="/media">View all &rarr;</Button>
+    <section className="section shell media" id="media">
+      <div className="split-heading">
+        <div>
+          <Tag>Media</Tag>
+          <h2>What’s New at Granules</h2>
         </div>
-        <div className="news-grid">
-          {news.map((item) => (
-            <article className="news-card" key={item.title}>
-              {item.external ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Read ${item.title}`}
-                >
-                  <img src={`${A}${item.image}`} alt="" loading="lazy" decoding="async" />
-                  <h3>{item.title}</h3>
-                  <span className="read-more">Read More &rarr;</span>
-                </a>
-              ) : (
-                <button onClick={() => setSelected(item)} aria-label={`Read ${item.title}`}>
-                  <img src={`${A}${item.image}`} alt="" loading="lazy" decoding="async" />
-                  <h3>{item.title}</h3>
-                  <span className="read-more">Read More &rarr;</span>
-                </button>
-              )}
-            </article>
-          ))}
-        </div>
-      </section>
-      <Modal item={selected} onClose={() => setSelected(null)} label="Newsroom" />
-    </>
+        <Button href="/media">View all &rarr;</Button>
+      </div>
+      <div className="news-grid">
+        {news.map((item) => (
+          <article className="news-card" key={item.title}>
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Read ${item.title}`}
+            >
+              <img src={`${A}${item.image}`} alt="" loading="lazy" decoding="async" />
+              <h3>{item.title}</h3>
+              <span className="read-more">Read More &rarr;</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 

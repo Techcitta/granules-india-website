@@ -328,6 +328,10 @@
 
 /* "Read More" solid blue pill button */
 .med-read-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   flex-shrink: 0;
   background: #0061f8;
   border: none;

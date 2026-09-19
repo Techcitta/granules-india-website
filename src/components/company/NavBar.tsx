@@ -52,20 +52,10 @@ const SUBMENUS: Record<string, Submenu> = {
       { label: 'Facilities', href: '/business/facilities' },
     ],
   },
-  Sustainability: {
-    sections: [],
-    links: [
-      { label: 'Overview', href: '/sustainability' },
-      { label: 'ESG in Action', href: '/sustainability/esg-in-action' },
-      { label: 'ESG World', href: '/sustainability/esg-world' },
-      { label: 'EHS Submissions', href: '/sustainability/ehs-submissions' },
-    ],
-  },
   Careers: {
     sections: [],
     links: [
-      { label: 'Our Culture & Values', href: '/careers#culture-values' },
-      { label: 'Life at Granules', href: '/careers/life-at-granules' },
+      { label: 'Life at Granules', href: '/careers#culture-values' },
       { label: 'Work with us', href: '/careers/opportunities' },
     ],
   },

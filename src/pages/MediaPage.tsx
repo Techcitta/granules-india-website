@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from 'react';
 import { NavBar, CompanyFooter, CareerSection } from '../components/company';
 import '../components/company/company.css';
 import './media.css';
-import { MEDIA_DATA, MediaArticle } from '../data/mediaData';
+import { MEDIA_DATA } from '../data/mediaData';
 import { getAssetUrl, toCdnPdf } from '../lib/pdf';
 
 const ITEMS_PER_PAGE = 6;
@@ -60,26 +60,11 @@ export default function MediaPage() {
   const [selectedYear, setSelectedYear] = useState('2026');
   const [yearDropdownOpen, setYearDropdownOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [modalArticle, setModalArticle] = useState<MediaArticle | null>(null);
 
   useEffect(() => {
     document.title = 'Granules Newsroom — Granules India';
     window.scrollTo(0, 0);
   }, []);
-
-  // Lock body scroll and close on Escape key when modal is open
-  useEffect(() => {
-    if (!modalArticle) return undefined;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setModalArticle(null);
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    document.body.classList.add('modal-open');
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.classList.remove('modal-open');
-    };
-  }, [modalArticle]);
 
   // Available years based on active tab
   const availableYears = useMemo(() => {
@@ -222,18 +207,26 @@ export default function MediaPage() {
                       ? '/assets/news-2.webp'
                       : '/assets/news-3.webp';
 
+                const linkUrl = toCdnPdf(item.url || item.pdf || '#');
+
                 return (
                   <article
                     className="med-news-item with-image"
                     key={item.id || item.title}
-                    onClick={() => setModalArticle(item)}
+                    onClick={() => {
+                      if (linkUrl && linkUrl !== '#') {
+                        window.open(linkUrl, '_blank', 'noopener,noreferrer');
+                      }
+                    }}
                     style={{ cursor: 'pointer' }}
                     tabIndex={0}
                     role="button"
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        setModalArticle(item);
+                        if (linkUrl && linkUrl !== '#') {
+                          window.open(linkUrl, '_blank', 'noopener,noreferrer');
+                        }
                       }
                     }}
                   >
@@ -267,19 +260,29 @@ export default function MediaPage() {
                           <span className="med-news-tag">NEWS</span>
                           <span className="med-news-tag">{item.date || item.year}</span>
                         </div>
-                        <h3 className="med-news-title">{item.title}</h3>
+                        <h3 className="med-news-title">
+                          <a
+                            href={linkUrl}
+                            target={linkUrl.startsWith('http') ? '_blank' : undefined}
+                            rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            style={{ color: 'inherit', textDecoration: 'none' }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {item.title}
+                          </a>
+                        </h3>
                       </div>
 
-                      <button
-                        type="button"
+                      <a
+                        href={linkUrl}
+                        target={linkUrl.startsWith('http') ? '_blank' : undefined}
+                        rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className="med-read-more"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setModalArticle(item);
-                        }}
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`Read more: ${item.title}`}
                       >
                         READ MORE
-                      </button>
+                      </a>
                     </div>
                   </article>
                 );
@@ -351,43 +354,63 @@ export default function MediaPage() {
         <div className="med-press-container">
           {paginatedItems.length > 0 ? (
             <div className="med-news-list">
-              {paginatedItems.map((item) => (
-                <article
-                  className="med-news-item"
-                  key={item.id || item.title}
-                  onClick={() => setModalArticle(item)}
-                  style={{ cursor: 'pointer' }}
-                  tabIndex={0}
-                  role="button"
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      setModalArticle(item);
-                    }
-                  }}
-                >
-                  <div className="med-news-body">
-                    <div className="med-news-content">
-                      <div className="med-news-tags">
-                        <span className="med-news-tag">PRESS RELEASE</span>
-                        <span className="med-news-tag">{item.date || item.year}</span>
-                      </div>
-                      <h3 className="med-news-title">{item.title}</h3>
-                    </div>
+              {paginatedItems.map((item) => {
+                const linkUrl = toCdnPdf(item.pdf || item.url || '#');
 
-                    <button
-                      type="button"
-                      className="med-read-more"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setModalArticle(item);
-                      }}
-                    >
-                      READ MORE
-                    </button>
-                  </div>
-                </article>
-              ))}
+                return (
+                  <article
+                    className="med-news-item"
+                    key={item.id || item.title}
+                    onClick={() => {
+                      if (linkUrl && linkUrl !== '#') {
+                        window.open(linkUrl, '_blank', 'noopener,noreferrer');
+                      }
+                    }}
+                    style={{ cursor: 'pointer' }}
+                    tabIndex={0}
+                    role="button"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        if (linkUrl && linkUrl !== '#') {
+                          window.open(linkUrl, '_blank', 'noopener,noreferrer');
+                        }
+                      }
+                    }}
+                  >
+                    <div className="med-news-body">
+                      <div className="med-news-content">
+                        <div className="med-news-tags">
+                          <span className="med-news-tag">PRESS RELEASE</span>
+                          <span className="med-news-tag">{item.date || item.year}</span>
+                        </div>
+                        <h3 className="med-news-title">
+                          <a
+                            href={linkUrl}
+                            target={linkUrl.startsWith('http') ? '_blank' : undefined}
+                            rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            style={{ color: 'inherit', textDecoration: 'none' }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {item.title}
+                          </a>
+                        </h3>
+                      </div>
+
+                      <a
+                        href={linkUrl}
+                        target={linkUrl.startsWith('http') ? '_blank' : undefined}
+                        rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="med-read-more"
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`Read more: ${item.title}`}
+                      >
+                        READ MORE
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           ) : (
             <div className="med-empty-state">
@@ -453,130 +476,7 @@ export default function MediaPage() {
         </div>
       )}
 
-      {/* Interactive Read Article Modal */}
-      {modalArticle && (
-        <div className="med-modal-overlay" role="presentation" onMouseDown={() => setModalArticle(null)}>
-          <div
-            className={`med-modal-card ${modalArticle.image ? 'med-modal-card--split' : 'med-modal-card--single'}`}
-            role="dialog"
-            aria-modal="true"
-            aria-label={modalArticle.title}
-            onMouseDown={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="med-modal-close"
-              onClick={() => setModalArticle(null)}
-              aria-label="Close modal"
-            >
-              ×
-            </button>
 
-            {modalArticle.image && (
-              <div className="med-modal-media-col">
-                <img
-                  className="med-modal-image"
-                  src={modalArticle.image}
-                  alt={modalArticle.title}
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/assets/news-1.webp';
-                  }}
-                />
-              </div>
-            )}
-
-            <div className="med-modal-content-col">
-              <div className="med-news-tags">
-                <span className="med-news-tag">{modalArticle.category}</span>
-                <span className="med-news-tag">{modalArticle.date || modalArticle.year}</span>
-              </div>
-              <h2 className="med-modal-title">{modalArticle.title}</h2>
-              <p className="med-modal-body">{modalArticle.body}</p>
-
-              <div className="med-modal-actions">
-                {modalArticle.pdf && (
-                  <a
-                    className="inv-detail-pill"
-                    href={toCdnPdf(modalArticle.pdf)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      padding: '12px 24px',
-                      borderRadius: '24px',
-                      background: 'linear-gradient(180deg, #0061f8 0%, #0140a2 100%)',
-                      color: '#fff',
-                      textDecoration: 'none',
-                      fontWeight: 700,
-                      fontSize: '13px',
-                      letterSpacing: '0.5px',
-                    }}
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                      <polyline points="7 10 12 15 17 10" />
-                      <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                    DOWNLOAD DOCUMENT (PDF)
-                  </a>
-                )}
-
-                {modalArticle.url && (
-                  <a
-                    className="inv-detail-pill"
-                    href={toCdnPdf(modalArticle.url)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      padding: '12px 24px',
-                      borderRadius: '24px',
-                      background: 'linear-gradient(180deg, #0061f8 0%, #0140a2 100%)',
-                      color: '#fff',
-                      textDecoration: 'none',
-                      fontWeight: 700,
-                      fontSize: '13px',
-                      letterSpacing: '0.5px',
-                    }}
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                    VIEW FULL NEWS COVERAGE ↗
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Media Enquiries Section */}
       <section className="med-enquiries-section" aria-label="Media Enquiries">
