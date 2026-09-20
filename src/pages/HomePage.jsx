@@ -759,33 +759,28 @@ function Investor() {
   const docs = [
     {
       title: 'Integrated annual report 2025-26',
-      href: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26.pdf'),
+      href: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf'),
       download: 'Granules_Annual_Report_FY26.pdf',
     },
     {
-      title: 'Q2 Results for 2026',
-      href: getAssetUrl('pdfs/2025/11/Press-Release-Q2-FY26.pdf'),
-      download: 'Granules_Q2_FY26_Results.pdf',
+      title: 'Q1 Results for 2026-27',
+      href: getAssetUrl('pdfs/2026/07/FY-Result-Jun26.pdf'),
+      download: 'Granules_Q1_FY27_Results.pdf',
     },
     {
       title: 'Investor presentation',
-      href: getAssetUrl('pdfs/2025/11/Earnings-Presentation-Q2FY26-Circulation.pdf'),
-      download: 'Granules_Investor_Presentation.pdf',
+      href: getAssetUrl('pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf'),
+      download: 'Granules_Investor_Presentation_Q1_FY27.pdf',
     },
     {
-      title: 'Earnings call transcript (Q2 FY26)',
-      href: getAssetUrl('pdfs/2025/11/GranulesIndia-Q2-FY26-Transcript-Clean-Version.pdf'),
-      download: 'Granules_Earnings_Call_Transcript_Q2_FY26.pdf',
+      title: 'Earnings call transcript (Q1 FY27)',
+      href: getAssetUrl('pdfs/2026/07/Q1-FY27-Concall-Transcript-Final.pdf'),
+      download: 'Granules_Earnings_Call_Transcript_Q1_FY27.pdf',
     },
     {
       title: 'Shareholding pattern',
-      href: getAssetUrl('pdfs/2025/01/Third-Quarter-SHP-2025.pdf'),
-      download: 'Granules_Shareholding_Pattern.pdf',
-    },
-    {
-      title: 'Sustainability report 2024-25',
-      href: getAssetUrl('pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf'),
-      download: 'Granules_Sustainability_Report_2024-25.pdf',
+      href: getAssetUrl('pdfs/2026/07/Website-SHP-1_merged.pdf'),
+      download: 'Granules_Shareholding_Pattern_Q1_FY27.pdf',
     },
   ];
   return (
@@ -797,11 +792,11 @@ function Investor() {
           Driven by operational excellence and responsible growth, we remain focused on creating
           sustainable value for our investors.
         </p>
-        <Button href="/investor">INVESTOR &rarr;</Button>
+        <Button href="/investors">INVESTORS &rarr;</Button>
       </div>
       <div className="investor-panel">
         <a
-          href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26.pdf')}
+          href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf')}
           target="_blank"
           rel="noopener noreferrer"
           className="investor-cover"
@@ -1032,7 +1027,6 @@ function SearchOverlay({ open, onClose }) {
 
 export default function HomePage() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [sustainabilityTab, setSustainabilityTab] = useState(0);
 
   const activeNavSection = sustainabilityTab === 1 ? 'Community' : 'Sustainability';
@@ -1043,18 +1037,11 @@ export default function HomePage() {
     const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('revealed')), { threshold: .08 });
     sections.forEach((section) => reveal.observe(section));
 
-    const onScroll = () => {
-      const current = Math.max(0, window.scrollY);
-      setProgress(Math.min(100, (current / (document.documentElement.scrollHeight - window.innerHeight)) * 100));
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => { reveal.disconnect(); window.removeEventListener('scroll', onScroll); };
+    return () => { reveal.disconnect(); };
   }, []);
 
   return (
     <>
-      <div className="scroll-progress" style={{ width: `${progress}%` }} />
       <NavBar onSearch={() => setSearchOpen(true)} activeSectionOverride={activeNavSection} />
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
       <main>

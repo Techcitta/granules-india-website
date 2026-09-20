@@ -1467,9 +1467,9 @@ article.open .accordion-icon-circle {
 
 .investor {
   display: grid;
-  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(36px, 4.5vw, 72px);
-  align-items: center;
+  grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1.35fr);
+  gap: clamp(24px, 3.2vw, 56px);
+  align-items: stretch;
 }
 
 .investor-copy {
@@ -1477,11 +1477,12 @@ article.open .accordion-icon-circle {
   flex-direction: column;
   align-items: flex-start;
   max-width: 640px;
+  height: 100%;
 }
 
 .investor-copy h2 {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(34px, 2.6vw, 50px);
+  font-size: clamp(32px, 2.4vw, 48px);
   line-height: 1.12;
   font-weight: 700;
   color: #070707;
@@ -1499,18 +1500,18 @@ article.open .accordion-icon-circle {
 }
 
 .investor-copy .button {
-  margin-top: 36px;
+  margin-top: auto;
 }
 
 .investor-panel {
   display: flex;
-  gap: clamp(20px, 2.5vw, 36px);
+  gap: clamp(16px, 2vw, 32px);
   align-items: stretch;
 }
 
 .investor-cover {
-  flex: 0 0 clamp(230px, 18vw, 290px);
-  width: clamp(230px, 18vw, 290px);
+  flex: 0 0 clamp(185px, 14.5vw, 235px);
+  width: clamp(185px, 14.5vw, 235px);
   aspect-ratio: 1241 / 1754;
   border-radius: 20px;
   overflow: hidden;
@@ -1872,14 +1873,7 @@ footer:not(.cp-footer) {
 }
 
 .scroll-progress {
-  position: fixed;
-  z-index: 150;
-  left: 0;
-  top: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #0061f8, #38b34a, #66cef5);
-  box-shadow: 0 0 12px rgba(0, 97, 248, .45);
-  transition: width .08s linear;
+  display: none !important;
 }
 
 .reveal-ready {

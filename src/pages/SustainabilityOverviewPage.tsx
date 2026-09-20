@@ -29,7 +29,6 @@ const RATINGS_CAROUSEL_ITEMS: CarouselItem[] = [
   { img: `${S}Ratings-certifications-logo-image-0113.webp`, alt: 'MSCI ESG RATINGS BB' },
   { img: `${S}Ratings-certifications-logo-image-03.webp`, alt: 'EcoVadis GOLD Top 5%' },
   { img: `${S}Ratings-certifications-logo-image-04.webp`, alt: 'S&P Global CSA Score 2025 62/100' },
-  { img: `${S}Ratings-certifications-logo-image-07.webp`, alt: 'Great Place To Work Certified' },
   { img: `${S}Ratings-certifications-logo-image-06.webp`, alt: 'Sedex SUPPLIER PLUS' },
   { img: `${S}Ratings-certifications-logo-image-09.webp`, alt: 'Bureau Veritas ZERO WASTE TO LANDFILL' },
   { img: `${S}Ratings-certifications-logo-image-08.webp`, alt: 'CII-TRIVENI WATER INSTITUTE Aspiring Water Positive Plant' },

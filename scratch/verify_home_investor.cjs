@@ -1,54 +1,24 @@
 const { chromium } = require('playwright');
-const path = require('path');
 
-async function verifyInvestorSection() {
-  const browser = await chromium.launch({ channel: 'msedge', headless: true });
-
-  const viewports = [
-    { name: '1440x900', width: 1440, height: 900 },
-    { name: '1280x800', width: 1280, height: 800 },
-    { name: '1376x789', width: 1376, height: 789 },
-    { name: '1920x1080', width: 1920, height: 1080 }
-  ];
-
-  for (const vp of viewports) {
-    const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
-    await page.goto('http://localhost:5173/', { waitUntil: 'networkidle' });
-
-    const section = page.locator('#investor');
-    await section.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(600);
-
-    const data = await page.evaluate(() => {
-      const copy = document.querySelector('.investor-copy').getBoundingClientRect();
-      const cover = document.querySelector('.investor-cover').getBoundingClientRect();
-      const docs = document.querySelector('.investor-docs').getBoundingClientRect();
-      const tag = document.querySelector('.investor-copy .tag').getBoundingClientRect();
-      const btn = document.querySelector('.investor-copy .button').getBoundingClientRect();
-      return {
-        copyTop: copy.top,
-        coverTop: cover.top,
-        docsTop: docs.top,
-        tagTop: tag.top,
-        copyBottom: copy.bottom,
-        coverBottom: cover.bottom,
-        docsBottom: docs.bottom,
-        btnBottom: btn.bottom,
-        copyHeight: copy.height,
-        coverHeight: cover.height,
-        docsHeight: docs.height,
-        topDiff: Math.abs(tag.top - cover.top),
-        bottomDiff: Math.abs(btn.bottom - cover.bottom),
-        heightDiff: Math.abs(copy.height - cover.height)
-      };
+(async () => {
+  const browser = await chromium.launch({
+    executablePath: 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'
+  });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  await page.goto('http://localhost:5174/', { waitUntil: 'networkidle' });
+  const investorSec = await page.$('#investor');
+  if (investorSec) {
+    await investorSec.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1000);
+    await investorSec.screenshot({
+      path: 'C:/Users/ADMIN/.gemini/antigravity-ide/brain/a873e441-b7ff-4064-b6c5-8caa173f5b9c/home_investor_section.png'
     });
-
-    console.log(`Viewport ${vp.name}:`, data);
-    await section.screenshot({ path: path.join(__dirname, `final_home_investor_${vp.name}.png`) });
-    await page.close();
+    console.log('Screenshot saved successfully!');
+  } else {
+    console.error('Investor section not found on home page!');
   }
-
   await browser.close();
-}
-
-verifyInvestorSection().catch(console.error);
+})().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
