@@ -583,40 +583,101 @@
   box-sizing: border-box;
 }
 
+.sus-goals-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
 .sus-goals-year-heading {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(18px, 1.4vw, 22px);
+  font-size: clamp(16px, 1.2vw, 19px);
   font-weight: 700;
   line-height: 1.2;
   color: #166534;
   margin: 0;
 }
 
-.sus-goals-metric-block {
-  display: flex;
-  flex-direction: column;
-  margin: 12px 0;
-}
-
-.sus-goals-metric {
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(46px, 4.2vw, 62px);
-  font-weight: 800;
-  line-height: 1;
-  color: #0f172a;
-  letter-spacing: -0.03em;
-}
-
-.sus-goals-metric-label {
+.sus-goals-category-pill {
   font-family: 'Manrope', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  line-height: 1.4;
-  color: #475569;
-  letter-spacing: 0.8px;
+  color: #166534;
+  background: #e8f7ee;
+  border: 1px solid rgba(22, 101, 52, 0.22);
+  padding: 3px 10px;
+  border-radius: 9999px;
   text-transform: uppercase;
-  margin-top: 8px;
-  max-width: 250px;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+
+.sus-goals-statement-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin: auto 0;
+  padding: 8px 0;
+}
+
+.sus-goals-card-desc {
+  font-family: 'Manrope', Arial, sans-serif !important;
+  font-size: clamp(13.5px, 1.05vw, 15px) !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  color: #070707 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  margin: 10px 0 0 !important;
+  max-width: 320px;
+}
+
+.sus-goals-card-desc--statement {
+  font-size: clamp(17px, 1.35vw, 21px) !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  max-width: 330px;
+  margin: 0 !important;
+}
+
+.sus-goals-metric-block {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  justify-content: center;
+}
+
+.sus-goals-metric {
+  font-family: 'Manrope', Arial, sans-serif !important;
+  font-size: clamp(48px, 4.4vw, 66px) !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  color: #070707 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.sus-goals-metric--text {
+  font-size: clamp(32px, 2.8vw, 44px) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.sus-goals-subdetails {
+  margin-top: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.sus-goals-card-desc--sub {
+  font-size: clamp(12.5px, 0.95vw, 13.5px) !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  color: #070707 !important;
+  margin: 0 !important;
 }
 
 /* 8-Segment Progress Bar */
@@ -629,7 +690,7 @@
 
 .sus-goals-segment-dash {
   height: 3px;
-  width: 26px;
+  width: 24px;
   border-radius: 9999px;
   background: #e2e8f0;
   border: none;
@@ -707,9 +768,49 @@
   transform: translateY(-50%) scale(1.02);
 }
 
+.sus-goals-peek-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 140px;
+}
+
+.sus-goals-peek-card--right {
+  right: 0;
+  justify-content: flex-end;
+  padding-right: clamp(28px, 3.5vw, 54px);
+}
+
+.sus-goals-peek-card--left {
+  left: 0;
+  justify-content: flex-start;
+  padding-left: clamp(28px, 3.5vw, 54px);
+}
+
+.sus-goals-peek-card--right .sus-goals-peek-inner {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.sus-goals-peek-card--left .sus-goals-peek-inner {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.sus-goals-peek-cat {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(11.5px, 0.95vw, 13px);
+  font-weight: 700;
+  color: #166534;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.85;
+  line-height: 1.25;
+}
+
 .sus-goals-peek-year {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(38px, 3.4vw, 56px);
+  font-size: clamp(34px, 3.2vw, 50px);
   font-weight: 700;
   line-height: 1;
   color: #166534;

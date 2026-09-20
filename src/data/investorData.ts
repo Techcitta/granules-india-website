@@ -3145,45 +3145,6 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         ]
       },
       {
-        "id": "bse-nse",
-        "label": "BSE & NSE",
-        "items": [
-          {
-            "id": "bse-nse-0",
-            "title": "Stock Exchange Intimations (BSE & NSE) 2026",
-            "scope": "Stock Exchange Regulatory Filings",
-            "period": "FY 2026",
-            "year": "2026",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2022/02/03-01-2022-NSEBSE.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "bse-nse",
-            "subcategoryLabel": "BSE & NSE"
-          },
-          {
-            "id": "bse-nse-1",
-            "title": "Regulatory Filings & Notifications 2025",
-            "scope": "Stock Exchange Regulatory Filings",
-            "period": "FY 2025",
-            "year": "2025",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2022/02/03-01-2022-NSEBSE.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "bse-nse",
-            "subcategoryLabel": "BSE & NSE"
-          },
-          {
-            "id": "bse-nse-2",
-            "title": "Trading Window Closure Intimation 2024",
-            "scope": "Stock Exchange Regulatory Filings",
-            "period": "FY 2024",
-            "year": "2024",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/notice/1322Intimation of Trading Window Closure.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "bse-nse",
-            "subcategoryLabel": "BSE & NSE"
-          }
-        ]
-      },
-      {
         "id": "analyst-coverage",
         "label": "Analyst Coverage",
         "items": [
@@ -3423,89 +3384,6 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "category": "sec-investor-resources",
             "subcategoryId": "buyback-2022",
             "subcategoryLabel": "Buyback 2022"
-          }
-        ]
-      },
-      {
-        "id": "buyback-2020",
-        "label": "Buyback 2020",
-        "items": [
-          {
-            "id": "buyback-2020-0",
-            "title": "Post buyback public announcement published in Business Standard and Nava Telangana on 26th June 2020",
-            "scope": "Tender Offer Buyback Outcome",
-            "period": "June 20",
-            "year": "2020",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/7702GRANULES-INDIA-LIMITED-POST-BUYBACK-16x36cm.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "buyback-2020",
-            "subcategoryLabel": "Buyback 2020"
-          },
-          {
-            "id": "buyback-2020-1",
-            "title": "Granules India Limited – Advertisement 2",
-            "scope": "Tender Offer Buyback Outcome",
-            "period": "FY 2025",
-            "year": "2025",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/1913Adveritsment 2.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "buyback-2020",
-            "subcategoryLabel": "Buyback 2020"
-          },
-          {
-            "id": "buyback-2020-2",
-            "title": "Granules India Limited – Dispatch Advertisement",
-            "scope": "Tender Offer Buyback Outcome",
-            "period": "FY 2025",
-            "year": "2025",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/2342Granules India Limited - Dispatch Advertisement.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "buyback-2020",
-            "subcategoryLabel": "Buyback 2020"
-          },
-          {
-            "id": "buyback-2020-3",
-            "title": "Granules India Ltd_Physical_Sh_Form",
-            "scope": "Tender Offer Buyback Outcome",
-            "period": "FY 2025",
-            "year": "2025",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/9277Granules India Ltd_Physical_Sh_Form.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "buyback-2020",
-            "subcategoryLabel": "Buyback 2020"
-          },
-          {
-            "id": "buyback-2020-4",
-            "title": "Granules India Limited- Letter of Offer for Buyback",
-            "scope": "Tender Offer Buyback Outcome",
-            "period": "FY 2025",
-            "year": "2025",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/2104Granules India Ltd_LOF_Final.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "buyback-2020",
-            "subcategoryLabel": "Buyback 2020"
-          },
-          {
-            "id": "buyback-2020-5",
-            "title": "Granules India Ltd_Form_SH4",
-            "scope": "Tender Offer Buyback Outcome",
-            "period": "FY 2025",
-            "year": "2025",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/4251Granules India Ltd_Form_SH4.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "buyback-2020",
-            "subcategoryLabel": "Buyback 2020"
-          },
-          {
-            "id": "buyback-2020-6",
-            "title": "Granules India Ltd_Demat_Sh_Form",
-            "scope": "Tender Offer Buyback Outcome",
-            "period": "FY 2025",
-            "year": "2025",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/4019Granules India Ltd_Demat_Sh_Form.pdf",
-            "category": "sec-investor-resources",
-            "subcategoryId": "buyback-2020",
-            "subcategoryLabel": "Buyback 2020"
           }
         ]
       },

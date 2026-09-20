@@ -172,13 +172,17 @@ interface InvestorFilteredSectionProps {
   category: InvestorCategory;
   defaultSubcatId?: string;
   defaultYear?: string;
+  hidePeriod?: boolean;
 }
 
 export default function InvestorFilteredSection({
   category,
   defaultSubcatId,
   defaultYear,
+  hidePeriod: explicitHidePeriod,
 }: InvestorFilteredSectionProps) {
+  const hidePeriod = explicitHidePeriod ?? (category.id === 'sec-investor-resources');
+
   // Can be 'all' or a specific subcategory id
   const [activeSubcatId, setActiveSubcatId] = useState<string>(
     () => defaultSubcatId || 'all'
@@ -327,9 +331,9 @@ export default function InvestorFilteredSection({
                   <span className="ct-pill-icon"><MailIcon /></span>
                   <span>investorrelations@granulesindia.com</span>
                 </a>
-                <a href="mailto:irfan.raeen@linkintime.co.in" className="ct-action-pill">
+                <a href="mailto:Irfan.raeen@in.mpms.mufg.com" className="ct-action-pill">
                   <span className="ct-pill-icon"><MailIcon /></span>
-                  <span>irfan.raeen@linkintime.co.in</span>
+                  <span>Irfan.raeen@in.mpms.mufg.com</span>
                 </a>
               </div>
             </div>
@@ -404,7 +408,7 @@ export default function InvestorFilteredSection({
               <tr>
                 <th>REPORT / DOCUMENT NAME</th>
                 <th>ENTITY / REPORTING SCOPE</th>
-                <th>REPORTING PERIOD</th>
+                {!hidePeriod && <th>REPORTING PERIOD</th>}
                 <th style={{ textAlign: 'right' }}>ACTION</th>
               </tr>
             </thead>
@@ -415,7 +419,7 @@ export default function InvestorFilteredSection({
                     <span>{doc.title}</span>
                   </td>
                   <td className="inv-table-detail-cell">{doc.scope}</td>
-                  <td className="inv-table-period-cell">{doc.period}</td>
+                  {!hidePeriod && <td className="inv-table-period-cell">{doc.period}</td>}
                   <td className="inv-table-action-cell">
                     {doc.webUrl || doc.pdf ? (
                       <div className="inv-table-actions">
@@ -453,7 +457,7 @@ export default function InvestorFilteredSection({
 
               {filteredItems.length === 0 && (
                 <tr>
-                  <td colSpan={4} style={{ textAlign: 'center', padding: '40px 20px', color: '#64748b' }}>
+                  <td colSpan={hidePeriod ? 3 : 4} style={{ textAlign: 'center', padding: '40px 20px', color: '#64748b' }}>
                     <p style={{ margin: '0 0 12px', fontSize: '15px' }}>
                       No documents found for selected category / year.
                     </p>

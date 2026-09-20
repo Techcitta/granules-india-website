@@ -20,7 +20,6 @@ const JUMP_SECTIONS = [
   { id: 'sec-financial-reports', label: 'Financial Reports' },
   { id: 'sec-investor-resources', label: 'Investor Resources' },
   { id: 'sec-corporate-centre', label: 'Corporate Centre' },
-  { id: 'sec-financial-highlights', label: 'Financial Highlights & Revenue Break Up' },
   { id: 'sec-notices-disclosures', label: 'Notice & Disclosures' },
   { id: 'sec-other-info', label: 'Other Information' },
   { id: 'sec-investor-contact', label: 'Investor Relations Contact' },
@@ -35,12 +34,6 @@ const CORPORATE_CENTRE: TableRowItem[] = [
   { title: 'Operational Excellence', detail: 'Manufacturing automation, quality & safety systems', period: 'Operations', href: '/company/operational-excellence' },
 ];
 
-const FINANCIAL_HIGHLIGHTS: TableRowItem[] = [
-  { title: 'Annual Financial Highlights', detail: 'Revenue, EBITDA & PAT Multi-Year Growth Metrics', period: 'FY 2022-26', pdf: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf') },
-  { title: 'Revenue Breakup Analysis', detail: 'API, PFI & Finished Dosages Segment Revenue', period: 'Annual Breakup', pdf: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf') },
-  { title: 'Quarterly Earnings Presentation', detail: 'Operational Review & Management Commentary', period: 'Q1 FY27', pdf: getAssetUrl('pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf') },
-  { title: 'Quarterly Financial Results', detail: 'Financial Performance Release & Results Summary', period: 'Q1 FY27', pdf: getAssetUrl('pdfs/2026/07/FY-Result-Jun26.pdf') },
-];
 
 export default function InvestorOverviewPage() {
   const location = useLocation();
@@ -230,6 +223,7 @@ export default function InvestorOverviewPage() {
           category={investorResourcesCat}
           defaultSubcatId={deepParams?.sectionId === 'sec-investor-resources' ? deepParams.subcatId : 'investor-presentation'}
           defaultYear={deepParams?.sectionId === 'sec-investor-resources' ? deepParams.year : '2027'}
+          hidePeriod
         />
       </section>
 
@@ -247,19 +241,6 @@ export default function InvestorOverviewPage() {
         {renderTable(CORPORATE_CENTRE, 'Corporate Hub Section', 'Strategic Focus Area', 'Classification')}
       </section>
 
-      {/* Section 4: Financial Highlights & Revenue Break Up */}
-      <section id="sec-financial-highlights" className="inv-doc-section">
-        <div className="inv-doc-section-head">
-          <div className="inv-doc-head-left">
-            <span className="inv-section-badge">Financial Performance</span>
-            <h2>FINANCIAL HIGHLIGHTS &amp; REVENUE BREAK UP</h2>
-            <p>
-              Detailed multi-year financial performance, segment revenue breakdowns, quarterly earnings presentations, and media releases.
-            </p>
-          </div>
-        </div>
-        {renderTable(FINANCIAL_HIGHLIGHTS, 'Statement / Presentation Title', 'Metric / Segment Scope', 'Timeline')}
-      </section>
 
       {/* Section 5: Notice & Disclosures (Screenshot 3) */}
       <section id="sec-notices-disclosures" className="inv-doc-section">
