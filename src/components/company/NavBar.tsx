@@ -56,7 +56,7 @@ const SUBMENUS: Record<string, Submenu> = {
     sections: [],
     links: [
       { label: 'Life at Granules', href: '/careers#culture-values' },
-      { label: 'Work with us', href: '/careers/opportunities' },
+      { label: 'Work with us', href: 'https://careers.mygranules.com/' },
     ],
   },
 };
