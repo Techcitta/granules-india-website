@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
+import { useSwipeScroll } from '../hooks/useSwipeScroll';
 import '../components/company/company.css';
 import './business.css';
 import './rd.css';
@@ -176,6 +177,15 @@ const GREEN_CARDS: GreenCard[] = [
 export default function RdPage() {
   const [activeCenterIdx, setActiveCenterIdx] = useState<number>(0);
   const [openPriority, setOpenPriority] = useState<number>(-1);
+  const {
+    swipeProps,
+    isDragging,
+    scrollProgress,
+    canScrollLeft,
+    canScrollRight,
+    thumbWidth,
+    scroll,
+  } = useSwipeScroll();
 
   useEffect(() => {
     document.title = 'R&D and Innovation — Granules India';
@@ -234,47 +244,82 @@ export default function RdPage() {
         </h4>
       </div>
 
-      {/* R&D Strategic Priorities */}
+      {/* R&D Strategic Priorities — same carousel as Peptides CDMO portfolio */}
       <section className="rd-priorities" id="rd-priorities">
         <div className="rd-priorities-head">
           <h2>R&amp;D Strategic Priorities</h2>
         </div>
-        <div className="rd-priorities-grid">
-          {STRATEGIC_PRIORITIES.map((item, index) => {
-            const isOpen = openPriority === index;
-            const itemNumber = String(index + 1).padStart(2, '0');
-            return (
-              <article
-                className={`biz-card rd-priority-slide${isOpen ? ' is-open' : ''}`}
-                key={item.title}
-                onMouseEnter={() => setOpenPriority(index)}
-                onMouseLeave={() => setOpenPriority(-1)}
-                onClick={() => setOpenPriority(isOpen ? -1 : index)}
+        <div className="biz-carousel rd-priorities-carousel">
+          <div className={`biz-track${isDragging ? ' is-dragging' : ''}`} {...swipeProps}>
+            {STRATEGIC_PRIORITIES.map((item, index) => {
+              const isOpen = openPriority === index;
+              return (
+                <article
+                  className={`biz-card rd-priority-slide${isOpen ? ' is-open' : ''}`}
+                  key={item.title}
+                  onMouseEnter={() => setOpenPriority(index)}
+                  onMouseLeave={() => setOpenPriority(-1)}
+                  onClick={() => {
+                    if (isDragging) return;
+                    setOpenPriority(isOpen ? -1 : index);
+                  }}
+                >
+                  {item.image && (
+                    <img
+                      className="bg"
+                      src={`${R}${item.image}`}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                  <div className="biz-sheet">
+                    <div className="biz-sheet-head">
+                      <span className="biz-sheet-title">{item.title}</span>
+                      <span className="biz-sheet-symbol" aria-hidden="true">
+                        {isOpen ? '−' : '+'}
+                      </span>
+                    </div>
+                    <div className="biz-sheet-body">
+                      <p className="biz-sheet-desc">{item.body}</p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="biz-carousel-controls">
+            <div className="biz-progress-track">
+              <div
+                className="biz-progress-bar"
+                style={{
+                  width: `${thumbWidth}%`,
+                  left: `${scrollProgress * (100 - thumbWidth)}%`,
+                }}
+              />
+            </div>
+            <div className="biz-carousel-arrows">
+              <button
+                type="button"
+                className="biz-arrow-btn"
+                onClick={() => scroll(-1)}
+                disabled={!canScrollLeft}
+                aria-label="Scroll left"
               >
-                {item.image && (
-                  <img
-                    className="bg"
-                    src={`${R}${item.image}?v=7`}
-                    alt={item.title}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                )}
-                <div className="biz-sheet">
-                  <div className="biz-sheet-head">
-                    <span className="biz-sheet-title">{item.title}</span>
-                    <span className="biz-sheet-symbol" aria-hidden="true">
-                      {isOpen ? '−' : '+'}
-                    </span>
-                  </div>
-                  <div className="biz-sheet-body">
-                    <p className="biz-sheet-desc">{item.body}</p>
-                    <span className="biz-sheet-learn">PRIORITY {itemNumber} →</span>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+              </button>
+              <button
+                type="button"
+                className="biz-arrow-btn"
+                onClick={() => scroll(1)}
+                disabled={!canScrollRight}
+                aria-label="Scroll right"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
