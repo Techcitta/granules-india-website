@@ -251,43 +251,10 @@ export default function EhsSubmissionsPage() {
 
         <h1 className="cp-page-title ehs-page-title">EHS Submissions</h1>
 
-        {/* Hero Banner */}
-        <div className="cp-hero-banner ehs-hero-banner-wrap">
-          <img
-            src="/assets/sustainability/ehs-hero-banner.jpg"
-            alt="Granules EHS Submissions and Sustainable Manufacturing Campus"
-            loading="eager"
-            decoding="async"
-          />
-          <div className="ehs-hero-scrim" />
-          <div className="ehs-hero-overlay">
-            <div className="ehs-hero-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              <span>Statutory Compliance &amp; Filings</span>
-            </div>
-            <h2 className="ehs-hero-heading">
-              Rigorous Environmental, Health &amp; Safety Standards Across All Facilities
-            </h2>
-            <p className="ehs-hero-desc">
-              Granules India maintains rigorous environmental, health, and safety standards across all manufacturing
-              facilities. Explore our verified annual returns, biomedical and hazardous waste statements, environmental audit
-              disclosures, and regulatory certifications.
-            </p>
-          </div>
-        </div>
 
         <div className="ehs-container" style={{ marginTop: 'clamp(40px, 4.5vw, 64px)' }}>
           {/* Section Header with Side-by-Side Filters (Matching the Reference UI) */}
           <div className="inv-doc-section-head">
-            <div className="inv-doc-head-left">
-              <span className="inv-section-badge">Statutory Filings</span>
-              <h2>EHS SUBMISSIONS &amp; COMPLIANCE REPORTS</h2>
-              <p>
-                Explore our statutory environmental returns, bio-medical waste audits, hazardous waste declarations, and Pollution Control Board compliance reports across all facilities.
-              </p>
-            </div>
 
             {/* Side-by-Side Pill Dropdowns: All Categories & All Years */}
             <div className="inv-doc-head-filters" aria-label="Filter EHS Documents">

@@ -459,8 +459,8 @@ h1.senn-page-header {
 
 .senn-audience-note p {
   margin: 0;
-  font: 500 13.5px/1.5 'Manrope', sans-serif;
-  color: #334155;
+  font: 500 clamp(14px, 1.05vw, 15.5px)/1.5 'Manrope', sans-serif;
+  color: #1e293b;
 }
 
 /* ==========================================================================

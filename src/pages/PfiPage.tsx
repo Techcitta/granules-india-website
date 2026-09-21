@@ -23,13 +23,13 @@ const BENEFITS: BenefitItem[] = [
   },
   {
     title: 'Supporting Asset-Light Market Entry',
-    body: 'PFIs replicate more than 80% of the infrastructure required in a conventional oral solid dosage facility, reducing the need for significant capital investment.',
+    body: 'PFIs replicate more than 80% of the infrastructure required in a conventional oral solid dosage facility, reducing the need for significant capital investment for our customers.',
     icon: 'icon-production-belt.svg',
     image: '/assets/pfi/3.png',
   },
   {
     title: 'Customized Formulation Solutions',
-    body: 'Tailor-made PFIs support complex formulations, fixed-dose combinations, and homogeneous blending with other APIs.',
+    body: 'Tailor-made PFIs support complex formulations, fixed-dose combinations, and homogeneous blending with other APIs. Flexibility of batch size upto 6000 Kg based on customer requirement.',
     icon: 'icon-test-tube.svg',
     image: '/assets/pfi/4.png',
   },

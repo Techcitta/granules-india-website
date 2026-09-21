@@ -87,11 +87,11 @@ const FACILITIES: Facility[] = [
     categories: ['API'],
     country: 'India',
     countryCode: 'IN',
-    image: 'bonthapally.webp',
+    image: 'bonthapally-2.webp',
     apiCapacity: '35 KTPA',
   },
   {
-    name: 'Jeedimetla',
+    name: 'Jeedimetla (Unit II)',
     location: 'HYDERABAD, TELANGANA',
     category: 'API',
     categories: ['API', 'PFI'],
@@ -102,7 +102,7 @@ const FACILITIES: Facility[] = [
     pfiCapacity: '1,440 TPA',
   },
   {
-    name: 'Bonthapally (Unit II)',
+    name: 'Bonthapally (Unit III)',
     location: 'HYDERABAD, TELANGANA',
     category: 'API',
     categories: ['API'],

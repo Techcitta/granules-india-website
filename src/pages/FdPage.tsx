@@ -24,7 +24,7 @@ const BENEFITS: BenefitItem[] = [
   },
   {
     title: 'Formulation Expertise in Complex Generics',
-    body: 'We offer patient-centric solutions through a wide range of capabilities across modified-release formulations, MUPS technologies, controlled substances, chewable dosage forms, oncology products and complex oral solids.',
+    body: 'We offer patient-centric solutions through a wide range of capabilities across modified-release formulations, MUPS technologies, controlled substances, chewable dosage forms, oncology products and complex oral solids. Formulation capability includes sachet and liquid filling lines.',
     icon: 'icon-test-tube.svg',
     image: '/assets/fd/4.jpg',
   },

@@ -30,25 +30,26 @@ const WHAT_WE_DO_CARDS: CapabilityCard[] = [
     desc: 'Linker-ready peptides, chelator conjugation, purification and characterisation, delivered across more than ten GMP campaigns including cold-side precursor supply.',
   },
   {
-    title: 'Oligos',
+    title: 'Oligonucleotides and Antibody-Drug Conjugates',
     image: '/assets/rd/priority-scientific-capabilities.webp',
-    desc: 'Platform expansion underway into custom oligonucleotides and antibody-drug conjugates (ADCs) to advance complex next-generation modalities.',
+    desc: 'Expansion is underway.',
   },
 ];
 
+
 const WHOM_WE_SERVE_CARDS: CapabilityCard[] = [
   {
-    title: 'AAD',
+    title: 'Amino Acid Derivatives (AAD)',
     image: '/assets/rd/card-catalysis.webp',
     desc: 'Pioneered AAD synthesis with a catalogue of over 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, and side-chain-modified derivatives.',
   },
   {
-    title: 'Fragments',
+    title: 'Peptide Fragments',
     image: '/assets/rd/card-solvents.webp',
     desc: 'High-purity peptide building blocks and intermediate fragments supplied to pharmaceutical innovators and commercial peptide manufacturers.',
   },
   {
-    title: 'API',
+    title: 'Peptide APIs',
     image: '/assets/rd/card-synthesis.webp',
     desc: 'Custom peptide APIs ranging from short sequences to complex chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
   },
@@ -56,12 +57,12 @@ const WHOM_WE_SERVE_CARDS: CapabilityCard[] = [
 
 const SYNTHESIS_ROUTES = [
   {
-    route: 'Solid phase (SPPS)',
+    route: 'Solid Phase Peptide Systhesis(SPPS)',
     scale: 'mg to a few kg',
     advantage: 'Complex and lower-volume peptides',
   },
   {
-    route: 'Liquid phase (LPPS)',
+    route: 'Liquid Phase Peptide Systhesis(LPPS)',
     scale: '5 kg to tons',
     advantage: 'Large-scale manufacturing',
   },
@@ -71,7 +72,7 @@ const SYNTHESIS_ROUTES = [
     advantage: 'Combination of SPPS and LPPS',
   },
   {
-    route: 'Tag-assisted (TAPS)',
+    route: 'Tag-Assisted Peptide Systhesis(TAPS)',
     scale: 'Project-dependent',
     advantage: 'Reduced purification burden',
   },
@@ -343,7 +344,7 @@ export default function SennTidesPage() {
       {/* What We Do Section */}
       <section className="senn-section-head" aria-label="What We Do">
         <div className="copy">
-          <h2>What We Do</h2>
+          <h2>Whom We Serve</h2>
           <h4>
             We provide custom development and manufacturing services for peptide ingredients, from route selection and process development through scale-up, validation and commercial supply.
           </h4>
@@ -423,12 +424,13 @@ export default function SennTidesPage() {
         )}
       </div>
 
+
       {/* Whom We Serve Section */}
       <section className="senn-section-head" aria-label="Whom We Serve">
         <div className="copy">
-          <h2>Whom We Serve</h2>
+          <h2>What we do</h2>
           <h4>
-            We deliver specialised peptide solutions across the full product lifecycle — from custom amino acid derivatives and building blocks to commercial-scale Active Pharmaceutical Ingredients.
+            We deliver specialised peptide solutions across the full product lifecycle — from custom Amino Acid Derivatives and building blocks to commercial-scale Active Pharmaceutical Ingredients.
           </h4>
         </div>
       </section>
@@ -507,7 +509,7 @@ export default function SennTidesPage() {
       <section className="senn-routes-section" aria-label="Four Synthesis Routes">
         <div className="senn-section-head">
           <div className="copy">
-            <h2>Four Synthesis Routes</h2>
+            <h2>Technologies</h2>
             <h4>
               Most peptide manufacturers run one synthesis platform and fit every molecule to it. Our platform brings together four synthesis approaches, enabling route selection based on the molecule, target scale and purification requirements.
             </h4>

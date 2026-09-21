@@ -316,7 +316,7 @@ export default function PeptidesPage() {
         </div>
         <div className="peptides-stat-card">
           <strong className="peptides-stat-val">2</strong>
-          <span className="peptides-stat-label">Continents Integrated Swiss &amp; India Network</span>
+          <span className="peptides-stat-label">Strategic Locations - Switzerland &amp; India</span>
         </div>
       </div>
 
@@ -330,7 +330,7 @@ export default function PeptidesPage() {
         </div>
 
         <div className="senn-cta-actions">
-          <Link to="https://sennchemicals.com" target="_blank" rel="noopener noreferrer" className="senn-cta-btn senn-cta-btn--primary">
+          <Link to="https://sennchem.com" target="_blank" rel="noopener noreferrer" className="senn-cta-btn senn-cta-btn--primary">
             <span> Visit Senn Chemicals</span>
             <span aria-hidden="true">&rarr;</span>
           </Link>
