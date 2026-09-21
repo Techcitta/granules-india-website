@@ -4,6 +4,7 @@ import { NavBar, CompanyFooter } from '../components/company';
 import { useSwipeScroll } from '../hooks/useSwipeScroll';
 import '../components/company/company.css';
 import './business.css';
+import './rd.css';
 
 const R = '/assets/rd/';
 
