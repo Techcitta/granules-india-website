@@ -78,22 +78,22 @@ const STRATEGIC_PRIORITIES: InfoItem[] = [
   {
     title: 'Strengthen Scientific Capabilities',
     body: 'Strengthen Scientific Capabilities to deepen expertise across chemistry, formulation and process sciences.',
-    image: 'priority-scientific-capabilities.webp',
+    image: 'priority-01-strengthen.jpg',
   },
   {
     title: 'Building a Differentiated Product Pipeline',
     body: 'Building a differentiated product pipeline focused on complex generics, oncology, CNS and peptides.',
-    image: 'priority-product-pipeline.webp',
+    image: 'priority-02-pipeline.jpg',
   },
   {
     title: 'Accelerate Product Development',
     body: 'Accelerate product development to reduce time-to-market through integrated development and digital tools.',
-    image: 'priority-accelerate-development.webp',
+    image: 'priority-03-accelerate.jpg',
   },
   {
     title: 'Advance Future-Ready Technologies',
     body: 'Advance future-ready technologies through biocatalysis, particle engineering, peptides and digital R&D.',
-    image: 'priority-future-ready-technologies.webp',
+    image: 'priority-04-future-tech.jpg',
   },
 ];
 
@@ -176,7 +176,6 @@ const GREEN_CARDS: GreenCard[] = [
 export default function RdPage() {
   const [activeCenterIdx, setActiveCenterIdx] = useState<number>(0);
   const [openPriority, setOpenPriority] = useState<number>(-1);
-  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     document.title = 'R&D and Innovation — Granules India';
@@ -246,51 +245,33 @@ export default function RdPage() {
             const itemNumber = String(index + 1).padStart(2, '0');
             return (
               <article
-                className={`rd-priority-card${isOpen ? ' is-open' : ''}`}
+                className={`biz-card rd-priority-slide${isOpen ? ' is-open' : ''}`}
                 key={item.title}
                 onMouseEnter={() => setOpenPriority(index)}
                 onMouseLeave={() => setOpenPriority(-1)}
+                onClick={() => setOpenPriority(isOpen ? -1 : index)}
               >
-                <button
-                  className="rd-priority-toggle"
-                  type="button"
-                  onClick={() => setOpenPriority(isOpen ? -1 : index)}
-                  aria-expanded={isOpen}
-                  aria-label={`${isOpen ? 'Close' : 'Explore'} ${item.title}`}
-                >
-                  {/* Background scientific graphic */}
-                  <div className="rd-priority-img-wrap">
-                    {item.image && (
-                      <img
-                        src={`${R}${item.image}`}
-                        alt={item.title}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
+                {item.image && (
+                  <img
+                    className="bg"
+                    src={`${R}${item.image}?v=7`}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                <div className="biz-sheet">
+                  <div className="biz-sheet-head">
+                    <span className="biz-sheet-title">{item.title}</span>
+                    <span className="biz-sheet-symbol" aria-hidden="true">
+                      {isOpen ? '−' : '+'}
+                    </span>
                   </div>
-
-                  {/* Sliding Blue Drawer Sheet (Homepage Product-Bar Style) */}
-                  <div className="rd-priority-sheet">
-                    <div className="rd-priority-sheet-head">
-                      <div className="rd-priority-sheet-title-group">
-                        <span className="rd-priority-sheet-index">{itemNumber}</span>
-                        <h3 className="rd-priority-sheet-title">{item.title}</h3>
-                      </div>
-                      <span className="rd-priority-symbol" aria-hidden="true">
-                        {isOpen ? '−' : '+'}
-                      </span>
-                    </div>
-
-                    <div className="rd-priority-sheet-body">
-                      <p className="rd-priority-description">{item.body}</p>
-                      <div className="rd-priority-pill">
-                        <span>PRIORITY {itemNumber}</span>
-                        <span aria-hidden="true" style={{ marginLeft: '6px' }}>&rarr;</span>
-                      </div>
-                    </div>
+                  <div className="biz-sheet-body">
+                    <p className="biz-sheet-desc">{item.body}</p>
+                    <span className="biz-sheet-learn">PRIORITY {itemNumber} →</span>
                   </div>
-                </button>
+                </div>
               </article>
             );
           })}
@@ -376,58 +357,37 @@ export default function RdPage() {
       </div>
 
 
-      {/* Innovation Enabled by Technology */}
-      <div className="rd-tech">
-        <div className="rd-tech-head">
-          <h2>Innovation Enabled by Technology</h2>
-          <h4>
-            We are actively deploying a range of digital tools to support our integrated
-            development platform with a more connected, efficient and future-ready innovation
-            ecosystem.
-          </h4>
-        </div>
-        <div className="rd-tech-grid">
-          {TECH_ITEMS.map((item) => {
-            const hasValidImage = item.image && !imgErrors[item.image];
-            return (
-              <article
-                key={item.title}
-                className={`rd-tech-card${hasValidImage ? ' rd-tech-card--has-image' : ''}`}
-                tabIndex={0}
-              >
-                {item.image && (
-                  <>
-                    <img
-                      className="rd-tech-card-bg"
-                      src={`${R}${item.image}`}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      onError={() => {
-                        setImgErrors((prev) => ({ ...prev, [item.image]: true }));
-                      }}
-                      style={imgErrors[item.image] ? { display: 'none' } : undefined}
-                    />
-                    {hasValidImage && <div className="rd-tech-card-overlay" />}
-                  </>
-                )}
-                <div className="rd-tech-header">
-                  <span className="rd-tech-icon">
+      {/* Innovation Enabled by Technology — same panel as Company Values */}
+      <section className="cp-values-section rd-tech" aria-label="Innovation enabled by technology">
+        <img
+          className="cp-bg"
+          src="/assets/rd/tech-mesh.jpg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="cp-values-inner">
+          <span className="cp-values-badge">Innovation</span>
+          <div className="cp-values-grid">
+            {TECH_ITEMS.map((item) => (
+              <article className="cp-value-card" tabIndex={0} key={item.title}>
+                <div className="cp-value-header">
+                  <span className="cp-value-icon">
                     <img src={item.icon} alt="" loading="lazy" decoding="async" />
                   </span>
-                  <h4 className="rd-tech-title-top">{item.title}</h4>
+                  <h4 className="cp-value-title-top">{item.title}</h4>
                 </div>
-                <div className="rd-tech-body">
-                  <h4 className="rd-tech-title-bottom" aria-hidden="true">
+                <div className="cp-value-body">
+                  <h4 className="cp-value-title-bottom" aria-hidden="true">
                     {item.title}
                   </h4>
-                  <p className="rd-tech-desc">{item.body}</p>
+                  <p className="cp-value-desc">{item.body}</p>
                 </div>
               </article>
-            );
-          })}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Cascading Alternating Green Chemistry Section */}
       <div className="rd-green-wrapper">

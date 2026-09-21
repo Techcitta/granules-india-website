@@ -67,7 +67,7 @@ const products = [
 
 const news = [
   {
-    image: 'news-1.webp',
+    image: 'news-1.jpg',
     title: 'Granules India secures sole first-to-file status for generic drug',
     body: 'Granules India has secured sole first-to-file status for a generic drug, strengthening its position in regulated markets.',
     href: 'https://economictimes.indiatimes.com/markets/stocks/news/granules-india-promoter-sells-1-72-crore-shares-worth-rs-1500-crore-goldman-sachs-bnp-paribas-among-investors/articleshow/134077487.cms?from=mdr',
