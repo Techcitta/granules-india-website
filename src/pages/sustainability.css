@@ -260,6 +260,20 @@
   }
 }
 
+@media (max-width: 640px) {
+  .sus-pillar-card {
+    height: 480px !important;
+    min-height: 480px !important;
+    max-height: 480px !important;
+    border-radius: 28px !important;
+  }
+
+  .sus-pillar-sheet {
+    border-radius: 24px 24px 28px 28px !important;
+    padding: 24px 20px 24px !important;
+  }
+}
+
 /* Generic stat display: big number + uppercase label */
 .sus-stat {
   display: flex;

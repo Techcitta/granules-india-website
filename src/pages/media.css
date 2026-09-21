@@ -924,6 +924,14 @@
     border-radius: 24px;
   }
 
+  .med-tabs-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
   .med-news-item {
     flex-direction: column;
     align-items: flex-start;
@@ -985,12 +993,12 @@
   }
 
   .med-follow-icon {
-    width: 90px;
-    height: 90px;
+    width: 48px;
+    height: 48px;
   }
 
-  .med-follow-icon img {
-    width: 34px;
-    height: 34px;
+  .med-follow-icon svg {
+    width: 20px;
+    height: 20px;
   }
 }

@@ -19,7 +19,7 @@
   --fs-body-lg: clamp(16px, 1.05vw, 18px);
   --fs-body: 16px;
   --fs-body-sm: 14px;
-  --fs-nav: 16px;
+  --fs-nav: 16.5px;
   --fs-button: 16px;
   --fs-badge: 13.5px;
   --fs-label: 14px;
@@ -195,10 +195,11 @@ p, li, dd, dt {
   line-height: var(--lh-body) !important;
 }
 
-nav, nav a, nav button {
-  font-size: var(--fs-nav) !important;
-  line-height: var(--lh-body) !important;
-  letter-spacing: 0.2px !important;
+nav, nav a, nav button, .cp-nav-link {
+  font-size: var(--fs-nav, 16.5px) !important;
+  font-weight: 600;
+  line-height: 1.5 !important;
+  letter-spacing: 0.15px !important;
 }
 
 button, [role='button'], .btn, [class*='-btn'] {
@@ -470,6 +471,29 @@ h3.ms-card-year {
 [class*='meta'], [class*='eyebrow'], [class*='label'], [class*='breadcrumb'] {
   font-size: var(--fs-meta) !important;
   line-height: 1.4 !important;
+}
+
+.cp-breadcrumb,
+p.cp-breadcrumb,
+.ld-main-breadcrumb,
+.ld-profile-breadcrumb,
+.ehs-breadcrumb {
+  margin-top: 96px !important;
+  margin-bottom: 8px !important;
+  font-size: 13px !important;
+  letter-spacing: 0.9px !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 768px) {
+  .cp-breadcrumb,
+  p.cp-breadcrumb,
+  .ld-main-breadcrumb,
+  .ld-profile-breadcrumb,
+  .ehs-breadcrumb {
+    margin-top: 86px !important;
+    margin-bottom: 8px !important;
+  }
 }
 
 @media (max-width: 767px) {

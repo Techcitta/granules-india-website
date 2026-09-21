@@ -1717,6 +1717,25 @@
    MOBILE & TABLET BROWSERS ONLY (< 992px)
    ========================================================================== */
 @media (max-width: 991px) {
+  .ov-goal-peek {
+    display: none !important;
+  }
+
+  .ov-goal-card {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 28px 24px !important;
+    min-height: auto !important;
+    border-radius: 28px !important;
+  }
+
+  .ov-goals {
+    padding: 40px 20px !important;
+    border-radius: 28px !important;
+  }
 
   .sus-lead-hero-wrap,
   .sus-goals-section,

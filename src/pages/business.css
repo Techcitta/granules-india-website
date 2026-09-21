@@ -1025,6 +1025,14 @@ h3.cp-page-title {
 }
 
 @media (max-width: 900px) {
+  .biz-cta {
+    height: auto !important;
+    min-height: 240px !important;
+    max-height: none !important;
+    padding: 32px 24px !important;
+    border-radius: 28px !important;
+  }
+
   .biz-panel {
     height: auto !important;
     min-height: 540px !important;

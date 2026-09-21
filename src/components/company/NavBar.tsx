@@ -289,8 +289,8 @@ export default function NavBar({
                         <span>{link.label}</span>
                         <svg
                           className={`cp-nav-chevron${isOpen ? ' is-open' : ''}`}
-                          width="11"
-                          height="11"
+                          width="14"
+                          height="14"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"

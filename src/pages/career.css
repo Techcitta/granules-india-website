@@ -3109,6 +3109,31 @@
     width: auto !important;
   }
 
+  .car-discover-banner {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding: 32px 24px !important;
+    min-height: auto !important;
+    border-radius: 28px !important;
+  }
+
+  .car-great-place {
+    flex-direction: column;
+    gap: 20px;
+    margin: 48px auto 60px !important;
+  }
+
+  .car-great-place-copy {
+    padding: 36px 24px;
+    border-radius: 28px;
+    min-height: auto;
+  }
+
+  .car-great-place-image {
+    border-radius: 28px;
+    min-height: 200px;
+  }
+
   .car-cta-photo {
     height: auto !important;
     min-height: 250px !important;

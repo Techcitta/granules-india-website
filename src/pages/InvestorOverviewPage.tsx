@@ -153,7 +153,7 @@ export default function InvestorOverviewPage() {
     <div className="cp">
       <NavBar />
 
-      <div className="cp-hero-inner" style={{ paddingTop: 'clamp(18px, 2.2vw, 30px)' }}>
+      <div className="cp-hero-inner">
         <p className="cp-breadcrumb">
           <Link to="/">HOME</Link>
           <span className="sep">›</span>

@@ -31,11 +31,17 @@
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: clamp(100px, 7vw, 130px) auto 12px !important;
+  margin: 112px auto 12px !important;
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   padding: 0 !important;
   flex-wrap: wrap !important;
+}
+
+@media (max-width: 768px) {
+  .ehs-breadcrumb {
+    margin: 98px auto 10px !important;
+  }
 }
 
 .ehs-page-title {
