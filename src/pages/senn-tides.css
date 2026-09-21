@@ -264,14 +264,14 @@ h1.senn-page-header {
 
 .senn-portfolio-carousel .senn-cap-article,
 .biz-track .senn-cap-article {
-  width: clamp(300px, 25vw, 380px) !important;
-  min-width: clamp(300px, 25vw, 380px) !important;
-  max-width: clamp(300px, 25vw, 380px) !important;
-  flex: 0 0 clamp(300px, 25vw, 380px) !important;
+  width: clamp(310px, 25vw, 380px) !important;
+  min-width: clamp(310px, 25vw, 380px) !important;
+  max-width: clamp(310px, 25vw, 380px) !important;
+  flex: 0 0 clamp(310px, 25vw, 380px) !important;
   height: 440px !important;
   min-height: 440px !important;
   max-height: 440px !important;
-  border-radius: 24px !important;
+  border-radius: 28px !important;
 }
 
 .senn-portfolio-carousel .biz-carousel-controls {
@@ -295,13 +295,15 @@ h1.senn-page-header {
     height: 380px !important;
     min-height: 380px !important;
     max-height: 380px !important;
+    border-radius: 24px !important;
   }
 }
 
 .senn-cap-article {
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 28px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 97, 248, 0.08);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.25s ease;
   background: #edf4fa;
@@ -310,20 +312,122 @@ h1.senn-page-header {
 
 .senn-cap-article:hover {
   transform: translateY(-5px);
-  box-shadow: 0 14px 36px rgba(0, 97, 248, 0.12);
-  border-color: rgba(0, 97, 248, 0.2);
+  box-shadow: 0 16px 40px rgba(0, 97, 248, 0.15);
+  border-color: rgba(0, 97, 248, 0.25);
 }
 
 .senn-cap-article img.bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 28px;
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .senn-cap-article:hover img.bg {
   transform: scale(1.05);
+}
+
+/* Matching Image 2: Clean bottom blue drawer sheet */
+.senn-cap-article .biz-sheet {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px 24px 28px 28px !important;
+  background: #0061f8 !important;
+  padding: 20px 24px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 -4px 20px rgba(0, 40, 120, 0.12);
+  transform: translateY(calc(100% - 84px)) !important;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.35s ease !important;
+  will-change: transform;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.senn-cap-article:hover .biz-sheet,
+.senn-cap-article.is-open .biz-sheet {
+  transform: translateY(0) !important;
+  border-radius: 28px !important;
+}
+
+.senn-cap-article .biz-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+}
+
+.senn-cap-article .biz-sheet-title {
+  font: 700 clamp(18px, 1.35vw, 21px)/1.2 'Manrope', sans-serif !important;
+  color: #ffffff !important;
+  max-width: calc(100% - 46px);
+  margin: 0;
+}
+
+.senn-cap-article .biz-sheet-symbol {
+  flex: 0 0 36px !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  display: grid !important;
+  place-items: center !important;
+  color: #0061f8 !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  transform: none !important;
+  transition: transform 0.3s ease !important;
+}
+
+.senn-cap-article:hover .biz-sheet-symbol,
+.senn-cap-article.is-open .biz-sheet-symbol {
+  transform: scale(1.06) !important;
+}
+
+.senn-cap-article .biz-sheet-body {
+  flex: 1 1 auto;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.senn-cap-article:hover .biz-sheet-body,
+.senn-cap-article.is-open .biz-sheet-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.08s;
+}
+
+.senn-cap-article .biz-sheet-desc {
+  margin: 0;
+  font: 400 15px/1.55 'Manrope', sans-serif !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.senn-cap-article .biz-sheet-learn {
+  margin-top: auto;
+  font: 700 12px/1 'Manrope', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 14px;
 }
 
 /* Audience Note - Clean feature bar */

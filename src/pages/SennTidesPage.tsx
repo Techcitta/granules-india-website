@@ -13,43 +13,44 @@ interface CapabilityCard {
   desc: ReactNode;
 }
 
-const CAPABILITY_CARDS: CapabilityCard[] = [
+const WHAT_WE_DO_CARDS: CapabilityCard[] = [
   {
-    title: 'Amino Acid Derivatives',
-    image: '/assets/rd/card-catalysis.webp',
-    desc: 'Senn Chemicals pioneered AAD synthesis and it remains a core capability. Our catalogue includes more than 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, N-methylated derivatives and side-chain-modified derivatives. Selected derivatives can be manufactured under the same cGMP quality systems applied to our peptide APIs.',
+    title: 'Pharma',
+    image: '/assets/peptides/card-contract-services.webp',
+    desc: 'Custom development and cGMP manufacturing of peptide therapeutic APIs for clinical trials and commercial supply, supporting global pharmaceutical innovators.',
   },
   {
-    title: 'Peptide Fragments',
-    image: '/assets/rd/card-solvents.webp',
-    desc: 'Building blocks supplied to innovators and to other peptide manufacturers.',
+    title: 'Cosmetics Peptides',
+    image: '/assets/peptides/card-cosmetic-peptides.webp',
+    desc: 'TFA-free peptide ingredients developed specifically for the European and global cosmetics market, meeting the highest purity and safety standards.',
   },
   {
-    title: 'Peptide APIs',
-    image: '/assets/rd/card-synthesis.webp',
-    desc: 'Peptides ranging from short sequences to chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
+    title: 'Theranostics Peptides',
+    image: '/assets/peptides/card-theragnostic-peptides.webp',
+    desc: 'Linker-ready peptides, chelator conjugation, purification and characterisation, delivered across more than ten GMP campaigns including cold-side precursor supply.',
   },
   {
-    title: 'Theranostic Peptides',
-    image: '/assets/rd/priority-future-ready-technologies.webp',
-    desc: 'Linker-ready peptides, chelator conjugation, purification and characterisation. We have delivered more than ten GMP campaigns, including cold-side precursor supply at commercial scale.',
-  },
-  {
-    title: 'Cosmetic Peptides',
-    image: '/assets/rd/card-biocatalysis.webp',
-    desc: 'TFA-free peptide ingredients developed for the European cosmetics market.',
-  },
-  {
-    title: 'Oligonucleotides and Antibody-Drug Conjugates',
+    title: 'Oligos',
     image: '/assets/rd/priority-scientific-capabilities.webp',
-    desc: (
-      <>
-        <strong>Expansion is underway.</strong>
-        <br />
-        <br />
+    desc: 'Platform expansion underway into custom oligonucleotides and antibody-drug conjugates (ADCs) to advance complex next-generation modalities.',
+  },
+];
 
-      </>
-    ),
+const WHOM_WE_SERVE_CARDS: CapabilityCard[] = [
+  {
+    title: 'AAD',
+    image: '/assets/rd/card-catalysis.webp',
+    desc: 'Pioneered AAD synthesis with a catalogue of over 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, and side-chain-modified derivatives.',
+  },
+  {
+    title: 'Fragments',
+    image: '/assets/rd/card-solvents.webp',
+    desc: 'High-purity peptide building blocks and intermediate fragments supplied to pharmaceutical innovators and commercial peptide manufacturers.',
+  },
+  {
+    title: 'API',
+    image: '/assets/rd/card-synthesis.webp',
+    desc: 'Custom peptide APIs ranging from short sequences to complex chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
   },
 ];
 
@@ -140,21 +141,6 @@ const PHASES_DATA = [
 
 const MANUFACTURING_DATA = [
   {
-    category: 'GMP Manufacturing, Dielsdorf',
-    badge: 'Switzerland Facility',
-    description: 'Commercial and pilot cGMP production hub with comprehensive synthesis, purification, and isolation suites.',
-    image: '/assets/peptides/footprint-dielsdorf.jpg',
-    items: [
-      'Stainless steel reactor 2,500 L, operating from -20 °C to 150 °C',
-      'Glass-lined reactors range from 100 to 2,500 L, operating from -20 °C to 150 °C',
-      'Hydrogenation reactors range from 20 to 2,500 L, operating at pressures up to 6 bar',
-      'SPPS synthesizer, with capacity for up to 12 kg of resin',
-      'Preparative HPLC chromatography using DAC columns up to 30 cm internal diameter',
-      'Filtration using Nutsche and pressurised filters, together with centrifugation under nitrogen',
-      'Vacuum tray drying, filter drying and lyophilisation with an ice-condensing capacity of up to 20 kg',
-    ],
-  },
-  {
     category: 'Kilo Laboratory',
     badge: 'Pilot & Scale-Up',
     description: 'Specialized kilo-scale pilot plant for process optimization and mid-scale intermediate development.',
@@ -177,6 +163,21 @@ const MANUFACTURING_DATA = [
       'Open product handling under laminar airflow within a Grade D equivalent environment',
     ],
   },
+  {
+    category: 'GMP Manufacturing',
+    badge: 'Switzerland Facility',
+    description: 'Commercial and pilot cGMP production hub with comprehensive synthesis, purification, and isolation suites.',
+    image: '/assets/peptides/footprint-dielsdorf.jpg',
+    items: [
+      'Stainless steel reactor 2,500 L, operating from -20 °C to 150 °C',
+      'Glass-lined reactors range from 100 to 2,500 L, operating from -20 °C to 150 °C',
+      'Hydrogenation reactors range from 20 to 2,500 L, operating at pressures up to 6 bar',
+      'SPPS synthesizer, with capacity for up to 12 kg of resin',
+      'Preparative HPLC chromatography using DAC columns up to 30 cm internal diameter',
+      'Filtration using Nutsche and pressurised filters, together with centrifugation under nitrogen',
+      'Vacuum tray drying, filter drying and lyophilisation with an ice-condensing capacity of up to 20 kg',
+    ],
+  },
 ];
 
 
@@ -184,7 +185,7 @@ const MANUFACTURING_DATA = [
 const FOOTPRINT_LIST = [
   {
     country: 'Switzerland',
-    location: 'Senn Chemicals AG, Dielsdorf, Zurich',
+    location: 'Zurich',
     details: 'R&D, kilo-scale development, GMP production, QC, QA and warehousing. The site employs more than 80 people and has been operational since 1963.',
     image: '/assets/facilities/Senn Chem.png',
     flag: (
@@ -257,17 +258,12 @@ const LEADERSHIP_TEAM: LeaderMember[] = [
 ];
 
 export default function SennTidesPage() {
-  const [openCard, setOpenCard] = useState<number>(-1);
+  const [openWhatWeDo, setOpenWhatWeDo] = useState<number>(-1);
+  const [openWhomWeServe, setOpenWhomWeServe] = useState<number>(-1);
   const [flippedMfgCard, setFlippedMfgCard] = useState<number | null>(null);
-  const {
-    swipeProps,
-    isDragging,
-    scrollProgress,
-    canScrollLeft,
-    canScrollRight,
-    thumbWidth,
-    scroll,
-  } = useSwipeScroll();
+
+  const whatWeDoScroll = useSwipeScroll();
+  const whomWeServeScroll = useSwipeScroll();
 
   useEffect(() => {
     document.title = 'Senn Tides | Peptide CDMO in Switzerland and India | Granules India';
@@ -357,20 +353,20 @@ export default function SennTidesPage() {
         </a>
       </section>
 
-      {/* Interactive Capabilities Carousel */}
+      {/* What We Do Carousel */}
       <div className="biz-carousel senn-portfolio-carousel">
-        <div className={`biz-track${isDragging ? ' is-dragging' : ''}`} {...swipeProps}>
-          {CAPABILITY_CARDS.map((card, idx) => {
-            const isOpen = openCard === idx;
+        <div className={`biz-track${whatWeDoScroll.isDragging ? ' is-dragging' : ''}`} {...whatWeDoScroll.swipeProps}>
+          {WHAT_WE_DO_CARDS.map((card, idx) => {
+            const isOpen = openWhatWeDo === idx;
             return (
               <article
                 className={`biz-card senn-cap-article${isOpen ? ' is-open' : ''}`}
                 key={card.title}
-                onMouseEnter={() => setOpenCard(idx)}
-                onMouseLeave={() => setOpenCard(-1)}
+                onMouseEnter={() => setOpenWhatWeDo(idx)}
+                onMouseLeave={() => setOpenWhatWeDo(-1)}
                 onClick={() => {
-                  if (isDragging) return;
-                  setOpenCard(isOpen ? -1 : idx);
+                  if (whatWeDoScroll.isDragging) return;
+                  setOpenWhatWeDo(isOpen ? -1 : idx);
                 }}
               >
                 <img className="bg" src={card.image} alt={card.title} loading="lazy" decoding="async" />
@@ -391,38 +387,120 @@ export default function SennTidesPage() {
           })}
         </div>
 
-        {/* Carousel Controls */}
-        <div className="biz-carousel-controls">
-          <div className="biz-progress-track">
-            <div
-              className="biz-progress-bar"
-              style={{
-                width: `${thumbWidth}%`,
-                left: `${scrollProgress * (100 - thumbWidth)}%`,
-              }}
-            />
+        {/* What We Do Carousel Controls - Only shown when scrolling is needed */}
+        {whatWeDoScroll.hasScroll && (
+          <div className="biz-carousel-controls">
+            <div className="biz-progress-track">
+              <div
+                className="biz-progress-bar"
+                style={{
+                  width: `${whatWeDoScroll.thumbWidth}%`,
+                  left: `${whatWeDoScroll.scrollProgress * (100 - whatWeDoScroll.thumbWidth)}%`,
+                }}
+              />
+            </div>
+            <div className="biz-carousel-arrows">
+              <button
+                type="button"
+                className="biz-arrow-btn"
+                onClick={() => whatWeDoScroll.scroll(-1)}
+                disabled={!whatWeDoScroll.canScrollLeft}
+                aria-label="Scroll left"
+              >
+                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+              </button>
+              <button
+                type="button"
+                className="biz-arrow-btn"
+                onClick={() => whatWeDoScroll.scroll(1)}
+                disabled={!whatWeDoScroll.canScrollRight}
+                aria-label="Scroll right"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+            </div>
           </div>
-          <div className="biz-carousel-arrows">
-            <button
-              type="button"
-              className="biz-arrow-btn"
-              onClick={() => scroll(-1)}
-              disabled={!canScrollLeft}
-              aria-label="Scroll left"
-            >
-              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
-            </button>
-            <button
-              type="button"
-              className="biz-arrow-btn"
-              onClick={() => scroll(1)}
-              disabled={!canScrollRight}
-              aria-label="Scroll right"
-            >
-              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-          </div>
+        )}
+      </div>
+
+      {/* Whom We Serve Section */}
+      <section className="senn-section-head" aria-label="Whom We Serve">
+        <div className="copy">
+          <h2>Whom We Serve</h2>
+          <h4>
+            We deliver specialised peptide solutions across the full product lifecycle — from custom amino acid derivatives and building blocks to commercial-scale Active Pharmaceutical Ingredients.
+          </h4>
         </div>
+      </section>
+
+      {/* Whom We Serve Carousel */}
+      <div className="biz-carousel senn-portfolio-carousel">
+        <div className={`biz-track${whomWeServeScroll.isDragging ? ' is-dragging' : ''}`} {...whomWeServeScroll.swipeProps}>
+          {WHOM_WE_SERVE_CARDS.map((card, idx) => {
+            const isOpen = openWhomWeServe === idx;
+            return (
+              <article
+                className={`biz-card senn-cap-article${isOpen ? ' is-open' : ''}`}
+                key={card.title}
+                onMouseEnter={() => setOpenWhomWeServe(idx)}
+                onMouseLeave={() => setOpenWhomWeServe(-1)}
+                onClick={() => {
+                  if (whomWeServeScroll.isDragging) return;
+                  setOpenWhomWeServe(isOpen ? -1 : idx);
+                }}
+              >
+                <img className="bg" src={card.image} alt={card.title} loading="lazy" decoding="async" />
+                <div className="biz-sheet">
+                  <div className="biz-sheet-head">
+                    <span className="biz-sheet-title">{card.title}</span>
+                    <span className="biz-sheet-symbol" aria-hidden="true">
+                      {isOpen ? '−' : '+'}
+                    </span>
+                  </div>
+                  <div className="biz-sheet-body">
+                    <p className="biz-sheet-desc">{card.desc}</p>
+                    <span className="biz-sheet-learn">LEARN MORE ↗</span>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Whom We Serve Carousel Controls - Only shown when scrolling is needed */}
+        {whomWeServeScroll.hasScroll && (
+          <div className="biz-carousel-controls">
+            <div className="biz-progress-track">
+              <div
+                className="biz-progress-bar"
+                style={{
+                  width: `${whomWeServeScroll.thumbWidth}%`,
+                  left: `${whomWeServeScroll.scrollProgress * (100 - whomWeServeScroll.thumbWidth)}%`,
+                }}
+              />
+            </div>
+            <div className="biz-carousel-arrows">
+              <button
+                type="button"
+                className="biz-arrow-btn"
+                onClick={() => whomWeServeScroll.scroll(-1)}
+                disabled={!whomWeServeScroll.canScrollLeft}
+                aria-label="Scroll left"
+              >
+                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+              </button>
+              <button
+                type="button"
+                className="biz-arrow-btn"
+                onClick={() => whomWeServeScroll.scroll(1)}
+                disabled={!whomWeServeScroll.canScrollRight}
+                aria-label="Scroll right"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Four Synthesis Routes Table */}
