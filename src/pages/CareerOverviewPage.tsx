@@ -73,7 +73,7 @@ const GRANULES_WAY_SLIDES = [
     id: 2,
     title: 'Credibility | Make trust visible',
     body: 'Be honest, transparent and reliable. Match words with actions and uphold ethical standards.',
-    image: `${A}panel-innovation.webp`,
+    image: `${A}granules-way-02.jpg`,
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -84,7 +84,7 @@ const GRANULES_WAY_SLIDES = [
     id: 3,
     title: 'Teamwork | Share the win',
     body: 'Invite different perspectives, exchange knowledge and succeed together.',
-    image: `/assets/company/empowering-employees.png`,
+    image: `${A}granules-way-03.jpg`,
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -189,19 +189,19 @@ const BENEFITS = [
     id: 'beyond',
     title: 'Beyond the workday',
     desc: 'We bring people together through sports tournaments, festival celebrations and team events that build connection, wellbeing and a shared sense of belonging.',
-    image: '/assets/company/career-bg.png',
+    image: `${A}benefit-beyond.jpg`,
   },
   {
     id: 'learning',
     title: 'Learning and recognition',
     desc: 'We encourage continuous growth through learning opportunities, career development support and recognize meaningful contributions.',
-    image: `${A}training.jpeg`,
+    image: `${A}benefit-learning.jpg`,
   },
   {
     id: 'inclusion',
     title: 'Inclusion and support',
     desc: 'We foster an inclusive workplace with equal opportunity, collaboration, and safe channels for employees to raise concerns.',
-    image: '/assets/company/empowering-employees.png',
+    image: `${A}benefit-inclusion.jpg`,
   },
 ];
 

@@ -246,7 +246,7 @@ function IntegrationMark({ type }: { type: Integration }) {
 
 const products = [
   {
-    image: 'news-3.webp',
+    image: 'fd/fd-card.jpg',
     title: 'Finished Dosages (FDs)',
     eyebrow: 'FD',
     body: 'Scale and complexity supported by multi-site supply capabilities, comprehensive oral solid dosage solutions engineered for affordability, patient safety, and global compliance.',
@@ -262,7 +262,7 @@ const products = [
     cta: 'Click here to know more',
   },
   {
-    image: 'news-2.webp',
+    image: 'api.webp',
     title: 'Active Pharmaceutical Ingredients (APIs)',
     eyebrow: 'API',
     body: 'Large-scale manufacturing capabilities, integrated operations, and deep process chemistry delivering high-volume legacy molecules and complex niche APIs across 80+ countries.',

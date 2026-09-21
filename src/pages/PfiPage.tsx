@@ -13,13 +13,13 @@ const BENEFITS: BenefitItem[] = [
     title: 'Unmatched Scale and Reliability',
     body: 'Backward integrated and high-volume manufacturing assures consistent quality, dependable supply, and efficient commercial-scale production.',
     icon: 'icon-manufacturing.svg',
-    image: '/assets/pfi/1.png',
+    image: '/assets/pfi/1.jpg',
   },
   {
     title: 'Simplifying Supply Chain Complexity',
     body: 'Our proprietary “Drum to Hopper” model enables direct compression with minimal development effort, helping customers streamline supply chain steps and inventory pressure',
     icon: 'icon-box.svg',
-    image: '/assets/pfi/2.png',
+    image: '/assets/pfi/2.jpg',
   },
   {
     title: 'Supporting Asset-Light Market Entry',
