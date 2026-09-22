@@ -691,7 +691,7 @@ export default function SustainabilityOverviewPage() {
       <NavBar />
 
       <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
-        <a href="/">HOME</a>
+        <Link to="/">HOME</Link>
         <span className="sep">›</span>
         <span className="current">SUSTAINABILITY</span>
       </p>

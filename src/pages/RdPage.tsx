@@ -215,7 +215,7 @@ export default function RdPage() {
       <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <Link to="/business/api">BUSINESS</Link>
+        <Link to="/business">BUSINESS</Link>
         <span className="sep">›</span>
         <span className="current">RESEARCH &amp; DEVELOPMENT</span>
       </p>

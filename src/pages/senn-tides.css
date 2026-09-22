@@ -123,12 +123,12 @@ h1.senn-page-header {
    Overview Narrative Section
    ========================================================================== */
 .senn-intro {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 75px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(28px, 3vw, 40px) auto 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .senn-intro h4,
@@ -144,31 +144,40 @@ h1.senn-page-header {
 .senn-intro.is-scrolled .part-1,
 .senn-intro.is-scrolled .part-2 {
   margin: 0;
-  font: 400 clamp(18px, 1.3vw, 22px)/1.5 'Manrope', sans-serif !important;
+  font: 400 clamp(16px, 1.2vw, 20px)/1.55 'Manrope', sans-serif !important;
   color: var(--n9, #0f172a) !important;
   letter-spacing: -0.2px !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 /* ==========================================================================
    Section Header Standard
    ========================================================================== */
 .senn-section-head {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 75px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(28px, 3vw, 40px) auto 0 !important;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .senn-section-head .copy {
-  max-width: 860px;
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
+}
+
+.senn-section-head:has(.cp-cta-btn) .copy {
+  width: auto !important;
+  max-width: calc(100% - 240px) !important;
 }
 
 .senn-section-head .cp-section-badge {
@@ -181,14 +190,17 @@ h1.senn-page-header {
   font: 700 clamp(24px, 2.8vw, 38px)/1.2 'Manrope', sans-serif;
   color: #0f172a;
   letter-spacing: -0.02em;
+  width: 100%;
 }
 
 .senn-section-head h4,
 .senn-section-head p {
   margin: 0;
-  font: 400 clamp(18px, 1.3vw, 22px)/1.5 'Manrope', sans-serif !important;
+  font: 400 clamp(16px, 1.2vw, 20px)/1.55 'Manrope', sans-serif !important;
   color: #6a6a6a !important;
   letter-spacing: -0.2px !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .senn-routes-section>.senn-section-head,
@@ -232,9 +244,9 @@ h1.senn-page-header {
    Portfolio Carousel (Horizontal scroll track, progress bar & arrow navigation)
    ========================================================================== */
 .senn-portfolio-carousel {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 24px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: 16px auto 0 !important;
   overflow: visible !important;
 }
 
@@ -299,6 +311,74 @@ h1.senn-page-header {
   }
 }
 
+/* ==========================================================================
+   Senn Tides 3-Card Section (Matching Image 1: Identical Size, Styling & Sheet)
+   ========================================================================== */
+.senn-3cards-wrap {
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: 16px auto 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.senn-3cards-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  justify-content: center !important;
+}
+
+.senn-3cards-grid .senn-cap-article {
+  width: clamp(310px, 25vw, 380px) !important;
+  min-width: clamp(310px, 25vw, 380px) !important;
+  max-width: clamp(310px, 25vw, 380px) !important;
+  flex: 0 0 clamp(310px, 25vw, 380px) !important;
+  height: 440px !important;
+  min-height: 440px !important;
+  max-height: 440px !important;
+  border-radius: 28px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1080px) {
+  .senn-3cards-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 16px auto 0 !important;
+    padding-left: 7.5% !important;
+    padding-right: 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+
+  .senn-3cards-wrap::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .senn-3cards-grid {
+    display: flex !important;
+    gap: 20px !important;
+    width: max-content !important;
+    padding-right: 7.5% !important;
+    padding-bottom: 12px !important;
+  }
+
+  .senn-3cards-grid .senn-cap-article {
+    width: 82vw !important;
+    min-width: 82vw !important;
+    max-width: 82vw !important;
+    flex: 0 0 82vw !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
+    border-radius: 24px !important;
+  }
+}
+
 .senn-cap-article {
   position: relative;
   overflow: hidden;
@@ -331,7 +411,7 @@ h1.senn-page-header {
   transform: scale(1.05);
 }
 
-/* Matching Image 2: Clean bottom blue drawer sheet */
+/* Matching Image 1: Clean bottom blue drawer sheet */
 .senn-cap-article .biz-sheet {
   position: absolute;
   inset: 0;
@@ -469,10 +549,10 @@ h1.senn-page-header {
 .senn-routes-section {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: 75px auto 0 !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
 }
 
 .senn-routes-table-wrap {
@@ -597,9 +677,9 @@ h1.senn-page-header {
    ========================================================================== */
 
 .senn-block-section {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 75px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1245,7 +1325,7 @@ h4.senn-cap-banner-text {
 .senn-cta {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: 75px auto 75px !important;
+  margin: clamp(40px, 4.5vw, 60px) auto clamp(40px, 4.5vw, 60px) !important;
   height: 250px !important;
   min-height: 250px !important;
   max-height: 250px !important;
@@ -1388,7 +1468,7 @@ h4.senn-cap-banner-text {
 .peptides-stats-grid {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: 75px auto 0 !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(16px, 2vw, 24px);
@@ -1536,12 +1616,12 @@ h4.senn-cap-banner-text {
 }
 
 .senn-capacity-section {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 75px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .senn-capacity-card {
@@ -1592,21 +1672,21 @@ h4.senn-cap-banner-text {
    Phases, Compliance & Footprint Sections
    ========================================================================== */
 .senn-phases-section {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 75px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .senn-compliance-section {
-  width: 85% !important;
-  max-width: 85% !important;
-  margin: 75px auto 0 !important;
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .senn-compliance-grid {
@@ -1660,10 +1740,10 @@ h4.senn-cap-banner-text {
 .senn-footprint-section {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: 75px auto 0 !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .senn-footprint-grid {
@@ -1771,7 +1851,7 @@ h4.senn-cap-banner-text {
 .senn-staircase-section {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: 75px auto 0 !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1936,12 +2016,13 @@ h4.senn-cap-banner-text {
 }
 
 .peptides-lifecycle .senn-staircase-head {
-  max-width: 820px;
+  width: 100% !important;
+  max-width: 100% !important;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: clamp(28px, 3.2vw, 40px);
+  margin-bottom: clamp(20px, 2.4vw, 32px);
   position: relative;
   z-index: 2;
 }
@@ -1955,7 +2036,8 @@ h4.senn-cap-banner-text {
 
 .peptides-lifecycle .senn-staircase-head h4 {
   margin: 0;
-  max-width: 640px;
+  width: 100% !important;
+  max-width: 100% !important;
   font: 400 clamp(16px, 1.2vw, 20px)/1.5 'Manrope', sans-serif !important;
   color: #64748b !important;
 }
@@ -1965,10 +2047,7 @@ h4.senn-cap-banner-text {
 }
 
 .peptides-lifecycle .cdmo-staircase-svg {
-  top: 0;
-  left: 0;
-  height: 100%;
-  z-index: 3;
+  display: none !important;
 }
 
 .peptides-lifecycle .senn-staircase-grid {
@@ -2025,16 +2104,7 @@ h4.senn-cap-banner-text {
 }
 
 .peptides-lifecycle .cdmo-step-node {
-  position: absolute;
-  top: 18%;
-  left: 14%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #0061f8;
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 0 3px rgba(0, 97, 248, 0.18);
-  z-index: 2;
+  display: none !important;
 }
 
 .peptides-lifecycle .cdmo-step-body {
@@ -2083,7 +2153,7 @@ h4.senn-cap-banner-text {
 .peptides-capabilities-section {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
-  margin: 75px auto 0 !important;
+  margin: clamp(36px, 3.8vw, 50px) auto 0 !important;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -2422,7 +2492,7 @@ h4.senn-cap-banner-text {
 .senn-stack-wrap {
   position: relative;
   width: 100%;
-  margin-top: 75px;
+  margin-top: clamp(36px, 3.8vw, 50px);
   padding-bottom: 0;
   display: flex;
   flex-direction: column;

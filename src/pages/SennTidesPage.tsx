@@ -264,7 +264,6 @@ export default function SennTidesPage() {
   const [flippedMfgCard, setFlippedMfgCard] = useState<number | null>(null);
 
   const whatWeDoScroll = useSwipeScroll();
-  const whomWeServeScroll = useSwipeScroll();
 
   useEffect(() => {
     document.title = 'Senn Tides | Peptide CDMO in Switzerland and India | Granules India';
@@ -380,7 +379,6 @@ export default function SennTidesPage() {
                   </div>
                   <div className="biz-sheet-body">
                     <p className="biz-sheet-desc">{card.desc}</p>
-                    <span className="biz-sheet-learn">LEARN MORE ↗</span>
                   </div>
                 </div>
               </article>
@@ -424,9 +422,8 @@ export default function SennTidesPage() {
         )}
       </div>
 
-
-      {/* Whom We Serve Section */}
-      <section className="senn-section-head" aria-label="Whom We Serve">
+      {/* What we do Section */}
+      <section className="senn-section-head" aria-label="What We Do">
         <div className="copy">
           <h2>What we do</h2>
           <h4>
@@ -435,9 +432,9 @@ export default function SennTidesPage() {
         </div>
       </section>
 
-      {/* Whom We Serve Carousel */}
-      <div className="biz-carousel senn-portfolio-carousel">
-        <div className={`biz-track${whomWeServeScroll.isDragging ? ' is-dragging' : ''}`} {...whomWeServeScroll.swipeProps}>
+      {/* 3-Card Grid matching Image 2: Centered 3-Column Layout */}
+      <div className="senn-3cards-wrap">
+        <div className="senn-3cards-grid">
           {WHOM_WE_SERVE_CARDS.map((card, idx) => {
             const isOpen = openWhomWeServe === idx;
             return (
@@ -447,7 +444,6 @@ export default function SennTidesPage() {
                 onMouseEnter={() => setOpenWhomWeServe(idx)}
                 onMouseLeave={() => setOpenWhomWeServe(-1)}
                 onClick={() => {
-                  if (whomWeServeScroll.isDragging) return;
                   setOpenWhomWeServe(isOpen ? -1 : idx);
                 }}
               >
@@ -461,48 +457,12 @@ export default function SennTidesPage() {
                   </div>
                   <div className="biz-sheet-body">
                     <p className="biz-sheet-desc">{card.desc}</p>
-                    <span className="biz-sheet-learn">LEARN MORE ↗</span>
                   </div>
                 </div>
               </article>
             );
           })}
         </div>
-
-        {/* Whom We Serve Carousel Controls - Only shown when scrolling is needed */}
-        {whomWeServeScroll.hasScroll && (
-          <div className="biz-carousel-controls">
-            <div className="biz-progress-track">
-              <div
-                className="biz-progress-bar"
-                style={{
-                  width: `${whomWeServeScroll.thumbWidth}%`,
-                  left: `${whomWeServeScroll.scrollProgress * (100 - whomWeServeScroll.thumbWidth)}%`,
-                }}
-              />
-            </div>
-            <div className="biz-carousel-arrows">
-              <button
-                type="button"
-                className="biz-arrow-btn"
-                onClick={() => whomWeServeScroll.scroll(-1)}
-                disabled={!whomWeServeScroll.canScrollLeft}
-                aria-label="Scroll left"
-              >
-                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <button
-                type="button"
-                className="biz-arrow-btn"
-                onClick={() => whomWeServeScroll.scroll(1)}
-                disabled={!whomWeServeScroll.canScrollRight}
-                aria-label="Scroll right"
-              >
-                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Four Synthesis Routes Table */}
@@ -567,23 +527,11 @@ export default function SennTidesPage() {
           </div>
 
           <div className="senn-staircase-track-wrap">
-            <svg className="cdmo-staircase-svg" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
-              <path
-                d="M 82,122 C 210,112 250,92 338,82 S 560,58 688,50 S 840,40 922,36"
-                fill="none"
-                stroke="#5aa6ff"
-                strokeWidth="2.75"
-                strokeDasharray="7 10"
-                strokeLinecap="round"
-              />
-            </svg>
-
             <div className="senn-staircase-grid">
               {PHASES_DATA.map((p, idx) => (
                 <div className={`cdmo-step-card step-${idx + 1}`} key={p.phase}>
                   <div className="cdmo-step-media">
                     <img src={p.image} alt={`${p.quantity} — ${p.activity}`} />
-                    <span className="cdmo-step-node" />
                   </div>
                   <div className="cdmo-step-body">
                     <div className="cdmo-step-icon-wrap">{p.icon}</div>

@@ -252,12 +252,11 @@ export default function EhsSubmissionsPage() {
         <h1 className="cp-page-title ehs-page-title">EHS Submissions</h1>
 
 
-        <div className="ehs-container" style={{ marginTop: 'clamp(40px, 4.5vw, 64px)' }}>
-          {/* Section Header with Side-by-Side Filters (Matching the Reference UI) */}
-          <div className="inv-doc-section-head">
-
+        <div className="ehs-container">
+          {/* Section Filter Toolbar with Balanced Controls & Document Counter */}
+          <div className="ehs-filter-bar">
             {/* Side-by-Side Pill Dropdowns: All Categories & All Years */}
-            <div className="inv-doc-head-filters" aria-label="Filter EHS Documents">
+            <div className="ehs-filter-controls" aria-label="Filter EHS Documents">
               <div className="inv-header-filter-group">
                 <CustomDropdown
                   id="ehs-category-dropdown"
@@ -279,18 +278,36 @@ export default function EhsSubmissionsPage() {
                   ariaLabel="Select reporting year"
                 />
               </div>
+
+              {(selectedCategory !== 'ALL' || selectedYear !== 'ALL') && (
+                <button
+                  type="button"
+                  className="ehs-filter-reset-btn"
+                  onClick={() => {
+                    setSelectedCategory('ALL');
+                    setSelectedYear('ALL');
+                  }}
+                  title="Clear all active filters"
+                >
+                  <span>Reset Filters</span>
+                </button>
+              )}
+            </div>
+
+            <div className="ehs-doc-count-badge">
+              {filteredDocs.length} {filteredDocs.length === 1 ? 'Document' : 'Documents'}
             </div>
           </div>
 
-          {/* Document Table (Exact Investor / Sustainability Theme from Screenshot) */}
+          {/* Document Table (Investor / Sustainability Theme with Balanced Proportions) */}
           <div className="inv-table-wrap">
             <table className="inv-data-table" aria-label="EHS Submissions Document Table">
               <thead>
                 <tr>
-                  <th style={{ width: '42%' }}>REPORT / DOCUMENT NAME</th>
-                  <th style={{ width: '28%' }}>ENTITY / REPORTING SCOPE</th>
-                  <th style={{ width: '15%' }}>REPORTING PERIOD</th>
-                  <th style={{ width: '15%', textAlign: 'right' }}>ACTION</th>
+                  <th style={{ width: '48%' }}>REPORT / DOCUMENT NAME</th>
+                  <th style={{ width: '27%' }}>ENTITY / REPORTING SCOPE</th>
+                  <th style={{ width: '12%' }}>REPORTING PERIOD</th>
+                  <th style={{ width: '13%', textAlign: 'right' }}>ACTION</th>
                 </tr>
               </thead>
               <tbody>

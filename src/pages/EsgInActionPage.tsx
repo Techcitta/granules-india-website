@@ -102,9 +102,9 @@ export default function EsgInActionPage() {
       <NavBar />
 
       <p className="cp-breadcrumb">
-        <a href="/">HOME</a>
+        <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <a href="/sustainability">SUSTAINABILITY</a>
+        <Link to="/sustainability">SUSTAINABILITY</Link>
         <span className="sep">›</span>
         <span className="current">ESG IN ACTION</span>
       </p>

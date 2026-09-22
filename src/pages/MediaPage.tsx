@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter, CareerSection } from '../components/company';
 import '../components/company/company.css';
 import './media.css';
@@ -114,7 +115,7 @@ export default function MediaPage() {
 
       <div className="cp-hero-inner" style={{ paddingTop: 'clamp(18px, 2.2vw, 30px)' }}>
         <p className="cp-breadcrumb">
-          <a href="/">HOME</a>
+          <Link to="/">HOME</Link>
           <span className="sep">›</span>
           <span className="current">MEDIA</span>
         </p>

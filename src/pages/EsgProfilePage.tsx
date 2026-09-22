@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import '../components/company/company.css';
 import './esg-profile.css';
@@ -140,9 +141,9 @@ export default function EsgProfilePage() {
         className="cp-breadcrumb"
         style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}
       >
-        <a href="/">HOME</a>
+        <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <a href="/sustainability">SUSTAINABILITY</a>
+        <Link to="/sustainability">SUSTAINABILITY</Link>
         <span className="sep">›</span>
         <span className="current">ESG PROFILE</span>
       </p>

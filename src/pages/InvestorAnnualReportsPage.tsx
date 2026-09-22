@@ -39,11 +39,11 @@ export default function InvestorAnnualReportsPage() {
       <NavBar />
 
       <p className="cp-breadcrumb" style={{ width: '85%', maxWidth: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
-        <a href="/">HOME</a>
+        <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <a href="/investors">INVESTOR</a>
+        <Link to="/investor">INVESTOR</Link>
         <span className="sep">›</span>
-        <a href="/investors">FINANCIAL REPORTS &amp; PERFORMANCE</a>
+        <Link to="/investor">FINANCIAL REPORTS &amp; PERFORMANCE</Link>
         <span className="sep">›</span>
         <span className="current">ANNUAL REPORTS</span>
       </p>

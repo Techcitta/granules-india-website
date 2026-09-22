@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
@@ -54,9 +55,9 @@ export default function PfiPage() {
       <NavBar />
 
       <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
-        <a href="/">HOME</a>
+        <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <a href="/business/api">BUSINESS</a>
+        <Link to="/business">BUSINESS</Link>
         <span className="sep">›</span>
         <span className="current">PHARMACEUTICAL FORMULATION INTERMEDIATES</span>
       </p>
