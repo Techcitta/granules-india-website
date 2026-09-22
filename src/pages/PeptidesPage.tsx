@@ -1,10 +1,65 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import { useSwipeScroll } from '../hooks/useSwipeScroll';
 import '../components/company/company.css';
 import './business.css';
 import './senn-tides.css';
+
+interface SolutionStep {
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+}
+
+const PEPTIDE_SOLUTIONS_STEPS: SolutionStep[] = [
+  {
+    id: 'route-selection',
+    title: 'Route Selection',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0048bc" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="10.5" cy="10.5" r="6.5" />
+        <line x1="21" y1="21" x2="15.2" y2="15.2" />
+      </svg>
+    ),
+  },
+  {
+    id: 'process-development',
+    title: 'Process Development',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0048bc" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 2v7.5L4.5 19.5A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.5L14 9.5V2" />
+        <line x1="8.5" y1="2" x2="15.5" y2="2" />
+        <circle cx="10" cy="16.5" r="1" fill="#0048bc" />
+        <circle cx="14" cy="15" r="1" fill="#0048bc" />
+      </svg>
+    ),
+  },
+  {
+    id: 'gmp-production',
+    title: 'GMP Production',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0048bc" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+        <rect x="8" y="2" width="8" height="4" rx="1.5" />
+        <path d="M9 11h6" />
+        <path d="M9 15h6" />
+      </svg>
+    ),
+  },
+  {
+    id: 'commercial-supply',
+    title: 'Commercial Supply',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0048bc" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="1" y="4" width="14" height="12" rx="1.5" />
+        <polygon points="15 8 19 8 22 11 22 16 15 16 15 8" />
+        <circle cx="5.5" cy="18.5" r="2.5" />
+        <circle cx="18.5" cy="18.5" r="2.5" />
+      </svg>
+    ),
+  },
+];
 
 const PORTFOLIO_ITEMS = [
 
@@ -287,9 +342,34 @@ export default function PeptidesPage() {
           <div className="senn-hero-scrim" />
           <div className="senn-hero-overlay">
             <h3 className="peptides-hero-heading">
-              Custom Peptide Development and Manufacturing, from Feasibility to Commercial Supply
+              Custom Peptide Development Manufacturing Solutions
             </h3>
           </div>
+        </div>
+      </section>
+
+
+      {/* End-to-End Peptide CDMO Solutions Process Flow */}
+      <section className="peptides-solutions-section" aria-label="End-to-End Peptide CDMO Solutions">
+        <div className="peptides-solutions-flow">
+          {PEPTIDE_SOLUTIONS_STEPS.map((step, index) => (
+            <Fragment key={step.id}>
+              <div className="peptides-solution-card">
+                <div className="peptides-solution-icon-wrap" aria-hidden="true">
+                  {step.icon}
+                </div>
+                <h3 className="peptides-solution-title">{step.title}</h3>
+              </div>
+              {index < PEPTIDE_SOLUTIONS_STEPS.length - 1 && (
+                <div className="peptides-solution-arrow" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0048bc" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <polyline points="14 6 20 12 14 18" />
+                  </svg>
+                </div>
+              )}
+            </Fragment>
+          ))}
         </div>
       </section>
 

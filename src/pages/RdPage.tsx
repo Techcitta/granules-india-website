@@ -39,17 +39,9 @@ const RD_CENTERS: RdCenter[] = [
     id: 'IIT Hyderabad',
     location: 'IITH, India',
     title: 'IIT Hyderabad, India',
-    desc: 'Centre of Excellence for Peptide CDMO.',
+    desc: '2 Centres of Excellence focused on Peptide Development and Particle Engineering.',
     image: 'centers-bg.png',
     ctaHref: '/business/rd',
-  },
-  {
-    id: 'pune',
-    location: 'Pune, India',
-    title: 'PUNE, MAHARASHTRA',
-    desc: 'New technology platforms with focus on KSM innovation and backward integration.',
-    image: 'capabilities-bg.png',
-    ctaHref: '/business/api',
   },
   {
     id: 'virginia',
@@ -61,7 +53,7 @@ const RD_CENTERS: RdCenter[] = [
   },
   {
     id: 'switzerland',
-    location: 'Zurich,Switzerland',
+    location: 'Zurich, Switzerland',
     title: 'SENN CHEMICALS, SWITZERLAND',
     desc: 'Peptide & CDMO innovation — decades of peptide synthesis expertise.',
     image: 'capabilities-bg.png',
@@ -159,12 +151,12 @@ const GREEN_CARDS: GreenCard[] = [
   },
   {
     title: 'Usage of Safer Solvents',
-    body: 'Water and ethanol replace harmful chlorinated hydrocarbons',
+    body: 'Water and ethanol replace harmful chlorinated solvents are discouraged, giving emphasis to green solvents',
     image: 'card-solvents.png',
   },
   {
     title: 'Energy-efficient Synthesis Routes',
-    body: 'Reactions run at ambient temperatures and pressures',
+    body: 'Efforts are always towards running the reactions at ambient temperatures and pressures',
     image: 'card-synthesis.png',
   },
   {
@@ -180,6 +172,7 @@ export default function RdPage() {
   const {
     swipeProps,
     isDragging,
+    hasScroll,
     scrollProgress,
     canScrollLeft,
     canScrollRight,
@@ -238,7 +231,7 @@ export default function RdPage() {
           Granules R&amp;D is powering the transformation of a legacy-scale generics company into
           a differentiated, science-led global pharmaceutical platform &mdash; advancing complex
           generics, oncology, CNS/ADHD, peptides and next-generation drug delivery through a
-          global network of six specialised research centres. Our R&amp;D strategy is designed to
+          global network of five specialised research centres. Our R&amp;D strategy is designed to
           strengthen these capabilities while supporting long-term growth through a diversified
           and differentiated product portfolio
         </h4>
@@ -289,37 +282,39 @@ export default function RdPage() {
             })}
           </div>
 
-          <div className="biz-carousel-controls">
-            <div className="biz-progress-track">
-              <div
-                className="biz-progress-bar"
-                style={{
-                  width: `${thumbWidth}%`,
-                  left: `${scrollProgress * (100 - thumbWidth)}%`,
-                }}
-              />
+          {hasScroll && (
+            <div className="biz-carousel-controls">
+              <div className="biz-progress-track">
+                <div
+                  className="biz-progress-bar"
+                  style={{
+                    width: `${thumbWidth}%`,
+                    left: `${scrollProgress * (100 - thumbWidth)}%`,
+                  }}
+                />
+              </div>
+              <div className="biz-carousel-arrows">
+                <button
+                  type="button"
+                  className="biz-arrow-btn"
+                  onClick={() => scroll(-1)}
+                  disabled={!canScrollLeft}
+                  aria-label="Scroll left"
+                >
+                  <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+                </button>
+                <button
+                  type="button"
+                  className="biz-arrow-btn"
+                  onClick={() => scroll(1)}
+                  disabled={!canScrollRight}
+                  aria-label="Scroll right"
+                >
+                  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+                </button>
+              </div>
             </div>
-            <div className="biz-carousel-arrows">
-              <button
-                type="button"
-                className="biz-arrow-btn"
-                onClick={() => scroll(-1)}
-                disabled={!canScrollLeft}
-                aria-label="Scroll left"
-              >
-                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <button
-                type="button"
-                className="biz-arrow-btn"
-                onClick={() => scroll(1)}
-                disabled={!canScrollRight}
-                aria-label="Scroll right"
-              >
-                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -395,12 +390,6 @@ export default function RdPage() {
         </div>
       </div>
 
-      <div className="rd-iit-note">
-        <p>
-          Complemented by Two Strategic Centres of Excellence at IIT Hyderabad, Telangana focused on Peptide Development and Particle Engineering
-        </p>
-      </div>
-
 
       {/* Innovation Enabled by Technology — same panel as Company Values */}
       <section className="cp-values-section rd-tech" aria-label="Innovation enabled by technology">
@@ -435,9 +424,7 @@ export default function RdPage() {
         <div className="rd-green-section">
           <h2>Pioneering Green Pharmaceutical Solutions</h2>
           <h4>
-            At Granules India, sustainability is embedded at the molecular level. We apply green
-            chemistry principles, such as atom economy, e-factor optimization, and solvent
-            minimization, across every stage of product development. Examples include:
+            At Granules India, sustainability is embedded at the molecular level. We apply green chemistry principles, coupled with Our proprietary Eco-Scale framework to evaluate processes across 6 core parameters and 50 sub-parameters, ensuring our chemistries align with operational efficiency, global standards, and environmental stewardship.
           </h4>
         </div>
 
@@ -472,9 +459,6 @@ export default function RdPage() {
         </div>
       </div>
 
-      <p className="rd-eco-note">
-        Our proprietary Eco-Scale framework evaluates processes across six core parameters and 38 sub-parameters, ensuring our chemistries align with operational efficiency, global standards, and environmental stewardship.
-      </p>
 
       {/* Built for Global Quality and Compliance */}
       <div className="biz-section-head rd-quality-head">

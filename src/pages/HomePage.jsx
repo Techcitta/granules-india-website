@@ -50,14 +50,14 @@ const products = [
     href: '/business/fd',
   },
   {
-    image: 'api.webp',
+    image: 'pfi.webp',
     title: 'Pharmaceutical Formulations Intermediates (PFIs)',
     eyebrow: 'PFI',
     body: 'Custom pharmaceutical formulation intermediates optimized for efficiency and flexibility.',
     href: '/business/pfi',
   },
   {
-    image: 'pfi.webp',
+    image: 'api.webp',
     title: 'Active Pharmaceutical Ingredients (APIs)',
     eyebrow: 'API',
     body: 'Large-scale manufacturing capabilities, integrated operations, and strong process optimization.',
@@ -327,7 +327,7 @@ function About() {
           <article className="stat"><CountUp to={10} /><span>MANUFACTURING FACILITIES<br />ACROSS INDIA, US &amp; EUROPE</span></article>
           <article className="stat"><CountUp to={6} /><span>R&amp;D CENTERS OF EXCELLENCE</span></article>
           <article className="stat"><CountUp to={150} suffix="+" /><span>DOSSIERS</span></article>
-          <article className="stat"><CountUp to={100} suffix="+" /><span style={{ textTransform: 'none' }}>DFM&apos;s</span></article>
+          <article className="stat"><CountUp to={100} suffix="+" /><span className="stat-small-s">DFM&apos;<span className="lowercase-s">s</span></span></article>
         </div>
       </div>
     </section>

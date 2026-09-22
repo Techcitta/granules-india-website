@@ -26,7 +26,7 @@ const WHAT_WE_DO_CARDS: CapabilityCard[] = [
   },
   {
     title: 'Theranostics Peptides',
-    image: '/assets/peptides/card-theragnostic-peptides.jpg',
+    image: '/assets/peptides/card-theragnostic-peptides.webp',
     desc: 'Linker-ready peptides, chelator conjugation, purification and characterisation, delivered across more than ten GMP campaigns including cold-side precursor supply.',
   },
   {
@@ -37,21 +37,57 @@ const WHAT_WE_DO_CARDS: CapabilityCard[] = [
 ];
 
 
-const WHOM_WE_SERVE_CARDS: CapabilityCard[] = [
+interface WhatWeDoItem {
+  id: string;
+  title: string;
+  desc: string;
+  image: string;
+  icon: React.ReactNode;
+}
+
+const WHAT_WE_DO_BANNER_ITEMS: WhatWeDoItem[] = [
   {
-    title: 'Amino Acid Derivatives (AAD)',
-    image: '/assets/rd/card-catalysis.webp',
+    id: 'aad',
+    title: 'Amino Acid Derivatives | 190+ Catalogue SKUs',
+    image: '/assets/rd/card-catalysis.png',
     desc: 'Pioneered AAD synthesis with a catalogue of over 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, and side-chain-modified derivatives.',
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 2v7.5L4.5 19.5A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.5L14 9.5V2" />
+        <line x1="8.5" y1="2" x2="15.5" y2="2" />
+        <path d="M7 16h10" />
+      </svg>
+    ),
   },
   {
-    title: 'Peptide Fragments',
-    image: '/assets/rd/card-solvents.webp',
+    id: 'fragments',
+    title: 'Peptide Fragments | High-Purity Building Blocks',
+    image: '/assets/rd/card-solvents.png',
     desc: 'High-purity peptide building blocks and intermediate fragments supplied to pharmaceutical innovators and commercial peptide manufacturers.',
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="6" cy="6" r="3" />
+        <circle cx="18" cy="6" r="3" />
+        <circle cx="18" cy="18" r="3" />
+        <circle cx="6" cy="18" r="3" />
+        <line x1="9" y1="6" x2="15" y2="6" />
+        <line x1="18" y1="9" x2="18" y2="15" />
+        <line x1="9" y1="18" x2="15" y2="18" />
+        <line x1="6" y1="9" x2="6" y2="15" />
+      </svg>
+    ),
   },
   {
-    title: 'Peptide APIs',
-    image: '/assets/rd/card-synthesis.webp',
+    id: 'apis',
+    title: 'Peptide APIs | Custom Synthesis & cGMP Supply',
+    image: '/assets/rd/card-synthesis.png',
     desc: 'Custom peptide APIs ranging from short sequences to complex chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z" />
+        <path d="M8.5 8.5l7 7" />
+      </svg>
+    ),
   },
 ];
 
@@ -168,7 +204,7 @@ const MANUFACTURING_DATA = [
     category: 'GMP Manufacturing',
     badge: 'Switzerland Facility',
     description: 'Commercial and pilot cGMP production hub with comprehensive synthesis, purification, and isolation suites.',
-    image: '/assets/peptides/gmp-manufacturing.jpg',
+    image: '/assets/peptides/footprint-dielsdorf.jpg',
     items: [
       'Stainless steel reactor 2,500 L, operating from -20 °C to 150 °C',
       'Glass-lined reactors range from 100 to 2,500 L, operating from -20 °C to 150 °C',
@@ -260,10 +296,19 @@ const LEADERSHIP_TEAM: LeaderMember[] = [
 
 export default function SennTidesPage() {
   const [openWhatWeDo, setOpenWhatWeDo] = useState<number>(-1);
-  const [openWhomWeServe, setOpenWhomWeServe] = useState<number>(-1);
+  const [activeWhatWeDoIdx, setActiveWhatWeDoIdx] = useState<number>(0);
+  const [isWhatWeDoPaused, setIsWhatWeDoPaused] = useState<boolean>(false);
   const [flippedMfgCard, setFlippedMfgCard] = useState<number | null>(null);
 
   const whatWeDoScroll = useSwipeScroll();
+
+  useEffect(() => {
+    if (isWhatWeDoPaused) return;
+    const timer = setInterval(() => {
+      setActiveWhatWeDoIdx((prev) => (prev + 1) % WHAT_WE_DO_BANNER_ITEMS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isWhatWeDoPaused]);
 
   useEffect(() => {
     document.title = 'Senn Tides | Peptide CDMO in Switzerland and India | Granules India';
@@ -432,36 +477,43 @@ export default function SennTidesPage() {
         </div>
       </section>
 
-      {/* 3-Card Grid matching Image 2: Centered 3-Column Layout */}
-      <div className="senn-3cards-wrap">
-        <div className="senn-3cards-grid">
-          {WHOM_WE_SERVE_CARDS.map((card, idx) => {
-            const isOpen = openWhomWeServe === idx;
-            return (
-              <article
-                className={`biz-card senn-cap-article${isOpen ? ' is-open' : ''}`}
-                key={card.title}
-                onMouseEnter={() => setOpenWhomWeServe(idx)}
-                onMouseLeave={() => setOpenWhomWeServe(-1)}
-                onClick={() => {
-                  setOpenWhomWeServe(isOpen ? -1 : idx);
-                }}
-              >
-                <img className="bg" src={card.image} alt={card.title} loading="lazy" decoding="async" />
-                <div className="biz-sheet">
-                  <div className="biz-sheet-head">
-                    <span className="biz-sheet-title">{card.title}</span>
-                    <span className="biz-sheet-symbol" aria-hidden="true">
-                      {isOpen ? '−' : '+'}
-                    </span>
-                  </div>
-                  <div className="biz-sheet-body">
-                    <p className="biz-sheet-desc">{card.desc}</p>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+      {/* What We Do Interactive Banner (Matching The Granules Way Practice Banner) */}
+      <div className="senn-practice-wrap">
+        <div
+          className="senn-practice-banner"
+          onMouseEnter={() => setIsWhatWeDoPaused(true)}
+          onMouseLeave={() => setIsWhatWeDoPaused(false)}
+        >
+          {WHAT_WE_DO_BANNER_ITEMS.map((item, idx) => (
+            <div
+              key={item.id}
+              className={`senn-practice-slide-layer ${idx === activeWhatWeDoIdx ? 'active' : ''}`}
+              aria-hidden={idx !== activeWhatWeDoIdx}
+            >
+              <img src={item.image} alt={item.title} className="senn-practice-bg" />
+              <div className="senn-practice-overlay" />
+            </div>
+          ))}
+
+          <div className="senn-practice-card" key={activeWhatWeDoIdx}>
+            <div className="senn-practice-card-icon">
+              {WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].icon}
+            </div>
+            <h3>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].title}</h3>
+            <p>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].desc}</p>
+          </div>
+
+          <div className="senn-practice-nav" aria-label="Slide indicators">
+            {WHAT_WE_DO_BANNER_ITEMS.map((item, idx) => (
+              <button
+                key={item.id}
+                type="button"
+                className={`senn-practice-nav-btn ${idx === activeWhatWeDoIdx ? 'active' : ''}`}
+                onClick={() => setActiveWhatWeDoIdx(idx)}
+                aria-label={`Go to slide ${idx + 1}: ${item.title}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

@@ -605,11 +605,12 @@
   gap: 12px;
 }
 
-.sus-goals-year-heading {
+.sus-goals-year-heading,
+.sus-goals-title-heading {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(16px, 1.2vw, 19px);
+  font-size: clamp(20px, 1.6vw, 26px);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #166534;
   margin: 0;
 }
@@ -649,10 +650,11 @@
 }
 
 .sus-goals-card-desc--statement {
-  font-size: clamp(17px, 1.35vw, 21px) !important;
-  font-weight: 600 !important;
-  line-height: 1.45 !important;
-  max-width: 330px;
+  font-size: clamp(16px, 1.25vw, 19px) !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  color: #1a1a1a !important;
+  max-width: 340px;
   margin: 0 !important;
 }
 
@@ -786,7 +788,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-width: 140px;
+  max-width: clamp(140px, 12vw, 170px);
 }
 
 .sus-goals-peek-card--right {
@@ -809,6 +811,16 @@
 .sus-goals-peek-card--left .sus-goals-peek-inner {
   align-items: flex-start;
   text-align: left;
+}
+
+.sus-goals-peek-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #166534;
+  letter-spacing: -0.01em;
+  user-select: none;
 }
 
 .sus-goals-peek-cat {

@@ -403,6 +403,21 @@ input, textarea, select {
   margin: 0 !important;
 }
 
+.about .stat span.stat-small-s,
+.about .stat span.stat-label-dfm,
+.about .stat .stat-small-s,
+.about .stat .stat-label-dfm,
+.stat-small-s,
+.stat-label-dfm {
+  text-transform: none !important;
+}
+
+.about .stat span .lowercase-s,
+.about .stat .lowercase-s,
+.lowercase-s {
+  text-transform: lowercase !important;
+}
+
 @media (max-width: 1200px) {
   .about .stats {
     grid-template-columns: repeat(3, 1fr) !important;

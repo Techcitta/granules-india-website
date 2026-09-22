@@ -164,15 +164,38 @@
 }
 
 .rd-priorities-carousel .rd-priority-slide {
-  width: clamp(300px, 25vw, 380px) !important;
-  min-width: clamp(300px, 25vw, 380px) !important;
-  max-width: clamp(300px, 25vw, 380px) !important;
-  flex: 0 0 clamp(300px, 25vw, 380px) !important;
   height: 440px !important;
   min-height: 440px !important;
   max-height: 440px !important;
   border-radius: 24px !important;
   box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .rd-priorities-carousel .biz-track {
+    overflow-x: visible !important;
+    cursor: default !important;
+  }
+
+  .rd-priorities-carousel .rd-priority-slide {
+    flex: 1 1 0 !important;
+    width: calc((100% - 3 * 20px) / 4) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  .rd-priorities-carousel .biz-carousel-controls {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 681px) {
+  .rd-priorities-carousel .rd-priority-slide {
+    width: clamp(280px, 42vw, 340px) !important;
+    min-width: clamp(280px, 42vw, 340px) !important;
+    max-width: clamp(280px, 42vw, 340px) !important;
+    flex: 0 0 clamp(280px, 42vw, 340px) !important;
+  }
 }
 
 .rd-priorities-carousel .rd-priority-slide img.bg {
@@ -681,7 +704,8 @@
 .rd-green-section h4,
 .rd-green-section p {
   margin: clamp(14px, 1.5vw, 20px) 0 0;
-  max-width: 1080px;
+  width: 100% !important;
+  max-width: 100% !important;
   font: 400 clamp(18px, 1.3vw, 22px)/1.5 'Manrope', sans-serif !important;
   color: #475569 !important;
   letter-spacing: -0.2px !important;
@@ -796,6 +820,24 @@
   font-weight: 400 !important;
   letter-spacing: -0.2px !important;
   color: var(--text-soft, #6a6a6a) !important;
+}
+
+/* Built for Global Quality and Compliance */
+.rd-quality-head {
+  width: min(85%, 1632px) !important;
+  max-width: 1632px !important;
+  margin: 75px auto 0 !important;
+}
+
+.rd-quality-head .copy {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.rd-quality-head .copy h4,
+.rd-quality-head .copy p {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 /* Bottom CTA section */

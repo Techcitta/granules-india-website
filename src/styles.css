@@ -715,6 +715,16 @@ p {
   color: #0061f8;
 }
 
+.stat span.stat-small-s,
+.stat-small-s,
+.stat-label-dfm {
+  text-transform: none !important;
+}
+
+.lowercase-s {
+  text-transform: lowercase !important;
+}
+
 .split-heading {
   display: flex;
   align-items: flex-end;
