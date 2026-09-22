@@ -326,23 +326,29 @@ export default function CareerOpportunitiesPage() {
                   <span className="car-cell-text">{job.location}</span>
                 </div>
                 <div className="car-col-action">
-                  <button
-                    type="button"
+                  <a
                     className="car-btn-apply-now"
-                    onClick={() => setSelectedJob(job)}
+                    href="https://careers.mygranules.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`Apply for ${job.designation} in ${job.department}`}
                   >
                     APPLY NOW
-                  </button>
+                  </a>
                 </div>
               </article>
             ))
           ) : (
             <div className="car-no-jobs">
               <p>No job openings match your selected filters.</p>
-              <button type="button" className="car-btn-apply-now" onClick={clearFilters}>
+              <a
+                className="car-btn-apply-now"
+                href="https://careers.mygranules.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 View All Openings
-              </button>
+              </a>
             </div>
           )}
         </div>
@@ -379,7 +385,9 @@ export default function CareerOpportunitiesPage() {
         </p>
         <a
           className="car-opp-apply-btn"
-          href={`mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Resume Submission - General Application')}`}
+          href="https://careers.mygranules.com/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Submit Your Resume
         </a>
@@ -459,9 +467,11 @@ export default function CareerOpportunitiesPage() {
             <div className="car-modal-actions">
               <a
                 className="car-btn-apply-now"
-                href={`mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(`Application: ${selectedJob.designation} - ${selectedJob.department}`)}&body=${encodeURIComponent(`Dear Granules Talent Acquisition Team,\n\nI would like to apply for the position of ${selectedJob.designation} (${selectedJob.department}) in ${selectedJob.location}.\n\nPlease find attached my resume for your consideration.\n\nBest regards,`)}`}
+                href="https://careers.mygranules.com/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                APPLY VIA EMAIL &rarr;
+                APPLY ON PORTAL &rarr;
               </a>
               <button
                 type="button"

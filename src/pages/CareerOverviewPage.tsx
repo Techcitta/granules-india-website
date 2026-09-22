@@ -351,9 +351,14 @@ export default function CareerOverviewPage() {
               <p>
                 Explore opportunities across our core scientific, manufacturing, and operational disciplines.
               </p>
-              <Link className="car-discover-btn" to="https://www.careers.mygranules.com">
+              <a
+                className="car-discover-btn"
+                href="https://careers.mygranules.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span>DISCOVER ROLES &rarr;</span>
-              </Link>
+              </a>
             </div>
 
             {/* Right Accordion Column */}
@@ -726,11 +731,16 @@ export default function CareerOverviewPage() {
                       </div>
 
                       <div className="car-talent-field">
+                        <label htmlFor="talent-mobile">Mobile No. *</label>
+                        <input id="talent-mobile" type="tel" placeholder="e.g. +91 98765 43210" required />
+                      </div>
+
+                      <div className="car-talent-field">
                         <label htmlFor="talent-location">Location / Preferred Hub *</label>
                         <input id="talent-location" type="text" placeholder="e.g. Hyderabad, India / Virginia, USA" required />
                       </div>
 
-                      <div className="car-talent-field">
+                      <div className="car-talent-field car-talent-field--full">
                         <label htmlFor="talent-interest">Career Interest / Function *</label>
                         <select id="talent-interest" required defaultValue="">
                           <option value="" disabled>Select your primary area of interest</option>
@@ -778,9 +788,14 @@ export default function CareerOverviewPage() {
 
                       <div className="car-talent-btn-row">
                         <button type="submit" className="car-talent-submit-btn">Join Talent Community</button>
-                        <Link to="/careers/opportunities" className="car-talent-link">
+                        <a
+                          href="https://careers.mygranules.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="car-talent-link"
+                        >
                           Or view active job openings &rarr;
-                        </Link>
+                        </a>
                       </div>
                     </>
                   )}
@@ -798,7 +813,14 @@ export default function CareerOverviewPage() {
                   Step into a career with impact. Whether you’re a scientist, operator, or strategist, your journey starts here.
                 </p>
               </div>
-              <Link className="car-cta-apply-btn" to="/careers/opportunities">Apply for Roles &rarr;</Link>
+              <a
+                className="car-cta-apply-btn"
+                href="https://careers.mygranules.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Apply for Roles &rarr;
+              </a>
             </div>
           </div>
         </div>

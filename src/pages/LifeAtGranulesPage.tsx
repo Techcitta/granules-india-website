@@ -184,7 +184,14 @@ export default function LifeAtGranulesPage() {
           <h2>Talent management and growth</h2>
           <p>We invest in building a capable, resilient, and future-ready workforce through</p>
         </div>
-        <Link className="car-cta-btn" to="/careers/opportunities">Explore Current Openings</Link>
+        <a
+          className="car-cta-btn"
+          href="https://careers.mygranules.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore Current Openings
+        </a>
       </div>
 
       <div className="car-stats-grid">
@@ -291,7 +298,14 @@ export default function LifeAtGranulesPage() {
       </div>
 
       <div className="car-workday-cta-row">
-        <Link className="car-cta-btn" to="/careers/opportunities">Explore Current Openings &rarr;</Link>
+        <a
+          className="car-cta-btn"
+          href="https://careers.mygranules.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore Current Openings &rarr;
+        </a>
       </div>
 
       {/* People at Granules — responsive photo slideshow reusing the same
@@ -419,7 +433,14 @@ export default function LifeAtGranulesPage() {
         </div>
         <div className="car-cta-btn-row">
           <Link className="car-cta-apply-btn" to="/careers">Careers Overview &rarr;</Link>
-          <Link className="car-cta-apply-btn" to="/careers/opportunities">Discover Roles and Apply &rarr;</Link>
+          <a
+            className="car-cta-apply-btn"
+            href="https://careers.mygranules.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Discover Roles and Apply &rarr;
+          </a>
         </div>
       </div>
 
