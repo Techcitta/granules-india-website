@@ -26,7 +26,7 @@ const WHAT_WE_DO_CARDS: CapabilityCard[] = [
   },
   {
     title: 'Theranostics Peptides',
-    image: '/assets/peptides/card-theragnostic-peptides.webp',
+    image: '/assets/peptides/card-theragnostic-peptides.jpg',
     desc: 'Linker-ready peptides, chelator conjugation, purification and characterisation, delivered across more than ten GMP campaigns including cold-side precursor supply.',
   },
   {
@@ -168,7 +168,7 @@ const MANUFACTURING_DATA = [
     category: 'GMP Manufacturing',
     badge: 'Switzerland Facility',
     description: 'Commercial and pilot cGMP production hub with comprehensive synthesis, purification, and isolation suites.',
-    image: '/assets/peptides/footprint-dielsdorf.jpg',
+    image: '/assets/peptides/gmp-manufacturing.jpg',
     items: [
       'Stainless steel reactor 2,500 L, operating from -20 °C to 150 °C',
       'Glass-lined reactors range from 100 to 2,500 L, operating from -20 °C to 150 °C',

@@ -50,14 +50,14 @@ const products = [
     href: '/business/fd',
   },
   {
-    image: 'pfi.webp',
+    image: 'api.webp',
     title: 'Pharmaceutical Formulations Intermediates (PFIs)',
     eyebrow: 'PFI',
     body: 'Custom pharmaceutical formulation intermediates optimized for efficiency and flexibility.',
     href: '/business/pfi',
   },
   {
-    image: 'api.webp',
+    image: 'pfi.webp',
     title: 'Active Pharmaceutical Ingredients (APIs)',
     eyebrow: 'API',
     body: 'Large-scale manufacturing capabilities, integrated operations, and strong process optimization.',

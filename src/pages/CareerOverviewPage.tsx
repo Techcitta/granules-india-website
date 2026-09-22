@@ -61,7 +61,7 @@ const GRANULES_WAY_SLIDES = [
     id: 1,
     title: 'Accountability | Own it end to end',
     body: 'Anticipate challenges, act with initiative, follow through and help the team reach the finish line.',
-    image: `${A}work-matters-bg.webp`,
+    image: `${A}granules-way-01.jpg`,
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="8" r="6" />
@@ -98,7 +98,7 @@ const GRANULES_WAY_SLIDES = [
     id: 4,
     title: 'Humility | Stay curious',
     body: 'Know your strengths, welcome feedback and keep learning without losing sight of collective success.',
-    image: `${A}area-rnd.webp`,
+    image: `${A}granules-way-04.jpg`,
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -110,7 +110,7 @@ const GRANULES_WAY_SLIDES = [
     id: 5,
     title: 'Agility | Keep moving forward',
     body: 'Respond quickly, test better ideas and adapt with changing business needs.',
-    image: `${A}area-mfg.webp`,
+    image: `${A}granules-way-05.jpg`,
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="13 17 18 12 13 7" />

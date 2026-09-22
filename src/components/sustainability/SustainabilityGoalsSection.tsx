@@ -62,7 +62,7 @@ export const SUSTAINABILITY_GOALS: SustainabilityGoalItem[] = [
     metric: '1M+',
     label: 'Touch 1 Million+ lives through CSR programs by 2030',
     image: '/assets/sustainability/sus/community.jpg',
-    imageAlt: 'Community healthcare and rural development programs',
+    imageAlt: 'Education Kit Donation Drive supporting students with Granules backpacks',
   },
   {
     id: 'safety',
@@ -91,8 +91,8 @@ export const SUSTAINABILITY_GOALS: SustainabilityGoalItem[] = [
     yearHeading: 'By 2030',
     metric: 'Zero',
     label: 'Achieve Zero waste to landfill by 2030',
-    image: '/assets/sustainability/sus/5.png',
-    imageAlt: 'Zero waste to landfill and circular resource recovery',
+    image: '/assets/sustainability/sus/waste.jpg',
+    imageAlt: 'Marine life impacted by plastic waste, highlighting zero waste to landfill goals',
   },
   {
     id: 'energy',

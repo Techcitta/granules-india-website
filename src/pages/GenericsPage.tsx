@@ -254,7 +254,7 @@ const products = [
     cta: 'Click here to know more',
   },
   {
-    image: 'pfi.webp',
+    image: 'api.webp',
     title: 'Pharmaceutical Formulation Intermediates (PFIs)',
     eyebrow: 'PFI',
     body: 'Custom pharmaceutical formulation intermediates optimized for efficiency and flexibility with proprietary "Drum to Hopper" direct compression blends that eliminate manufacturing complexity.',
@@ -262,7 +262,7 @@ const products = [
     cta: 'Click here to know more',
   },
   {
-    image: 'api.webp',
+    image: 'pfi.webp',
     title: 'Active Pharmaceutical Ingredients (APIs)',
     eyebrow: 'API',
     body: 'Large-scale manufacturing capabilities, integrated operations, and deep process chemistry delivering high-volume legacy molecules and complex niche APIs across 80+ countries.',
