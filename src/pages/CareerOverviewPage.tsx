@@ -183,7 +183,7 @@ const BENEFITS = [
     id: 'health',
     title: 'Health and wellbeing',
     desc: 'We support employees through medical benefits, safe workplaces and wellbeing initiatives that help people stay healthy and perform at their best.',
-    image: '/assets/Home/5.jpg',
+    image: `${A}benefit-health.jpg`,
   },
   {
     id: 'beyond',

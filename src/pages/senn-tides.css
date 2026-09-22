@@ -2775,7 +2775,9 @@ h4.senn-cap-banner-text {
   width: min(85%, 1632px) !important;
   max-width: 1632px !important;
   margin-inline: auto !important;
-  min-height: 260px;
+  aspect-ratio: auto;
+  max-height: none;
+  min-height: clamp(260px, 26vw, 340px);
   border-radius: 9999px;
   position: sticky;
   top: clamp(85px, 11vh, 115px);
@@ -2794,39 +2796,43 @@ h4.senn-cap-banner-text {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: blur(5px);
-  transform: scale(1.05);
+  filter: blur(6px);
+  transform: scale(1.06);
 }
 
 .senn-stack-panel .senn-stack-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 20, 50, 0.45) 0%, rgba(2, 18, 43, 0.68) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.58) 100%);
 }
 
 /* First panel (underneath layer) - pins in place */
 .senn-stack-panel--dev {
   z-index: 1;
   margin-top: 0;
-  margin-bottom: clamp(140px, 20vh, 220px);
+  margin-bottom: clamp(120px, 18vh, 200px);
+}
+
+.senn-stack-panel--dev img {
+  object-position: center 42%;
 }
 
 /* Second panel (top layer) - scrolls up and glides directly over First */
 .senn-stack-panel--quality {
   z-index: 2;
   margin-top: 0;
-  box-shadow: 0 -18px 45px rgba(0, 0, 0, 0.28), 0 24px 60px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 -18px 45px rgba(0, 0, 0, 0.25), 0 24px 60px rgba(0, 0, 0, 0.28);
 }
 
 .senn-stack-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  padding: clamp(30px, 3.5vw, 44px) clamp(36px, 6vw, 100px);
-  max-width: 980px;
+  padding: clamp(28px, 3.2vw, 40px) clamp(24px, 4vw, 48px);
+  max-width: min(92%, 980px);
   box-sizing: border-box;
 }
 
@@ -2837,15 +2843,15 @@ h4.senn-cap-banner-text {
   -webkit-backdrop-filter: blur(8px);
   border-radius: 9999px;
   padding: 6px 22px;
-  font: 700 13.5px/1.6 'Manrope', sans-serif;
-  letter-spacing: 1px;
+  font: 700 var(--fs-badge, 13.5px)/1.6 var(--font-primary, 'Manrope', sans-serif);
+  letter-spacing: var(--track-badge, 1px);
   text-transform: uppercase;
   color: #ffffff;
   display: inline-block;
 }
 
 .senn-stack-content h3 {
-  font: 500 clamp(15px, 1.2vw, 18.5px)/1.55 'Manrope', sans-serif !important;
+  font: 500 clamp(14px, 1.05vw, 16.5px)/1.45 var(--font-primary, 'Manrope', sans-serif) !important;
   color: #ffffff !important;
   margin: 0 !important;
   max-width: 860px;
@@ -2854,18 +2860,32 @@ h4.senn-cap-banner-text {
 
 @media (max-width: 992px) {
   .senn-stack-panel {
+    aspect-ratio: auto;
+    max-height: none;
+    min-height: 260px;
     border-radius: 40px;
-    min-height: auto;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .senn-stack-panel {
+    aspect-ratio: auto;
+    min-height: 260px;
+    max-height: none;
     border-radius: 28px;
   }
 
+  .senn-stack-panel--dev {
+    top: 75px;
+  }
+
+  .senn-stack-panel--quality {
+    top: 75px;
+    margin-top: 20px;
+  }
+
   .senn-stack-content {
-    padding: 32px 20px;
+    padding: 24px 16px;
     gap: 12px;
   }
 

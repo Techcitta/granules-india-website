@@ -662,7 +662,7 @@ export default function SennTidesPage() {
       <section className="senn-stack-wrap" aria-label="Development, Analytics, Quality & Compliance">
 
         <div className="senn-stack-panel senn-stack-panel--dev">
-          <img src="/assets/company/vision-bg.png" alt="Development and analytical support" loading="lazy" decoding="async" />
+          <img src="/assets/peptides/senn-dev-analytics-bg.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true" />
           <div className="senn-stack-overlay" />
           <div className="senn-stack-content">
             <span className="senn-stack-badge">DEVELOPMENT &amp; ANALYTICS</span>
@@ -673,7 +673,7 @@ export default function SennTidesPage() {
         </div>
 
         <div className="senn-stack-panel senn-stack-panel--quality">
-          <img src="/assets/peptides/quality-compliance-bg.png" alt="Quality and compliance" loading="lazy" decoding="async" />
+          <img src="/assets/peptides/senn-quality-compliance-bg.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true" />
           <div className="senn-stack-overlay" />
           <div className="senn-stack-content">
             <span className="senn-stack-badge">QUALITY &amp; COMPLIANCE</span>
