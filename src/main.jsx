@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import '@fontsource/manrope/400.css';
@@ -39,7 +39,6 @@ import InvestorAnnualReportsPage from './pages/InvestorAnnualReportsPage.tsx';
 import MediaPage from './pages/MediaPage.tsx';
 import CareerOverviewPage from './pages/CareerOverviewPage.tsx';
 import LifeAtGranulesPage from './pages/LifeAtGranulesPage.tsx';
-import CareerOpportunitiesPage from './pages/CareerOpportunitiesPage.tsx';
 import ContactPage from './pages/ContactPage.tsx';
 import NotFoundPage from './pages/NotFoundPage.tsx';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage.tsx';
@@ -49,6 +48,13 @@ import DataProtectionNoticePage from './pages/DataProtectionNoticePage.tsx';
 import TermsConditionsPage from './pages/TermsConditionsPage.tsx';
 import ProductPortfolioPage from './pages/ProductPortfolioPage.tsx';
 import BackToTopButton from './components/common/BackToTopButton';
+
+function ExternalRedirect({ to }) {
+  useEffect(() => {
+    window.location.replace(to);
+  }, [to]);
+  return null;
+}
 
 function App() {
   return (
@@ -114,13 +120,13 @@ function App() {
         <Route path="/media" element={<MediaPage />} />
         <Route path="/careers" element={<CareerOverviewPage />} />
         <Route path="/careers/life-at-granules" element={<LifeAtGranulesPage />} />
-        <Route path="/careers/opportunities" element={<CareerOpportunitiesPage />} />
-        <Route path="/careers/work-with-us" element={<CareerOpportunitiesPage />} />
-        <Route path="/work-with-us" element={<CareerOpportunitiesPage />} />
-        <Route path="/careers/current-openings" element={<CareerOpportunitiesPage />} />
-        <Route path="/careers/openings" element={<CareerOpportunitiesPage />} />
-        <Route path="/careers/career-opportunities" element={<CareerOpportunitiesPage />} />
-        <Route path="/career-opportunities" element={<CareerOpportunitiesPage />} />
+        <Route path="/careers/opportunities" element={<ExternalRedirect to="https://careers.mygranules.com/" />} />
+        <Route path="/careers/work-with-us" element={<ExternalRedirect to="https://careers.mygranules.com/" />} />
+        <Route path="/work-with-us" element={<ExternalRedirect to="https://careers.mygranules.com/" />} />
+        <Route path="/careers/current-openings" element={<ExternalRedirect to="https://careers.mygranules.com/" />} />
+        <Route path="/careers/openings" element={<ExternalRedirect to="https://careers.mygranules.com/" />} />
+        <Route path="/careers/career-opportunities" element={<ExternalRedirect to="https://careers.mygranules.com/" />} />
+        <Route path="/career-opportunities" element={<ExternalRedirect to="https://careers.mygranules.com/" />} />
         <Route path="/careers/our-culture-values" element={<Navigate to="/careers#culture-values" replace />} />
         <Route path="/careers/culture-values" element={<Navigate to="/careers#culture-values" replace />} />
         <Route path="/contact" element={<ContactPage />} />
