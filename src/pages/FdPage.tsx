@@ -63,7 +63,9 @@ export default function FdPage() {
       <p className="cp-breadcrumb" style={{ width: 'min(85%, 1632px)', maxWidth: '1632px', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <Link to="/business">BUSINESS</Link>
+        <span className="cp-breadcrumb-plain">BUSINESS</span>
+        <span className="sep">›</span>
+        <Link to="/business/generics">GENERICS</Link>
         <span className="sep">›</span>
         <span className="current">FINISHED DOSAGE FORMULATIONS</span>
       </p>

@@ -10,10 +10,8 @@ export default function ValueCard({ icon, title, body }: ValueItem) {
         </span>
         <h4 className="cp-value-title-top">{title}</h4>
       </div>
-      <div className="cp-value-body">
-        <h4 className="cp-value-title-bottom" aria-hidden="true">{title}</h4>
-        <p className="cp-value-desc">{body}</p>
-      </div>
+      <p className="cp-value-desc">{body}</p>
+      <h4 className="cp-value-title-bottom" aria-hidden="true">{title}</h4>
     </article>
   );
 }

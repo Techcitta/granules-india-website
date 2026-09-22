@@ -483,6 +483,54 @@ p.cp-breadcrumb,
   font-size: 13px !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
+  color: #070707 !important;
+}
+
+.cp-breadcrumb a,
+p.cp-breadcrumb a,
+.cp-breadcrumb span:not(.current),
+p.cp-breadcrumb span:not(.current),
+.cp-breadcrumb button,
+.cp-breadcrumb .sep,
+p.cp-breadcrumb .sep,
+.ld-main-breadcrumb a,
+.ld-main-breadcrumb span:not(.current),
+.ld-main-breadcrumb .sep,
+.ld-profile-breadcrumb a,
+.ld-profile-breadcrumb span:not(.current),
+.ld-profile-breadcrumb .sep,
+.ld-breadcrumb-btn,
+.ehs-breadcrumb a,
+.ehs-breadcrumb span:not(.current),
+.ehs-breadcrumb .sep {
+  color: #070707 !important;
+  text-decoration: none !important;
+}
+
+.cp-breadcrumb span:not([role="button"]),
+p.cp-breadcrumb span:not([role="button"]),
+.cp-breadcrumb .cp-breadcrumb-plain,
+p.cp-breadcrumb .cp-breadcrumb-plain {
+  cursor: default !important;
+}
+
+.cp-breadcrumb a:hover,
+p.cp-breadcrumb a:hover,
+.cp-breadcrumb button:hover,
+.ld-main-breadcrumb a:hover,
+.ld-profile-breadcrumb a:hover,
+.ld-breadcrumb-btn:hover,
+.ehs-breadcrumb a:hover {
+  color: #0061f8 !important;
+}
+
+.cp-breadcrumb .current,
+p.cp-breadcrumb .current,
+.ld-main-breadcrumb .current,
+.ld-profile-breadcrumb .current,
+.ehs-breadcrumb .current {
+  color: #0061f8 !important;
+  font-weight: 700 !important;
 }
 
 @media (max-width: 768px) {

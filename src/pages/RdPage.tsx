@@ -212,10 +212,10 @@ export default function RdPage() {
     <div className="cp">
       <NavBar />
 
-      <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+      <p className="cp-breadcrumb" style={{ width: 'min(85%, 1632px)', maxWidth: '1632px', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <Link to="/business">BUSINESS</Link>
+        <span className="cp-breadcrumb-plain">BUSINESS</span>
         <span className="sep">›</span>
         <span className="current">RESEARCH &amp; DEVELOPMENT</span>
       </p>
@@ -422,12 +422,8 @@ export default function RdPage() {
                   </span>
                   <h4 className="cp-value-title-top">{item.title}</h4>
                 </div>
-                <div className="cp-value-body">
-                  <h4 className="cp-value-title-bottom" aria-hidden="true">
-                    {item.title}
-                  </h4>
-                  <p className="cp-value-desc">{item.body}</p>
-                </div>
+                <p className="cp-value-desc">{item.body}</p>
+                <h4 className="cp-value-title-bottom" aria-hidden="true">{item.title}</h4>
               </article>
             ))}
           </div>
