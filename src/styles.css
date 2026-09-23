@@ -1767,7 +1767,8 @@ article.open .accordion-icon-circle {
   border-radius: 28px;
   padding: 38px 60px;
   background-position: center;
-  background-size: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: flex-start;

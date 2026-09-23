@@ -1431,7 +1431,7 @@
   justify-content: center;
   gap: 14px !important;
   padding: 28px clamp(24px, 4vw, 56px) !important;
-  background: linear-gradient(90deg, #cbefff 0%, #d8f4ff 35%, rgba(216, 244, 255, 0.6) 100%);
+  background: url('/assets/career/careers-banner.png') center / 100% 100% no-repeat;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
   box-sizing: border-box !important;
 }
