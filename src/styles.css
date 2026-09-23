@@ -1776,7 +1776,6 @@ article.open .accordion-icon-circle {
 
 .careers>div {
   max-width: 780px;
-  color: var(--blue);
   display: flex;
   flex-direction: column;
   align-items: flex-start;

@@ -49,6 +49,7 @@ import TermsConditionsPage from './pages/TermsConditionsPage.tsx';
 import ProductPortfolioPage from './pages/ProductPortfolioPage.tsx';
 import BackToTopButton from './components/common/BackToTopButton';
 import CookieConsent from './components/common/CookieConsent';
+import { ChatbotWidget } from './components/chatbot';
 
 function ExternalRedirect({ to }) {
   useEffect(() => {
@@ -62,6 +63,7 @@ function App() {
     <BrowserRouter>
       <BackToTopButton />
       <CookieConsent />
+      <ChatbotWidget />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/company" element={<CompanyPage />} />
