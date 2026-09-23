@@ -55,7 +55,7 @@ export const SUSTAINABILITY_GOALS: SustainabilityGoalItem[] = [
     id: 'waste',
     title: 'Waste',
     label: 'Achieve Zero waste to landfill by 2030',
-    image: '/assets/sustainability/sus/5.png',
+    image: '/assets/sustainability/sus/waste.jpg',
     imageAlt: 'Zero waste to landfill and circular resource recovery',
   },
   {

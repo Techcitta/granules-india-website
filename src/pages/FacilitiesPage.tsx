@@ -108,7 +108,7 @@ const FACILITIES: Facility[] = [
     categories: ['API'],
     country: 'India',
     countryCode: 'IN',
-    image: 'bonthapally-2.webp',
+    image: 'bonthapally-unit3.jpg',
     apiCapacity: '62 KLPA',
   },
   {

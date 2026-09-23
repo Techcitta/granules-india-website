@@ -262,7 +262,7 @@ const products = [
     cta: 'Click here to know more',
   },
   {
-    image: 'api.webp',
+    image: 'api.jpg',
     title: 'Active Pharmaceutical Ingredients (APIs)',
     eyebrow: 'API',
     body: 'Large-scale manufacturing capabilities, integrated operations, and deep process chemistry delivering high-volume legacy molecules and complex niche APIs across 80+ countries.',

@@ -24,15 +24,7 @@ const RD_CENTERS: RdCenter[] = [
     location: 'Genome Valley, India',
     title: 'GENOME VALLEY, TELANGANA',
     desc: 'Integrated Product Development for APIs and Finished Dosages.',
-    image: 'hero-banner.png',
-    ctaHref: '/business/rd',
-  },
-  {
-    id: 'pragathi-nagar',
-    location: 'Pragathi Nagar, India',
-    title: 'PRAGATHI NAGAR, TELANGANA',
-    desc: 'Centre of Excellence for Complex FD, CII API development, KSMs, and Bio Lab (enzymes & fermentation).',
-    image: 'centers-bg.png',
+    image: 'genome-valley.jpg',
     ctaHref: '/business/rd',
   },
   {
@@ -40,7 +32,7 @@ const RD_CENTERS: RdCenter[] = [
     location: 'IITH, India',
     title: 'IIT Hyderabad, India',
     desc: '2 Centres of Excellence focused on Peptide Development and Particle Engineering.',
-    image: 'centers-bg.png',
+    image: 'iith.jpg',
     ctaHref: '/business/rd',
   },
   {
@@ -48,7 +40,7 @@ const RD_CENTERS: RdCenter[] = [
     location: 'Virginia, USA',
     title: 'VIRGINIA, USA',
     desc: 'US-specific complex FD design, controlled substances and clinical support.',
-    image: '/assets/rd/vir.jpg',
+    image: 'virginia.jpg',
     ctaHref: '/business/fd',
   },
   {
@@ -56,7 +48,7 @@ const RD_CENTERS: RdCenter[] = [
     location: 'Zurich, Switzerland',
     title: 'SENN CHEMICALS, SWITZERLAND',
     desc: 'Peptide & CDMO innovation — decades of peptide synthesis expertise.',
-    image: 'capabilities-bg.png',
+    image: 'senn-zurich.jpg',
     ctaHref: '/business/peptides',
   },
 ];

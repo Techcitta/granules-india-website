@@ -57,7 +57,7 @@ const products = [
     href: '/business/pfi',
   },
   {
-    image: 'api.webp',
+    image: 'api.jpg',
     title: 'Active Pharmaceutical Ingredients (APIs)',
     eyebrow: 'API',
     body: 'Large-scale manufacturing capabilities, integrated operations, and strong process optimization.',
