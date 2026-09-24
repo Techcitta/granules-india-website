@@ -387,7 +387,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "First Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q1 FY25",
             "year": "2025",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2024/07/fq-25-Results.pdf",
@@ -398,7 +398,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Second Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q2 FY25",
             "year": "2025",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2024/11/FY25-–-Second-Quarter.pdf",
@@ -409,7 +409,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Third Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q3 FY25",
             "year": "2025",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2025/01/Signed-Results-Dec-24-Third-Quarter.pdf",
@@ -420,7 +420,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Fourth Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q4 FY25",
             "year": "2025",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2025/05/NSEBSE-FINANCIALS-25.pdf",
@@ -431,7 +431,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "First Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q1 FY24",
             "year": "2024",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2023/08/First-Quarter-Combined-File.pdf",
@@ -442,7 +442,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Second Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q2 FY24",
             "year": "2024",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2023/11/Results-Q2FY24.pdf",
@@ -453,7 +453,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Third Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q3 FY24",
             "year": "2024",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2024/01/third-quarter-financial-Q3.pdf",
@@ -464,7 +464,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Fourth Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q4 FY24",
             "year": "2024",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2024/05/Financials-Website-Q4.pdf",
