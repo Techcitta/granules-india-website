@@ -246,7 +246,7 @@ input, textarea, select {
   letter-spacing: var(--track-section) !important;
 }
 
-[class*='card'] h2:not(.ms-card-year):not([class*='year']):not([class*='stat']):not([class*='num']):not([class*='val']):not([class*='metric']):not([class*='digit']),
+[class*='card'] h2:not(.ms-card-year):not([class*='year']):not([class*='stat']):not([class*='num']):not([class*='val']):not([class*='metric']):not([class*='digit']):not(.med-report-heading):not(.med-report-copy *),
 [class*='card'] h3:not(.ms-card-year):not([class*='year']):not([class*='stat']):not([class*='num']):not([class*='val']):not([class*='metric']):not([class*='digit']),
 [class*='card-title'],
 .fac-card-name, .senn-feature-title, .senn-mfg-box-title, .senn-lead-stat-name {
@@ -709,6 +709,9 @@ p.cp-breadcrumb .current,
 }
 
 /* Unified Blue Headings for All CTA Banners (Matching Reference Design) */
+.med-report-heading,
+.med-report-copy h2,
+.med-report-card h2,
 .sus-cta h2,
 .sus-cta-copy h2,
 .car-cta-photo h2,
