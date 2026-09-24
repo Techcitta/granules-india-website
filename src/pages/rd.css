@@ -485,7 +485,7 @@
 .rd-centers-slide .overlay {
   position: absolute;
   inset: 0;
-  background: 
+  background:
     linear-gradient(90deg, rgba(8, 16, 38, 0.88) 0%, rgba(8, 16, 38, 0.7) 45%, rgba(8, 16, 38, 0.25) 75%, transparent 100%),
     linear-gradient(180deg, rgba(5, 10, 25, 0.35) 0%, transparent 40%, rgba(5, 10, 25, 0.8) 100%);
 }
@@ -754,7 +754,7 @@
 
 .rd-green-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 24px 56px rgba(19, 122, 29, 0.14), 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 24px 56px rgba(0, 97, 248, 0.14), 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 /* Fixed sizing for all card images */
@@ -796,7 +796,7 @@
   font-weight: 800;
   font-size: clamp(18px, 1.55vw, 22px);
   line-height: 1.25;
-  color: #137a1d;
+  color: #0061f8;
   letter-spacing: -0.2px;
 }
 
@@ -997,4 +997,3 @@
     display: none;
   }
 }
-

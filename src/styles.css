@@ -717,7 +717,8 @@ p {
 
 .stat span.stat-small-s,
 .stat-small-s,
-.stat-label-dfm {
+.stat-label-dfm,
+.stat-label-dmf {
   text-transform: none !important;
 }
 

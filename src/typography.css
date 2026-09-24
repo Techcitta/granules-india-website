@@ -405,10 +405,13 @@ input, textarea, select {
 
 .about .stat span.stat-small-s,
 .about .stat span.stat-label-dfm,
+.about .stat span.stat-label-dmf,
 .about .stat .stat-small-s,
 .about .stat .stat-label-dfm,
+.about .stat .stat-label-dmf,
 .stat-small-s,
-.stat-label-dfm {
+.stat-label-dfm,
+.stat-label-dmf {
   text-transform: none !important;
 }
 

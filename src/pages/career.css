@@ -2135,6 +2135,27 @@
   cursor: pointer;
 }
 
+.car-talent-phone-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.car-talent-dial-select {
+  flex: 0 0 clamp(110px, 35%, 130px) !important;
+  width: clamp(110px, 35%, 130px) !important;
+  padding: 15px 12px !important;
+  padding-right: 32px !important;
+  background-position: right 12px center !important;
+  font-weight: 600 !important;
+}
+
+.car-talent-phone-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .car-talent-field--full {
   grid-column: 1 / -1;
 }
