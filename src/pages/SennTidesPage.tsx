@@ -230,7 +230,7 @@ const FOOTPRINT_LIST = [
     country: 'India',
     location: 'Vizag',
     details: 'Large-scale peptide manufacturing facility under development, with completion expected by December 2027.',
-    image: '/assets/facilities/vizag-unit5.webp',
+    image: '/assets/peptides/vizag-coming-soon.jpg',
     flag: (
       <svg width="22" height="22" viewBox="0 0 512 512" style={{ borderRadius: '6px', flexShrink: 0 }}>
         <rect width="512" height="170.7" fill="#ff9933" />
