@@ -496,36 +496,40 @@ export default function MediaPage() {
       <div className="med-report-section">
         <div className="med-report-card">
           <div className="med-report-copy">
-            <h1 className="med-report-heading">
+            <h2 className="med-report-heading">
               Integrated Annual Report
               <br />
               FY 25-26
-            </h1>
+            </h2>
             <p className="med-report-sub">
               Where strategy meets evolving healthcare needs, science, and sustainability.
             </p>
             <a
               className="med-report-btn"
-              href={getAssetUrl('pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf')}
+              href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf')}
               target="_blank"
               rel="noopener noreferrer"
-              download="Granules_Integrated-Report-2024-25.pdf"
+              aria-label="Download Integrated Annual Report FY 2025-26"
             >
-              DOWNLOAD REPORT
+              DOWNLOAD REPORT &rarr;
             </a>
           </div>
 
-          <div className="med-report-device-wrap">
-            <div className="med-report-device">
-              <div className="med-report-screen">
-                <img
-                  src="/assets/investor-report-cover.webp?v=2026"
-                  alt="Granules India Integrated Annual Report FY 2025-26"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
+          <div className="med-report-cover-wrap">
+            <a
+              href={getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="med-report-cover"
+              aria-label="View Granules India Integrated Annual Report FY 2025-26: Where Strategy Meets Evolving Healthcare Needs, Science & Sustainability"
+            >
+              <img
+                src="/assets/investor-report-cover.webp?v=clean"
+                alt="Granules India Integrated Annual Report FY 2025-26: Where Strategy Meets Evolving Healthcare Needs, Science & Sustainability"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
           </div>
         </div>
       </div>

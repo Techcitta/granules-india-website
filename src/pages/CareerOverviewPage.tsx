@@ -393,6 +393,24 @@ export default function CareerOverviewPage() {
                     {isOpen && (
                       <div className="car-discover-body">
                         <p>{path.desc}</p>
+                        <a
+                          href="https://careers.mygranules.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="car-discover-area-cta"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            marginTop: '12px',
+                            color: '#0061f8',
+                            fontWeight: 700,
+                            fontSize: '14.5px',
+                            textDecoration: 'none'
+                          }}
+                        >
+                          {path.cta} &rarr;
+                        </a>
                       </div>
                     )}
                   </article>
@@ -732,7 +750,43 @@ export default function CareerOverviewPage() {
 
                       <div className="car-talent-field">
                         <label htmlFor="talent-mobile">Mobile No. *</label>
-                        <input id="talent-mobile" type="tel" placeholder="e.g. +91 98765 43210" required />
+                        <div className="car-talent-phone-group">
+                          <select
+                            id="talent-dial-code"
+                            name="dialCode"
+                            defaultValue="+91"
+                            className="car-talent-dial-select"
+                            aria-label="Country dial code"
+                            required
+                          >
+                            <option value="+91">IN (+91)</option>
+                            <option value="+1">US (+1)</option>
+                            <option value="+44">UK (+44)</option>
+                            <option value="+41">CH (+41)</option>
+                            <option value="+49">DE (+49)</option>
+                            <option value="+971">AE (+971)</option>
+                            <option value="+65">SG (+65)</option>
+                            <option value="+81">JP (+81)</option>
+                            <option value="+61">AU (+61)</option>
+                            <option value="+1-ca">CA (+1)</option>
+                            <option value="+33">FR (+33)</option>
+                            <option value="+39">IT (+39)</option>
+                            <option value="+34">ES (+34)</option>
+                            <option value="+86">CN (+86)</option>
+                            <option value="+82">KR (+82)</option>
+                            <option value="+55">BR (+55)</option>
+                            <option value="+27">ZA (+27)</option>
+                            <option value="+966">SA (+966)</option>
+                            <option value="+other">Other</option>
+                          </select>
+                          <input
+                            id="talent-mobile"
+                            type="tel"
+                            placeholder="e.g. 98765 43210"
+                            className="car-talent-phone-input"
+                            required
+                          />
+                        </div>
                       </div>
 
                       <div className="car-talent-field">

@@ -254,7 +254,7 @@ function About() {
           <article className="stat"><CountUp to={10} /><span>MANUFACTURING FACILITIES<br />ACROSS INDIA, US &amp; EUROPE</span></article>
           <article className="stat"><CountUp to={6} /><span>R&amp;D CENTERS OF EXCELLENCE</span></article>
           <article className="stat"><CountUp to={150} suffix="+" /><span>DOSSIERS</span></article>
-          <article className="stat"><CountUp to={100} suffix="+" /><span className="stat-small-s">DFM&apos;<span className="lowercase-s">s</span></span></article>
+          <article className="stat"><CountUp to={100} suffix="+" /><span className="stat-small-s">DMF<span className="lowercase-s">s</span></span></article>
         </div>
       </div>
     </section>

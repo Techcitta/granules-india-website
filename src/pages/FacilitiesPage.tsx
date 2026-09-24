@@ -19,7 +19,7 @@ type Facility = {
   apiCapacity?: string;
   fdCapacity?: string;
   pfiCapacity?: string;
-  packaging?: string;
+  packaging?: string | string[];
   specialization?: string;
 };
 
@@ -76,7 +76,7 @@ const FACILITIES: Facility[] = [
     country: 'USA',
     countryCode: 'US',
     image: 'granules-manassas.jpg',
-    packaging: '2 OTC Lines 1 Rx Line',
+    packaging: ['2 OTC Lines', '1 Rx Line'],
   },
 
   // API
@@ -231,7 +231,13 @@ export default function FacilitiesPage() {
                       <span className="fac-cap-pill">PFI: {facility.pfiCapacity}</span>
                     )}
                     {facility.packaging && (
-                      <span className="fac-cap-pill">{facility.packaging}</span>
+                      Array.isArray(facility.packaging) ? (
+                        facility.packaging.map((pkg) => (
+                          <span className="fac-cap-pill" key={pkg}>{pkg}</span>
+                        ))
+                      ) : (
+                        <span className="fac-cap-pill">{facility.packaging}</span>
+                      )
                     )}
                     {facility.specialization && (
                       <span className="fac-cap-pill">{facility.specialization}</span>
