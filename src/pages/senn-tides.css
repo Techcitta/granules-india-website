@@ -1554,7 +1554,7 @@ h4.senn-cap-banner-text {
 .senn-cta-copy h2 {
   margin: 0;
   font: 700 clamp(20px, 1.8vw, 26px)/1.25 'Manrope', sans-serif;
-  color: var(--blue-2, #0050c7);
+  color: var(--blue, #0061f8);
   letter-spacing: -0.02em;
 }
 
