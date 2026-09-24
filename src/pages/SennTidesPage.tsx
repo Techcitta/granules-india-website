@@ -520,7 +520,7 @@ export default function SennTidesPage() {
 
           {/* Left Centered Text Content (Only text in white, matching img 2) */}
           <div className="senn-practice-card" key={activeWhatWeDoIdx}>
-            <h3>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].title}</h3>
+            <h2>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].title}</h2>
             <p>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].desc}</p>
           </div>
         </div>
@@ -795,7 +795,7 @@ export default function SennTidesPage() {
         <div className="senn-section-head">
           <div className="copy">
             <span className="cp-section-badge">Contact</span>
-            <h2>Connect with Our CDMO Team</h2>
+            <h2>Connect with our CDMO Team</h2>
             <h4>
               Discuss your development and manufacturing program with Senn Tides across our Swiss and Indian headquarters.
             </h4>
@@ -844,30 +844,19 @@ export default function SennTidesPage() {
       {/* Bottom CTA Banner */}
       <section className="senn-cta" aria-label="Connect with Senn Tides">
         <div className="senn-cta-copy">
-          <h2>Discuss Your Development and Manufacturing Program with Senn Tides</h2>
-          <h4>
+          <h2>Discuss your Development and Manufacturing Program with Senn Tides</h2>
+          <p>
             Connect with our CDMO team for peptide feasibility, process development, scale-up or commercial supply.
-          </h4>
-          <div className="senn-cta-links">
-            <span>Email: <a href="mailto:sales@sennchem.com">sales@sennchem.com</a></span>
-            <span>Web: <a href="https://www.sennchem.com" target="_blank" rel="noreferrer">www.sennchem.com</a></span>
-          </div>
+          </p>
         </div>
-
-        <div className="senn-cta-actions">
-          <a
-            href="https://www.sennchem.com"
-            target="_blank"
-            rel="noreferrer"
-            className="senn-cta-btn senn-cta-btn--secondary"
-          >
-            <span>Visit Senn Chemicals</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-        </div>
+        <a
+          href="https://www.sennchem.com"
+          target="_blank"
+          rel="noreferrer"
+          className="cp-cta-btn"
+        >
+          VISIT SENN CHEMICALS
+        </a>
       </section>
 
       <CompanyFooter />

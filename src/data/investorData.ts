@@ -332,7 +332,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "items": [
           {
             "title": "First Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q1 FY27",
             "year": "2027",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2026/07/FY-Result-Jun26.pdf",
@@ -343,7 +343,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "First Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q1 FY26",
             "year": "2026",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2025/08/Results-SEBI-reports.pdf",
@@ -354,7 +354,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Second Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q2 FY26",
             "year": "2026",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2025/11/Results-and-Audit-report.pdf",
@@ -365,7 +365,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Third Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q3 FY26",
             "year": "2026",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2026/01/GLL-Third-Quarter.pdf",
@@ -376,7 +376,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
           },
           {
             "title": "Fourth Quarter",
-            "scope": "Consolidated & Standalone",
+            "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q4 FY26",
             "year": "2026",
             "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/2026/04/Q4-Financials-FY26–Fourth-Quarter.pdf",

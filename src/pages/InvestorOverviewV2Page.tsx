@@ -193,7 +193,7 @@ export default function InvestorOverviewV2Page() {
             committed to transparent communication and timely responses.
           </p>
         </div>
-        <Link className="inv-contact-btn" to="/contact">Contact</Link>
+        <Link className="cp-cta-btn" to="/contact">CONTACT US</Link>
       </div>
 
       <CompanyFooter />

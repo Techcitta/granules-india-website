@@ -404,7 +404,7 @@ function Presence() {
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
                   <rect x="145" y="222" width="180" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
                   <text x="235" y="235.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    CHANTILLY (VIRGINIA) USA
+                    CHANTILLY
                   </text>
                 </g>
                 <circle className="map-pin-dot" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
@@ -414,7 +414,7 @@ function Presence() {
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
                   <rect x="442" y="254" width="112" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
                   <text x="498" y="267.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    SWITZERLAND
+                    ZURICH
                   </text>
                 </g>
                 <circle className="map-pin-dot" cx="498" cy="315" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
@@ -685,7 +685,7 @@ function Sustainability({ open = 0, setOpen }) {
 function Investor() {
   const docs = [
     {
-      title: 'Q1 Results for 2026-27',
+      title: 'Q1 Results for FY27',
       href: getAssetUrl('pdfs/2026/07/FY-Result-Jun26.pdf'),
       download: 'Granules_Q1_FY27_Results.pdf',
     },
@@ -714,7 +714,7 @@ function Investor() {
           Driven by operational excellence and responsible growth, we remain focused on creating
           sustainable value for our investors.
         </p>
-        <Button href="/investors">INVESTORS &rarr;</Button>
+        <Button href="/investors">INVESTOR &rarr;</Button>
       </div>
       <div className="investor-panel">
         <a

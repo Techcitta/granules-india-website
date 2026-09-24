@@ -767,7 +767,7 @@ export default function GenericsPage() {
             Leverage our end-to-end scale, global regulatory compliance, and formulation science to bring high-quality medicines to market faster.
           </p>
         </div>
-        <Link to="/contact" className="cp-cta-btn">Connect With Us</Link>
+        <Link to="/contact" className="cp-cta-btn">CONNECT WITH US</Link>
       </div>
 
       <CompanyFooter />

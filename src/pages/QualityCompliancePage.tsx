@@ -227,20 +227,15 @@ export default function QualityCompliancePage() {
       </div>
 
       <section className="qc-cta" aria-label="Partner with Granules for Quality & Compliance">
-        <img className="bg" src={`${Q}cta-bg.webp`} alt="" loading="lazy" decoding="async" />
-        <div className="overlay" />
         <div className="qc-cta-copy">
           <h2>Ready to Partner with us?</h2>
           <p>
             Connect with our quality and regulatory specialists to ensure compliant, continuous global pharmaceutical supply.
           </p>
         </div>
-        <div className="qc-cta-actions">
-          <Link to="/contact" className="qc-cta-btn qc-cta-btn--primary">
-            <span>Contact Us</span>
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
+        <Link to="/contact" className="cp-cta-btn">
+          CONNECT WITH US
+        </Link>
       </section>
 
       <CompanyFooter />

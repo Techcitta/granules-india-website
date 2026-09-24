@@ -135,8 +135,6 @@ export default function FdPage() {
       </div>
 
       <div className="biz-cta">
-        <img className="bg" src={`${F}cta-bg.png`} alt="" />
-        <div className="overlay" />
         <div className="biz-cta-copy">
           <h2>Explore Our Finished Dosage Portfolio</h2>
           <p>
@@ -149,7 +147,7 @@ export default function FdPage() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          View Product List &rarr;
+          VIEW PRODUCT LIST
         </a>
       </div>
 
