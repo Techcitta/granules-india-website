@@ -40,6 +40,7 @@ const WHAT_WE_DO_CARDS: CapabilityCard[] = [
 interface WhatWeDoItem {
   id: string;
   title: string;
+  shortTitle: string;
   desc: string;
   image: string;
   icon: React.ReactNode;
@@ -49,6 +50,7 @@ const WHAT_WE_DO_BANNER_ITEMS: WhatWeDoItem[] = [
   {
     id: 'aad',
     title: 'Amino Acid Derivatives | 190+ Catalogue SKUs',
+    shortTitle: 'Amino Acid Derivatives',
     image: '/assets/rd/card-catalysis.png',
     desc: 'Pioneered AAD synthesis with a catalogue of over 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, and side-chain-modified derivatives.',
     icon: (
@@ -62,6 +64,7 @@ const WHAT_WE_DO_BANNER_ITEMS: WhatWeDoItem[] = [
   {
     id: 'fragments',
     title: 'Peptide Fragments | High-Purity Building Blocks',
+    shortTitle: 'Peptide Fragments',
     image: '/assets/rd/card-solvents.png',
     desc: 'High-purity peptide building blocks and intermediate fragments supplied to pharmaceutical innovators and commercial peptide manufacturers.',
     icon: (
@@ -80,6 +83,7 @@ const WHAT_WE_DO_BANNER_ITEMS: WhatWeDoItem[] = [
   {
     id: 'apis',
     title: 'Peptide APIs | Custom Synthesis & cGMP Supply',
+    shortTitle: 'Peptide APIs',
     image: '/assets/rd/card-synthesis.png',
     desc: 'Custom peptide APIs ranging from short sequences to complex chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
     icon: (
@@ -495,24 +499,29 @@ export default function SennTidesPage() {
             </div>
           ))}
 
-          <div className="senn-practice-card" key={activeWhatWeDoIdx}>
-            <div className="senn-practice-card-icon">
-              {WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].icon}
-            </div>
-            <h3>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].title}</h3>
-            <p>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].desc}</p>
+          {/* 3 Options in the Top */}
+          <div className="senn-practice-top-options" role="tablist" aria-label="What We Do categories">
+            {WHAT_WE_DO_BANNER_ITEMS.map((item, idx) => {
+              const isActive = idx === activeWhatWeDoIdx;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`senn-practice-top-btn ${isActive ? 'active' : ''}`}
+                  onClick={() => setActiveWhatWeDoIdx(idx)}
+                >
+                  <span>{item.shortTitle}</span>
+                </button>
+              );
+            })}
           </div>
 
-          <div className="senn-practice-nav" aria-label="Slide indicators">
-            {WHAT_WE_DO_BANNER_ITEMS.map((item, idx) => (
-              <button
-                key={item.id}
-                type="button"
-                className={`senn-practice-nav-btn ${idx === activeWhatWeDoIdx ? 'active' : ''}`}
-                onClick={() => setActiveWhatWeDoIdx(idx)}
-                aria-label={`Go to slide ${idx + 1}: ${item.title}`}
-              />
-            ))}
+          {/* Left Centered Text Content (Only text in white, matching img 2) */}
+          <div className="senn-practice-card" key={activeWhatWeDoIdx}>
+            <h3>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].title}</h3>
+            <p>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].desc}</p>
           </div>
         </div>
       </div>

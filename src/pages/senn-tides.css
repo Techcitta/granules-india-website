@@ -361,7 +361,9 @@ h1.senn-page-header {
 .senn-practice-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.18) 45%, rgba(0, 0, 0, 0.45) 100%);
+  background: 
+    linear-gradient(90deg, rgba(5, 10, 25, 0.85) 0%, rgba(5, 10, 25, 0.58) 52%, rgba(5, 10, 25, 0.18) 100%),
+    linear-gradient(180deg, rgba(5, 10, 25, 0.4) 0%, transparent 40%, rgba(5, 10, 25, 0.75) 100%);
 }
 
 .senn-practice-headline {
@@ -379,88 +381,106 @@ h1.senn-page-header {
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 
-/* Floating White Card Box */
+/* Left Centered Text Content (No white box, text in white only, matching img 2) */
 .senn-practice-card {
   position: absolute;
-  bottom: clamp(22px, 3.5vw, 46px);
-  right: clamp(24px, 4vw, 60px);
+  top: 56%;
+  transform: translateY(-50%);
+  left: clamp(32px, 4.5vw, 76px);
+  right: auto;
+  bottom: auto;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 28px;
-  padding: clamp(20px, 2.5vw, 30px) clamp(24px, 3vw, 38px);
-  max-width: clamp(340px, 40vw, 500px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  max-width: clamp(480px, 68vw, 980px);
+  box-shadow: none !important;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   animation: sennPracticeCardFadeIn 0.5s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 @keyframes sennPracticeCardFadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(calc(-50% + 12px));
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-50%);
   }
 }
 
 .senn-practice-card-icon {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 6px;
+  display: none !important;
 }
 
 .senn-practice-card h3 {
-  margin: 0 0 8px;
-  font: 700 clamp(20px, 1.8vw, 26px)/1.25 'Manrope', sans-serif !important;
-  color: #0061f8 !important;
-  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(36px, 3.8vw, 54px) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.015em !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
 }
 
 .senn-practice-card p {
   margin: 0;
-  font: 400 clamp(14px, 1.1vw, 16px)/1.55 'Manrope', sans-serif !important;
-  color: #475569 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(16px, 1.22vw, 20px) !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+  max-width: 720px;
 }
 
-/* Clickable bottom-left interactive progress segments */
-.senn-practice-nav {
+/* 3 Options in the Top (Styled like img 2 pill buttons) */
+.senn-practice-top-options {
   position: absolute;
-  bottom: clamp(22px, 3.5vw, 46px);
-  left: clamp(26px, 4vw, 60px);
-  z-index: 10;
+  top: clamp(24px, 3.2vw, 40px);
+  left: clamp(32px, 4.5vw, 76px);
+  right: clamp(32px, 4.5vw, 76px);
+  z-index: 12;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(10px, 1.2vw, 14px);
+  flex-wrap: wrap;
 }
 
-.senn-practice-nav-btn {
+.senn-practice-top-btn {
   border: none;
-  background: rgba(255, 255, 255, 0.45);
-  height: 6px;
-  width: clamp(32px, 3.5vw, 50px);
-  border-radius: 10px;
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 10px 24px;
+  color: #0061f8;
+  font: 700 clamp(13px, 1.05vw, 14.5px)/1 'Manrope', sans-serif;
+  letter-spacing: 0.2px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
-  padding: 0;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.senn-practice-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.85);
+.senn-practice-top-btn:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
-.senn-practice-nav-btn.active {
-  width: clamp(70px, 8vw, 120px);
-  background: linear-gradient(90deg, #016ef7 4.5%, #38b34a 45.6%, #66cef5 98.7%);
-  box-shadow: 0 0 14px rgba(1, 110, 247, 0.7);
+.senn-practice-top-btn.active {
+  background: #0061f8;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 97, 248, 0.45);
 }
 
 @media (max-width: 900px) {
@@ -469,20 +489,40 @@ h1.senn-page-header {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 24px 20px 60px;
+    padding: 24px 20px 30px;
+  }
+
+  .senn-practice-top-options {
+    top: 20px;
+    left: 18px;
+    right: 18px;
+    gap: 8px;
+  }
+
+  .senn-practice-top-btn {
+    padding: 8px 16px;
+    font-size: 12.5px;
   }
 
   .senn-practice-card {
     position: static;
+    transform: none;
     max-width: 100%;
-    margin-bottom: 20px;
-    border-radius: 24px;
-    padding: 22px;
+    margin-top: 50px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
   }
 
-  .senn-practice-nav {
-    left: 20px;
-    bottom: 22px;
+  .senn-practice-card h3 {
+    font-size: clamp(26px, 5.5vw, 36px) !important;
+    margin-bottom: 12px;
+  }
+
+  .senn-practice-card p {
+    font-size: 15px !important;
   }
 }
 
@@ -494,8 +534,8 @@ h1.senn-page-header {
 
   .senn-practice-banner {
     border-radius: 28px !important;
-    min-height: 480px;
-    padding: 18px 16px 54px;
+    min-height: 440px;
+    padding: 18px 16px 36px;
   }
 
   .senn-practice-headline {
@@ -504,17 +544,21 @@ h1.senn-page-header {
   }
 
   .senn-practice-card {
-    padding: 16px 18px;
-    border-radius: 18px;
-    margin-bottom: 14px;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 10px;
   }
 
   .senn-practice-card h3 {
-    font-size: 18px !important;
+    font-size: clamp(22px, 5.8vw, 28px) !important;
+    margin-bottom: 10px;
   }
 
   .senn-practice-card p {
-    font-size: 13.5px !important;
+    font-size: 14px !important;
   }
 
   .senn-practice-nav {
