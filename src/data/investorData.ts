@@ -4535,17 +4535,6 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "subcategoryLabel": "Schedule of Investor Meet"
           },
           {
-            "id": "schedule-of-investor-meet-41",
-            "title": "Schedule of Analyst/ Investor meet on 15th November 2021",
-            "scope": "Analyst Interactions & Non-Deal Roadshows",
-            "period": "November 20",
-            "year": "2021",
-            "pdf": "https://d16d47oyl512wy.cloudfront.net/pdfs/pdf/investors/2504NSEBSE.pdf",
-            "category": "sec-notices-disclosures",
-            "subcategoryId": "schedule-of-investor-meet",
-            "subcategoryLabel": "Schedule of Investor Meet"
-          },
-          {
             "id": "schedule-of-investor-meet-29",
             "title": "Schedule of Analyst and Investor Earnings Conference Call- Q2-2022-23",
             "scope": "Analyst Interactions & Non-Deal Roadshows",

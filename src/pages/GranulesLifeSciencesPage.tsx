@@ -12,7 +12,7 @@ type CapabilityCard = { title: string; image: string; desc: string };
 const CAPABILITY_CARDS: CapabilityCard[] = [
   {
     title: 'Automated Production',
-    image: 'card-lean-process.png',
+    image: 'automated-production.jpg',
     desc: 'Advanced automated production lines and high-speed encapsulation delivering 10 billion oral solid dosages annually.',
   },
   {

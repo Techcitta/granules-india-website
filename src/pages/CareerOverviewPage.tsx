@@ -656,7 +656,11 @@ export default function CareerOverviewPage() {
                     onClick={() => setOpenBenefit(isOpen ? -1 : idx)}
                   >
                     <div className="car-benefit-img-wrap">
-                      <img src={b.image} alt={b.title} />
+                      <img
+                        src={b.image}
+                        alt={b.title}
+                        className={b.id === 'health' ? 'car-benefit-img--health' : undefined}
+                      />
                     </div>
 
                     <div className="car-benefit-sheet">

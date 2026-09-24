@@ -1858,6 +1858,11 @@
   transform: scale(1.05);
 }
 
+.car-benefit-img-wrap img.car-benefit-img--health {
+  object-position: right 38%;
+  transform-origin: 78% 40%;
+}
+
 .car-benefit-sheet {
   position: absolute;
   inset: 0;

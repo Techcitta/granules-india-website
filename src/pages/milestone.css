@@ -176,6 +176,8 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  filter: none;
+  image-rendering: auto;
 }
 
 .ms-card-caption {
