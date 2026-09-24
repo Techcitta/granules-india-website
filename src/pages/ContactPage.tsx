@@ -250,7 +250,7 @@ export default function ContactPage() {
         {/* ═══════════════════════════════════════════════
           ADVERSE EVENT REPORTING  — white card style
       ═══════════════════════════════════════════════ */}
-        <section className="ct-adverse-section cp-shell">
+        <div className="ct-adverse-section">
           <div className="ct-adverse-card">
             <a href="mailto:drugs.safety@granulesindia.com" className="ct-adverse-title-link">For Adverse Event Reporting</a>
             <h4 className="ct-adverse-p">
@@ -262,7 +262,7 @@ export default function ContactPage() {
               <a href="mailto:drugs.safety@granulesindia.com" className="ct-adverse-contact-pill">drugs.safety@granulesindia.com</a>
             </div>
           </div>
-        </section>
+        </div>
 
         <h2><br />Investor Relations Contact</h2><br />
         <hr className="ct-divider" />
