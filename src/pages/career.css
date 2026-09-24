@@ -369,7 +369,7 @@
   position: relative;
   background: #f3f8fe;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 75px;
   margin-top: 75px !important;
   display: flex;
   flex-direction: column;
@@ -504,22 +504,14 @@
   z-index: 6;
 }
 
-.car-panel--6 {
-  top: clamp(190px, 24vh, 210px);
+/* Last value proposition panel: not stacked/frozen, scrolls up naturally with page flow */
+.car-panel:last-child,
+.car-panel--6,
+.car-panel--last {
+  position: relative !important;
+  top: auto !important;
+  margin-bottom: 0 !important;
   z-index: 7;
-}
-
-/* Below-Stack Container: Scrolls ON TOP of all 7 sticky cards like a curtain */
-.car-below-stack {
-  position: relative;
-  z-index: 12;
-  background: #ffffff;
-  border-top-left-radius: 44px;
-  border-top-right-radius: 44px;
-  margin-top: 0;
-  padding-top: 75px !important;
-  padding-bottom: 0 !important;
-  box-shadow: 0 -28px 60px rgba(0, 20, 60, 0.08);
 }
 
 /* Left/Right Image Container - Flush to outer border and curved corners */

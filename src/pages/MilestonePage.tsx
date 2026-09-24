@@ -56,13 +56,14 @@ export default function MilestonePage() {
       <div className="ms-systems">
         {MILESTONES.map((entry, index) => {
           const isReverse = index % 2 === 1;
+          const isLast = index === MILESTONES.length - 1;
           return (
             <div
-              className={`ms-stack-card ms-stack-card--${index}${isReverse ? ' ms-stack-card--reverse' : ''}`}
+              className={`ms-stack-card ms-stack-card--${index}${isReverse ? ' ms-stack-card--reverse' : ''}${isLast ? ' ms-stack-card--last' : ''}`}
               key={entry.year}
               style={{
                 zIndex: index + 1,
-                top: 'clamp(100px, 12vh, 130px)',
+                top: isLast ? 'auto' : 'clamp(100px, 12vh, 130px)',
               }}
             >
               <div className="ms-card-content">
@@ -78,20 +79,18 @@ export default function MilestonePage() {
             </div>
           );
         })}
+      </div>
 
-        <div className="ms-below-stack">
-          <div className="ms-leadership">
-            <img className="cp-bg" src={`${M}achievements-cta-bg.webp`} alt="" loading="lazy" decoding="async" />
-            <div className="cp-bg-overlay" />
-            <div className="ms-leadership-copy">
-              <h2>Meet Our Leadership</h2>
-              <p>
-                Discover the team leading Granules with purpose, innovation, and commitment to
-                excellence.
-              </p>
-              <Link className="cp-cta-btn" to="/company/leadership">Know More &rarr;</Link>
-            </div>
-          </div>
+      <div className="ms-leadership">
+        <img className="cp-bg" src={`${M}achievements-cta-bg.webp`} alt="" loading="lazy" decoding="async" />
+        <div className="cp-bg-overlay" />
+        <div className="ms-leadership-copy">
+          <h2>Meet Our Leadership</h2>
+          <p>
+            Discover the team leading Granules with purpose, innovation, and commitment to
+            excellence.
+          </p>
+          <Link className="cp-cta-btn" to="/company/leadership">Know More &rarr;</Link>
         </div>
       </div>
 

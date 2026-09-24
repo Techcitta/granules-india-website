@@ -487,7 +487,7 @@ export default function CareerOverviewPage() {
           </div>
 
           {/* Panel 6: Care Beyond Careers */}
-          <div className="car-panel car-panel--6" style={{ '--stack-index': 6 } as React.CSSProperties}>
+          <div className="car-panel car-panel--6 car-panel--last" style={{ '--stack-index': 6, top: 'auto' } as React.CSSProperties}>
             <div className="car-panel-image">
               <img src={`${A}17.png`} alt="Care beyond careers" />
             </div>
@@ -498,14 +498,13 @@ export default function CareerOverviewPage() {
               </p>
             </div>
           </div>
+        </div>
 
-          {/* Below-Stack Curtain Container */}
-          <div className="car-below-stack">
-            {/* Growth You Can Picture — Learning & Mobility Spotlight Card */}
-            <div className="car-why-head" style={{ width: '85%', maxWidth: '85%', margin: '0 auto', padding: 0 }}>
-              <div className="car-why-copy">
-                <span className="car-why-tag">GROWTH YOU CAN PICTURE</span>
-                <h2>Learning and Mobility</h2>
+        {/* Growth You Can Picture — Learning & Mobility Spotlight Card */}
+        <div className="car-why-head" style={{ width: '85%', maxWidth: '85%', margin: '75px auto clamp(24px, 3vw, 36px)', padding: 0 }}>
+          <div className="car-why-copy">
+            <span className="car-why-tag">GROWTH YOU CAN PICTURE</span>
+            <h2>Learning and Mobility</h2>
                 <p className="car-why-subtitle">
                   At Granules, learning is built into everyday work through structured training, capability building, cross-functional exposure and opportunities to grow across roles, teams and locations. One example is the Self-Managed Team Trainee Program, a future-ready talent program that gives young trainees early ownership, guided shop-floor exposure and hands-on learning across manufacturing operations, helping them build technical confidence, operational discipline and a strong foundation for long-term careers.
                 </p>
@@ -854,9 +853,7 @@ export default function CareerOverviewPage() {
                 Apply for Roles &rarr;
               </a>
             </div>
-          </div>
-        </div>
-      </main>
+        </main>
 
       <CompanyFooter />
     </div>
