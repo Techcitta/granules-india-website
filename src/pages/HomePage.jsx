@@ -685,19 +685,9 @@ function Sustainability({ open = 0, setOpen }) {
 function Investor() {
   const docs = [
     {
-      title: 'Integrated annual report 2025-26',
-      href: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf'),
-      download: 'Granules_Annual_Report_FY26.pdf',
-    },
-    {
       title: 'Q1 Results for 2026-27',
       href: getAssetUrl('pdfs/2026/07/FY-Result-Jun26.pdf'),
       download: 'Granules_Q1_FY27_Results.pdf',
-    },
-    {
-      title: 'Investor presentation',
-      href: getAssetUrl('pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf'),
-      download: 'Granules_Investor_Presentation_Q1_FY27.pdf',
     },
     {
       title: 'Earnings call transcript (Q1 FY27)',
@@ -705,9 +695,14 @@ function Investor() {
       download: 'Granules_Earnings_Call_Transcript_Q1_FY27.pdf',
     },
     {
-      title: 'Shareholding pattern',
-      href: getAssetUrl('pdfs/2026/07/Website-SHP-1_merged.pdf'),
-      download: 'Granules_Shareholding_Pattern_Q1_FY27.pdf',
+      title: 'Investor presentation',
+      href: getAssetUrl('pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf'),
+      download: 'Granules_Investor_Presentation_Q1_FY27.pdf',
+    },
+    {
+      title: 'Integrated annual report 2025-26',
+      href: getAssetUrl('pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf'),
+      download: 'Granules_Annual_Report_FY26.pdf',
     },
   ];
   return (
