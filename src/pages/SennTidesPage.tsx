@@ -37,61 +37,35 @@ const WHAT_WE_DO_CARDS: CapabilityCard[] = [
 ];
 
 
-interface WhatWeDoItem {
+type WhatWeDoBenefit = {
   id: string;
   title: string;
-  shortTitle: string;
-  desc: string;
+  body: string;
+  icon: string;
   image: string;
-  icon: React.ReactNode;
-}
+};
 
-const WHAT_WE_DO_BANNER_ITEMS: WhatWeDoItem[] = [
+const WHAT_WE_DO_ITEMS: WhatWeDoBenefit[] = [
   {
     id: 'aad',
     title: 'Amino Acid Derivatives | 190+ Catalogue SKUs',
-    shortTitle: 'Amino Acid Derivatives',
+    body: 'Pioneered AAD synthesis with a catalogue of over 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, and side-chain-modified derivatives.',
+    icon: '/assets/fd/icon-test-tube.svg',
     image: '/assets/rd/card-catalysis.png',
-    desc: 'Pioneered AAD synthesis with a catalogue of over 190 SKUs, including Fmoc-, Boc- and Z-protected derivatives, beta-amino acids, and side-chain-modified derivatives.',
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10 2v7.5L4.5 19.5A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-2.5L14 9.5V2" />
-        <line x1="8.5" y1="2" x2="15.5" y2="2" />
-        <path d="M7 16h10" />
-      </svg>
-    ),
   },
   {
     id: 'fragments',
     title: 'Peptide Fragments | High-Purity Building Blocks',
-    shortTitle: 'Peptide Fragments',
+    body: 'High-purity peptide building blocks and intermediate fragments supplied to pharmaceutical innovators and commercial peptide manufacturers.',
+    icon: '/assets/fd/icon-circles.svg',
     image: '/assets/rd/card-solvents.png',
-    desc: 'High-purity peptide building blocks and intermediate fragments supplied to pharmaceutical innovators and commercial peptide manufacturers.',
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="6" cy="6" r="3" />
-        <circle cx="18" cy="6" r="3" />
-        <circle cx="18" cy="18" r="3" />
-        <circle cx="6" cy="18" r="3" />
-        <line x1="9" y1="6" x2="15" y2="6" />
-        <line x1="18" y1="9" x2="18" y2="15" />
-        <line x1="9" y1="18" x2="15" y2="18" />
-        <line x1="6" y1="9" x2="6" y2="15" />
-      </svg>
-    ),
   },
   {
     id: 'apis',
     title: 'Peptide APIs | Custom Synthesis & cGMP Supply',
-    shortTitle: 'Peptide APIs',
+    body: 'Custom peptide APIs ranging from short sequences to complex chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
+    icon: '/assets/pfi/icon-manufacturing.svg',
     image: '/assets/rd/card-synthesis.png',
-    desc: 'Custom peptide APIs ranging from short sequences to complex chains exceeding 40 amino acid residues, including cyclic, bridged and lipidated structures.',
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0061f8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z" />
-        <path d="M8.5 8.5l7 7" />
-      </svg>
-    ),
   },
 ];
 
@@ -300,19 +274,10 @@ const LEADERSHIP_TEAM: LeaderMember[] = [
 
 export default function SennTidesPage() {
   const [openWhatWeDo, setOpenWhatWeDo] = useState<number>(-1);
-  const [activeWhatWeDoIdx, setActiveWhatWeDoIdx] = useState<number>(0);
-  const [isWhatWeDoPaused, setIsWhatWeDoPaused] = useState<boolean>(false);
+  const [openWhatWeDoAccordion, setOpenWhatWeDoAccordion] = useState<number>(0);
   const [flippedMfgCard, setFlippedMfgCard] = useState<number | null>(null);
 
   const whatWeDoScroll = useSwipeScroll();
-
-  useEffect(() => {
-    if (isWhatWeDoPaused) return;
-    const timer = setInterval(() => {
-      setActiveWhatWeDoIdx((prev) => (prev + 1) % WHAT_WE_DO_BANNER_ITEMS.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [isWhatWeDoPaused]);
 
   useEffect(() => {
     document.title = 'Senn Tides | Peptide CDMO in Switzerland and India | Granules India';
@@ -481,47 +446,47 @@ export default function SennTidesPage() {
         </div>
       </section>
 
-      {/* What We Do Interactive Banner (Matching The Granules Way Practice Banner) */}
-      <div className="senn-practice-wrap">
-        <div
-          className="senn-practice-banner"
-          onMouseEnter={() => setIsWhatWeDoPaused(true)}
-          onMouseLeave={() => setIsWhatWeDoPaused(false)}
-        >
-          {WHAT_WE_DO_BANNER_ITEMS.map((item, idx) => (
-            <div
-              key={item.id}
-              className={`senn-practice-slide-layer ${idx === activeWhatWeDoIdx ? 'active' : ''}`}
-              aria-hidden={idx !== activeWhatWeDoIdx}
-            >
-              <img src={item.image} alt={item.title} className="senn-practice-bg" />
-              <div className="senn-practice-overlay" />
-            </div>
-          ))}
-
-          {/* 3 Options in the Top */}
-          <div className="senn-practice-top-options" role="tablist" aria-label="What We Do categories">
-            {WHAT_WE_DO_BANNER_ITEMS.map((item, idx) => {
-              const isActive = idx === activeWhatWeDoIdx;
+      {/* What We Do Interactive Panel (Matching business panel accordion design) */}
+      <div className="biz-panel" style={{ marginTop: '32px' }}>
+        <img
+          className="bg"
+          src={
+            openWhatWeDoAccordion >= 0 && WHAT_WE_DO_ITEMS[openWhatWeDoAccordion]?.image
+              ? WHAT_WE_DO_ITEMS[openWhatWeDoAccordion].image
+              : WHAT_WE_DO_ITEMS[0].image
+          }
+          alt=""
+        />
+        <div className="overlay" />
+        <div className="biz-panel-grid">
+          <div className="biz-accordion">
+            {WHAT_WE_DO_ITEMS.map((item, index) => {
+              const isOpen = openWhatWeDoAccordion === index;
               return (
                 <button
                   key={item.id}
                   type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  className={`senn-practice-top-btn ${isActive ? 'active' : ''}`}
-                  onClick={() => setActiveWhatWeDoIdx(idx)}
+                  className={`biz-accordion-item${isOpen ? '' : ' collapsed'}`}
+                  onClick={() => setOpenWhatWeDoAccordion(isOpen ? -1 : index)}
                 >
-                  <span>{item.shortTitle}</span>
+                  <div className="biz-accordion-head">
+                    <div className="biz-accordion-icon-row">
+                      <span className="biz-accordion-icon">
+                        <img src={item.icon} alt="" />
+                      </span>
+                      <p className="biz-accordion-title">{item.title}</p>
+                    </div>
+                    <span className="biz-accordion-toggle">
+                      <img
+                        src={`/assets/fd/${isOpen ? 'icon-minus.svg' : 'icon-plus.svg'}`}
+                        alt={isOpen ? 'Collapse' : 'Expand'}
+                      />
+                    </span>
+                  </div>
+                  {isOpen && item.body && <p className="biz-accordion-body">{item.body}</p>}
                 </button>
               );
             })}
-          </div>
-
-          {/* Left Centered Text Content (Only text in white, matching img 2) */}
-          <div className="senn-practice-card" key={activeWhatWeDoIdx}>
-            <h2>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].title}</h2>
-            <p>{WHAT_WE_DO_BANNER_ITEMS[activeWhatWeDoIdx].desc}</p>
           </div>
         </div>
       </div>
