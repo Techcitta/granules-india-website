@@ -241,7 +241,7 @@ const FOOTPRINT_LIST = [
     country: 'India',
     location: 'Hyderabad',
     details: 'Development, process optimisation, structural characterisation and analytical capabilities.',
-    image: '/assets/facilities/gagillapur.png',
+    image: '/assets/peptides/footprint-hyderabad.jpg',
     flag: (
       <svg width="22" height="22" viewBox="0 0 512 512" style={{ borderRadius: '6px', flexShrink: 0 }}>
         <rect width="512" height="170.7" fill="#ff9933" />

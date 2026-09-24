@@ -481,7 +481,7 @@ export default function GenericsPage() {
 
         <div className="cp-hero-panel">
           <img
-            src="/assets/hero-1.webp"
+            src="/assets/generics/hero-banner.jpg"
             alt="Granules Generics Manufacturing"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
