@@ -708,18 +708,16 @@ p.cp-breadcrumb .current,
   box-shadow: none !important;
 }
 
-/* Unified White Headings */
+/* Unified White Headings for Dark Banners */
 .sus-cta h2,
 .car-cta-photo h2,
 .car-cta h2,
-.cp-career h2,
 .ld-cta h2,
 .ms-leadership h2,
 .aw-cta h2,
 .biz-cta h2,
 .rd-cta h2,
 .qc-cta h2,
-.fac-cta h2,
 .senn-cta h2,
 .czro-cta h2,
 .gls-cta h2,
@@ -731,14 +729,12 @@ p.cp-breadcrumb .current,
 .ct-cta-box .ct-cta-title,
 .asc-cta h2,
 .car-cta-copy h2,
-.cp-career-copy h2,
 .ld-cta-copy h2,
 .ms-leadership-copy h2,
 .aw-cta-copy h2,
 .biz-cta-copy h2,
 .rd-cta-copy h2,
 .qc-cta-copy h2,
-.fac-cta-copy h2,
 .senn-cta-copy h2,
 .czro-cta-copy h2,
 .gls-cta-copy h2,
@@ -755,6 +751,21 @@ p.cp-breadcrumb .current,
   letter-spacing: -0.3px !important;
   margin: 0 !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* Blue Headings for Light Banners (Matching Image 2) */
+.cp-career h2,
+.cp-career-copy h2,
+.fac-cta h2,
+.fac-cta-copy h2 {
+  color: #0061f8 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(24px, 2.3vw, 38px) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 !important;
+  text-shadow: none !important;
 }
 
 /* Unified Dark High-Contrast Paragraphs */

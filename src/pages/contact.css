@@ -629,11 +629,12 @@
 ══════════════════════════════════════════════════════════════════ */
 
 .ct-adverse-section {
+  width: 100%;
   margin-top: 75px;
 }
 
-
 .ct-adverse-card {
+  width: 100%;
   min-height: 250px;
   box-sizing: border-box;
   display: flex;

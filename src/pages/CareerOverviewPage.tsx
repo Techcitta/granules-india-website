@@ -6,12 +6,6 @@ import './career.css';
 
 const A = '/assets/career/';
 
-const OVERVIEW_STATS = [
-  { id: 'employees', value: '5,000+', label: 'Employees globally' },
-  { id: 'countries', value: '100+', label: 'Countries reached' },
-  { id: 'filings', value: '150+', label: 'Product filings' },
-  { id: 'careers', value: '1,000+', label: 'Careers built' },
-];
 
 const CAREER_AREAS = [
   {
@@ -247,7 +241,7 @@ export default function CareerOverviewPage() {
 
       <main>
         {/* Breadcrumb Navigation */}
-        <p className="cp-breadcrumb" style={{ width: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
+        <p className="cp-breadcrumb" style={{ width: 'min(85%, 1632px)', maxWidth: '1632px', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
           <Link to="/">HOME</Link>
           <span className="sep">›</span>
           <span className="current">CAREERS</span>
@@ -273,21 +267,6 @@ export default function CareerOverviewPage() {
           <h4>
             Bring your curiosity. Build real expertise. See your impact take shape.
           </h4>
-        </div>
-
-        {/* Impact in Numbers Stats Grid */}
-        <div className="car-ov-stats">
-          <div className="car-ov-stats-head">
-            <span className="car-why-tag">IMPACT IN NUMBERS</span>
-          </div>
-          <div className="car-ov-stats-grid">
-            {OVERVIEW_STATS.map((stat) => (
-              <div className="car-ov-stat-card" key={stat.id}>
-                <p className="car-ov-stat-value">{stat.value}</p>
-                <p className="car-ov-stat-label">{stat.label}</p>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* The Granules Way in Practice Banner */}
