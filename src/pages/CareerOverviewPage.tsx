@@ -309,7 +309,7 @@ export default function CareerOverviewPage() {
         {/* Discover Your Path / Career Areas Interactive Showcase Banner */}
         <section className="car-discover-section" aria-label="Career Areas & Discover Your Path at Granules">
           <div className="car-discover-head">
-            <span className="car-why-tag">CAREER AREAS</span>
+            <span className="car-why-tag">Discover your path</span>
           </div>
           <div className="car-discover-banner">
             {/* Background Image Layers for Career Areas */}
@@ -325,7 +325,6 @@ export default function CareerOverviewPage() {
 
             {/* Left Copy Column */}
             <div className="car-discover-copy">
-              <span className="car-discover-tag">DISCOVER YOUR PATH</span>
               <h2>Where science, scale &amp; purpose meet</h2>
               <p>
                 Explore opportunities across our core scientific, manufacturing, and operational disciplines.
