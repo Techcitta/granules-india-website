@@ -200,7 +200,7 @@ const BENEFITS = [
 ];
 
 export default function CareerOverviewPage() {
-  const [openPathIdx, setOpenPathIdx] = useState<number>(2);
+  const [openPathIdx, setOpenPathIdx] = useState<number>(0);
   const [activeArea, setActiveArea] = useState<number>(0);
   const [practiceIdx, setPracticeIdx] = useState(0);
   const [lifeEventIdx, setLifeEventIdx] = useState(0);
