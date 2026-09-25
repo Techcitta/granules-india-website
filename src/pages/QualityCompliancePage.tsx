@@ -194,11 +194,11 @@ export default function QualityCompliancePage() {
       <div className="rd-cert-banner-wrap qc-cert-banner-wrap" aria-label="Quality certifications" style={{ margin: '75px auto' }}>
         <div className="rd-cert-banner-inner qc-cert-banner-inner">
           <div className="rd-cert-lead-card qc-cert-lead-card">
-            <h3 className="rd-cert-lead-title qc-cert-lead-title">
+            <h1 className="rd-cert-lead-title qc-cert-lead-title">
               Certified to<br />
               global quality<br />
               standards
-            </h3>
+            </h1>
           </div>
 
           <div className="rd-cert-badges-card qc-cert-badges-card">
