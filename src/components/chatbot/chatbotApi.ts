@@ -2,6 +2,7 @@ import type { AskApiResponse, ChatbotApiHandler } from './types';
 import { formatChatbotAnswer } from './formatChatbotAnswer';
 
 const DEFAULT_API_URL = '/api/ask';
+const DEFAULT_PROD_API_URL = 'https://guy-fang-neglector.ngrok-free.dev/ask';
 const DEFAULT_TOP_K = 5;
 
 function resolveTopK(): number {
@@ -20,7 +21,7 @@ function resolveApiUrl(): string {
   }
 
   const configured = import.meta.env.VITE_CHATBOT_API_URL as string | undefined;
-  return configured?.trim() || DEFAULT_API_URL;
+  return configured?.trim() || DEFAULT_PROD_API_URL;
 }
 
 function shouldAttachClientApiKey(apiUrl: string): boolean {
@@ -34,10 +35,10 @@ function shouldAttachClientApiKey(apiUrl: string): boolean {
  * POST { question, top_k? } to the Granules RAG /ask endpoint.
  *
  * Dev: defaults to `/api/ask` (Vite proxy → CHATBOT_API_TARGET/ask).
- * Prod: set VITE_CHATBOT_API_URL (default Cloudflare tunnel /ask endpoint).
+ * Prod: set VITE_CHATBOT_API_URL, or the granulesdev ngrok /ask endpoint.
  *
  * Env:
- * - VITE_CHATBOT_API_URL  (optional, default `/api/ask`)
+ * - VITE_CHATBOT_API_URL  (optional; production falls back to the ngrok /ask URL)
  * - VITE_CHATBOT_API_KEY  (required for direct calls; dev proxy uses CHATBOT_API_KEY)
  * - VITE_CHATBOT_TOP_K    (optional, 1–10, default 5)
  * - CHATBOT_API_KEY       (optional, used by Vite dev proxy only)
@@ -54,6 +55,10 @@ export const defaultChatbotApiHandler: ChatbotApiHandler = async ({ message }) =
 
   if (shouldAttachClientApiKey(apiUrl) && apiKey) {
     headers['X-API-Key'] = apiKey;
+  }
+
+  if (apiUrl.includes('ngrok')) {
+    headers['ngrok-skip-browser-warning'] = 'true';
   }
 
   const response = await fetch(apiUrl, {
