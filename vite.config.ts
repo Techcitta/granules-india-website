@@ -61,6 +61,7 @@ function chatbotAskProxyPlugin(target: string, apiKey: string): Plugin {
               'Content-Type': req.headers['content-type'] ?? 'application/json',
               Accept: 'application/json',
               ...(apiKey ? { 'X-API-Key': apiKey } : {}),
+              ...(target.includes('ngrok') ? { 'ngrok-skip-browser-warning': 'true' } : {}),
             },
             body: Buffer.concat(chunks),
           });

@@ -204,7 +204,7 @@ export default function QualityCompliancePage() {
           <div className="rd-cert-badges-card qc-cert-badges-card">
             <div className="rd-cert-badge-tile qc-cert-badge-tile">
               <img
-                src={`${Q}cert-1.webp`}
+                src={`${Q}cert-1.webp?v=2`}
                 alt="ISO 9001:2015 Quality Management System Certification"
                 loading="lazy"
                 decoding="async"
@@ -212,7 +212,7 @@ export default function QualityCompliancePage() {
             </div>
             <div className="rd-cert-badge-tile qc-cert-badge-tile">
               <img
-                src={`${Q}cert-2.webp`}
+                src={`${Q}cert-2.webp?v=2`}
                 alt="ISO 14001:2015 Environmental Management Company Certification"
                 loading="lazy"
                 decoding="async"
@@ -220,7 +220,7 @@ export default function QualityCompliancePage() {
             </div>
             <div className="rd-cert-badge-tile qc-cert-badge-tile">
               <img
-                src={`${Q}cert-3.webp`}
+                src={`${Q}cert-3.webp?v=2`}
                 alt="ISO 45001 Occupational Health and Safety Certification"
                 loading="lazy"
                 decoding="async"
