@@ -390,7 +390,7 @@ function Presence() {
 
               {/* ============================================================
                 TAB 0: OUR GLOBAL SUBSIDIARIES
-                - Granules India Limited, India
+                - Granules Pharma Inc. , US
                 - Granules Life Sciences Private Limited, India
                 - Granules CZRO Private Limited, India
                 - Senn Tides Private Limited, India
@@ -403,35 +403,38 @@ function Presence() {
                   transition: 'opacity 0.35s ease'
                 }}
               >
-                {/* Leader lines from Hyderabad (698, 413) to stacked pills */}
-                <line x1="698" y1="413" x2="725" y2="348" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <line x1="698" y1="413" x2="725" y2="382" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <line x1="698" y1="413" x2="725" y2="416" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <line x1="698" y1="413" x2="725" y2="450" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-
-                {/* Stacked Pills */}
+                {/* 1. US Subsidiary: Granules Pharma Inc. , US */}
+                <line x1="261" y1="327" x2="245" y2="252" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  {/* 1. Granules India Limited, India */}
-                  <rect x="725" y="336" width="190" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="820" y="348.5" fill="#0061f8" fontSize="9.2" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
-                    GRANULES INDIA LIMITED, INDIA
+                  <rect x="145" y="226" width="200" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <text x="245" y="239.5" fill="#0061f8" fontSize="9.5" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
+                    GRANULES PHARMA INC. , US
                   </text>
+                </g>
+                <circle className="map-pin-dot" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
 
-                  {/* 2. Granules Life Sciences Private Limited, India */}
-                  <rect x="725" y="370" width="264" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="857" y="382.5" fill="#0061f8" fontSize="8.9" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
+                {/* 2. India Subsidiaries: Leader lines from Hyderabad (698, 413) to stacked pills */}
+                <line x1="698" y1="413" x2="725" y2="360" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
+                <line x1="698" y1="413" x2="725" y2="394" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
+                <line x1="698" y1="413" x2="725" y2="428" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
+
+                {/* Stacked Pills for Indian Subsidiaries */}
+                <g className="map-pill-group" filter="url(#map-pill-shadow)">
+                  {/* Granules Life Sciences Private Limited, India */}
+                  <rect x="725" y="347" width="264" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <text x="857" y="359.5" fill="#0061f8" fontSize="8.9" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
                     GRANULES LIFE SCIENCES PRIVATE LIMITED, INDIA
                   </text>
 
-                  {/* 3. Granules CZRO Private Limited, India */}
-                  <rect x="725" y="404" width="224" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="837" y="416.5" fill="#0061f8" fontSize="9.2" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
+                  {/* Granules CZRO Private Limited, India */}
+                  <rect x="725" y="381" width="224" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <text x="837" y="393.5" fill="#0061f8" fontSize="9.2" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
                     GRANULES CZRO PRIVATE LIMITED, INDIA
                   </text>
 
-                  {/* 4. Senn Tides Private Limited, India */}
-                  <rect x="725" y="438" width="208" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="829" y="450.5" fill="#0061f8" fontSize="9.2" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
+                  {/* Senn Tides Private Limited, India */}
+                  <rect x="725" y="415" width="208" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <text x="829" y="427.5" fill="#0061f8" fontSize="9.2" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
                     SENN TIDES PRIVATE LIMITED, INDIA
                   </text>
                 </g>
@@ -443,8 +446,9 @@ function Presence() {
               {/* ============================================================
                 TAB 1: OUR MANUFACTURING FACILITIES
                 - Hyderabad, India
-                - Andhra Pradesh, India
+                - Vizag, India
                 - Zurich, Switzerland
+                - Virginia, USA
                 ============================================================ */}
               <g
                 className="presence-layer presence-layer-manufacturing"
@@ -454,7 +458,17 @@ function Presence() {
                   transition: 'opacity 0.35s ease'
                 }}
               >
-                {/* 1. Zurich, Switzerland */}
+                {/* 1. Virginia, USA */}
+                <line x1="261" y1="327" x2="245" y2="252" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
+                <g className="map-pill-group" filter="url(#map-pill-shadow)">
+                  <rect x="175" y="226" width="140" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <text x="245" y="239.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
+                    VIRGINIA, USA
+                  </text>
+                </g>
+                <circle className="map-pin-dot" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
+
+                {/* 2. Zurich, Switzerland */}
                 <line x1="498" y1="315" x2="498" y2="280" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
                   <rect x="408" y="254" width="180" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
@@ -464,7 +478,7 @@ function Presence() {
                 </g>
                 <circle className="map-pin-dot" cx="498" cy="315" r="7" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
 
-                {/* 2. Hyderabad, India */}
+                {/* 3. Hyderabad, India */}
                 <line x1="698" y1="413" x2="650" y2="442" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
                   <rect x="580" y="442" width="140" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
@@ -474,12 +488,12 @@ function Presence() {
                 </g>
                 <circle className="map-pin-dot" cx="698" cy="413" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
 
-                {/* 3. Andhra Pradesh, India */}
+                {/* 4. Vizag, India */}
                 <line x1="717" y1="404" x2="748" y2="375" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="748" y="362" width="176" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="836" y="375.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    VISAKHAPATNAM, INDIA
+                  <rect x="748" y="362" width="130" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <text x="813" y="375.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
+                    VIZAG, INDIA
                   </text>
                 </g>
                 <circle className="map-pin-dot" cx="717" cy="404" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
