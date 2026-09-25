@@ -20,8 +20,8 @@ function resolveApiUrl(): string {
     return DEFAULT_API_URL;
   }
 
-  const configured = import.meta.env.VITE_CHATBOT_API_URL as string | undefined;
-  return configured?.trim() || DEFAULT_PROD_API_URL;
+  // Host builds were injecting a stale VITE_CHATBOT_API_URL and skipping the ngrok endpoint.
+  return DEFAULT_PROD_API_URL;
 }
 
 function shouldAttachClientApiKey(apiUrl: string): boolean {
@@ -35,10 +35,10 @@ function shouldAttachClientApiKey(apiUrl: string): boolean {
  * POST { question, top_k? } to the Granules RAG /ask endpoint.
  *
  * Dev: defaults to `/api/ask` (Vite proxy → CHATBOT_API_TARGET/ask).
- * Prod: set VITE_CHATBOT_API_URL, or the granulesdev ngrok /ask endpoint.
+ * Prod: always calls the granulesdev ngrok /ask endpoint.
  *
  * Env:
- * - VITE_CHATBOT_API_URL  (optional; production falls back to the ngrok /ask URL)
+ * - VITE_CHATBOT_API_URL  (ignored in production; local proxy uses CHATBOT_API_TARGET)
  * - VITE_CHATBOT_API_KEY  (required for direct calls; dev proxy uses CHATBOT_API_KEY)
  * - VITE_CHATBOT_TOP_K    (optional, 1–10, default 5)
  * - CHATBOT_API_KEY       (optional, used by Vite dev proxy only)
