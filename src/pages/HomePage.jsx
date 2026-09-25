@@ -390,7 +390,7 @@ function Presence() {
 
               {/* ============================================================
                 TAB 0: OUR GLOBAL SUBSIDIARIES
-                - Granules Pharma Inc. , US
+                - Granules Pharma Inc, US
                 - Granules Life Sciences Private Limited, India
                 - Granules CZRO Private Limited, India
                 - Senn Tides Private Limited, India
@@ -403,12 +403,12 @@ function Presence() {
                   transition: 'opacity 0.35s ease'
                 }}
               >
-                {/* 1. US Subsidiary: Granules Pharma Inc. , US */}
+                {/* 1. US Subsidiary: Granules Pharma Inc, US */}
                 <line x1="261" y1="327" x2="245" y2="252" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="145" y="226" width="200" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <rect x="150" y="226" width="190" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
                   <text x="245" y="239.5" fill="#0061f8" fontSize="9.5" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
-                    GRANULES PHARMA INC. , US
+                    GRANULES PHARMA INC, US
                   </text>
                 </g>
                 <circle className="map-pin-dot" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
@@ -446,7 +446,7 @@ function Presence() {
               {/* ============================================================
                 TAB 1: OUR MANUFACTURING FACILITIES
                 - Hyderabad, India
-                - Vizag, India
+                - Visakhapatnam, India
                 - Zurich, Switzerland
                 - Virginia, USA
                 ============================================================ */}
@@ -488,12 +488,12 @@ function Presence() {
                 </g>
                 <circle className="map-pin-dot" cx="698" cy="413" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
 
-                {/* 4. Vizag, India */}
+                {/* 4. Visakhapatnam, India */}
                 <line x1="717" y1="404" x2="748" y2="375" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="748" y="362" width="130" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="813" y="375.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    VIZAG, INDIA
+                  <rect x="748" y="362" width="176" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <text x="836" y="375.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
+                    VISAKHAPATNAM, INDIA
                   </text>
                 </g>
                 <circle className="map-pin-dot" cx="717" cy="404" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
