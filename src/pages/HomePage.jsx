@@ -444,7 +444,7 @@ function Presence() {
                 TAB 1: OUR MANUFACTURING FACILITIES
                 - Hyderabad, India
                 - Andhra Pradesh, India
-                - Switzerland
+                - Zurich, Switzerland
                 ============================================================ */}
               <g
                 className="presence-layer presence-layer-manufacturing"
@@ -454,12 +454,12 @@ function Presence() {
                   transition: 'opacity 0.35s ease'
                 }}
               >
-                {/* 1. Switzerland */}
+                {/* 1. Zurich, Switzerland */}
                 <line x1="498" y1="315" x2="498" y2="280" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="432" y="254" width="132" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
+                  <rect x="408" y="254" width="180" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
                   <text x="498" y="267.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    SWITZERLAND
+                    ZURICH, SWITZERLAND
                   </text>
                 </g>
                 <circle className="map-pin-dot" cx="498" cy="315" r="7" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
