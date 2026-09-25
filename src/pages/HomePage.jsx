@@ -479,7 +479,7 @@ function Presence() {
                 <g className="map-pill-group" filter="url(#map-pill-shadow)">
                   <rect x="748" y="362" width="176" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
                   <text x="836" y="375.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    ANDHRA PRADESH, INDIA
+                    VISAKHAPATNAM, INDIA
                   </text>
                 </g>
                 <circle className="map-pin-dot" cx="717" cy="404" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
