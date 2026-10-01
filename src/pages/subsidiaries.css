@@ -117,20 +117,6 @@
   transform: scale(1.04);
 }
 
-/* Sleek Floating Pill Badge on Card Image */
-.global-sub-card-index {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: var(--blue, #0061f8);
-  color: #ffffff;
-  font: 700 12px/1 'Manrope', sans-serif;
-  padding: 7px 14px;
-  border-radius: 999px;
-  letter-spacing: 0.06em;
-  box-shadow: 0 4px 12px rgba(0, 97, 248, 0.35);
-  z-index: 2;
-}
 
 /* Snug Content Container matching R&D typography & layout */
 .global-sub-card-content {

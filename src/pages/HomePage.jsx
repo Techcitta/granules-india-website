@@ -953,70 +953,7 @@ function Footer() {
   );
 }
 
-function SearchOverlay({ open, onClose }) {
-  const inputRef = useRef(null);
-  const [query, setQuery] = useState('');
-  const results = [
-    ['About Granules', '/company', 'Company leadership and integrated capabilities'],
-    ['Business Verticals', '/business/generics', 'APIs, PFIs and finished dosages'],
-    ['Global Presence', '#presence', 'Locations, subsidiaries and facilities'],
-    ['Sustainability', '/sustainability', 'CZRO, Net Zero and Pharma Pathshala'],
-    ['Investor Relations', '/investor', 'Stock performance and annual report'],
-    ['Newsroom', '/media', 'Achievements and company stories'],
-    ['Careers', '/careers', 'Join the Granules team'],
-  ].filter((item) => item.join(' ').toLowerCase().includes(query.toLowerCase()));
-  useEffect(() => {
-    if (!open) return undefined;
-    setQuery('');
-    setTimeout(() => inputRef.current?.focus(), 50);
-    const close = (event) => event.key === 'Escape' && onClose();
-    document.addEventListener('keydown', close);
-    return () => document.removeEventListener('keydown', close);
-  }, [open, onClose]);
-  if (!open) return null;
-  return (
-    <div className="search-overlay" role="dialog" aria-modal="true" aria-label="Search the homepage">
-      <div className="search-panel">
-        <div className="search-field">
-          <img src={`${A}search.svg`} alt="" loading="lazy" decoding="async" />
-          <input
-            ref={inputRef}
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search Granules"
-            aria-label="Search Granules"
-          />
-          <button onClick={onClose} aria-label="Close search">×</button>
-        </div>
-        <div className="search-results">
-          {results.map(([title, href, detail]) => (
-            href.startsWith('/') ? (
-              <Link to={href} key={title} onClick={onClose}>
-                <span>
-                  <strong>{title}</strong>
-                  <small>{detail}</small>
-                </span>
-                <Arrow />
-              </Link>
-            ) : (
-              <a href={href} key={title} onClick={onClose}>
-                <span>
-                  <strong>{title}</strong>
-                  <small>{detail}</small>
-                </span>
-                <Arrow />
-              </a>
-            )
-          ))}
-          {!results.length && <p>No matching section. Try “sustainability” or “investor”.</p>}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function HomePage() {
-  const [searchOpen, setSearchOpen] = useState(false);
   const [sustainabilityTab, setSustainabilityTab] = useState(0);
 
   const activeNavSection = sustainabilityTab === 1 ? 'CSR' : 'Sustainability';
@@ -1035,8 +972,7 @@ export default function HomePage() {
 
   return (
     <>
-      <NavBar onSearch={() => setSearchOpen(true)} activeSectionOverride={activeNavSection} />
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <NavBar activeSectionOverride={activeNavSection} />
       <main>
         <Hero />
         <About />

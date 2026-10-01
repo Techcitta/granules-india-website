@@ -230,8 +230,8 @@ export default function ApiPage() {
       </div>
 
       <div className="pp-filters" style={{ gridTemplateColumns: '1.3fr 1fr 1fr' }}>
-        <label className="pp-select" style={{ position: 'relative' }}>
-          <span>Search Product / Molecule</span>
+        <div className="pp-select">
+          <span className="pp-select-label">Search Product / Molecule</span>
           <div className="pp-search-box" ref={searchRef}>
             <svg
               className="pp-search-icon"
@@ -283,7 +283,7 @@ export default function ApiPage() {
               </ul>
             )}
           </div>
-        </label>
+        </div>
 
         <div className="pp-select">
           <span className="pp-select-label">Therapeutic category</span>

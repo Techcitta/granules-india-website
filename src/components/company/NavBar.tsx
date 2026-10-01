@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { asset } from './constants';
 import { NAV_LINKS } from './data';
 import type { NavLink as NavLinkItem } from './types';
+import GlobalSearchModal from '../common/GlobalSearchModal';
 
 type QuickLink = {
   label: string;
@@ -59,7 +60,7 @@ const SUBMENUS: Record<string, Submenu> = {
     ],
     bubbles: [
       { label: 'FD', href: '/business/finisheddosage' },
-      { label: 'PFI', href: '/business/product-portfolio' },
+      { label: 'PFI', href: '/business/pfi' },
       { label: 'API', href: '/business/api' },
     ],
   },
@@ -138,8 +139,30 @@ export default function NavBar({
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [expandedMobileMenus, setExpandedMobileMenus] = useState<Record<string, boolean>>({});
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
+
+  const handleOpenSearch = () => {
+    setOpen(false);
+    setOpenMenu(null);
+    setIsSearchOpen(true);
+    if (onSearch) {
+      onSearch();
+    }
+  };
+
+  // Global Ctrl+K / Cmd+K keyboard shortcut to open search from any page
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        handleOpenSearch();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Close dropdown on click outside or Escape
   useEffect(() => {
@@ -274,17 +297,28 @@ export default function NavBar({
             <img src={asset('nav-logo.webp')} alt="Granules" loading="eager" decoding="async" />
           </Link>
 
-          <button
-            className="cp-nav-toggle"
-            type="button"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <div className="cp-nav-mobile-right">
+            <button
+              className="cp-nav-mobile-search"
+              type="button"
+              aria-label="Search site"
+              onClick={handleOpenSearch}
+            >
+              <img src={asset('search-icon.svg')} alt="" loading="lazy" decoding="async" />
+            </button>
+
+            <button
+              className="cp-nav-toggle"
+              type="button"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              onClick={() => setOpen((value) => !value)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
 
           <div className="cp-nav-links">
             {NAV_LINKS.map((link) => {
@@ -469,7 +503,12 @@ export default function NavBar({
               );
             })}
 
-            <button className="cp-nav-search" type="button" aria-label="Search" onClick={() => { setOpenMenu(null); onSearch?.(); }}>
+            <button
+              className="cp-nav-search"
+              type="button"
+              aria-label="Search site"
+              onClick={handleOpenSearch}
+            >
               <img src={asset('search-icon.svg')} alt="" loading="lazy" decoding="async" />
             </button>
           </div>
@@ -477,6 +516,17 @@ export default function NavBar({
 
         {open && (
           <div className="cp-nav-drawer" role="menu">
+            <div className="cp-nav-drawer-search-box">
+              <button
+                type="button"
+                className="cp-nav-drawer-search-btn"
+                onClick={handleOpenSearch}
+              >
+                <img src={asset('search-icon.svg')} alt="" className="cp-drawer-search-icon" />
+                <span>Search Granules India...</span>
+                <span className="cp-drawer-search-kbd">⌘K</span>
+              </button>
+            </div>
             {NAV_LINKS.map((link) => {
               const submenu = SUBMENUS[link.label];
               const subItems = submenu
@@ -601,6 +651,9 @@ export default function NavBar({
           </div>
         )}
       </nav>
+
+      {/* Global Search Modal active across all pages */}
+      <GlobalSearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </div>
   );
 }

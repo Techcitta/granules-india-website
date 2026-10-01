@@ -79,7 +79,6 @@ export default function GlobalSubsidiariesPage() {
             loading="lazy"
             decoding="async"
           />
-          <span className="global-sub-card-index">{sub.index}</span>
         </div>
 
         <div className="global-sub-card-content">

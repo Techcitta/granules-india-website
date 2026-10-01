@@ -672,8 +672,8 @@ export default function GenericsPage() {
         </div>
 
         <div className="pp-filters">
-          <label className="pp-select" style={{ position: 'relative' }}>
-            <span>Search Product</span>
+          <div className="pp-select">
+            <span className="pp-select-label">Search Product</span>
             <div className="pp-search-box" ref={searchRef}>
               <svg className="pp-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8" />
@@ -719,7 +719,7 @@ export default function GenericsPage() {
                 </ul>
               )}
             </div>
-          </label>
+          </div>
 
           <div className="pp-select">
             <span className="pp-select-label">Segment</span>

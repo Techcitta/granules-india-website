@@ -142,12 +142,21 @@
   position: relative;
 }
 
-.pp-select span,
-.pp-select-label {
-  font: 700 13px/1 'Manrope', sans-serif;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--blue, #0061f8);
+.pp-select-label,
+.pp-select > span {
+  font: 700 13px/16px 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  line-height: 16px !important;
+  height: 16px !important;
+  min-height: 16px !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  color: var(--blue, #0061f8) !important;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .pp-custom-select-wrap {
