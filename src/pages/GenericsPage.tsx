@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import CustomSelect from '../components/common/CustomSelect';
 import { asset } from '../components/company/constants';
+import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 import './business.css';
 import './product-portfolio.css';
@@ -35,6 +36,28 @@ const TABLE_TITLES: Record<Segment, string> = {
   PFI: 'Pharmaceutical Formulation Intermediates',
   'Finished Dosage': 'Finished Dosages',
 };
+
+const PRODUCT_BROCHURE_HREF = getAssetUrl('products/FD-list-merged.pdf');
+
+function BrochureIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  );
+}
 
 const FILING_LABELS: Record<Filing, string> = {
   GLOBAL: 'Planning for Global filing',
@@ -636,28 +659,16 @@ export default function GenericsPage() {
             <span className="cp-section-badge">Our Portfolio</span>
             <h2>{TABLE_TITLES[segment]}</h2>
           </div>
-          <button
-            type="button"
+          <a
             className="gen-brochure-btn"
+            href={PRODUCT_BROCHURE_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Download our product brochure"
           >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
+            <BrochureIcon />
             <span>Download our product brochure</span>
-          </button>
+          </a>
         </div>
 
         <div className="pp-filters">
