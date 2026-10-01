@@ -1,8 +1,12 @@
 import pdfCatalog from './pdf-catalog.json';
 import pdfRemap from './pdf-remap.json';
 
-export const CLOUDFRONT_URL = "https://d3uvya50m9yz9t.cloudfront.net";
+export const CLOUDFRONT_URL = "https://assets.granulesindia.com";
 export const PDF_CDN_BASE = `${CLOUDFRONT_URL}/pdfs`;
+
+/** Hosts that still appear on stored links. All of them rewrite onto CLOUDFRONT_URL. */
+const LEGACY_CDN_HOSTS =
+  /(?:d3uvya50m9yz9t|d16d47oyl512wy)\.cloudfront\.net|assets\.techcitta-works\.com|assets\.granulesindia\.com/i;
 
 function decodePathSegment(segment: string): string {
   try {
@@ -182,6 +186,7 @@ const DOCUMENT_PDF_MAP: Record<string, string> = {
   "/documents/Granules_Annual-Report-FY26-1-4857602b3724.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf",
   "/documents/Granules_Annual-Report-FY26-8dce345b8083.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26.pdf",
   "/documents/Granules_Integrated-Report-2024-25-6f0e58611b3c.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf",
+  "/documents/New/Granules_Integrated-Report-2024-25.pdf": "https://assets.granulesindia.com/sustainability/reports-and-disclosures/FY24-25/Granules_Integrated-Report-2024-25.pdf",
   "/documents/Granules_Product_Brochure_API-2e0d50e7805c.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2025/05/Granules_Product_Brochure_API.pdf",
   "/documents/Granules-AR-2022-23-532f737451a2.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/pdf/Granules-AR-2022-23.pdf",
   "/documents/Granules-Code-of-Business-Conduct-for-Suppliers-b394765c24cf.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2025/05/Supplier-Code-of-Conduct.pdf",
@@ -211,6 +216,8 @@ const DOCUMENT_PDF_MAP: Record<string, string> = {
   "/documents/3975Granules-India-s-Revenue-increases-c3fcfefdab37.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/07/Granules_Annual-Report-FY26-1.pdf",
   "/documents/Form-ISR-1-For-Updating-KYC-1dce8e0ec06b.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2022/01/Form-ISR-1-For-Updating-KYC.pdf",
   "/documents/Form-ISR-4-2910e0ac2dd4.pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2022/04/Form-ISR-4.pdf",
+  "/documents/recordings/GMT20260929-110141_Recording.m4a": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/09/Webinar-Audio-September-29-2026.m4a",
+  "/documents/recordings/GMT20260929110141-Vrecording.mp4": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/09/Webinar-Video-September-29-2026.mp4",
 };
 
 function decodePdfEntities(url: string): string {
@@ -225,11 +232,7 @@ export function toCdnPdf(url?: string | null): string {
   if (DOCUMENT_PDF_MAP[pathOnly]) {
     return getAssetUrl(DOCUMENT_PDF_MAP[pathOnly]);
   }
-  if (
-    decoded.startsWith(PDF_CDN_BASE) ||
-    decoded.includes('d16d47oyl512wy.cloudfront.net') ||
-    decoded.includes('assets.techcitta-works.com')
-  ) {
+  if (decoded.startsWith(PDF_CDN_BASE) || LEGACY_CDN_HOSTS.test(decoded)) {
     return getAssetUrl(decoded);
   }
   if (SUSTAINABILITY_UPLOADS.test(decoded)) {

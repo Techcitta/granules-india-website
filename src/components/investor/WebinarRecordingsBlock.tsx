@@ -11,13 +11,6 @@ export interface WebinarItem {
 
 const WEBINAR_ITEMS: WebinarItem[] = [
   {
-    type: 'audio',
-    title: 'Audio Recording of the Webinar held on September 29,2026',
-    date: 'September 29, 2026',
-    fileUrl: '/documents/recordings/GMT20260929-110141_Recording.m4a',
-    downloadName: 'Granules_Webinar_Audio_2026-09-29.m4a'
-  },
-  {
     type: 'video',
     title: 'Video Recording of the Webinar held on September 29,2026',
     date: 'September 29, 2026',

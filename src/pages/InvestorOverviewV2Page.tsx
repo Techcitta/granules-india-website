@@ -15,7 +15,7 @@ const TAB_DATA: Record<number, { label: string; href?: string; pdf?: string }[]>
   ],
   1: [
     { label: 'Investor Presentation', pdf: 'https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf' },
-    { label: 'Earnings Call Transcripts', pdf: 'https://d3uvya50m9yz9t.cloudfront.net/pdfs/2025/11/GranulesIndia-Q2-FY26-Transcript-Clean-Version.pdf' },
+    { label: 'Earnings Call Transcripts', pdf: 'https://assets.granulesindia.com/investors/investor-resources/earnings-call-transcripts/2026/Q1-FY27-Concall-Transcript-Final.pdf' },
     { label: 'Earnings Call Recording', pdf: 'https://d3uvya50m9yz9t.cloudfront.net/pdfs/2023/04/Schedule-of-Analyst-and-Investor-Earnings-Conference-Call-Q4-2022-23.pdf' },
     { label: 'Shareholding Structure', pdf: 'https://d3uvya50m9yz9t.cloudfront.net/pdfs/2025/01/Third-Quarter-SHP-2025.pdf' },
     { label: 'Top 200 Shareholders', pdf: 'https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/07/GRAN_TOP-200-AS-ON-31.03.2026.pdf' },

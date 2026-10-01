@@ -476,26 +476,6 @@ export default function InvestorFilteredSection({
             <WebinarRecordingsBlock />
           )}
 
-          {/* Quick Notice Banner Strip when viewing other subcategories in Investor Resources */}
-          {category.id === 'sec-investor-resources' && activeSubcatId !== 'earnings-call-recording' && (
-            <div className="inv-webinar-banner-strip">
-              <span className="inv-webinar-badge">LATEST</span>
-              <span className="inv-webinar-text">
-                Webinar Audio &amp; Video Recordings (September 29, 2026) are now available.
-              </span>
-              <button
-                type="button"
-                className="inv-webinar-view-btn"
-                onClick={() => {
-                  setActiveSubcatId('earnings-call-recording');
-                  setSelectedYear('all');
-                }}
-              >
-                View Recordings &rarr;
-              </button>
-            </div>
-          )}
-
           <div className="inv-table-wrap">
             <table className="inv-data-table">
             <thead>
