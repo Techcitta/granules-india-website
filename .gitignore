@@ -9,3 +9,5 @@ scratch_*.cjs
 scratch_*.js
 public/uploads/
 public/documents/
+*.zip
+*.tsbuildinfo

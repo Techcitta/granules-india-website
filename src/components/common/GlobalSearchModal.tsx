@@ -8,105 +8,8 @@ interface GlobalSearchModalProps {
   onClose: () => void;
 }
 
-// Default items shown initially exactly as in img1
-const DEFAULT_SEARCH_ITEMS: SearchResultItem[] = [
-  {
-    title: 'About Granules',
-    description: 'Company leadership and integrated capabilities',
-    href: '/company',
-    category: 'Company',
-    badge: 'Overview',
-    keywords: ['about', 'company', 'leadership'],
-  },
-  {
-    title: 'Business Verticals',
-    description: 'APIs, PFIs and finished dosages',
-    href: '/business/generics',
-    category: 'Business',
-    badge: 'Generics',
-    keywords: ['business', 'generics', 'api', 'pfi', 'fd'],
-  },
-  {
-    title: 'Global Presence',
-    description: 'Locations, subsidiaries and facilities',
-    href: '/#presence',
-    category: 'Company',
-    badge: 'Global',
-    keywords: ['presence', 'locations', 'global', 'facilities'],
-  },
-  {
-    title: 'Sustainability',
-    description: 'CZRO, Net Zero and Pharma Pathshala',
-    href: '/sustainability',
-    category: 'Sustainability',
-    badge: 'ESG',
-    keywords: ['sustainability', 'czro', 'net zero', 'csr'],
-  },
-  {
-    title: 'Investor Relations',
-    description: 'Stock performance and annual report',
-    href: '/investor',
-    category: 'Investors',
-    badge: 'Reports',
-    keywords: ['investor', 'financials', 'annual report'],
-  },
-  {
-    title: 'Newsroom',
-    description: 'Achievements and company stories',
-    href: '/media',
-    category: 'Media',
-    badge: 'News',
-    keywords: ['newsroom', 'media', 'press', 'stories'],
-  },
-  {
-    title: 'Careers',
-    description: 'Join the Granules team',
-    href: '/careers',
-    category: 'Careers',
-    badge: 'Jobs',
-    keywords: ['careers', 'jobs', 'team', 'openings'],
-  },
-  {
-    title: 'Active Pharmaceutical Ingredients (APIs)',
-    description: 'World-leading paracetamol, metformin, ibuprofen manufacturing',
-    href: '/business/api',
-    category: 'Products',
-    badge: 'APIs',
-    keywords: ['api', 'molecules', 'active pharmaceutical'],
-  },
-  {
-    title: 'Pharmaceutical Formulation Intermediates (PFIs)',
-    description: 'Directly compressible granules customized for high-speed tableting',
-    href: '/business/pfi',
-    category: 'Products',
-    badge: 'PFIs',
-    keywords: ['pfi', 'granules', 'intermediates'],
-  },
-  {
-    title: 'Finished Dosages (FD)',
-    description: 'Tablets, caplets, and multi-dose capsules distributed globally',
-    href: '/business/finisheddosage',
-    category: 'Products',
-    badge: 'Finished Dosages',
-    keywords: ['fd', 'finished dosage', 'tablets', 'capsules'],
-  },
-  {
-    title: 'Peptide CDMO — Senn Tides',
-    description: 'Specialized synthetic peptides & oligonucleotides contract development',
-    href: '/business/peptides',
-    category: 'Business',
-    badge: 'Peptides',
-    keywords: ['peptides', 'cdmo', 'senn tides', 'glp-1'],
-  },
-  {
-    title: 'Research & Development',
-    description: 'Cutting-edge innovation centers driving green chemistry and QbD',
-    href: '/business/rd',
-    category: 'Business',
-    badge: 'R&D',
-    keywords: ['rd', 'research', 'development', 'innovation'],
-  },
-];
+// Default items shown initially before query
+const DEFAULT_SEARCH_ITEMS: SearchResultItem[] = SEARCH_INDEX.slice(0, 12);
 
 export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
   const [query, setQuery] = useState('');
@@ -150,19 +53,79 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Compute search results: default primary list if query is empty, else search index
+  // Compute search results with intelligent relevance ranking and multi-token matching
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) {
       return DEFAULT_SEARCH_ITEMS;
     }
-    return SEARCH_INDEX.filter((item) => {
-      const inTitle = item.title.toLowerCase().includes(q);
-      const inDesc = item.description.toLowerCase().includes(q);
-      const inBadge = item.badge.toLowerCase().includes(q);
-      const inKeywords = item.keywords.some((k) => k.toLowerCase().includes(q));
-      return inTitle || inDesc || inBadge || inKeywords;
+
+    const tokens = q.split(/\s+/).filter(Boolean);
+
+    const scored = SEARCH_INDEX.map((item) => {
+      let score = 0;
+      const titleLower = item.title.toLowerCase();
+      const descLower = item.description.toLowerCase();
+      const badgeLower = item.badge.toLowerCase();
+      const locLower = item.location.toLowerCase();
+      const keywordsLower = item.keywords.map((k) => k.toLowerCase());
+
+      // 1. Exact phrase matches (Highest priority)
+      if (titleLower === q) score += 200;
+      else if (titleLower.startsWith(q)) score += 120;
+      else if (titleLower.includes(q)) score += 80;
+
+      if (badgeLower === q) score += 90;
+      if (locLower.includes(q)) score += 50;
+      if (descLower.includes(q)) score += 40;
+
+      // 2. Token-level matching
+      let tokensMatched = 0;
+      tokens.forEach((t) => {
+        let matched = false;
+        if (titleLower.includes(t)) {
+          score += 45;
+          matched = true;
+          if (titleLower.startsWith(t)) score += 25;
+        }
+        if (badgeLower.includes(t)) {
+          score += 35;
+          matched = true;
+        }
+        if (locLower.includes(t)) {
+          score += 30;
+          matched = true;
+        }
+        if (keywordsLower.some((k) => k === t)) {
+          score += 55;
+          matched = true;
+        } else if (keywordsLower.some((k) => k.startsWith(t))) {
+          score += 35;
+          matched = true;
+        } else if (keywordsLower.some((k) => k.includes(t))) {
+          score += 20;
+          matched = true;
+        }
+        if (descLower.includes(t)) {
+          score += 15;
+          matched = true;
+        }
+        if (matched) tokensMatched++;
+      });
+
+      // Bonus if all query tokens matched somewhere
+      if (tokensMatched === tokens.length) {
+        score += 60;
+      }
+
+      return { item, score };
     });
+
+    return scored
+      .filter((s) => s.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 30)
+      .map((s) => s.item);
   }, [query]);
 
   // Reset selection index when results change
@@ -266,7 +229,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleInputKeyDown}
-            placeholder="Search Granules"
+            placeholder="Search Granules (e.g. PFI, APIs, Paracetamol, Senn Tides, Annual Report...)"
             aria-label="Search Granules"
             autoComplete="off"
             autoCorrect="off"
@@ -290,7 +253,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
               const isSelected = idx === selectedIndex;
               return (
                 <div
-                  key={`${item.title}-${item.href}`}
+                  key={`${item.id}-${item.href}`}
                   className={`search-results-item ${isSelected ? 'active' : ''}`}
                   onClick={() => handleSelect(item)}
                   onMouseEnter={() => setSelectedIndex(idx)}
@@ -298,6 +261,10 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                   aria-selected={isSelected}
                 >
                   <span className="search-item-text">
+                    <div className="search-item-meta">
+                      <span className="search-item-badge">{item.badge}</span>
+                      <span className="search-item-location">{item.location}</span>
+                    </div>
                     <strong>{item.title}</strong>
                     <small>{item.description}</small>
                   </span>
@@ -322,7 +289,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
             })
           ) : (
             <p className="search-no-results">
-              No matching section. Try “sustainability” or “investor”.
+              No matching results found for &ldquo;{query}&rdquo;. Try searching for &ldquo;PFI&rdquo;, &ldquo;API&rdquo;, &ldquo;Paracetamol&rdquo;, &ldquo;Senn Tides&rdquo;, or &ldquo;Annual Reports&rdquo;.
             </p>
           )}
         </div>

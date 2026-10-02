@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main Homepage -->
+  <url>
+    <loc>https://granulesindia.com/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- PFI - Pharmaceutical Formulation Intermediates (Top Search Priority) -->
+  <url>
+    <loc>https://granulesindia.com/business/pfi</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- API - Active Pharmaceutical Ingredients -->
+  <url>
+    <loc>https://granulesindia.com/business/api</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Finished Dosages (FD) -->
+  <url>
+    <loc>https://granulesindia.com/business/fd</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Senn Tides Peptide CDMO -->
+  <url>
+    <loc>https://granulesindia.com/senn-tides</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Generics Overview -->
+  <url>
+    <loc>https://granulesindia.com/business/generics</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Product Portfolio -->
+  <url>
+    <loc>https://granulesindia.com/business/product-portfolio</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Products Hub -->
+  <url>
+    <loc>https://granulesindia.com/products</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Peptides Platform -->
+  <url>
+    <loc>https://granulesindia.com/business/peptides</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Ascelis Peptides -->
+  <url>
+    <loc>https://granulesindia.com/company/ascelis-peptides</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- R&D and Innovation -->
+  <url>
+    <loc>https://granulesindia.com/business/rd</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Quality & Compliance -->
+  <url>
+    <loc>https://granulesindia.com/business/quality-compliance</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Manufacturing Facilities -->
+  <url>
+    <loc>https://granulesindia.com/business/facilities</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Company Overview -->
+  <url>
+    <loc>https://granulesindia.com/company</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Global Subsidiaries -->
+  <url>
+    <loc>https://granulesindia.com/company/global-subsidiaries</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Company Milestones -->
+  <url>
+    <loc>https://granulesindia.com/company/milestone</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Company Awards -->
+  <url>
+    <loc>https://granulesindia.com/company/awards</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Leadership & Board of Directors -->
+  <url>
+    <loc>https://granulesindia.com/company/leadership</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Granules CZRO - Green Chemistry & Net Zero -->
+  <url>
+    <loc>https://granulesindia.com/company/granules-czro</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Granules Life Sciences -->
+  <url>
+    <loc>https://granulesindia.com/company/granules-life-sciences</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Operational Excellence -->
+  <url>
+    <loc>https://granulesindia.com/company/operational-excellence</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Sustainability Overview & ESG -->
+  <url>
+    <loc>https://granulesindia.com/sustainability</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Sustainability Strategy -->
+  <url>
+    <loc>https://granulesindia.com/sustainability/strategy</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ESG in Action -->
+  <url>
+    <loc>https://granulesindia.com/sustainability/esg-in-action</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ESG Profile -->
+  <url>
+    <loc>https://granulesindia.com/sustainability/esg-profile</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- EHS Documents & Submissions -->
+  <url>
+    <loc>https://granulesindia.com/sustainability/ehs-submissions</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Corporate Social Responsibility (CSR) & Community -->
+  <url>
+    <loc>https://granulesindia.com/community</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Investor Relations Portal -->
+  <url>
+    <loc>https://granulesindia.com/investor</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Investor Annual Reports -->
+  <url>
+    <loc>https://granulesindia.com/investor/annual-reports</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Media & Newsroom -->
+  <url>
+    <loc>https://granulesindia.com/media</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Careers -->
+  <url>
+    <loc>https://granulesindia.com/careers</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Life at Granules -->
+  <url>
+    <loc>https://granulesindia.com/careers/life-at-granules</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Contact Us -->
+  <url>
+    <loc>https://granulesindia.com/contact</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Legal & Policies -->
+  <url>
+    <loc>https://granulesindia.com/privacy-policy</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://granulesindia.com/cookie-policy</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://granulesindia.com/disclaimer</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://granulesindia.com/data-protection-notice</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://granulesindia.com/terms-conditions</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+</urlset>

@@ -2549,11 +2549,13 @@ footer[id] {
 
   .credentials {
     width: 100%;
-    padding-block: 75px;
+    padding-top: 75px;
+    padding-bottom: 0;
   }
 
   .credentials h2 {
-    font-size: 27px;
+    font-size: clamp(20px, 5.2vw, 26px);
+    line-height: 1.35;
   }
 
   .cert-row {
@@ -2583,13 +2585,17 @@ footer[id] {
   }
 
   .sustainability {
-    width: calc(100% - 24px);
+    width: var(--shell) !important;
+    max-width: var(--shell) !important;
+    margin-inline: auto !important;
     min-height: auto;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 55px;
-    padding: 42px 28px;
-    border-radius: 22px;
+    margin-top: 75px;
+    margin-bottom: 75px;
+    padding: 38px 24px;
+    border-radius: 28px;
+    box-sizing: border-box;
   }
 
   .sustainability-toggles {
@@ -2614,8 +2620,18 @@ footer[id] {
   }
 
   .investor-cover {
-    width: 250px;
-    max-width: 100%;
+    flex: 0 0 auto !important;
+    width: clamp(220px, 68vw, 270px) !important;
+    height: auto !important;
+    aspect-ratio: 1241 / 1754 !important;
+    max-width: 100% !important;
+  }
+
+  .investor-cover img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: inherit !important;
   }
 
   .investor-side {

@@ -154,7 +154,7 @@ export default function ProductsHomepage() {
         </div>
       </div>
 
-      <div className="pp-filters" style={{ gridTemplateColumns: '1.3fr 1fr 1fr' }}>
+      <div className="pp-filters">
         <div className="pp-select">
           <span className="pp-select-label">Search Product / Molecule</span>
           <div className="pp-search-box" ref={searchRef}>

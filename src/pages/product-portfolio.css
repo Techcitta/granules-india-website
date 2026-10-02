@@ -551,10 +551,10 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 820px) {
   .pp-filters {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 
   .pp-table th,

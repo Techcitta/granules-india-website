@@ -13,6 +13,27 @@ if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
 }
 
+if (typeof window !== 'undefined') {
+  const p = window.location.pathname;
+  if (p.includes('public_html') || p.includes('about-us') || p.includes('contact-us')) {
+    let clean = p.replace(/\/public_html(\/|$)/g, '/').replace(/^\/public_html/, '');
+    if (!clean.startsWith('/')) clean = '/' + clean;
+    clean = clean.replace(/\/+/g, '/');
+
+    if (clean.includes('/about-us/our-leadership') || clean.includes('/about-us/leadership') || clean.includes('/about-us/our-board')) {
+      clean = '/company/leadership';
+    } else if (clean.includes('/about-us/our-journey') || clean.includes('/about-us/milestones')) {
+      clean = '/company/milestone';
+    } else if (clean.includes('/about-us')) {
+      clean = '/company';
+    } else if (clean.includes('/contact-us')) {
+      clean = '/contact';
+    }
+
+    window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+  }
+}
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
@@ -76,6 +97,7 @@ import ProductsHomepage from './pages/ProductsHomepage.tsx';
 import BackToTopButton from './components/common/BackToTopButton';
 import CookieConsent from './components/common/CookieConsent';
 import { ChatbotWidget } from './components/chatbot';
+import RouteSEO from './components/common/RouteSEO';
 
 function ExternalRedirect({ to }) {
   useEffect(() => {
@@ -87,12 +109,27 @@ function ExternalRedirect({ to }) {
 function App() {
   return (
     <BrowserRouter>
+      <RouteSEO />
       <ScrollToTop />
       <BackToTopButton />
       <CookieConsent />
       <ChatbotWidget />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        {/* Legacy Google Indexed URLs & Redirects */}
+        <Route path="/about-us/our-leadership" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/about-us/our-leadership/*" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/about-us/leadership" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/about-us/our-board" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/about-us/our-journey" element={<Navigate to="/company/milestone" replace />} />
+        <Route path="/about-us/milestones" element={<Navigate to="/company/milestone" replace />} />
+        <Route path="/about-us" element={<Navigate to="/company" replace />} />
+        <Route path="/about-us/*" element={<Navigate to="/company" replace />} />
+        <Route path="/about" element={<Navigate to="/company" replace />} />
+        <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
+        <Route path="/contact-us/*" element={<Navigate to="/contact" replace />} />
+        <Route path="/public_html" element={<Navigate to="/" replace />} />
+        <Route path="/public_html/*" element={<Navigate to="/" replace />} />
         <Route path="/company" element={<CompanyPage />} />
         <Route path="/company/global-subsidiaries" element={<GlobalSubsidiariesPage />} />
         <Route path="/company/subsidiaries" element={<GlobalSubsidiariesPage />} />
