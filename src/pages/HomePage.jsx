@@ -154,7 +154,7 @@ function Hero() {
     const timer = setInterval(() => setSlide((current) => {
       setPreviousSlide(current);
       return (current + 1) % heroSlides.length;
-    }), 7000);
+    }), 9000);
     return () => clearInterval(timer);
   }, []);
   const current = heroSlides[slide];
@@ -686,12 +686,12 @@ function Sustainability({ open = 0, setOpen }) {
     },
   ];
 
-  // Auto-shift between Sustainability and Community every 3 seconds (pauses on hover)
+  // Auto-shift between Sustainability and Community every 5 seconds (pauses on hover)
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       setOpen?.((prev) => (prev === 0 ? 1 : 0));
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [isPaused, setOpen]);
 

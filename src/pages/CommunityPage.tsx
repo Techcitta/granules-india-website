@@ -26,7 +26,7 @@ const IMPACT_GOALS: CSRStat[] = [
   {
     value: '3.5L+',
     label: 'Our Progress',
-    sublabel: '3.5+ lakh Lives positively touched by FY26',
+    sublabel: 'lakh Lives positively touched by FY26',
     badge: 'By Impact as on FY26',
   },
 ];
