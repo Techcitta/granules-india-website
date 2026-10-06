@@ -11,3 +11,4 @@ public/uploads/
 public/documents/
 *.zip
 *.tsbuildinfo
+_backup_unused_imgs/

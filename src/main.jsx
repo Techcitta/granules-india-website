@@ -218,6 +218,7 @@ function App() {
         <Route path="/data-protection" element={<DataProtectionNoticePage />} />
         <Route path="/terms-conditions" element={<TermsConditionsPage />} />
         <Route path="/terms-condition" element={<TermsConditionsPage />} />
+        <Route path="/terms-of-use" element={<TermsConditionsPage />} />
         <Route path="/terms" element={<TermsConditionsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
