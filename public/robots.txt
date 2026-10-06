@@ -3,4 +3,4 @@ Allow: /
 Disallow: /public_html/
 Disallow: /public_html
 
-Sitemap: https://granulesindia.com/sitemap.xml
+Sitemap: https://www.granulesindia.com/sitemap.xml

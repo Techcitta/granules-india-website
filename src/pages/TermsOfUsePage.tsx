@@ -25,7 +25,7 @@ export default function TermsOfUsePage() {
               <p className="policy-text">
                 These Terms of Use (&ldquo;Terms of Use&rdquo;) govern the terms and conditions of the use by the
                 individual user (&ldquo;User&rdquo;) of the right to use (a) the website &lsquo;
-                <a href="https://granulesindia.com/" className="policy-link">http://granulesindia.com/</a>&rsquo;; and (b)
+                <a href="https://www.granulesindia.com/" className="policy-link">https://www.granulesindia.com/</a>&rsquo;; and (b)
                 other content (that includes without limitation news, webcasts, reference tools and applications,
                 sponsored programming, personalized content, continuing medical education, communication tools and
                 discussion board) and updates thereto made available by Granules India Limited and its affiliates

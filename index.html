@@ -14,11 +14,11 @@
     <meta name="twitter:description" content="Globally approved, vertically integrated pharmaceutical manufacturing." />
     <link rel="icon" type="image/png" href="/assets/logo.png" />
     <link rel="apple-touch-icon" href="/assets/logo.png" />
-    <link rel="canonical" href="https://granulesindia.com/" />
+    <link rel="canonical" href="https://www.granulesindia.com/" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="keywords" content="Granules India, PFI, Pharmaceutical Formulation Intermediates, API, Active Pharmaceutical Ingredients, Finished Dosages, FD, Peptides, Senn Tides, Paracetamol PFI, Metformin PFI, Ibuprofen, Pharmaceutical Manufacturing, Generics, Hyderabad Pharma" />
     <meta property="og:site_name" content="Granules India Limited" />
-    <meta property="og:url" content="https://granulesindia.com/" />
+    <meta property="og:url" content="https://www.granulesindia.com/" />
     <meta name="twitter:site" content="@GranulesIndia" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,16 +30,16 @@
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://granulesindia.com/#organization",
+          "@id": "https://www.granulesindia.com/#organization",
           "name": "Granules India Limited",
-          "url": "https://granulesindia.com/",
+          "url": "https://www.granulesindia.com/",
           "logo": {
             "@type": "ImageObject",
-            "@id": "https://granulesindia.com/#logo",
-            "url": "https://granulesindia.com/assets/logo.png",
+            "@id": "https://www.granulesindia.com/#logo",
+            "url": "https://www.granulesindia.com/assets/logo.png",
             "caption": "Granules India Limited Logo"
           },
-          "image": "https://granulesindia.com/assets/company/nav-logo.png",
+          "image": "https://www.granulesindia.com/assets/company/nav-logo.png",
           "description": "Global vertically integrated pharmaceutical manufacturing leader specializing in Active Pharmaceutical Ingredients (APIs), Pharmaceutical Formulation Intermediates (PFIs), Finished Dosage Forms (FDs), and Peptides.",
           "address": {
             "@type": "PostalAddress",
@@ -66,67 +66,71 @@
         },
         {
           "@type": "WebSite",
-          "@id": "https://granulesindia.com/#website",
-          "url": "https://granulesindia.com/",
+          "@id": "https://www.granulesindia.com/#website",
+          "url": "https://www.granulesindia.com/",
           "name": "Granules India",
-          "publisher": { "@id": "https://granulesindia.com/#organization" },
+          "publisher": { "@id": "https://www.granulesindia.com/#organization" },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://granulesindia.com/?s={search_term_string}",
+            "target": "https://www.granulesindia.com/?s={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         },
         {
           "@type": "ItemList",
-          "@id": "https://granulesindia.com/#product-offerings",
+          "@id": "https://www.granulesindia.com/#product-offerings",
           "name": "Granules Core Pharmaceutical Offerings",
           "itemListElement": [
             {
               "@type": "ListItem",
               "position": 1,
               "name": "Pharmaceutical Formulation Intermediates (PFI)",
-              "url": "https://granulesindia.com/business/pfi",
+              "url": "https://www.granulesindia.com/business/pfi",
               "description": "Pioneering directly compressible granules (Paracetamol, Metformin, Ibuprofen) engineered for high-speed tableting."
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Active Pharmaceutical Ingredients (API)",
-              "url": "https://granulesindia.com/business/api",
+              "url": "https://www.granulesindia.com/business/api",
               "description": "World-scale high-purity APIs manufactured in USFDA and EU-GMP compliant plants."
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Finished Dosage Forms (FD)",
-              "url": "https://granulesindia.com/business/fd",
+              "url": "https://www.granulesindia.com/business/fd",
               "description": "Commercial multi-billion unit solid oral formulations (tablets, caplets, capsules)."
             },
             {
               "@type": "ListItem",
               "position": 4,
               "name": "Senn Tides — Peptide CDMO",
-              "url": "https://granulesindia.com/senn-tides",
+              "url": "https://www.granulesindia.com/senn-tides",
               "description": "Specialized synthetic peptides, GLP-1 agonists, and oligonucleotides contract development."
             }
           ]
         }
       ]
     }
+    </script>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <script>
       (function() {
         var host = window.location.host;
+        var hostname = window.location.hostname;
         var pathname = window.location.pathname;
         var search = window.location.search || '';
         var hash = window.location.hash || '';
-        var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        var isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
 
+        // Redirect apex domain (granulesindia.com) to www.granulesindia.com
+        var needsWww = !isLocal && (hostname === 'granulesindia.com');
         var needsHttps = !isLocal && window.location.protocol === 'http:';
         var hasPublicHtml = pathname.indexOf('public_html') !== -1;
         var hasLegacyAbout = pathname.indexOf('about-us') !== -1 || pathname.indexOf('contact-us') !== -1;
 
-        if (needsHttps || hasPublicHtml || hasLegacyAbout) {
+        if (needsWww || needsHttps || hasPublicHtml || hasLegacyAbout) {
           var cleanPath = pathname.replace(/\/public_html(\/|$)/g, '/').replace(/^\/public_html/, '');
           if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
           cleanPath = cleanPath.replace(/\/+/g, '/');
@@ -142,8 +146,9 @@
             cleanPath = '/contact';
           }
 
-          var targetProtocol = needsHttps ? 'https:' : window.location.protocol;
-          window.location.replace(targetProtocol + '//' + host + cleanPath + search + hash);
+          var targetHost = needsWww ? 'www.granulesindia.com' : host;
+          var targetProtocol = (needsHttps || needsWww) ? 'https:' : window.location.protocol;
+          window.location.replace(targetProtocol + '//' + targetHost + cleanPath + search + hash);
         }
       })();
     </script>

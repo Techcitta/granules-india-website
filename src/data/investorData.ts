@@ -58,7 +58,7 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "period": "FY 24-25",
             "year": "2025",
             "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2025/07/Granules_Integrated-Report-2024-25.pdf",
-            "webUrl": "https://granulesindia.com/annual-report-2024-25/",
+            "webUrl": "https://www.granulesindia.com/annual-report-2024-25/",
             "category": "sec-financial-reports",
             "subcategoryId": "annual-reports",
             "subcategoryLabel": "Annual Reports"

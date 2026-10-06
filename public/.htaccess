@@ -2,7 +2,11 @@
   RewriteEngine On
   RewriteBase /
 
-  # 1. Force HTTPS Redirection (Supports Apache direct, Cloudflare, AWS Amplify/ALB, and cPanel proxies)
+  # 1. Force apex (non-www) domain to www.granulesindia.com with HTTPS
+  RewriteCond %{HTTP_HOST} ^granulesindia\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.granulesindia.com/$1 [L,R=301]
+
+  # 2. Force HTTPS Redirection (Supports Apache direct, Cloudflare, AWS Amplify/ALB, and cPanel proxies)
   RewriteCond %{HTTPS} !=on [OR]
   RewriteCond %{HTTP:X-Forwarded-Proto} =http
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

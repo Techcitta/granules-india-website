@@ -1,3 +1,5 @@
+https://granulesindia.com/*  https://www.granulesindia.com/:splat  301!
+http://granulesindia.com/*   https://www.granulesindia.com/:splat  301!
 /public_html/*    /    301!
 /public_html      /    301!
 /*    /index.html   200

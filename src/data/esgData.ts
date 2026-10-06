@@ -836,7 +836,7 @@ export const COMPLETE_ESG_DATA: EsgSubfactorItem[] = [
     factor: 'Ratings and Indices',
     subfactor: 'CRISIL ESG Rating',
     keywords: ['External Validation'],
-    docLinks: [{ name: 'CRISIL ESG Scorecard', url: 'https://granulesindia.com/sustainability', type: 'web' }],
+    docLinks: [{ name: 'CRISIL ESG Scorecard', url: 'https://www.granulesindia.com/sustainability', type: 'web' }],
     factsheet: 'A : 67',
     highlights: 'ESG Score: 67 (Strong) as of 24 Aug 2026.',
   },
@@ -846,7 +846,7 @@ export const COMPLETE_ESG_DATA: EsgSubfactorItem[] = [
     subfactor: 'S&P Global Ratings',
     keywords: ['External Validation'],
     docLinks: [
-      { name: 'S&P Global Portal', url: 'https://granulesindia.com/sustainability', type: 'web' },
+      { name: 'S&P Global Portal', url: 'https://www.granulesindia.com/sustainability', type: 'web' },
       { name: 'S&P CSA Score 2026', url: PDF_DEFAULT, type: 'pdf' },
       { name: 'S&P Scorecard', url: ANNUAL_REPORT_PDF, type: 'pdf' },
     ],
@@ -1031,7 +1031,7 @@ export const COMPLETE_ESG_DATA: EsgSubfactorItem[] = [
     keywords: ['BRSR SEBI: Structures Policies and Processes'],
     docLinks: [{ name: 'NGRBC Policies Document', url: PDF_DEFAULT, type: 'pdf' }],
     highlights:
-      '(a) Yes, entity’s policy/policies cover each principle and its core elements of the NGRBCs; (b) Yes, the policy been approved by the Board; (c) Web Link of the Policies: https://granulesindia.com/investors/investor-resources/policies/; https://granulesindia.com/sustainability/.',
+      '(a) Yes, entity’s policy/policies cover each principle and its core elements of the NGRBCs; (b) Yes, the policy been approved by the Board; (c) Web Link of the Policies: https://www.granulesindia.com/investors/investor-resources/policies/; https://www.granulesindia.com/sustainability/.',
   },
   {
     id: 'brsr-b2',

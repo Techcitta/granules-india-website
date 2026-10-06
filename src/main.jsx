@@ -14,22 +14,27 @@ if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
 }
 
 if (typeof window !== 'undefined') {
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const isApex = !isLocal && window.location.hostname === 'granulesindia.com';
   const p = window.location.pathname;
-  if (p.includes('public_html') || p.includes('about-us') || p.includes('contact-us')) {
-    let clean = p.replace(/\/public_html(\/|$)/g, '/').replace(/^\/public_html/, '');
-    if (!clean.startsWith('/')) clean = '/' + clean;
-    clean = clean.replace(/\/+/g, '/');
 
-    if (clean.includes('/about-us/our-leadership') || clean.includes('/about-us/leadership') || clean.includes('/about-us/our-board')) {
-      clean = '/company/leadership';
-    } else if (clean.includes('/about-us/our-journey') || clean.includes('/about-us/milestones')) {
-      clean = '/company/milestone';
-    } else if (clean.includes('/about-us')) {
-      clean = '/company';
-    } else if (clean.includes('/contact-us')) {
-      clean = '/contact';
-    }
+  let clean = p.replace(/\/public_html(\/|$)/g, '/').replace(/^\/public_html/, '');
+  if (!clean.startsWith('/')) clean = '/' + clean;
+  clean = clean.replace(/\/+/g, '/');
 
+  if (clean.includes('/about-us/our-leadership') || clean.includes('/about-us/leadership') || clean.includes('/about-us/our-board')) {
+    clean = '/company/leadership';
+  } else if (clean.includes('/about-us/our-journey') || clean.includes('/about-us/milestones')) {
+    clean = '/company/milestone';
+  } else if (clean.includes('/about-us')) {
+    clean = '/company';
+  } else if (clean.includes('/contact-us')) {
+    clean = '/contact';
+  }
+
+  if (isApex) {
+    window.location.replace('https://www.granulesindia.com' + clean + window.location.search + window.location.hash);
+  } else if (clean !== p) {
     window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
   }
 }

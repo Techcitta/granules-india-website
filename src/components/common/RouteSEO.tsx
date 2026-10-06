@@ -46,7 +46,7 @@ export default function RouteSEO() {
     updateMetaTag('property', 'og:type', seo.ogType || 'website');
     updateMetaTag('property', 'og:site_name', 'Granules India Limited');
     if (seo.ogImage) {
-      updateMetaTag('property', 'og:image', `https://granulesindia.com${seo.ogImage}`);
+      updateMetaTag('property', 'og:image', `https://www.granulesindia.com${seo.ogImage}`);
     }
 
     // 5. Twitter Card Tags

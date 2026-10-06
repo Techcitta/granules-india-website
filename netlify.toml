@@ -3,6 +3,18 @@
   command = "npm run build"
 
 [[redirects]]
+  from = "https://granulesindia.com/*"
+  to = "https://www.granulesindia.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://granulesindia.com/*"
+  to = "https://www.granulesindia.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/public_html/*"
   to = "/:splat"
   status = 301
