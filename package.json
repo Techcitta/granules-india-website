@@ -10,7 +10,8 @@
     "clean:imgs": "node scripts/clean_unused_images.mjs --delete",
     "clean:imgs:dry": "node scripts/clean_unused_images.mjs",
     "clean:imgs:backup": "node scripts/clean_unused_images.mjs --delete --backup",
-    "clean:imgs:all": "node scripts/clean_unused_images.mjs --target=all --delete"
+    "clean:imgs:all": "node scripts/clean_unused_images.mjs --target=all --delete",
+    "compress:imgs": "node scripts/compress_all_images.mjs"
   },
   "dependencies": {
     "@fontsource/manrope": "^5.2.6",
@@ -28,6 +29,7 @@
     "pdf-parse": "^2.4.5",
     "playwright": "^1.62.1",
     "postcss": "^8.5.28",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vite": "^7.1.3"
