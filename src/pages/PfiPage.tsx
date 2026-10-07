@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
+import { openProductDownloadGate } from '../components/common/ProductDownloadGateModal';
 import '../components/company/company.css';
 import './business.css';
 
@@ -129,13 +130,23 @@ export default function PfiPage() {
             Industry-leading pharmaceutical formulation intermediates engineered for superior compressibility and flowability.
           </p>
         </div>
-        <Link
-          className="cp-cta-btn"
-          to="/business/generics?segment=PFI#our-portfolio"
-          state={{ segment: 'PFI' }}
-        >
-          VIEW OUR PFI PORTFOLIO
-        </Link>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <button
+            type="button"
+            className="cp-cta-btn"
+            style={{ background: '#0061f8', color: '#fff', border: 'none', cursor: 'pointer' }}
+            onClick={() => openProductDownloadGate('PFI')}
+          >
+            DOWNLOAD PFI LIST
+          </button>
+          <Link
+            className="cp-cta-btn"
+            to="/business/generics?segment=PFI#our-portfolio"
+            state={{ segment: 'PFI' }}
+          >
+            VIEW OUR PFI PORTFOLIO
+          </Link>
+        </div>
       </div>
 
       <CompanyFooter />

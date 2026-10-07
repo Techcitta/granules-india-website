@@ -4,6 +4,7 @@ import { NavBar, CompanyFooter } from '../components/company';
 import CustomSelect from '../components/common/CustomSelect';
 import { asset } from '../components/company/constants';
 import { getAssetUrl } from '../lib/pdf';
+import { openProductDownloadGate, BrochureIcon, type ProductListType } from '../components/common/ProductDownloadGateModal';
 import '../components/company/company.css';
 import './business.css';
 import './product-portfolio.css';
@@ -36,28 +37,6 @@ const TABLE_TITLES: Record<Segment, string> = {
   PFI: 'Pharmaceutical Formulation Intermediates',
   'Finished Dosage': 'Finished Dosages',
 };
-
-const PRODUCT_BROCHURE_HREF = getAssetUrl('products/FD-list-merged.pdf');
-
-function BrochureIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
-    </svg>
-  );
-}
 
 const FILING_LABELS: Record<Filing, string> = {
   GLOBAL: 'Planning for Global filing',
@@ -267,7 +246,15 @@ function IntegrationMark({ type }: { type: Integration }) {
   );
 }
 
-const products = [
+const products: {
+  image: string;
+  title: string;
+  eyebrow: string;
+  body: string;
+  href: string;
+  cta: string;
+  type: ProductListType;
+}[] = [
   {
     image: 'fd/fd-card.jpg',
     title: 'Finished Dosages (FDs)',
@@ -275,6 +262,7 @@ const products = [
     body: 'Comprehensive oral solid dosage solutions engineered for affordability, patient safety, and global compliance.',
     href: '/business/fd',
     cta: 'Click here to know more',
+    type: 'FD',
   },
   {
     image: 'pfi.webp',
@@ -283,6 +271,7 @@ const products = [
     body: 'Custom solutions optimized for efficiency and flexibility with proprietary "Drum to Hopper" direct compression blends that eliminate manufacturing complexity.',
     href: '/business/pfi',
     cta: 'Click here to know more',
+    type: 'PFI',
   },
   {
     image: 'api.jpg',
@@ -291,6 +280,7 @@ const products = [
     body: 'Backward integration operations, flexible scale, global compliance, and deep process chemistry.',
     href: '/business/api',
     cta: 'Click here to know more',
+    type: 'API',
   },
 ];
 
@@ -640,6 +630,18 @@ export default function GenericsPage() {
                         <span>{product.cta}</span>
                         <span aria-hidden="true" style={{ marginLeft: '6px' }}>&rarr;</span>
                       </Link>
+                      <button
+                        type="button"
+                        className="product-card-download-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openProductDownloadGate(product.type);
+                        }}
+                        aria-label={`Download ${product.title} product list`}
+                      >
+                        <BrochureIcon size={14} />
+                        <span>Download List</span>
+                      </button>
                     </div>
                   </div>
                 </button>
@@ -659,16 +661,35 @@ export default function GenericsPage() {
             <span className="cp-section-badge">Our Portfolio</span>
             <h2>{TABLE_TITLES[segment]}</h2>
           </div>
-          <a
-            className="gen-brochure-btn"
-            href={PRODUCT_BROCHURE_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Download our product brochure"
-          >
-            <BrochureIcon />
-            <span>Download our product brochure</span>
-          </a>
+          <div className="gen-brochure-group" role="group" aria-label="Download Product Lists">
+            <button
+              type="button"
+              className={`gen-brochure-btn${segment === 'API' ? ' gen-brochure-btn--active' : ''}`}
+              onClick={() => openProductDownloadGate('API')}
+              aria-label="Download API product list"
+            >
+              <BrochureIcon />
+              <span>Download API List</span>
+            </button>
+            <button
+              type="button"
+              className={`gen-brochure-btn${segment === 'PFI' ? ' gen-brochure-btn--active' : ''}`}
+              onClick={() => openProductDownloadGate('PFI')}
+              aria-label="Download PFI product list"
+            >
+              <BrochureIcon />
+              <span>Download PFI List</span>
+            </button>
+            <button
+              type="button"
+              className={`gen-brochure-btn${segment === 'Finished Dosage' ? ' gen-brochure-btn--active' : ''}`}
+              onClick={() => openProductDownloadGate('FD')}
+              aria-label="Download Finished Dosage product list"
+            >
+              <BrochureIcon />
+              <span>Download FD List</span>
+            </button>
+          </div>
         </div>
 
         <div className="pp-filters">

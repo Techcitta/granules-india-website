@@ -102,6 +102,7 @@ import ProductsHomepage from './pages/ProductsHomepage.tsx';
 import BackToTopButton from './components/common/BackToTopButton';
 import CookieConsent from './components/common/CookieConsent';
 import LeadContactModal from './components/common/LeadContactModal.tsx';
+import ProductDownloadGateModal from './components/common/ProductDownloadGateModal.tsx';
 import { ChatbotWidget } from './components/chatbot';
 import RouteSEO from './components/common/RouteSEO';
 
@@ -120,6 +121,7 @@ function App() {
       <BackToTopButton />
       <CookieConsent />
       <LeadContactModal />
+      <ProductDownloadGateModal />
       <ChatbotWidget />
       <Routes>
         <Route path="/" element={<HomePage />} />

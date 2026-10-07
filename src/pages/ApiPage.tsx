@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import CustomSelect from '../components/common/CustomSelect';
+import { openProductDownloadGate, BrochureIcon } from '../components/common/ProductDownloadGateModal';
 import { COMPLEX_MOLECULE_PRODUCTS, matchesSearchQuery } from '../data/complexMoleculesData';
 import '../components/company/company.css';
 import './business.css';
@@ -221,12 +222,21 @@ export default function ApiPage() {
 
 
       <div id="complex-molecules" className="biz-section-head pp-section-head" style={{ marginTop: '75px', scrollMarginTop: '100px' }}>
-        <div className="copy" style={{ width: '100%', maxWidth: '100%' }}>
+        <div className="copy">
           <h2 id="high-barrier-complex-molecules" className="complex-molecules-header">High-Barrier Complex Molecules Portfolio</h2>
           <span className="complex-molecules-span" style={{ display: 'block', color: 'var(--n7)', fontSize: 'clamp(17px, 1.25vw, 20px)', lineHeight: '1.5', marginTop: '8px', width: '100%', maxWidth: '100%' }}>
             Growing pipeline of high-barrier, complex molecules in oncology, CNS/ADHD, and cardiovascular therapeutics with active USDMF filings.
           </span>
         </div>
+        <button
+          type="button"
+          className="gen-brochure-btn"
+          onClick={() => openProductDownloadGate('API')}
+          aria-label="Download API product list"
+        >
+          <BrochureIcon />
+          <span>Download API Product List</span>
+        </button>
       </div>
 
       <div className="pp-filters">
@@ -384,13 +394,23 @@ export default function ApiPage() {
             manufacturing partner for quality, scale, and sustainability.
           </p>
         </div>
-        <Link
-          className="cp-cta-btn"
-          to="/business/generics?segment=API#our-portfolio"
-          state={{ segment: 'API' }}
-        >
-          VIEW OUR API PORTFOLIO
-        </Link>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <button
+            type="button"
+            className="cp-cta-btn"
+            style={{ background: '#0061f8', color: '#fff', border: 'none', cursor: 'pointer' }}
+            onClick={() => openProductDownloadGate('API')}
+          >
+            DOWNLOAD API LIST
+          </button>
+          <Link
+            className="cp-cta-btn"
+            to="/business/generics?segment=API#our-portfolio"
+            state={{ segment: 'API' }}
+          >
+            VIEW OUR API PORTFOLIO
+          </Link>
+        </div>
       </div>
 
       <CompanyFooter />

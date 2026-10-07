@@ -1,0 +1,291 @@
+/* ==========================================================================
+   PRODUCT DOWNLOAD GATE MODAL — Granules India Corporate Design
+   Mandates work email entry before downloading API, PFI, or FD product lists.
+   ========================================================================== */
+
+.dgate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(4, 18, 43, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: dgateFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dgateFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dgate-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px 32px 30px;
+  box-shadow:
+    0 20px 48px -10px rgba(0, 43, 102, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 97, 248, 0.12);
+  animation: dgateScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  font-family: 'Manrope', Arial, sans-serif;
+}
+
+@keyframes dgateScaleUp {
+  from {
+    transform: scale(0.93) translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.dgate-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dgate-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.dgate-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.dgate-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 97, 248, 0.1);
+  color: #0061f8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.dgate-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(0, 97, 248, 0.12) 0%, rgba(0, 43, 102, 0.08) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0061f8;
+  margin: 0 auto 14px;
+}
+
+.dgate-title {
+  font-size: clamp(20px, 1.4vw, 24px);
+  font-weight: 700;
+  color: #002B66;
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+.dgate-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #475569;
+  margin: 0;
+}
+
+.dgate-subtitle strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.dgate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dgate-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dgate-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: 0.2px;
+}
+
+.dgate-req {
+  color: #ef4444;
+}
+
+.dgate-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dgate-input-icon {
+  position: absolute;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.dgate-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 44px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: #0f172a;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.dgate-input:focus {
+  border-color: #0061f8;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 97, 248, 0.12);
+}
+
+.dgate-input::placeholder {
+  color: #94a3b8;
+}
+
+.dgate-error-text {
+  font-size: 12px;
+  color: #dc2626;
+  font-weight: 500;
+  margin: 4px 0 0;
+}
+
+.dgate-actions {
+  display: flex;
+  margin-top: 4px;
+}
+
+.dgate-submit-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 999px;
+  background: #0061f8;
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 97, 248, 0.28);
+}
+
+.dgate-submit-btn:hover:not(:disabled) {
+  background: #004ecc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 97, 248, 0.38);
+}
+
+.dgate-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.dgate-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.dgate-privacy-note {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: #64748b;
+  text-align: center;
+  margin: 0;
+}
+
+/* Success View */
+.dgate-success-view {
+  text-align: center;
+  padding: 16px 8px 10px;
+  animation: dgateFadeIn 0.3s ease forwards;
+}
+
+.dgate-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.1);
+}
+
+.dgate-success-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #002B66;
+  margin: 0 0 8px;
+}
+
+.dgate-success-desc {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dgate-success-desc strong {
+  color: #0f172a;
+}
+
+@media (max-width: 640px) {
+  .dgate-card {
+    padding: 28px 20px 22px;
+    border-radius: 20px;
+  }
+}

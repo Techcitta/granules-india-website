@@ -1087,25 +1087,32 @@ h3.cp-page-title {
   }
 }
 
-/* ---------- Generics Product Brochure Button ---------- */
+/* ---------- Generics Product Brochure Button & Group ---------- */
+.gen-brochure-group {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
 .gen-brochure-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
+  gap: 8px;
+  padding: 10px 20px;
   border-radius: 9999px;
   background: var(--blue, #0061f8);
   color: #ffffff;
-  border: none;
-  font: 700 14px/1 'Manrope', Arial, sans-serif;
+  border: 1.5px solid transparent;
+  font: 700 13.5px/1 'Manrope', Arial, sans-serif;
   letter-spacing: 0.2px;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+  transition: all 0.22s ease;
   box-shadow: 0 4px 14px rgba(0, 97, 248, 0.22);
   white-space: nowrap;
   flex-shrink: 0;
-  margin-bottom: 4px;
 }
 
 .gen-brochure-btn:hover {
@@ -1118,6 +1125,12 @@ h3.cp-page-title {
   transform: translateY(0);
 }
 
+.gen-brochure-btn--active {
+  background: #002B66;
+  border-color: #0061f8;
+  box-shadow: 0 4px 16px rgba(0, 43, 102, 0.3);
+}
+
 .gen-brochure-btn svg {
   flex-shrink: 0;
   transition: transform 0.2s ease;
@@ -1125,4 +1138,38 @@ h3.cp-page-title {
 
 .gen-brochure-btn:hover svg {
   transform: translateY(1px);
+}
+
+/* Card Actions in Core Generic Verticals */
+.product-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.product-card-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(0, 97, 248, 0.08);
+  color: #0061f8;
+  border: 1px solid rgba(0, 97, 248, 0.2);
+  font: 700 12.5px/1 'Manrope', Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-card-download-btn:hover {
+  background: #0061f8;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 97, 248, 0.25);
+}
+
+.product-card-download-btn svg {
+  flex-shrink: 0;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
+import { openProductDownloadGate } from '../components/common/ProductDownloadGateModal';
 import '../components/company/company.css';
 import './business.css';
 
@@ -127,13 +128,23 @@ export default function FdPage() {
             Discover high-volume, cost-efficient, and globally compliant finished formulations across core therapeutic areas.
           </p>
         </div>
-        <Link
-          className="cp-cta-btn"
-          to="/business/generics?segment=Finished%20Dosage#our-portfolio"
-          state={{ segment: 'Finished Dosage' }}
-        >
-          VIEW OUR FD PORTFOLIO
-        </Link>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <button
+            type="button"
+            className="cp-cta-btn"
+            style={{ background: '#0061f8', color: '#fff', border: 'none', cursor: 'pointer' }}
+            onClick={() => openProductDownloadGate('FD')}
+          >
+            DOWNLOAD FD LIST
+          </button>
+          <Link
+            className="cp-cta-btn"
+            to="/business/generics?segment=Finished%20Dosage#our-portfolio"
+            state={{ segment: 'Finished Dosage' }}
+          >
+            VIEW OUR FD PORTFOLIO
+          </Link>
+        </div>
       </div>
 
       <CompanyFooter />

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
 import CustomSelect from '../components/common/CustomSelect';
+import { openProductDownloadGate, BrochureIcon } from '../components/common/ProductDownloadGateModal';
 import '../components/company/company.css';
 import './business.css';
 import portfolioData from '../data/productPortfolio.json';
@@ -460,6 +461,35 @@ export default function ProductPortfolioPage() {
         <div className="copy">
           <span className="cp-section-badge">Our Portfolio</span>
           <h2>{TABLE_TITLES[segment]}</h2>
+        </div>
+        <div className="gen-brochure-group" role="group" aria-label="Download Product Lists">
+          <button
+            type="button"
+            className={`gen-brochure-btn${segment === 'API' ? ' gen-brochure-btn--active' : ''}`}
+            onClick={() => openProductDownloadGate('API')}
+            aria-label="Download API product list"
+          >
+            <BrochureIcon />
+            <span>Download API List</span>
+          </button>
+          <button
+            type="button"
+            className={`gen-brochure-btn${segment === 'PFI' ? ' gen-brochure-btn--active' : ''}`}
+            onClick={() => openProductDownloadGate('PFI')}
+            aria-label="Download PFI product list"
+          >
+            <BrochureIcon />
+            <span>Download PFI List</span>
+          </button>
+          <button
+            type="button"
+            className={`gen-brochure-btn${segment === 'Finished Dosage' ? ' gen-brochure-btn--active' : ''}`}
+            onClick={() => openProductDownloadGate('FD')}
+            aria-label="Download Finished Dosage product list"
+          >
+            <BrochureIcon />
+            <span>Download FD List</span>
+          </button>
         </div>
       </div>
 

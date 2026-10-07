@@ -659,4 +659,15 @@
   }
 }
 
+@media (max-width: 992px) {
+  .pp-section-head {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  .pp-section-head .gen-brochure-group {
+    width: 100%;
+  }
+}
+
 
