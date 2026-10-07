@@ -244,9 +244,6 @@ export default function ProductDownloadGateModal() {
               <h3 id="dgate-modal-title" className="dgate-title">
                 Download {config.title}
               </h3>
-              <p className="dgate-subtitle">
-                Please provide your work email to download the official <strong>{config.fullName}</strong> brochure and specifications.
-              </p>
             </div>
 
             <form className="dgate-form" onSubmit={handleSubmit}>

@@ -5,71 +5,88 @@ import './LeadContactModal.css';
 
 const LEAD_DISMISSED_KEY = 'granules_lead_contact_dismissed';
 
-interface RouteConfig {
+interface SegmentLeadConfig {
   sheet: 'API' | 'PFI' | 'FD';
   label: string;
 }
 
-// Routes to monitor with distinct Google Sheet tabs
-const TARGET_ROUTES: Record<string, RouteConfig> = {
-  '/business/api': { sheet: 'API', label: 'Active Pharmaceutical Ingredients (API)' },
-  '/business/pfi': { sheet: 'PFI', label: 'Pharmaceutical Formulation Intermediates (PFI)' },
-  '/business/fd': { sheet: 'FD', label: 'Finished Dosages (FD)' },
-  '/business/finisheddosage': { sheet: 'FD', label: 'Finished Dosages (FD)' },
+const SEGMENT_CONFIGS: Record<string, SegmentLeadConfig> = {
+  API: { sheet: 'API', label: 'Active Pharmaceutical Ingredients (API)' },
+  PFI: { sheet: 'PFI', label: 'Pharmaceutical Formulation Intermediates (PFI)' },
+  'Finished Dosage': { sheet: 'FD', label: 'Finished Dosages (FD)' },
+  FD: { sheet: 'FD', label: 'Finished Dosages (FD)' },
 };
 
 export default function LeadContactModal() {
   const location = useLocation();
   const [visible, setVisible] = useState(false);
+  const [activeConfig, setActiveConfig] = useState<SegmentLeadConfig | null>(null);
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const timerRef = useRef<number | null>(null);
 
-  const cleanPath = location.pathname.toLowerCase().replace(/\/+$/, '');
-  const matchedRoute = TARGET_ROUTES[cleanPath] || null;
-
+  // Clear timer and close modal whenever the user navigates across pages
   useEffect(() => {
-    // Clear any existing timer upon navigation
     if (timerRef.current) {
       window.clearTimeout(timerRef.current);
       timerRef.current = null;
     }
+    setVisible(false);
+  }, [location.pathname]);
 
-    // Only activate on targeted pages (API, PFI, FD)
-    if (!matchedRoute) {
-      setVisible(false);
-      return;
-    }
+  // Listen exclusively for segment filter selections (API, PFI, or Finished Dosage) on the generics/products portfolio
+  useEffect(() => {
+    const handleSegmentChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ segment?: string }>;
+      const segment = customEvent.detail?.segment;
 
-    // Check if user already skipped or submitted during this browser session
-    try {
-      const dismissed = sessionStorage.getItem(LEAD_DISMISSED_KEY);
-      if (dismissed === 'true') {
+      // Clear any running timer on filter switch
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+
+      if (!segment || segment === 'All' || !SEGMENT_CONFIGS[segment]) {
         return;
       }
-    } catch {
-      // ignore storage access issues
-    }
 
-    // Start 10-second timer
-    timerRef.current = window.setTimeout(() => {
-      setVisible(true);
-    }, 10000);
+      const config = SEGMENT_CONFIGS[segment];
+      const dismissedKey = `${LEAD_DISMISSED_KEY}_${config.sheet}`;
 
+      try {
+        if (sessionStorage.getItem(dismissedKey) === 'true') {
+          return;
+        }
+      } catch {
+        // ignore storage errors
+      }
+
+      // Start 10-second timer when user selects API, PFI, or FD filter
+      timerRef.current = window.setTimeout(() => {
+        setActiveConfig(config);
+        setSubmitted(false);
+        setVisible(true);
+      }, 10000);
+    };
+
+    window.addEventListener('granules:segment-filter-change', handleSegmentChange);
     return () => {
+      window.removeEventListener('granules:segment-filter-change', handleSegmentChange);
       if (timerRef.current) {
         window.clearTimeout(timerRef.current);
         timerRef.current = null;
       }
     };
-  }, [cleanPath, matchedRoute]);
+  }, []);
 
   const handleDismiss = () => {
-    try {
-      sessionStorage.setItem(LEAD_DISMISSED_KEY, 'true');
-    } catch {
-      // ignore
+    if (activeConfig) {
+      try {
+        sessionStorage.setItem(`${LEAD_DISMISSED_KEY}_${activeConfig.sheet}`, 'true');
+      } catch {
+        // ignore
+      }
     }
     setVisible(false);
   };
@@ -82,10 +99,10 @@ export default function LeadContactModal() {
 
     try {
       await submitToGoogleSheet({
-        sheet: matchedRoute?.sheet || 'API',
+        sheet: activeConfig?.sheet || 'API',
         data: {
           email: email.trim(),
-          category: matchedRoute?.label || 'Product Lead',
+          category: activeConfig?.label || 'Product Lead',
           url: window.location.href,
         },
       });
@@ -96,10 +113,12 @@ export default function LeadContactModal() {
     setSubmitting(false);
     setSubmitted(true);
 
-    try {
-      sessionStorage.setItem(LEAD_DISMISSED_KEY, 'true');
-    } catch {
-      // ignore
+    if (activeConfig) {
+      try {
+        sessionStorage.setItem(`${LEAD_DISMISSED_KEY}_${activeConfig.sheet}`, 'true');
+      } catch {
+        // ignore
+      }
     }
 
     // Automatically close after success message displays
@@ -108,7 +127,7 @@ export default function LeadContactModal() {
     }, 2500);
   };
 
-  if (!visible) return null;
+  if (!visible || !activeConfig) return null;
 
   return (
     <div
@@ -146,7 +165,7 @@ export default function LeadContactModal() {
 
             <p className="lead-popup-desc">
               Please drop your work email and our commercial specialist for{' '}
-              <strong>{matchedRoute?.label}</strong> will be in touch with specifications and supply capabilities.
+              <strong>{activeConfig.label}</strong> will be in touch with specifications and supply capabilities.
             </p>
 
             <form className="lead-popup-form" onSubmit={handleSubmit}>

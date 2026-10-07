@@ -410,6 +410,25 @@ export default function GenericsPage() {
     }
   }, [segment, therapy, searchQuery]);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('granules:segment-filter-change', {
+          detail: { segment },
+        })
+      );
+    }
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(
+          new CustomEvent('granules:segment-filter-change', {
+            detail: { segment: 'All' },
+          })
+        );
+      }
+    };
+  }, [segment]);
+
   const handleSelectSuggestion = (selectedText: string) => {
     setSearchQuery(selectedText);
     setShowSuggestions(false);
@@ -652,17 +671,7 @@ export default function GenericsPage() {
           <button
             type="button"
             className="gen-brochure-btn"
-            onClick={() =>
-              openProductDownloadGate(
-                segment === 'API'
-                  ? 'API'
-                  : segment === 'PFI'
-                  ? 'PFI'
-                  : segment === 'Finished Dosage'
-                  ? 'FD'
-                  : 'PORTFOLIO'
-              )
-            }
+            onClick={() => openProductDownloadGate('PORTFOLIO')}
             aria-label="Download our product brochure"
           >
             <BrochureIcon />
