@@ -68,10 +68,19 @@ export async function submitToGoogleSheet(payload: FormPayload): Promise<{ succe
   }
 
   try {
+    const sanitizedData: Record<string, any> = {};
+    for (const [key, val] of Object.entries(payload.data)) {
+      if (typeof val === 'string' && (val.startsWith('+') || val.startsWith('='))) {
+        sanitizedData[key] = `'${val}`;
+      } else {
+        sanitizedData[key] = val;
+      }
+    }
+
     const bodyData = {
       sheet: payload.sheet,
       timestamp: new Date().toISOString(),
-      ...payload.data,
+      ...sanitizedData,
     };
 
     // Google Apps Script requires text/plain or application/x-www-form-urlencoded to prevent CORS preflight OPTIONS failure
