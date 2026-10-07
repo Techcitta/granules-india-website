@@ -163,11 +163,6 @@ export default function LeadContactModal() {
               </div>
             </div>
 
-            <p className="lead-popup-desc">
-              Please drop your work email and our commercial specialist for{' '}
-              <strong>{activeConfig.label}</strong> will be in touch with specifications and supply capabilities.
-            </p>
-
             <form className="lead-popup-form" onSubmit={handleSubmit}>
               <div className="lead-input-wrap">
                 <span className="lead-input-icon" aria-hidden="true">
