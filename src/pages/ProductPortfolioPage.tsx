@@ -462,35 +462,15 @@ export default function ProductPortfolioPage() {
           <span className="cp-section-badge">Our Portfolio</span>
           <h2>{TABLE_TITLES[segment]}</h2>
         </div>
-        <div className="gen-brochure-group" role="group" aria-label="Download Product Lists">
-          <button
-            type="button"
-            className={`gen-brochure-btn${segment === 'API' ? ' gen-brochure-btn--active' : ''}`}
-            onClick={() => openProductDownloadGate('API')}
-            aria-label="Download API product list"
-          >
-            <BrochureIcon />
-            <span>Download API List</span>
-          </button>
-          <button
-            type="button"
-            className={`gen-brochure-btn${segment === 'PFI' ? ' gen-brochure-btn--active' : ''}`}
-            onClick={() => openProductDownloadGate('PFI')}
-            aria-label="Download PFI product list"
-          >
-            <BrochureIcon />
-            <span>Download PFI List</span>
-          </button>
-          <button
-            type="button"
-            className={`gen-brochure-btn${segment === 'Finished Dosage' ? ' gen-brochure-btn--active' : ''}`}
-            onClick={() => openProductDownloadGate('FD')}
-            aria-label="Download Finished Dosage product list"
-          >
-            <BrochureIcon />
-            <span>Download FD List</span>
-          </button>
-        </div>
+        <button
+          type="button"
+          className="gen-brochure-btn"
+          onClick={() => openProductDownloadGate(segment === 'API' ? 'API' : segment === 'PFI' ? 'PFI' : 'FD')}
+          aria-label="Download our product brochure"
+        >
+          <BrochureIcon />
+          <span>Download our product brochure</span>
+        </button>
       </div>
 
       <div className="pp-filters">
