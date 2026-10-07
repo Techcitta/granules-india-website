@@ -47,10 +47,10 @@ export default function LeadContactModal() {
       // ignore storage access issues
     }
 
-    // Start 15-second timer
+    // Start 10-second timer
     timerRef.current = window.setTimeout(() => {
       setVisible(true);
-    }, 15000);
+    }, 10000);
 
     return () => {
       if (timerRef.current) {
@@ -83,7 +83,7 @@ export default function LeadContactModal() {
           designation: `Visitor from ${matchedPage || 'Portfolio'}`,
           email: email.trim(),
           subject: `Product Inquiry — ${matchedPage || 'Business'}`,
-          message: `Inquiry captured via 15s prompt on ${matchedPage || cleanPath} page. Work Email: ${email.trim()}`,
+          message: `Inquiry captured via 10s prompt on ${matchedPage || cleanPath} page. Work Email: ${email.trim()}`,
         },
       });
     } catch (err) {
