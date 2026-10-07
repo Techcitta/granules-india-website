@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavBar, CompanyFooter } from '../components/company';
+import { submitToGoogleSheet } from '../lib/sheetsService';
 import '../components/company/company.css';
 import './PrivacyPolicyPage.css';
 
@@ -28,6 +29,7 @@ const EMPTY = {
 
 export default function DataPrivacyComplaintFormPage() {
   const [form, setForm] = useState(EMPTY);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -39,8 +41,16 @@ export default function DataPrivacyComplaintFormPage() {
     setForm((prev) => ({ ...prev, [key]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.complaint) return;
+
+    setIsSubmitting(true);
+    await submitToGoogleSheet({
+      sheet: 'Data Privacy',
+      data: form,
+    });
+    setIsSubmitting(false);
     setSubmitted(true);
     setForm(EMPTY);
   };
@@ -122,7 +132,9 @@ export default function DataPrivacyComplaintFormPage() {
                   <textarea className="policy-textarea" required value={form.complaint} onChange={set('complaint')} />
                 </label>
 
-                <button className="policy-submit" type="submit">Submit</button>
+                <button className="policy-submit" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </button>
               </form>
             )}
 

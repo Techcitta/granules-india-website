@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavBar, CompanyFooter } from '../components/company';
+import { submitToGoogleSheet } from '../lib/sheetsService';
 import '../components/company/company.css';
 import './contact.css';
 
@@ -33,6 +34,8 @@ export default function ContactPage() {
   const [isSubjectOpen, setIsSubjectOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     document.title = 'Contact Us — Granules India';
     window.scrollTo(0, 0);
@@ -64,13 +67,23 @@ export default function ContactPage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const ok = parseInt(captchaInput, 10) === captcha.answer;
-    setCaptcha(generateCaptcha());
-    setCaptchaInput('');
-    if (!ok) { setCaptchaError(true); return; }
-    setCaptchaError(false);
+    if (!form.fullName || !form.email || !form.message) return;
+
+    setIsSubmitting(true);
+    await submitToGoogleSheet({
+      sheet: 'Contact',
+      data: {
+        fullName: form.fullName,
+        designation: form.designation,
+        email: form.email,
+        subject: form.subject || 'General Enquiry',
+        message: form.message,
+      },
+    });
+
+    setIsSubmitting(false);
     setSubmitted(true);
     setTimeout(() => {
       setForm({ fullName: '', designation: '', email: '', contactNumber: '', subject: '', message: '' });
@@ -231,8 +244,8 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button type="submit" className="ct-submit-btn">
-                  SEND MESSAGE
+                <button type="submit" className="ct-submit-btn" disabled={isSubmitting}>
+                  {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                 </button>
 
               </form>

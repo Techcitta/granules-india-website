@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { NavBar, CompanyFooter } from '../components/company';
+import { submitToGoogleSheet, fileToBase64 } from '../lib/sheetsService';
 import '../components/company/company.css';
 import './career.css';
 
@@ -207,6 +208,8 @@ export default function CareerOverviewPage() {
   const [openBenefit, setOpenBenefit] = useState<number>(-1);
   const [activeVoiceKey, setActiveVoiceKey] = useState<string | null>(null);
   const [cvFileName, setCvFileName] = useState<string>('');
+  const [cvFile, setCvFile] = useState<File | null>(null);
+  const [talentSubmitting, setTalentSubmitting] = useState<boolean>(false);
   const [talentSubmitted, setTalentSubmitted] = useState<boolean>(false);
 
   const currentAreaBg = (activeArea >= 0 && CAREER_AREAS[activeArea]?.bg) ? CAREER_AREAS[activeArea].bg : CAREER_AREAS[0].bg;
@@ -721,8 +724,46 @@ export default function CareerOverviewPage() {
               <div className="car-talent-card">
                 <form
                   className="car-talent-form-grid"
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
+                    setTalentSubmitting(true);
+
+                    const formEl = e.currentTarget;
+                    const name = (formEl.querySelector('#talent-name') as HTMLInputElement)?.value || '';
+                    const email = (formEl.querySelector('#talent-email') as HTMLInputElement)?.value || '';
+                    const dialCode = (formEl.querySelector('#talent-dial-code') as HTMLSelectElement)?.value || '+91';
+                    const mobile = (formEl.querySelector('#talent-mobile') as HTMLInputElement)?.value || '';
+                    const location = (formEl.querySelector('#talent-location') as HTMLInputElement)?.value || '';
+                    const interestSelect = formEl.querySelector('#talent-interest') as HTMLSelectElement;
+                    const interest = interestSelect?.options[interestSelect.selectedIndex]?.text || '';
+                    const consent = (formEl.querySelector('#talent-consent') as HTMLInputElement)?.checked || false;
+
+                    let base64 = '';
+                    if (cvFile) {
+                      try {
+                        base64 = await fileToBase64(cvFile);
+                      } catch (err) {
+                        console.error('Failed encoding CV file:', err);
+                      }
+                    }
+
+                    await submitToGoogleSheet({
+                      sheet: 'Talent Community',
+                      data: {
+                        fullName: name,
+                        email,
+                        dialCode,
+                        mobile,
+                        location,
+                        careerInterest: interest,
+                        resumeFileName: cvFileName || '',
+                        resumeBase64: base64,
+                        resumeMimeType: cvFile?.type || 'application/pdf',
+                        consent,
+                      },
+                    });
+
+                    setTalentSubmitting(false);
                     setTalentSubmitted(true);
                   }}
                 >
@@ -810,7 +851,11 @@ export default function CareerOverviewPage() {
                             accept=".pdf,.doc,.docx"
                             required
                             className="car-talent-file-input"
-                            onChange={(e) => setCvFileName(e.target.files?.[0]?.name || '')}
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              setCvFile(file || null);
+                              setCvFileName(file?.name || '');
+                            }}
                           />
                           <div className="car-talent-file-custom">
                             <div className="car-talent-file-left">
@@ -836,7 +881,9 @@ export default function CareerOverviewPage() {
                       </div>
 
                       <div className="car-talent-btn-row">
-                        <button type="submit" className="car-talent-submit-btn">Join Talent Community</button>
+                        <button type="submit" className="car-talent-submit-btn" disabled={talentSubmitting}>
+                          {talentSubmitting ? 'Joining...' : 'Join Talent Community'}
+                        </button>
                         <a
                           href="https://careers.mygranules.com/"
                           target="_blank"
