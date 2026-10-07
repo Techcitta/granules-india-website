@@ -1,0 +1,263 @@
+/* ==========================================================================
+   LEAD CONTACT MODAL (Work Email Pop-up on API, PFI, FD pages after 15s)
+   ========================================================================== */
+
+.lead-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999998;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: leadFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes leadFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lead-popup-card {
+  position: relative;
+  width: min(490px, calc(100vw - 32px));
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 97, 248, 0.18);
+  border-radius: 28px;
+  padding: clamp(26px, 3.5vw, 34px);
+  box-shadow: 0 24px 64px -12px rgba(0, 20, 70, 0.28), 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: leadModalZoom 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-sizing: border-box;
+}
+
+@keyframes leadModalZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.lead-popup-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f8fafc;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.lead-popup-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.lead-popup-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-right: 36px;
+}
+
+.lead-popup-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #f0f7ff;
+  border: 1px solid rgba(0, 97, 248, 0.2);
+  color: #0061f8;
+}
+
+.lead-popup-title {
+  margin: 0;
+  font: 700 22px/1.25 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #002B66;
+  letter-spacing: -0.3px;
+}
+
+.lead-popup-desc {
+  margin: 0;
+  font: 400 14.5px/1.55 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #4b5563;
+}
+
+.lead-popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.lead-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lead-input-icon {
+  position: absolute;
+  left: 16px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.lead-email-input {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px 0 46px;
+  border-radius: 14px;
+  border: 1.5px solid #e2e8f0;
+  font: 500 14.5px 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.lead-email-input:focus {
+  border-color: #0061f8;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 97, 248, 0.15);
+}
+
+.lead-popup-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lead-popup-btn {
+  flex: 1;
+  height: 46px;
+  border-radius: 50px;
+  font: 700 13.5px/1 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.lead-popup-submit {
+  background: #0061f8;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 97, 248, 0.32);
+}
+
+.lead-popup-submit:hover:not(:disabled) {
+  background: #004ecc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 97, 248, 0.42);
+}
+
+.lead-popup-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.lead-popup-skip {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.lead-popup-skip:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+
+.lead-popup-success {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 16px;
+  padding: 18px 20px;
+  color: #166534;
+  animation: leadFadeIn 0.3s ease;
+}
+
+.lead-popup-success-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lead-popup-success-text strong {
+  display: block;
+  font: 700 15px 'Manrope', sans-serif;
+  color: #15803d;
+  margin-bottom: 2px;
+}
+
+.lead-popup-success-text p {
+  margin: 0;
+  font: 400 13.5px 'Manrope', sans-serif;
+  color: #166534;
+}
+
+@media (max-width: 600px) {
+  .lead-popup-card {
+    padding: 24px 20px 20px;
+    border-radius: 24px;
+    gap: 14px;
+  }
+
+  .lead-popup-title {
+    font-size: 20px;
+  }
+
+  .lead-popup-desc {
+    font-size: 13.5px;
+  }
+
+  .lead-popup-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .lead-popup-btn {
+    width: 100%;
+  }
+}
