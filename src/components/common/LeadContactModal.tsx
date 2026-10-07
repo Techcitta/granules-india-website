@@ -5,12 +5,17 @@ import './LeadContactModal.css';
 
 const LEAD_DISMISSED_KEY = 'granules_lead_contact_dismissed';
 
-// Routes to monitor: FD, PFI, and API
-const TARGET_ROUTES: Record<string, string> = {
-  '/business/api': 'Active Pharmaceutical Ingredients (API)',
-  '/business/pfi': 'Pharmaceutical Formulation Intermediates (PFI)',
-  '/business/fd': 'Finished Dosages (FD)',
-  '/business/finisheddosage': 'Finished Dosages (FD)',
+interface RouteConfig {
+  sheet: 'API' | 'PFI' | 'FD';
+  label: string;
+}
+
+// Routes to monitor with distinct Google Sheet tabs
+const TARGET_ROUTES: Record<string, RouteConfig> = {
+  '/business/api': { sheet: 'API', label: 'Active Pharmaceutical Ingredients (API)' },
+  '/business/pfi': { sheet: 'PFI', label: 'Pharmaceutical Formulation Intermediates (PFI)' },
+  '/business/fd': { sheet: 'FD', label: 'Finished Dosages (FD)' },
+  '/business/finisheddosage': { sheet: 'FD', label: 'Finished Dosages (FD)' },
 };
 
 export default function LeadContactModal() {
@@ -22,7 +27,7 @@ export default function LeadContactModal() {
   const timerRef = useRef<number | null>(null);
 
   const cleanPath = location.pathname.toLowerCase().replace(/\/+$/, '');
-  const matchedPage = TARGET_ROUTES[cleanPath] || null;
+  const matchedRoute = TARGET_ROUTES[cleanPath] || null;
 
   useEffect(() => {
     // Clear any existing timer upon navigation
@@ -32,7 +37,7 @@ export default function LeadContactModal() {
     }
 
     // Only activate on targeted pages (API, PFI, FD)
-    if (!matchedPage) {
+    if (!matchedRoute) {
       setVisible(false);
       return;
     }
@@ -58,7 +63,7 @@ export default function LeadContactModal() {
         timerRef.current = null;
       }
     };
-  }, [cleanPath, matchedPage]);
+  }, [cleanPath, matchedRoute]);
 
   const handleDismiss = () => {
     try {
@@ -77,13 +82,11 @@ export default function LeadContactModal() {
 
     try {
       await submitToGoogleSheet({
-        sheet: 'Contact',
+        sheet: matchedRoute?.sheet || 'API',
         data: {
-          fullName: 'Interested Business Prospect',
-          designation: `Visitor from ${matchedPage || 'Portfolio'}`,
           email: email.trim(),
-          subject: `Product Inquiry — ${matchedPage || 'Business'}`,
-          message: `Inquiry captured via 10s prompt on ${matchedPage || cleanPath} page. Work Email: ${email.trim()}`,
+          category: matchedRoute?.label || 'Product Lead',
+          url: window.location.href,
         },
       });
     } catch (err) {
@@ -115,7 +118,6 @@ export default function LeadContactModal() {
       aria-label="Contact inquiry modal"
     >
       <div className="lead-popup-card">
-
         {submitted ? (
           <div className="lead-popup-success" role="status">
             <div className="lead-popup-success-icon" aria-hidden="true">
@@ -144,7 +146,7 @@ export default function LeadContactModal() {
 
             <p className="lead-popup-desc">
               Please drop your work email and our commercial specialist for{' '}
-              <strong>{matchedPage}</strong> will be in touch with specifications and supply capabilities.
+              <strong>{matchedRoute?.label}</strong> will be in touch with specifications and supply capabilities.
             </p>
 
             <form className="lead-popup-form" onSubmit={handleSubmit}>

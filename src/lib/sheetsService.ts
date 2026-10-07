@@ -13,7 +13,13 @@ export const GOOGLE_SHEETS_WEBHOOK_URL =
   import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL ||
   'https://script.google.com/macros/s/AKfycbzgPNLqcIWEeW6tBbTwy7WhI4VD5UQXtBIs_xZPpgz_DNT3U_wH7WluL2Zqg_viio5Q/exec';
 
-export type FormSheetType = 'Contact' | 'Talent Community' | 'Data Privacy';
+export type FormSheetType =
+  | 'Contact'
+  | 'Talent Community'
+  | 'Data Privacy'
+  | 'API'
+  | 'PFI'
+  | 'FD';
 
 export interface ContactPayload {
   fullName: string;
@@ -46,10 +52,17 @@ export interface DataPrivacyPayload {
   complaint: string;
 }
 
+export interface ProductLeadPayload {
+  email: string;
+  category: string;
+  url?: string;
+}
+
 export type FormPayload =
   | { sheet: 'Contact'; data: ContactPayload }
   | { sheet: 'Talent Community'; data: TalentCommunityPayload }
-  | { sheet: 'Data Privacy'; data: DataPrivacyPayload };
+  | { sheet: 'Data Privacy'; data: DataPrivacyPayload }
+  | { sheet: 'API' | 'PFI' | 'FD'; data: ProductLeadPayload };
 
 /**
  * Submit form payload to Google Apps Script Web App
