@@ -394,15 +394,7 @@ export default function ApiPage() {
             manufacturing partner for quality, scale, and sustainability.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <button
-            type="button"
-            className="cp-cta-btn"
-            style={{ background: '#0061f8', color: '#fff', border: 'none', cursor: 'pointer' }}
-            onClick={() => openProductDownloadGate('API')}
-          >
-            DOWNLOAD API LIST
-          </button>
+        <div>
           <Link
             className="cp-cta-btn"
             to="/business/generics?segment=API#our-portfolio"
