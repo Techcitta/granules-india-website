@@ -652,7 +652,17 @@ export default function GenericsPage() {
           <button
             type="button"
             className="gen-brochure-btn"
-            onClick={() => openProductDownloadGate(segment === 'API' ? 'API' : segment === 'PFI' ? 'PFI' : 'FD')}
+            onClick={() =>
+              openProductDownloadGate(
+                segment === 'API'
+                  ? 'API'
+                  : segment === 'PFI'
+                  ? 'PFI'
+                  : segment === 'Finished Dosage'
+                  ? 'FD'
+                  : 'PORTFOLIO'
+              )
+            }
             aria-label="Download our product brochure"
           >
             <BrochureIcon />

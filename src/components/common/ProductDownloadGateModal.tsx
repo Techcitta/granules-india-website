@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { submitToGoogleSheet } from '../../lib/sheetsService';
 import './ProductDownloadGateModal.css';
 
-export type ProductListType = 'API' | 'PFI' | 'FD';
+export type ProductListType = 'API' | 'PFI' | 'FD' | 'PORTFOLIO';
 
 interface ProductListConfig {
   sheet: 'API' | 'PFI' | 'FD';
@@ -15,6 +15,15 @@ interface ProductListConfig {
 }
 
 export const PRODUCT_LIST_CONFIGS: Record<ProductListType, ProductListConfig> = {
+  PORTFOLIO: {
+    sheet: 'FD',
+    title: 'Our Product Portfolio',
+    fullName: 'Granules Product Portfolio',
+    description: 'Download our comprehensive portfolio across APIs, PFIs, and Finished Dosages with complete specifications.',
+    pdfUrl: 'https://assets.granulesindia.com/products/FD-list-merged.pdf',
+    fileName: 'Granules_Product_Portfolio.pdf',
+    badge: 'Our Portfolio',
+  },
   API: {
     sheet: 'API',
     title: 'API Product List',
