@@ -154,9 +154,9 @@ export default function ProductDownloadGateModal() {
     setErrorMessage('');
 
     try {
-      // 1. Submit lead to distinct Google Sheets tab (API, PFI, or FD)
+      // 1. Submit work email to Sheet1 in Google Sheets
       await submitToGoogleSheet({
-        sheet: config.sheet,
+        sheet: 'Sheet1',
         data: {
           email: cleanEmail,
           category: `${config.title} Download`,

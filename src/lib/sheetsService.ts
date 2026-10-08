@@ -17,6 +17,7 @@ export type FormSheetType =
   | 'Contact'
   | 'Talent Community'
   | 'Data Privacy'
+  | 'Sheet1'
   | 'API'
   | 'PFI'
   | 'FD';
@@ -62,7 +63,7 @@ export type FormPayload =
   | { sheet: 'Contact'; data: ContactPayload }
   | { sheet: 'Talent Community'; data: TalentCommunityPayload }
   | { sheet: 'Data Privacy'; data: DataPrivacyPayload }
-  | { sheet: 'API' | 'PFI' | 'FD'; data: ProductLeadPayload };
+  | { sheet: 'Sheet1' | 'API' | 'PFI' | 'FD'; data: ProductLeadPayload };
 
 /**
  * Submit form payload to Google Apps Script Web App

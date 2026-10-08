@@ -99,7 +99,7 @@ export default function LeadContactModal() {
 
     try {
       await submitToGoogleSheet({
-        sheet: activeConfig?.sheet || 'API',
+        sheet: 'Sheet1',
         data: {
           email: email.trim(),
           category: activeConfig?.label || 'Product Lead',

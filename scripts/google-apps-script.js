@@ -8,13 +8,11 @@
  * 4. Click "Deploy" > "Manage deployments" > Edit (pencil icon) > "New version" > "Deploy"
  * 5. Ensure access is set to "Anyone"
  *
- * Handles 6 distinct tabs automatically:
+ * Handles tabs automatically:
  *  1. "Contact" (from Contact Us page)
  *  2. "Talent Community" (from Careers page, with automatic CV upload to Google Drive)
  *  3. "Data Privacy" (from Data Privacy complaint form)
- *  4. "API" (API Product inquiries & leads)
- *  5. "PFI" (PFI Product inquiries & leads)
- *  6. "FD" (Finished Dosage inquiries & leads)
+ *  4. "Sheet1" (Work emails from 10s lead popups & brochure downloads)
  */
 
 // Handles browser visits to the URL
@@ -146,13 +144,13 @@ function doPost(e) {
     }
 
     // ──────────────────────────────────────────────
-    // 4. DISTINCT PRODUCT LEADS (API, PFI, FD)
+    // 4. WORK EMAILS & PRODUCT LEADS -> "Sheet1"
     // ──────────────────────────────────────────────
-    else if (sheetName === 'API' || sheetName === 'PFI' || sheetName === 'FD') {
-      const sheet = getOrCreateSheet(ss, sheetName, [
+    else if (sheetName === 'Sheet1' || sheetName === 'API' || sheetName === 'PFI' || sheetName === 'FD' || sheetName === 'Leads') {
+      const sheet = getOrCreateSheet(ss, 'Sheet1', [
         'Timestamp',
         'Work Email',
-        'Product Category',
+        'Product Category / Segment',
         'Page URL'
       ]);
 
@@ -171,12 +169,14 @@ function doPost(e) {
 }
 
 /**
- * Gets the sheet tab or creates and formats it with styled headers if not existing
+ * Gets the sheet tab or creates and formats it with styled headers if not existing or empty
  */
 function getOrCreateSheet(ss, name, headers) {
   let sheet = ss.getSheetByName(name);
   if (!sheet) {
     sheet = ss.insertSheet(name);
+  }
+  if (sheet.getLastRow() === 0) {
     sheet.appendRow(headers);
 
     // Style the header row (Dark Blue background, bold white text)
