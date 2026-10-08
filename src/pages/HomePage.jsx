@@ -749,7 +749,7 @@ function Sustainability({ open = 0, setOpen }) {
 function Investor() {
   const docs = [
     {
-      title: 'Quaterly Results (Q1 FY27)',
+      title: 'Quarterly Results (Q1 FY27)',
       href: getAssetUrl('pdfs/2026/07/FY-Result-Jun26.pdf'),
       download: 'Granules_Q1_FY27_Results.pdf',
     },
