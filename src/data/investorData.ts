@@ -1898,6 +1898,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "label": "Earnings Call Transcripts",
         "items": [
           {
+            "title": "Transcript of the Webinar held on September 29, 2026",
+            "scope": "Earnings Call Transcript - Q2 FY27",
+            "period": "September 29, 2026",
+            "year": "2027",
+            "pdf": "https://assets.granulesindia.com/investors/investor-resources/earnings-call-transcripts/2026/Granules-2.0-Webinar-Transcript.pdf",
+            "id": "earnings-call-transcripts-webinar-2026-09-29",
+            "category": "sec-investor-resources",
+            "subcategoryId": "earnings-call-transcripts",
+            "subcategoryLabel": "Earnings Call Transcripts"
+          },
+          {
             "title": "First Quarter",
             "scope": "Earnings Call Transcript - Q1 FY27",
             "period": "Q1 FY27",

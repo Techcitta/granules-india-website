@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { NavBar, CompanyFooter, CareerSection } from '../components/company';
 import InvestorFilteredSection from '../components/investor/InvestorFilteredSection';
 import { INVESTOR_SECTIONS_DATA } from '../data/investorData';
+import { useCmsInvestorSections } from '../lib/cmsClient';
 import { getAssetUrl, toCdnPdf } from '../lib/pdf';
 import '../components/company/company.css';
 import './investor.css';
@@ -94,11 +95,13 @@ export default function InvestorOverviewPage() {
     }
   }, [deepParams]);
 
-  const financialReportsCat = INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-financial-reports')!;
-  const investorResourcesCat = INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-investor-resources')!;
-  const noticesDisclosuresCat = INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-notices-disclosures')!;
-  const investorContactCat = INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-investor-contact')!;
-  const otherInfoCat = INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-other-info')!;
+  const sections = useCmsInvestorSections(INVESTOR_SECTIONS_DATA);
+
+  const financialReportsCat = sections.find((c) => c.id === 'sec-financial-reports') || INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-financial-reports')!;
+  const investorResourcesCat = sections.find((c) => c.id === 'sec-investor-resources') || INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-investor-resources')!;
+  const noticesDisclosuresCat = sections.find((c) => c.id === 'sec-notices-disclosures') || INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-notices-disclosures')!;
+  const investorContactCat = sections.find((c) => c.id === 'sec-investor-contact') || INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-investor-contact')!;
+  const otherInfoCat = sections.find((c) => c.id === 'sec-other-info') || INVESTOR_SECTIONS_DATA.find((c) => c.id === 'sec-other-info')!;
 
   const renderTable = (items: TableRowItem[], col1 = 'Document / Report', col2 = 'Details / Unit', col3 = 'Period / Status') => (
     <div className="inv-table-wrap">
