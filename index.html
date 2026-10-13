@@ -139,6 +139,10 @@
           targetRoute = '/company/leadership';
         } else if (lower.indexOf('/about-us/our-journey') === 0 || lower.indexOf('/about-us/milestones') === 0) {
           targetRoute = '/company/milestone';
+        } else if (lower.indexOf('/about-us/operational-excellence') === 0 || lower.indexOf('/operational-excellence') === 0) {
+          targetRoute = '/company/operational-excellence';
+        } else if (lower.indexOf('/our-purpose-vision-values') === 0) {
+          targetRoute = '/company';
         } else if (lower.indexOf('/about-us/research-development') === 0 || lower.indexOf('/research-development') === 0 || lower === '/rnd') {
           targetRoute = '/business/rd';
         } else if (lower === '/about-us' || lower.indexOf('/about-us/') === 0 || lower === '/about') {
@@ -149,15 +153,21 @@
           targetRoute = '/business/facilities';
         } else if (lower === '/esg-profile' || lower === '/esg-world') {
           targetRoute = '/sustainability/esg-profile';
-        } else if (lower.indexOf('/granules-usa/careers') === 0) {
+        } else if (lower.indexOf('/careers/testimonials') === 0 || lower.indexOf('/granules-usa/careers/testimonials') === 0) {
+          targetRoute = '/careers/life-at-granules';
+        } else if (lower.indexOf('/careers/current-openings') === 0 || lower.indexOf('/granules-usa/careers') === 0) {
           targetRoute = '/careers';
         } else if (lower.indexOf('/granules-usa') === 0) {
           targetRoute = '/company/global-subsidiaries';
+        } else if (lower === '/terms-of-use' || lower === '/terms' || lower === '/terms-condition') {
+          targetRoute = '/terms-conditions';
+        } else if (lower === '/data-privacy-complaint-form' || lower.indexOf('/data-privacy-complaint-form/') === 0) {
+          targetRoute = '/data-privacy-complaint-form';
         } else if (lower === '/investors/financial-reports/annual-reports' || lower.indexOf('/investors/financial-reports/annual-reports/') === 0 || lower === '/investors/financial-reports' || lower.indexOf('/investors/financial-reports/') === 0) {
           targetRoute = '/investor/annual-reports';
         } else if (lower === '/investors/press-release' || lower.indexOf('/investors/press-release/') === 0) {
           targetRoute = '/media';
-        } else if (lower.indexOf('/investors/investor-resources/investor-presentation') === 0) {
+        } else if (lower.indexOf('/investors/investor-resources/buyback') === 0 || lower.indexOf('/investors/investor-resources/policies') === 0 || lower.indexOf('/investors/investor-resources/investor-presentation') === 0) {
           targetRoute = '/investor';
           if (!targetHash) targetHash = '#sec-investor-resources';
         } else if (lower.indexOf('/investors/other-information') === 0) {
@@ -166,9 +176,8 @@
         } else if (lower.indexOf('/investors/notice-disclosures') === 0) {
           targetRoute = '/investor';
           if (!targetHash) targetHash = '#sec-notices-disclosures';
-        } else if (lower.indexOf('/investors/investor-resources') === 0) {
+        } else if (lower.indexOf('/investors/investor-centre') === 0 || lower.indexOf('/investors/investor-resources') === 0 || lower === '/investor.php') {
           targetRoute = '/investor';
-          if (!targetHash) targetHash = '#sec-investor-resources';
         } else if (lower === '/investors' || lower.indexOf('/investors/') === 0) {
           targetRoute = '/investor';
         } else if (lower.indexOf('/products/active-pharmaceutical') === 0 || lower === '/products/api') {
@@ -177,6 +186,8 @@
           targetRoute = '/business/pfi';
         } else if (lower.indexOf('/products/finished-dosages') === 0 || lower === '/products/fd') {
           targetRoute = '/business/fd';
+        } else if (lower.indexOf('/wp-content/') === 0) {
+          targetRoute = '/investor';
         }
 
         var isApex = !isLocal && (hostname.toLowerCase() === 'granulesindia.com');

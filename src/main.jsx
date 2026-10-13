@@ -31,6 +31,10 @@ if (typeof window !== 'undefined') {
     targetRoute = '/company/leadership';
   } else if (lower.startsWith('/about-us/our-journey') || lower.startsWith('/about-us/milestones')) {
     targetRoute = '/company/milestone';
+  } else if (lower.startsWith('/about-us/operational-excellence') || lower.startsWith('/operational-excellence')) {
+    targetRoute = '/company/operational-excellence';
+  } else if (lower.startsWith('/our-purpose-vision-values')) {
+    targetRoute = '/company';
   } else if (lower.startsWith('/about-us/research-development') || lower.startsWith('/research-development') || lower === '/rnd') {
     targetRoute = '/business/rd';
   } else if (lower === '/about-us' || lower.startsWith('/about-us/') || lower === '/about') {
@@ -41,15 +45,21 @@ if (typeof window !== 'undefined') {
     targetRoute = '/business/facilities';
   } else if (lower === '/esg-profile' || lower === '/esg-world') {
     targetRoute = '/sustainability/esg-profile';
-  } else if (lower.startsWith('/granules-usa/careers')) {
+  } else if (lower.startsWith('/careers/testimonials') || lower.startsWith('/granules-usa/careers/testimonials')) {
+    targetRoute = '/careers/life-at-granules';
+  } else if (lower.startsWith('/careers/current-openings') || lower.startsWith('/granules-usa/careers')) {
     targetRoute = '/careers';
   } else if (lower.startsWith('/granules-usa')) {
     targetRoute = '/company/global-subsidiaries';
+  } else if (lower === '/terms-of-use' || lower === '/terms' || lower === '/terms-condition') {
+    targetRoute = '/terms-conditions';
+  } else if (lower === '/data-privacy-complaint-form' || lower.startsWith('/data-privacy-complaint-form/')) {
+    targetRoute = '/data-privacy-complaint-form';
   } else if (lower === '/investors/financial-reports/annual-reports' || lower.startsWith('/investors/financial-reports/annual-reports/') || lower === '/investors/financial-reports' || lower.startsWith('/investors/financial-reports/')) {
     targetRoute = '/investor/annual-reports';
   } else if (lower === '/investors/press-release' || lower.startsWith('/investors/press-release/')) {
     targetRoute = '/media';
-  } else if (lower.indexOf('/investors/investor-resources/investor-presentation') === 0) {
+  } else if (lower.indexOf('/investors/investor-resources/buyback') === 0 || lower.indexOf('/investors/investor-resources/policies') === 0 || lower.indexOf('/investors/investor-resources/investor-presentation') === 0) {
     targetRoute = '/investor';
     if (!targetHash) targetHash = '#sec-investor-resources';
   } else if (lower.indexOf('/investors/other-information') === 0) {
@@ -58,9 +68,8 @@ if (typeof window !== 'undefined') {
   } else if (lower.indexOf('/investors/notice-disclosures') === 0) {
     targetRoute = '/investor';
     if (!targetHash) targetHash = '#sec-notices-disclosures';
-  } else if (lower.indexOf('/investors/investor-resources') === 0) {
+  } else if (lower.indexOf('/investors/investor-centre') === 0 || lower.indexOf('/investors/investor-resources') === 0 || lower === '/investor.php') {
     targetRoute = '/investor';
-    if (!targetHash) targetHash = '#sec-investor-resources';
   } else if (lower === '/investors' || lower.startsWith('/investors/')) {
     targetRoute = '/investor';
   } else if (lower.startsWith('/products/active-pharmaceutical') || lower === '/products/api') {
@@ -69,6 +78,8 @@ if (typeof window !== 'undefined') {
     targetRoute = '/business/pfi';
   } else if (lower.startsWith('/products/finished-dosages') || lower === '/products/fd') {
     targetRoute = '/business/fd';
+  } else if (lower.startsWith('/wp-content/')) {
+    targetRoute = '/investor';
   }
 
   if (isApex) {
@@ -181,6 +192,17 @@ function App() {
         <Route path="/granules-usa/management-team/*" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/management-team" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/management-team/*" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/about-us/operational-excellence" element={<Navigate to="/company/operational-excellence" replace />} />
+        <Route path="/about-us/operational-excellence/*" element={<Navigate to="/company/operational-excellence" replace />} />
+        <Route path="/operational-excellence" element={<Navigate to="/company/operational-excellence" replace />} />
+        <Route path="/operational-excellence/*" element={<Navigate to="/company/operational-excellence" replace />} />
+        <Route path="/our-purpose-vision-values" element={<Navigate to="/company" replace />} />
+        <Route path="/our-purpose-vision-values/*" element={<Navigate to="/company" replace />} />
+        <Route path="/careers/testimonials" element={<Navigate to="/careers/life-at-granules" replace />} />
+        <Route path="/careers/testimonials/*" element={<Navigate to="/careers/life-at-granules" replace />} />
+        <Route path="/granules-usa/careers/testimonials" element={<Navigate to="/careers/life-at-granules" replace />} />
+        <Route path="/granules-usa/careers/testimonials/*" element={<Navigate to="/careers/life-at-granules" replace />} />
+        <Route path="/careers/current-openings/*" element={<Navigate to="/careers" replace />} />
         <Route path="/granules-usa/careers/current-openings" element={<Navigate to="/careers" replace />} />
         <Route path="/granules-usa/careers/current-openings/*" element={<Navigate to="/careers" replace />} />
         <Route path="/granules-usa/careers/*" element={<Navigate to="/careers" replace />} />
@@ -201,10 +223,18 @@ function App() {
         <Route path="/investors/financial-reports/annual-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
         <Route path="/investors/financial-reports" element={<Navigate to="/investor/annual-reports" replace />} />
         <Route path="/investors/financial-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
+        <Route path="/investors/investor-resources/buyback" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-resources/buyback/*" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-resources/policies" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-resources/policies/*" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/investor-resources/investor-presentation" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/investor-resources/investor-presentation/*" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/investor-resources" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/investor-resources/*" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-centre" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-centre/*" element={<Navigate to="/investor" replace />} />
+        <Route path="/investor.php" element={<Navigate to="/investor" replace />} />
+        <Route path="/wp-content/*" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/press-release" element={<Navigate to="/media" replace />} />
         <Route path="/investors/press-release/*" element={<Navigate to="/media" replace />} />
         <Route path="/investors/other-information" element={<Navigate to="/investor" replace />} />
