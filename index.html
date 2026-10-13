@@ -124,31 +124,58 @@
         var hash = window.location.hash || '';
         var isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
 
-        // Redirect apex domain (granulesindia.com) to www.granulesindia.com
-        var needsWww = !isLocal && (hostname === 'granulesindia.com');
+        // Clean public_html artifacts
+        var cleanPath = pathname.replace(/\/public_html(\/|$)/g, '/').replace(/^\/public_html/, '');
+        if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+        cleanPath = cleanPath.replace(/\/+/g, '/');
+
+        var trimmed = cleanPath.length > 1 && cleanPath.endsWith('/') ? cleanPath.slice(0, -1) : cleanPath;
+        var lower = trimmed.toLowerCase();
+        var targetRoute = cleanPath;
+
+        // Map all legacy Google-indexed URLs & search sitelinks
+        if (lower === '/granules-usa/management-team' || lower === '/management-team' || lower.indexOf('/about-us/our-leadership') === 0 || lower.indexOf('/about-us/leadership') === 0 || lower.indexOf('/about-us/our-board') === 0) {
+          targetRoute = '/company/leadership';
+        } else if (lower.indexOf('/about-us/our-journey') === 0 || lower.indexOf('/about-us/milestones') === 0) {
+          targetRoute = '/company/milestone';
+        } else if (lower.indexOf('/about-us/research-development') === 0 || lower.indexOf('/research-development') === 0 || lower === '/rnd') {
+          targetRoute = '/business/rd';
+        } else if (lower === '/about-us' || lower.indexOf('/about-us/') === 0 || lower === '/about') {
+          targetRoute = '/company';
+        } else if (lower === '/contact-us' || lower.indexOf('/contact-us/') === 0 || lower === '/register-as-supplier' || lower.indexOf('/register-as-supplier/') === 0) {
+          targetRoute = '/contact';
+        } else if (lower === '/locations' || lower.indexOf('/locations/') === 0) {
+          targetRoute = '/business/facilities';
+        } else if (lower === '/esg-profile' || lower === '/esg-world') {
+          targetRoute = '/sustainability/esg-profile';
+        } else if (lower.indexOf('/granules-usa/careers') === 0) {
+          targetRoute = '/careers';
+        } else if (lower.indexOf('/granules-usa') === 0) {
+          targetRoute = '/company/global-subsidiaries';
+        } else if (lower === '/investors/financial-reports' || lower.indexOf('/investors/financial-reports/') === 0) {
+          targetRoute = '/investor/annual-reports';
+        } else if (lower === '/investors/press-release' || lower.indexOf('/investors/press-release/') === 0) {
+          targetRoute = '/media';
+        } else if (lower.indexOf('/investors/investor-resources') === 0 || lower.indexOf('/investors/other-information') === 0 || lower.indexOf('/investors/notice-disclosures') === 0) {
+          targetRoute = '/investor';
+        } else if (lower === '/investors' || lower.indexOf('/investors/') === 0) {
+          targetRoute = '/investor';
+        } else if (lower.indexOf('/products/active-pharmaceutical') === 0 || lower === '/products/api') {
+          targetRoute = '/business/api';
+        } else if (lower.indexOf('/products/pharmaceutical-formulation') === 0 || lower === '/products/pfi') {
+          targetRoute = '/business/pfi';
+        } else if (lower.indexOf('/products/finished-dosages') === 0 || lower === '/products/fd') {
+          targetRoute = '/business/fd';
+        }
+
+        var needsWww = !isLocal && (hostname.toLowerCase() === 'granulesindia.com');
         var needsHttps = !isLocal && window.location.protocol === 'http:';
-        var hasPublicHtml = pathname.indexOf('public_html') !== -1;
-        var hasLegacyAbout = pathname.indexOf('about-us') !== -1 || pathname.indexOf('contact-us') !== -1;
+        var isRedirectNeeded = targetRoute !== pathname || needsWww || needsHttps;
 
-        if (needsWww || needsHttps || hasPublicHtml || hasLegacyAbout) {
-          var cleanPath = pathname.replace(/\/public_html(\/|$)/g, '/').replace(/^\/public_html/, '');
-          if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
-          cleanPath = cleanPath.replace(/\/+/g, '/');
-
-          // Map legacy Google-indexed URLs to official routes
-          if (cleanPath.indexOf('/about-us/our-leadership') !== -1 || cleanPath.indexOf('/about-us/leadership') !== -1 || cleanPath.indexOf('/about-us/our-board') !== -1) {
-            cleanPath = '/company/leadership';
-          } else if (cleanPath.indexOf('/about-us/our-journey') !== -1 || cleanPath.indexOf('/about-us/milestones') !== -1) {
-            cleanPath = '/company/milestone';
-          } else if (cleanPath.indexOf('/about-us') !== -1) {
-            cleanPath = '/company';
-          } else if (cleanPath.indexOf('/contact-us') !== -1) {
-            cleanPath = '/contact';
-          }
-
+        if (isRedirectNeeded) {
           var targetHost = needsWww ? 'www.granulesindia.com' : host;
           var targetProtocol = (needsHttps || needsWww) ? 'https:' : window.location.protocol;
-          window.location.replace(targetProtocol + '//' + targetHost + cleanPath + search + hash);
+          window.location.replace(targetProtocol + '//' + targetHost + targetRoute + search + hash);
         }
       })();
     </script>

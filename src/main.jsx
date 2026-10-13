@@ -15,27 +15,53 @@ if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
 
 if (typeof window !== 'undefined') {
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const isApex = !isLocal && window.location.hostname === 'granulesindia.com';
+  const isApex = !isLocal && window.location.hostname.toLowerCase() === 'granulesindia.com';
   const p = window.location.pathname;
 
   let clean = p.replace(/\/public_html(\/|$)/g, '/').replace(/^\/public_html/, '');
   if (!clean.startsWith('/')) clean = '/' + clean;
   clean = clean.replace(/\/+/g, '/');
 
-  if (clean.includes('/about-us/our-leadership') || clean.includes('/about-us/leadership') || clean.includes('/about-us/our-board')) {
-    clean = '/company/leadership';
-  } else if (clean.includes('/about-us/our-journey') || clean.includes('/about-us/milestones')) {
-    clean = '/company/milestone';
-  } else if (clean.includes('/about-us')) {
-    clean = '/company';
-  } else if (clean.includes('/contact-us')) {
-    clean = '/contact';
+  const trimmed = clean.length > 1 && clean.endsWith('/') ? clean.slice(0, -1) : clean;
+  const lower = trimmed.toLowerCase();
+  let targetRoute = clean;
+
+  if (lower === '/granules-usa/management-team' || lower === '/management-team' || lower.startsWith('/about-us/our-leadership') || lower.startsWith('/about-us/leadership') || lower.startsWith('/about-us/our-board')) {
+    targetRoute = '/company/leadership';
+  } else if (lower.startsWith('/about-us/our-journey') || lower.startsWith('/about-us/milestones')) {
+    targetRoute = '/company/milestone';
+  } else if (lower.startsWith('/about-us/research-development') || lower.startsWith('/research-development') || lower === '/rnd') {
+    targetRoute = '/business/rd';
+  } else if (lower === '/about-us' || lower.startsWith('/about-us/') || lower === '/about') {
+    targetRoute = '/company';
+  } else if (lower === '/contact-us' || lower.startsWith('/contact-us/') || lower === '/register-as-supplier' || lower.startsWith('/register-as-supplier/')) {
+    targetRoute = '/contact';
+  } else if (lower === '/locations' || lower.startsWith('/locations/')) {
+    targetRoute = '/business/facilities';
+  } else if (lower === '/esg-profile' || lower === '/esg-world') {
+    targetRoute = '/sustainability/esg-profile';
+  } else if (lower.startsWith('/granules-usa/careers')) {
+    targetRoute = '/careers';
+  } else if (lower.startsWith('/granules-usa')) {
+    targetRoute = '/company/global-subsidiaries';
+  } else if (lower === '/investors/financial-reports' || lower.startsWith('/investors/financial-reports/')) {
+    targetRoute = '/investor/annual-reports';
+  } else if (lower === '/investors/press-release' || lower.startsWith('/investors/press-release/')) {
+    targetRoute = '/media';
+  } else if (lower.startsWith('/investors/investor-resources') || lower.startsWith('/investors/other-information') || lower.startsWith('/investors/notice-disclosures')) {
+    targetRoute = '/investor';
+  } else if (lower.startsWith('/products/active-pharmaceutical') || lower === '/products/api') {
+    targetRoute = '/business/api';
+  } else if (lower.startsWith('/products/pharmaceutical-formulation') || lower === '/products/pfi') {
+    targetRoute = '/business/pfi';
+  } else if (lower.startsWith('/products/finished-dosages') || lower === '/products/fd') {
+    targetRoute = '/business/fd';
   }
 
   if (isApex) {
-    window.location.replace('https://www.granulesindia.com' + clean + window.location.search + window.location.hash);
-  } else if (clean !== p) {
-    window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+    window.location.replace('https://www.granulesindia.com' + targetRoute + window.location.search + window.location.hash);
+  } else if (targetRoute !== p) {
+    window.history.replaceState(null, '', targetRoute + window.location.search + window.location.hash);
   }
 }
 
@@ -125,18 +151,47 @@ function App() {
       <ChatbotWidget />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* Legacy Google Indexed URLs & Redirects */}
+        {/* Legacy Google Indexed URLs & Sitelink Redirects */}
         <Route path="/about-us/our-leadership" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/about-us/our-leadership/*" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/about-us/leadership" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/about-us/our-board" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/about-us/our-journey" element={<Navigate to="/company/milestone" replace />} />
         <Route path="/about-us/milestones" element={<Navigate to="/company/milestone" replace />} />
+        <Route path="/about-us/research-development-api" element={<Navigate to="/business/rd" replace />} />
+        <Route path="/about-us/research-development-api/*" element={<Navigate to="/business/rd" replace />} />
+        <Route path="/about-us/research-development/*" element={<Navigate to="/business/rd" replace />} />
         <Route path="/about-us" element={<Navigate to="/company" replace />} />
         <Route path="/about-us/*" element={<Navigate to="/company" replace />} />
         <Route path="/about" element={<Navigate to="/company" replace />} />
+        <Route path="/granules-usa/management-team" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/granules-usa/management-team/*" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/management-team" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/management-team/*" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/granules-usa/careers/*" element={<Navigate to="/careers" replace />} />
+        <Route path="/granules-usa/*" element={<Navigate to="/company/global-subsidiaries" replace />} />
         <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
         <Route path="/contact-us/*" element={<Navigate to="/contact" replace />} />
+        <Route path="/register-as-supplier" element={<Navigate to="/contact" replace />} />
+        <Route path="/register-as-supplier/*" element={<Navigate to="/contact" replace />} />
+        <Route path="/locations" element={<Navigate to="/business/facilities" replace />} />
+        <Route path="/locations/*" element={<Navigate to="/business/facilities" replace />} />
+        <Route path="/products/active-pharmaceutical-ingredients" element={<Navigate to="/business/api" replace />} />
+        <Route path="/products/active-pharmaceutical-ingredients/*" element={<Navigate to="/business/api" replace />} />
+        <Route path="/products/pharmaceutical-formulation-intermediates" element={<Navigate to="/business/pfi" replace />} />
+        <Route path="/products/pharmaceutical-formulation-intermediates/*" element={<Navigate to="/business/pfi" replace />} />
+        <Route path="/products/finished-dosages" element={<Navigate to="/business/fd" replace />} />
+        <Route path="/products/finished-dosages/*" element={<Navigate to="/business/fd" replace />} />
+        <Route path="/investors/investor-resources" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-resources/*" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/press-release" element={<Navigate to="/media" replace />} />
+        <Route path="/investors/press-release/*" element={<Navigate to="/media" replace />} />
+        <Route path="/investors/financial-reports" element={<Navigate to="/investor/annual-reports" replace />} />
+        <Route path="/investors/financial-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
+        <Route path="/investors/other-information" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/other-information/*" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/notice-disclosures" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/notice-disclosures/*" element={<Navigate to="/investor" replace />} />
         <Route path="/public_html" element={<Navigate to="/" replace />} />
         <Route path="/public_html/*" element={<Navigate to="/" replace />} />
         <Route path="/company" element={<CompanyPage />} />

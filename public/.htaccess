@@ -16,9 +16,33 @@
 
   # 3. Map legacy Google-indexed URLs directly to active pages
   RewriteRule ^about-us/our-leadership/?(.*)$ /company/leadership [R=301,L]
+  RewriteRule ^about-us/leadership/?(.*)$ /company/leadership [R=301,L]
+  RewriteRule ^about-us/our-board/?(.*)$ /company/leadership [R=301,L]
+  RewriteRule ^granules-usa/management-team/?(.*)$ /company/leadership [R=301,L]
+  RewriteRule ^management-team/?(.*)$ /company/leadership [R=301,L]
   RewriteRule ^about-us/our-journey/?(.*)$ /company/milestone [R=301,L]
+  RewriteRule ^about-us/milestones/?(.*)$ /company/milestone [R=301,L]
+  RewriteRule ^about-us/research-development-api/?(.*)$ /business/rd [R=301,L]
+  RewriteRule ^about-us/research-development/?(.*)$ /business/rd [R=301,L]
+  RewriteRule ^research-development/?(.*)$ /business/rd [R=301,L]
   RewriteRule ^about-us/?(.*)$ /company [R=301,L]
+  RewriteRule ^about/?$ /company [R=301,L]
+  RewriteRule ^granules-usa/careers/?(.*)$ /careers [R=301,L]
+  RewriteRule ^granules-usa/?(.*)$ /company/global-subsidiaries [R=301,L]
   RewriteRule ^contact-us/?(.*)$ /contact [R=301,L]
+  RewriteRule ^register-as-supplier/?(.*)$ /contact [R=301,L]
+  RewriteRule ^locations/?(.*)$ /business/facilities [R=301,L]
+  RewriteRule ^esg-profile/?(.*)$ /sustainability/esg-profile [R=301,L]
+  RewriteRule ^esg-world/?(.*)$ /sustainability/esg-profile [R=301,L]
+  RewriteRule ^products/active-pharmaceutical-ingredients/?(.*)$ /business/api [R=301,L]
+  RewriteRule ^products/pharmaceutical-formulation-intermediates/?(.*)$ /business/pfi [R=301,L]
+  RewriteRule ^products/finished-dosages/?(.*)$ /business/fd [R=301,L]
+  RewriteRule ^investors/financial-reports/?(.*)$ /investor/annual-reports [R=301,L]
+  RewriteRule ^investors/press-release/?(.*)$ /media [R=301,L]
+  RewriteRule ^investors/investor-resources/?(.*)$ /investor [R=301,L]
+  RewriteRule ^investors/other-information/?(.*)$ /investor [R=301,L]
+  RewriteRule ^investors/notice-disclosures/?(.*)$ /investor [R=301,L]
+  RewriteRule ^investors/?$ /investor [R=301,L]
 
   # 4. SPA Fallback: serve index.html for non-file and non-directory requests
   RewriteCond %{REQUEST_FILENAME} !-f
