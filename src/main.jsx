@@ -24,7 +24,8 @@ if (typeof window !== 'undefined') {
 
   const trimmed = clean.length > 1 && clean.endsWith('/') ? clean.slice(0, -1) : clean;
   const lower = trimmed.toLowerCase();
-  let targetRoute = clean;
+  let targetRoute = trimmed;
+  let targetHash = window.location.hash || '';
 
   if (lower === '/granules-usa/management-team' || lower === '/management-team' || lower.startsWith('/about-us/our-leadership') || lower.startsWith('/about-us/leadership') || lower.startsWith('/about-us/our-board')) {
     targetRoute = '/company/leadership';
@@ -44,11 +45,23 @@ if (typeof window !== 'undefined') {
     targetRoute = '/careers';
   } else if (lower.startsWith('/granules-usa')) {
     targetRoute = '/company/global-subsidiaries';
-  } else if (lower === '/investors/financial-reports' || lower.startsWith('/investors/financial-reports/')) {
+  } else if (lower === '/investors/financial-reports/annual-reports' || lower.startsWith('/investors/financial-reports/annual-reports/') || lower === '/investors/financial-reports' || lower.startsWith('/investors/financial-reports/')) {
     targetRoute = '/investor/annual-reports';
   } else if (lower === '/investors/press-release' || lower.startsWith('/investors/press-release/')) {
     targetRoute = '/media';
-  } else if (lower.startsWith('/investors/investor-resources') || lower.startsWith('/investors/other-information') || lower.startsWith('/investors/notice-disclosures')) {
+  } else if (lower.indexOf('/investors/investor-resources/investor-presentation') === 0) {
+    targetRoute = '/investor';
+    if (!targetHash) targetHash = '#sec-investor-resources';
+  } else if (lower.indexOf('/investors/other-information') === 0) {
+    targetRoute = '/investor';
+    if (!targetHash) targetHash = '#sec-other-info';
+  } else if (lower.indexOf('/investors/notice-disclosures') === 0) {
+    targetRoute = '/investor';
+    if (!targetHash) targetHash = '#sec-notices-disclosures';
+  } else if (lower.indexOf('/investors/investor-resources') === 0) {
+    targetRoute = '/investor';
+    if (!targetHash) targetHash = '#sec-investor-resources';
+  } else if (lower === '/investors' || lower.startsWith('/investors/')) {
     targetRoute = '/investor';
   } else if (lower.startsWith('/products/active-pharmaceutical') || lower === '/products/api') {
     targetRoute = '/business/api';
@@ -59,9 +72,9 @@ if (typeof window !== 'undefined') {
   }
 
   if (isApex) {
-    window.location.replace('https://www.granulesindia.com' + targetRoute + window.location.search + window.location.hash);
-  } else if (targetRoute !== p) {
-    window.history.replaceState(null, '', targetRoute + window.location.search + window.location.hash);
+    window.location.replace('https://www.granulesindia.com' + targetRoute + window.location.search + targetHash);
+  } else if (targetRoute !== p || targetHash !== window.location.hash) {
+    window.history.replaceState(null, '', targetRoute + window.location.search + targetHash);
   }
 }
 
@@ -168,6 +181,8 @@ function App() {
         <Route path="/granules-usa/management-team/*" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/management-team" element={<Navigate to="/company/leadership" replace />} />
         <Route path="/management-team/*" element={<Navigate to="/company/leadership" replace />} />
+        <Route path="/granules-usa/careers/current-openings" element={<Navigate to="/careers" replace />} />
+        <Route path="/granules-usa/careers/current-openings/*" element={<Navigate to="/careers" replace />} />
         <Route path="/granules-usa/careers/*" element={<Navigate to="/careers" replace />} />
         <Route path="/granules-usa/*" element={<Navigate to="/company/global-subsidiaries" replace />} />
         <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
@@ -182,12 +197,16 @@ function App() {
         <Route path="/products/pharmaceutical-formulation-intermediates/*" element={<Navigate to="/business/pfi" replace />} />
         <Route path="/products/finished-dosages" element={<Navigate to="/business/fd" replace />} />
         <Route path="/products/finished-dosages/*" element={<Navigate to="/business/fd" replace />} />
+        <Route path="/investors/financial-reports/annual-reports" element={<Navigate to="/investor/annual-reports" replace />} />
+        <Route path="/investors/financial-reports/annual-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
+        <Route path="/investors/financial-reports" element={<Navigate to="/investor/annual-reports" replace />} />
+        <Route path="/investors/financial-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
+        <Route path="/investors/investor-resources/investor-presentation" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-resources/investor-presentation/*" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/investor-resources" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/investor-resources/*" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/press-release" element={<Navigate to="/media" replace />} />
         <Route path="/investors/press-release/*" element={<Navigate to="/media" replace />} />
-        <Route path="/investors/financial-reports" element={<Navigate to="/investor/annual-reports" replace />} />
-        <Route path="/investors/financial-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
         <Route path="/investors/other-information" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/other-information/*" element={<Navigate to="/investor" replace />} />
         <Route path="/investors/notice-disclosures" element={<Navigate to="/investor" replace />} />
