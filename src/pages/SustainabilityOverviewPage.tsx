@@ -8,11 +8,15 @@ import '../components/company/company.css';
 import './sustainability.css';
 import './overview.css';
 import './investor.css';
-import { toCdnPdf } from '../lib/pdf';
+import { toCdnPdf, CLOUDFRONT_URL } from '../lib/pdf';
 
 const S = '/assets/sustainability/';
 const L = '/assets/leadership/';
 const SUS_UPLOADS = 'https://d3uvya50m9yz9t.cloudfront.net/pdfs';
+const SUS_CDN = `${CLOUDFRONT_URL}/sustainability`;
+const SUS_POLICIES = `${SUS_CDN}/policies`;
+const SUS_REPORTS = `${SUS_CDN}/reports-and-disclosures/standalone`;
+const SUS_ZWTL = `${SUS_CDN}/certifications/zero-waste-to-landfill`;
 
 // Carousels Data (Images 3 & 4 - 5s auto-scroll)
 const COMMITMENTS_CAROUSEL_ITEMS: CarouselItem[] = [
@@ -44,88 +48,123 @@ const PARTNERS_CAROUSEL_ITEMS: CarouselItem[] = [
   { img: `${S}Partner-collaboration-platforms-logo-image-04.webp`, alt: 'Oren' },
 ];
 
-// 3. Sustainability Policies (12 item grid)
+// 3. Sustainability Policies
 const SUSTAINABILITY_POLICIES = [
   {
-    title: 'Climate and Environmental Policy',
-    meta: 'Next Review Dec 26',
-    detail: 'Environmental Stewardship & Decarbonization Roadmap',
-    pdf: `${SUS_UPLOADS}/2026/04/1.Climate-and-Environmental-Policy.pdf`,
-    filename: '1.Climate-and-Environmental-Policy.pdf',
-  },
-  {
-    title: 'Social Policy Standards',
-    meta: 'Next Review Dec 26',
-    detail: 'Labor Rights, Social Accountability & Workplace Equality',
-    pdf: `${SUS_UPLOADS}/2026/04/2.Social-Policy.pdf`,
-    filename: '2.Social-Policy.pdf',
-  },
-  {
-    title: 'Business Ethics Policy',
-    meta: 'Next Review Dec 26',
-    detail: 'Corporate Governance & Anti-Corruption Framework',
-    pdf: `${SUS_UPLOADS}/2026/04/3.Business-Ethics-Policy.pdf`,
-    filename: '3.Business-Ethics-Policy.pdf',
-  },
-  {
-    title: 'Sustainable Procurement Policy',
-    meta: 'Next Review Dec 26',
-    detail: 'Responsible Sourcing, Supplier Standards & ESG Criteria',
-    pdf: `${SUS_UPLOADS}/2026/04/4.Sustainable-Procurement-Policy.pdf`,
-    filename: '4.Sustainable-Procurement-Policy.pdf',
-  },
-  {
-    title: 'Sustainability Policy',
-    meta: 'Next Review Dec 26',
+    title: 'Sustainability (ESG) Policy',
+    meta: 'Updated on Apr 2026',
     detail: 'Board-Approved ESG Commitment & Value Creation',
-    pdf: `${SUS_UPLOADS}/2026/04/5.Sustainability-Policy.pdf`,
-    filename: '5.Sustainability-Policy.pdf',
+    pdf: `${SUS_POLICIES}/Sustainability-ESG-Policy_2026.pdf`,
+    filename: 'Sustainability-ESG-Policy_2026.pdf',
   },
   {
-    title: 'EHS Policy Framework',
-    meta: 'Updated on April 2026',
+    title: 'Climate and Environmental Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Environmental Stewardship & Decarbonization Roadmap',
+    pdf: `${SUS_POLICIES}/Climate-and-Environment-Policy_2026.pdf`,
+    filename: 'Climate-and-Environment-Policy_2026.pdf',
+  },
+  {
+    title: 'Biodiversity and Afforestation Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Ecosystem Protection, Native Green Belts & Tree Planting',
+    pdf: `${SUS_POLICIES}/Biodiversity-and-Afforestation-Policy_2026.pdf`,
+    filename: 'Biodiversity-and-Afforestation-Policy_2026.pdf',
+  },
+  {
+    title: 'Energy Policy',
+    meta: 'Updated on July 2026',
+    detail: 'Energy Efficiency, Renewable Transition & Conservation',
+    pdf: `${SUS_POLICIES}/Energy-Policy_2026.pdf`,
+    filename: 'Energy-Policy_2026.pdf',
+  },
+  {
+    title: 'Social Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Labor Rights, Social Accountability & Workplace Equality',
+    pdf: `${SUS_POLICIES}/Social-Policy_2026.pdf`,
+    filename: 'Social-Policy_2026.pdf',
+  },
+  {
+    title: 'EHS and Wellness Policy',
+    meta: 'Updated on Apr 2026',
     detail: 'Environment, Health & Safety Zero-Harm Standards',
     pdf: `${SUS_UPLOADS}/2026/04/Granules-EHS-Wellness-Policy-_-Apr-2026.pdf`,
     filename: 'Granules-EHS-Wellness-Policy-_-Apr-2026.pdf',
   },
   {
+    title: 'Business Ethics Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Corporate Governance & Anti-Corruption Framework',
+    pdf: `${SUS_POLICIES}/Business-Ethics-Policy_2026.pdf`,
+    filename: 'Business-Ethics-Policy_2026.pdf',
+  },
+  {
+    title: 'Anti-Bribery and Anti-Corruption (ABAC) Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Zero Tolerance for Bribery & Corrupt Practices',
+    pdf: `${SUS_POLICIES}/Anti-Bribery-and-Anti-Corruption-ABAC-Policy_2026.pdf`,
+    filename: 'Anti-Bribery-and-Anti-Corruption-ABAC-Policy_2026.pdf',
+  },
+  {
+    title: 'Information Security Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Data Protection, Cyber Security & Information Governance',
+    pdf: `${SUS_POLICIES}/Information-Security-Policy_2026.pdf`,
+    filename: 'Information-Security-Policy_2026.pdf',
+  },
+  {
+    title: 'Artificial Intelligence (AI) Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Responsible, Ethical & Transparent Use of AI',
+    pdf: `${SUS_POLICIES}/Responsible-AI-Policy_2026.pdf`,
+    filename: 'Responsible-AI-Policy_2026.pdf',
+  },
+  {
+    title: 'Ethical Marketing Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Responsible Promotion & Fair Marketing Practices',
+    pdf: `${SUS_POLICIES}/Ethical-Marketing-Policy_2026.pdf`,
+    filename: 'Ethical-Marketing-Policy_2026.pdf',
+  },
+  {
+    title: 'Tax Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Fiscal Transparency, Governance & Statutory Compliance',
+    pdf: `${SUS_POLICIES}/Tax-Policy_2026.pdf`,
+    filename: 'Tax-Policy_2026.pdf',
+  },
+  {
+    title: 'Sustainability Procurement Policy',
+    meta: 'Updated on Apr 2026',
+    detail: 'Responsible Sourcing, Supplier Standards & ESG Criteria',
+    pdf: `${SUS_POLICIES}/Sustainable-Procurement-Policy_2026.pdf`,
+    filename: 'Sustainable-Procurement-Policy_2026.pdf',
+  },
+  {
     title: 'Supplier Code of Conduct',
-    meta: 'Next Review Dec 26',
+    meta: 'Updated on Apr 2026',
     detail: 'Vendor Compliance & Supply Chain Integrity Guidelines',
     pdf: `${SUS_UPLOADS}/2026/04/7.Supplier-Code-of-Conduct.pdf`,
     filename: '7.Supplier-Code-of-Conduct.pdf',
   },
   {
     title: 'Business Code of Conduct',
-    meta: 'Next Review Dec 26',
+    meta: 'Updated on Apr 2026',
     detail: 'Senior Management & Board Ethical Conduct',
     pdf: `${SUS_UPLOADS}/2026/04/8.Business-code-of-Conduct.pdf`,
     filename: '8.Business-code-of-Conduct.pdf',
   },
   {
-    title: 'Biodiversity and Afforestation Policy',
-    meta: 'Next Review Dec 26',
-    detail: 'Ecosystem Protection, Native Green Belts & Tree Planting',
-    pdf: `${SUS_UPLOADS}/2026/04/9.Biodiversity-and-Afforestation-Policy.pdf`,
-    filename: '9.Biodiversity-and-Afforestation-Policy.pdf',
-  },
-  {
-    title: 'Tax Policy Framework',
-    meta: 'Next Review Jan 28',
-    detail: 'Fiscal Transparency, Governance & Statutory Compliance',
-    pdf: `${SUS_UPLOADS}/2026/04/10.Tax-Policy.pdf`,
-    filename: '10.Tax-Policy.pdf',
-  },
-  {
     title: 'Human Rights Policy',
-    meta: 'Next Review Jan 28',
+    meta: 'Updated on Apr 2026',
     detail: 'Fair Labor, Anti-Discrimination & Dignity at Work',
     pdf: `${SUS_UPLOADS}/2026/04/11.Human-Rights-Policy.pdf`,
     filename: '11.Human-Rights-Policy.pdf',
   },
   {
     title: 'Grievance Redressal Policy',
-    meta: 'Next Review Jan 28',
+    meta: 'Updated on Apr 2026',
     detail: 'Independent Stakeholder Dispute Resolution Mechanism',
     pdf: `${SUS_UPLOADS}/2026/04/12.-Grievance-Redressal-Policy.pdf`,
     filename: '12.-Grievance-Redressal-Policy.pdf',
@@ -177,11 +216,39 @@ const REPORTS_DISCLOSURES = [
     filename: '3.-Sustainability-report-23-24.pdf',
   },
   {
-    title: 'TCFD Report',
+    title: 'ESG Policy Manual',
+    meta: 'Consolidated ESG Policy Framework',
+    period: 'Updated on Apr 2024',
+    pdf: `${SUS_REPORTS}/ESG-Policy-Manual_2025.pdf`,
+    filename: 'ESG-Policy-Manual_2025.pdf',
+  },
+  {
+    title: 'TCFD Report 2026',
     meta: 'Task Force on Climate-Related Financial Disclosures',
     period: 'Annual Filing',
-    pdf: `${SUS_UPLOADS}/2026/04/4.TCFD-Report.pdf`,
-    filename: '4.TCFD-Report.pdf',
+    pdf: `${SUS_REPORTS}/TCFD-Report_2026.pdf`,
+    filename: 'TCFD-Report_2026.pdf',
+  },
+  {
+    title: 'ICP Report 2026',
+    meta: 'Internal Carbon Pricing (ICP) Disclosure',
+    period: '2026',
+    pdf: `${SUS_REPORTS}/Internal-Carbon-Pricing-ICP-Disclosure-Report_2026.pdf`,
+    filename: 'Internal-Carbon-Pricing-ICP-Disclosure-Report_2026.pdf',
+  },
+  {
+    title: 'CDP Report 2026',
+    meta: 'CDP Response Report',
+    period: '2026',
+    pdf: `${SUS_REPORTS}/CDP-Response-Report_2026.pdf`,
+    filename: 'CDP-Response-Report_2026.pdf',
+  },
+  {
+    title: 'LCA Report (Paracetamol)',
+    meta: 'Life Cycle Assessment',
+    period: 'Apr 2026',
+    pdf: `${SUS_REPORTS}/LCA-Report_Paracetamol_Apr-2026.pdf`,
+    filename: 'LCA-Report_Paracetamol_Apr-2026.pdf',
   },
   {
     title: 'Net Zero Roadmap',
@@ -434,6 +501,20 @@ const CERTIFICATIONS: CertItem[] = [
     validity: 'Issued on Dec 25',
     pdf: `${SUS_UPLOADS}/2026/04/Zero-Waste-To-Landfill-ZWTL-Certification-GGP.pdf`,
     filename: 'Zero-Waste-To-Landfill-ZWTL-Certification-GGP.pdf',
+  },
+  {
+    category: 'Zero Waste To Landfill (ZWTL) Certification',
+    facility: 'GIL – Unit 1, Bonthapally',
+    validity: 'Issued on Sep 2026',
+    pdf: `${SUS_ZWTL}/Bonthapally-Unit-1.pdf`,
+    filename: 'ZWTL-Certification_Granules-Bonthapally-Unit-I.pdf',
+  },
+  {
+    category: 'Zero Waste To Landfill (ZWTL) Certification',
+    facility: 'GIL – Unit 5, Parawada',
+    validity: 'Issued on Sep 2026',
+    pdf: `${SUS_ZWTL}/Parawada-Unit-5.pdf`,
+    filename: 'ZWTL-Certification_Granules-Vizag-Unit-V.pdf',
   },
   {
     category: 'Water Neutrality Certification',
