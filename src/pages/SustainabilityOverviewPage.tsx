@@ -189,10 +189,10 @@ const REPORTS_DISCLOSURES = [
   },
   {
     title: 'ESG Supplementary Report FY 25-26',
-    meta: 'Available Soon',
+    meta: 'ESG Supplementary Disclosure',
     period: 'FY 2025–26',
-    pdf: null,
-    filename: '',
+    pdf: `${SUS_CDN}/reports-and-disclosures/FY25-26/ESG-Supplementary-Report.pdf`,
+    filename: 'ESG-Supplementary-Report.pdf',
   },
   {
     title: 'Integrated Annual Sustainability Report FY 24-25',
