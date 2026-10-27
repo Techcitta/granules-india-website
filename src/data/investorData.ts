@@ -2537,6 +2537,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "subcategoryLabel": "Share holding Structures"
           },
           {
+            "title": "Second Quarter",
+            "scope": "Shareholding Pattern - Q2 FY27",
+            "period": "Q2 FY27",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/10/SHPSEPTEMBERWEBSITE2026.pdf",
+            "id": "share-holding-structures-q2-fy27",
+            "category": "sec-investor-resources",
+            "subcategoryId": "share-holding-structures",
+            "subcategoryLabel": "Share holding Structures"
+          },
+          {
             "title": "Third Quarter",
             "scope": "Shareholding Pattern - Q3 FY26",
             "period": "Q3 FY26",
@@ -3660,6 +3671,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "label": "Notice of Board Meetings",
         "items": [
           {
+            "id": "notice-of-board-meetings-nov-02-2026",
+            "title": "Notice of Board Meeting Scheduled on November 02, 2026",
+            "scope": "Statutory Board Meeting Notices",
+            "period": "November 02, 2026 (FY27)",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/10/NSEBSEINTIMATION-2-Nov-26.pdf",
+            "category": "sec-notices-disclosures",
+            "subcategoryId": "notice-of-board-meetings",
+            "subcategoryLabel": "Notice of Board Meetings"
+          },
+          {
             "id": "notice-of-board-meetings-0",
             "title": "Notice of Board Meeting Scheduled on July 21, 2026.",
             "scope": "Statutory Board Meeting Notices",
@@ -4171,6 +4193,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "id": "schedule-of-investor-meet",
         "label": "Schedule of Investor Meet",
         "items": [
+          {
+            "id": "schedule-of-investor-meet-q2-fy27",
+            "title": "Schedule of Analyst and Investor Earning Conference Call-Q2 2026-27",
+            "scope": "Analyst Interactions & Non-Deal Roadshows",
+            "period": "Q2 FY27",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/10/GIL-Earnings-Call-Invite-Q2-H1-FY27.pdf",
+            "category": "sec-notices-disclosures",
+            "subcategoryId": "schedule-of-investor-meet",
+            "subcategoryLabel": "Schedule of Investor Meet"
+          },
           {
             "id": "schedule-of-investor-meet-1",
             "title": "Schedule of Analyst and Investor Meet- June 23, 2026",
