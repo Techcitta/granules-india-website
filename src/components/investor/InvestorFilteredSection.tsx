@@ -248,6 +248,13 @@ export default function InvestorFilteredSection({
   };
 
   function getDocSortScore(item: InvestorDocItem): number {
+    if (
+      typeof item.sortOrder === 'number' &&
+      activeSubcatId === 'unclaimed-dividend-shares-transferred-to-iepf'
+    ) {
+      return 900000000 - item.sortOrder;
+    }
+
     const p = (item.period || '').trim();
     const t = (item.title || '').trim();
     let year = parseInt(item.year || '', 10);
@@ -305,7 +312,7 @@ export default function InvestorFilteredSection({
       pool = pool.filter((item) => item.year === selectedYear);
     }
     return [...pool].sort((a, b) => getDocSortScore(b) - getDocSortScore(a));
-  }, [activeSubcat, allCategoryItems, selectedYear]);
+  }, [activeSubcat, activeSubcatId, allCategoryItems, selectedYear]);
 
   // Dropdown options lists
   const categoryOptions = useMemo(() => {
