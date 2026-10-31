@@ -1335,6 +1335,15 @@
     ],
     "2026": [
       {
+        "id": "pr-2026-10",
+        "year": "October 30, 2026",
+        "date": "OCTOBER 30, 2026",
+        "category": "PRESS RELEASE",
+        "title": "Granules India's Gagillapur facility completes USFDA inspection with eleven observations",
+        "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/10/Granules-Indias-Gagillapur-facility-completes-USFDA-inspection-with-eleven-observations.pdf",
+        "body": "Granules India's Gagillapur facility completes USFDA inspection with eleven observations. Granules India Limited official release."
+      },
+      {
         "id": "pr-2026-1",
         "year": "July 21, 2026",
         "category": "PRESS RELEASE",
@@ -1836,6 +1845,15 @@
     ]
   },
   "allPressReleases": [
+    {
+      "id": "pr-2026-10",
+      "year": "2026",
+      "date": "OCTOBER 30, 2026",
+      "category": "PRESS RELEASE",
+      "title": "Granules India's Gagillapur facility completes USFDA inspection with eleven observations",
+      "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/10/Granules-Indias-Gagillapur-facility-completes-USFDA-inspection-with-eleven-observations.pdf",
+      "body": "Granules India's Gagillapur facility completes USFDA inspection with eleven observations. Granules India Limited official release."
+    },
     {
       "id": "pr-2026-1",
       "year": "2026",
