@@ -2334,6 +2334,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "subcategoryLabel": "Earnings Call Recording"
           },
           {
+            "title": "Second Quarter",
+            "scope": "Earnings Call Audio - Q2 FY27",
+            "period": "Q2 FY27",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/10048018.mp3",
+            "id": "earnings-call-recording-q2-fy27",
+            "category": "sec-investor-resources",
+            "subcategoryId": "earnings-call-recording",
+            "subcategoryLabel": "Earnings Call Recording"
+          },
+          {
             "title": "First Quarter",
             "scope": "Earnings Call Audio - Q1 FY27",
             "period": "Q1 FY27",
