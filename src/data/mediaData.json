@@ -1335,6 +1335,15 @@
     ],
     "2026": [
       {
+        "id": "pr-2026-11",
+        "year": "November 2, 2026",
+        "date": "NOVEMBER 2, 2026",
+        "category": "PRESS RELEASE",
+        "title": "Q2FY27 Revenue from operations at INR 15,600 Mn up 20% YoY, EBITDA at INR 3,376 Mn up 21% YoY, PBT at INR 2,434 Mn up 38% YoY, PAT at INR 1,818 Mn up 39% YoY",
+        "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/Press-Release-Q2FY27.pdf",
+        "body": "Q2FY27 Revenue from operations at INR 15,600 Mn up 20% YoY, EBITDA at INR 3,376 Mn up 21% YoY, PBT at INR 2,434 Mn up 38% YoY, PAT at INR 1,818 Mn up 39% YoY. Granules India Limited official release."
+      },
+      {
         "id": "pr-2026-10",
         "year": "October 30, 2026",
         "date": "OCTOBER 30, 2026",
@@ -1845,6 +1854,15 @@
     ]
   },
   "allPressReleases": [
+    {
+      "id": "pr-2026-11",
+      "year": "2026",
+      "date": "NOVEMBER 2, 2026",
+      "category": "PRESS RELEASE",
+      "title": "Q2FY27 Revenue from operations at INR 15,600 Mn up 20% YoY, EBITDA at INR 3,376 Mn up 21% YoY, PBT at INR 2,434 Mn up 38% YoY, PAT at INR 1,818 Mn up 39% YoY",
+      "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/Press-Release-Q2FY27.pdf",
+      "body": "Q2FY27 Revenue from operations at INR 15,600 Mn up 20% YoY, EBITDA at INR 3,376 Mn up 21% YoY, PBT at INR 2,434 Mn up 38% YoY, PAT at INR 1,818 Mn up 39% YoY. Granules India Limited official release."
+    },
     {
       "id": "pr-2026-10",
       "year": "2026",

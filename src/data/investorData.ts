@@ -332,6 +332,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "label": "Quarterly Results",
         "items": [
           {
+            "title": "Second Quarter",
+            "scope": "Unaudited, Consolidated & Standalone",
+            "period": "Q2 FY27",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/Result-Q2FY27.pdf",
+            "id": "quarterly-results-q2-fy27",
+            "category": "sec-financial-reports",
+            "subcategoryId": "quarterly-results",
+            "subcategoryLabel": "Quarterly Results"
+          },
+          {
             "title": "First Quarter",
             "scope": "Unaudited, Consolidated & Standalone",
             "period": "Q1 FY27",
@@ -1529,6 +1540,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "id": "investor-presentation",
         "label": "Investor Presentation",
         "items": [
+          {
+            "title": "Second Quarter",
+            "scope": "Investor Presentation - Q2 FY27",
+            "period": "Q2 FY27",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/Earnings-Presentation-Q2FY27.pdf",
+            "id": "investor-presentation-q2-fy27",
+            "category": "sec-investor-resources",
+            "subcategoryId": "investor-presentation",
+            "subcategoryLabel": "Investor Presentation"
+          },
           {
             "title": "First Quarter",
             "scope": "Investor Presentation - Q1 FY27",
@@ -6007,6 +6029,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "id": "other-disclosures",
         "label": "Other Disclosures",
         "items": [
+          {
+            "id": "other-disclosures-nov-02-2026",
+            "title": "Outcome of Board Meeting Dated November 02, 2026",
+            "scope": "Continuous SEBI Regulation 30 Filings",
+            "period": "November 02, 2026 (FY27)",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/NSEBSEOUTCOME.pdf",
+            "category": "sec-notices-disclosures",
+            "subcategoryId": "other-disclosures",
+            "subcategoryLabel": "Other Disclosures"
+          },
           {
             "id": "other-disclosures-0",
             "title": "35TH AGM Voting Results",
