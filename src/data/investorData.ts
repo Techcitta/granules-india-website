@@ -5010,6 +5010,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "label": "Newspaper Publications",
         "items": [
           {
+            "id": "newspaper-publications-q2-fy27",
+            "title": "Q2 Results for the Financial year 2026-27 Published in Business Standard and Nava Telangana on November 03,2026.",
+            "scope": "Press Releases & AGM Advertisements",
+            "period": "November 3, 2026 (FY27)",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/Granules-India-Ltd-UFR-Q2-FY27.pdf",
+            "category": "sec-notices-disclosures",
+            "subcategoryId": "newspaper-publications",
+            "subcategoryLabel": "Newspaper Publications"
+          },
+          {
             "id": "newspaper-publications-0",
             "title": "Q1 Results for the Financial year 2026-27 Published in Business Standard and Nava Telangana on July 22,2026.",
             "scope": "Press Releases & AGM Advertisements",
@@ -6047,6 +6058,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
             "period": "November 02, 2026 (FY27)",
             "year": "2027",
             "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/NSEBSEOUTCOME.pdf",
+            "category": "sec-notices-disclosures",
+            "subcategoryId": "other-disclosures",
+            "subcategoryLabel": "Other Disclosures"
+          },
+          {
+            "id": "other-disclosures-rpt-sep26",
+            "title": "Disclosure of Related Party Transaction for the Half year ended on September 30, 2026",
+            "scope": "Continuous SEBI Regulation 30 Filings",
+            "period": "September 30, 2026 (FY27)",
+            "year": "2027",
+            "pdf": "https://d3uvya50m9yz9t.cloudfront.net/pdfs/2026/11/RPT-for-Website-Sep26.pdf",
             "category": "sec-notices-disclosures",
             "subcategoryId": "other-disclosures",
             "subcategoryLabel": "Other Disclosures"
