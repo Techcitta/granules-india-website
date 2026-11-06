@@ -749,19 +749,19 @@ function Sustainability({ open = 0, setOpen }) {
 function Investor() {
   const docs = [
     {
-      title: 'Quarterly Results (Q1 FY27)',
-      href: getAssetUrl('pdfs/2026/07/FY-Result-Jun26.pdf'),
-      download: 'Granules_Q1_FY27_Results.pdf',
+      title: 'Quarterly Results (Q2 FY27)',
+      href: getAssetUrl('pdfs/2026/11/Result-Q2FY27.pdf'),
+      download: 'Granules_Q2_FY27_Results.pdf',
     },
     {
-      title: 'Earnings Call Transcript (Q1 FY27)',
-      href: getAssetUrl('pdfs/2026/07/Q1-FY27-Concall-Transcript-Final.pdf'),
-      download: 'Granules_Earnings_Call_Transcript_Q1_FY27.pdf',
+      title: 'Earnings Call Transcript (Q2 FY27)',
+      href: getAssetUrl('investors/investor-resources/earnings-call-transcripts/2026/MUFG-GranulesIndia-Nov02-2026 _Updated.pdf'),
+      download: 'Granules_Earnings_Call_Transcript_Q2_FY27.pdf',
     },
     {
-      title: 'Investor Presentation (Q1 FY27)',
-      href: getAssetUrl('pdfs/2026/07/Earnings-Presentation-Q1FY27vf.pdf'),
-      download: 'Granules_Investor_Presentation_Q1_FY27.pdf',
+      title: 'Investor Presentation (Q2 FY27)',
+      href: getAssetUrl('pdfs/2026/11/Earnings-Presentation-Q2FY27.pdf'),
+      download: 'Granules_Investor_Presentation_Q2_FY27.pdf',
     },
     {
       title: 'Integrated Annual Report (FY25-26)',

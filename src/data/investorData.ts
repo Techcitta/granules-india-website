@@ -1921,8 +1921,19 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "label": "Earnings Call Transcripts",
         "items": [
           {
-            "title": "Transcript of the Webinar held on September 29, 2026",
+            "title": "Second Quarter",
             "scope": "Earnings Call Transcript - Q2 FY27",
+            "period": "Q2 FY27",
+            "year": "2027",
+            "pdf": "https://assets.granulesindia.com/investors/investor-resources/earnings-call-transcripts/2026/MUFG-GranulesIndia-Nov02-2026 _Updated.pdf",
+            "id": "earnings-call-transcripts-q2-fy27",
+            "category": "sec-investor-resources",
+            "subcategoryId": "earnings-call-transcripts",
+            "subcategoryLabel": "Earnings Call Transcripts"
+          },
+          {
+            "title": "Transcript of the Webinar held on September 29, 2026",
+            "scope": "Granules 2.0 Webinar Transcript",
             "period": "September 29, 2026",
             "year": "2027",
             "pdf": "https://assets.granulesindia.com/investors/investor-resources/earnings-call-transcripts/2026/Granules-2.0-Webinar-Transcript.pdf",
