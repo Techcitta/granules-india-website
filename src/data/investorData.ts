@@ -4245,6 +4245,17 @@ export const INVESTOR_SECTIONS_DATA: InvestorCategory[] = [
         "label": "Schedule of Investor Meet",
         "items": [
           {
+            "id": "schedule-of-investor-meet-nov-16-2026",
+            "title": "Schedule of Analyst and Investor Meet- November 16, 2026",
+            "scope": "Analyst Interactions & Non-Deal Roadshows",
+            "period": "November 16, 2026 (FY27)",
+            "year": "2027",
+            "pdf": "https://assets.granulesindia.com/investors/notice-and-disclosures/schedule-of-investor-meet/2026/Schedule%20of%20Analyst%20and%20Investor%20Meet-16.11.2026.pdf",
+            "category": "sec-notices-disclosures",
+            "subcategoryId": "schedule-of-investor-meet",
+            "subcategoryLabel": "Schedule of Investor Meet"
+          },
+          {
             "id": "schedule-of-investor-meet-q2-fy27",
             "title": "Schedule of Analyst and Investor Earning Conference Call-Q2 2026-27",
             "scope": "Analyst Interactions & Non-Deal Roadshows",
