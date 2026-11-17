@@ -36,7 +36,7 @@ const CORPORATE_CENTRE: TableRowItem[] = [
 ];
 
 
-export default function InvstrsPage() {
+export default function InvestrsPage() {
   const location = useLocation();
 
   useEffect(() => {

@@ -86,7 +86,7 @@ granules-india-website-main/
 │   │   ├── SustainabilityStrategyPage.tsx # Decarbonization roadmap
 │   │   ├── EsgInActionPage.tsx # ESG initiatives in action
 │   │   ├── CommunityPage.tsx   # CSR & community outreach programs
-│   │   ├── InvestorOverviewPage.tsx # Financial highlights & investor dashboard
+│   │   ├── InvestrsPage.tsx         # Financial highlights & investor dashboard
 │   │   ├── InvestorOverviewV2Page.tsx # Interactive investor metrics
 │   │   ├── InvestorAnnualReportsPage.tsx # Filterable annual reports & filings
 │   │   ├── MediaPage.tsx       # Press releases, coverage & media kit
@@ -129,7 +129,7 @@ granules-india-website-main/
 | `/sustainability/strategy` | `SustainabilityStrategyPage` | Net-zero roadmap and sustainability strategy. |
 | `/sustainability/esg-in-action` | `EsgInActionPage` | Active ESG initiatives, carbon mitigation, and resource circularity. |
 | `/sustainability/esg-in-action/community` | `CommunityPage` | CSR, education, healthcare, and community empowerment. |
-| `/investor` | `InvestorOverviewPage` | Investor relations, stock price card, and financial highlights. |
+| `/investor` | `InvestrsPage` | Investor relations, stock price card, and financial highlights. |
 | `/investor/v2` | `InvestorOverviewV2Page` | Interactive quarterly results and investor metrics dashboard. |
 | `/investor/annual-reports` | `InvestorAnnualReportsPage` | Downloadable integrated annual reports and statutory filings. |
 | `/media` | `MediaPage` | Press releases, corporate news, and interactive downloadable media kit. |
