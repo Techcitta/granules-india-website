@@ -1,0 +1,24 @@
+Commit Hash,Date & Time,Repositories,Branches,Commit Message,Files Changed,Lines Added,Lines Deleted,Net Change
+13e93e374f,2026-09-02 11:18:21,Techcitta/granules-india-website,Skeleton,Integrate AI Chatbot RAG into Skeleton branch,22,2494,1,2493
+201059857f,2026-09-02 11:22:40,Techcitta/granules-india-website,Skeleton,Add .env.example for chatbot backend setup,1,4,0,4
+badc560de8,2026-09-02 11:24:39,Techcitta/granules-india-website,Skeleton,Fix syntax bug in vectorstore.py (double backticks),1,1,1,0
+a0c1882fd2,2026-09-02 11:30:08,Techcitta/granules-india-website,Skeleton,Fix invalid Gemini model name: gemini-3.6-flash -> gemini-2.0-flash,1,1,1,0
+6291db05ca,2026-09-02 12:09:05,Techcitta/granules-india-website,Skeleton,Replace COLLECTION_NAME with india_knowledge_base,1,1,1,0
+62c69a7c34,2026-09-02 12:37:31,Techcitta/granules-india-website,alpha,Integrate AI Chatbot RAG into alpha branch,22,2489,0,2489
+aae70a080e,2026-09-02 12:39:48,Techcitta/granules-india-website,alpha,Include .qdrant_store vector database in repo,4,2,1,1
+3065827a56,2026-09-02 12:42:38,Techcitta/granules-india-website,alpha,Add Windows startup script and setup guide,3,82,1,81
+818394aa88,2026-09-02 12:50:37,Techcitta/granules-india-website,alpha,"Expand chatbot knowledge base with ESG, acquisitions, products, financials",2,500,0,500
+e930380ec0,2026-09-02 12:58:58,Techcitta/granules-india-website,alpha,"Expand knowledge base with leadership, milestones, facilities, improved retrieval",3,261,2,259
+72b9d7621e,2026-09-02 13:13:15,Techcitta/granules-india-website,alpha,Update chatbot highlight to yellow with banner notification,1,138,24,114
+c8155fdee4,2026-09-02 13:20:37,Techcitta/granules-india-website,alpha,Fix SPA highlight navigation and yellow highlight visibility,2,31,2,29
+b12ae1a5af,2026-09-02 13:48:25,Techcitta/granules-india-website,alpha,Fix Gemini API: update model to gemini-flash-latest,1,55,16,39
+836c77a2ef,2026-09-02 13:52:48,Techcitta/granules-india-website,alpha,Fix source citations: strip route from title when matching,1,9,1,8
+88c77d5872,2026-09-02 13:58:07,Techcitta/granules-india-website,alpha,Fix source highlighting: add section field and fuzzy matching,2,57,2,55
+70080e7cf9,2026-09-02 14:06:28,Techcitta/granules-india-website,alpha,Add Qdrant Cloud support for public deployment,4,225,4,221
+299885b235,2026-09-02 14:24:11,Techcitta/granules-india-website,alpha,Add free deployment configs for Netlify + Render,4,76,25,51
+07c59b065c,2026-09-02 14:35:33,Techcitta/granules-india-website,alpha,Simplify chatbot: concise answers with 1 source only,1,11,12,-1
+108ba6b8de,2026-09-02 14:41:48,Techcitta/granules-india-website,alpha,Enterprise-grade citation accuracy for MNC clients,2,138,18,120
+2d878ca438,2026-09-02 14:52:03,Techcitta/granules-india-website,alpha,Add comprehensive investor data to knowledge base,1,104,0,104
+0c6e768133,2026-09-02 15:00:28,Techcitta/granules-india-website,alpha,Add LOCAL_ONLY flag for vectorstore,1,4,1,3
+9154707d30,2026-09-02 15:25:16,Techcitta/granules-india-website,alpha,Add feedback buttons to chatbot responses,2,99,1,98
+8e098ed1f0,2026-09-02 17:28:59,Techcitta/granules-india-website,alpha,"Update chatbot.js, remove .env.example, add vectorstore exports",3,4,8,-4

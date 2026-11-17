@@ -1,0 +1,31 @@
+Commit Hash,Date & Time,Repositories,Branches,Commit Message,Files Changed,Lines Added,Lines Deleted,Net Change
+d88b442d82,2026-08-26 15:16:15,Techcitta/granules-india-website,"Hello, Skeleton, alpha, beta, demo, dev1, develop, main, about-us, feature/Business-page, final-updates",basic,440,11703,0,11703
+2de3d8f133,2026-08-27 14:55:13,Techcitta/granules-india-website,"dev1, develop",sustaniability page changes,25,2892,506,2386
+65ddc92b60,2026-08-27 22:07:23,Techcitta/granules-india-website,feature/Business-page,Add company page feature,23,2180,411,1769
+539e215348,2026-08-28 16:16:00,Techcitta-karthik/Granules,feature/aboutuspage,changes in aboutus,17,1168,332,836
+7855c2597b,2026-09-02 10:42:52,Techcitta-karthik/Granules,feature/aboutuspage,n,25,4123,263,3860
+6f8de233cf,2026-09-02 11:02:17,Techcitta-karthik/Granules,feature/aboutuspage,n,19,1076,852,224
+10b6824728,2026-09-02 12:37:58,Techcitta-karthik/Granules,main,n,2,66,64,2
+0eebd354e5,2026-09-05 12:56:26,Techcitta/granules-india-website,"Hello, beta, demo, about-us, final-updates",Updated Gloabal Subsidaries,7,713,7,706
+8c00189a78,2026-09-05 13:44:05,Techcitta/granules-india-website,"Hello, beta, demo, about-us, final-updates",Added Global Subsidaries pages,0,0,0,0
+cb53fb78bb,2026-09-05 23:42:38,Techcitta/granules-india-website,"Hello, beta, demo, about-us, final-updates",Add Senn Tides page and updated the about us and business pages,16,1927,493,1434
+21ccb56d1f,2026-09-07 22:19:37,Techcitta/granules-india-website,"Hello, beta, demo, about-us, final-updates",aboutus/overview,6,163,60,103
+34800488b4,2026-09-08 00:05:36,Techcitta/granules-india-website,"Hello, beta, demo, about-us, final-updates",aboutus/update,8,788,616,172
+43199572d5,2026-09-09 13:40:54,Techcitta/granules-india-website,"Hello, beta, final-updates",finally,25,3738,2003,1735
+9ec5e035d7,2026-09-09 19:48:23,Techcitta/granules-india-website,"Hello, beta, final-updates",modified,5,279,100,179
+14d931395f,2026-09-10 14:38:57,Techcitta/granules-india-website,"beta, final-updates",Final updates,25,3047,1110,1937
+2f9e98d7ef,2026-09-11 10:26:33,Techcitta/granules-india-website,Hello,Apply local career page changes,4,1505,499,1006
+a2e87ca91d,2026-09-11 12:15:47,Techcitta/granules-india-website,Hello,some changes,4,190,34,156
+77b4f63920,2026-09-18 22:37:36,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, dev, Pillow, cloud","Changes on the careers,senn-tides pages",10,254,231,23
+16bff22899,2026-09-21 12:23:36,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, dev, Pillow, cloud",IM gay,19,1455,1029,426
+168ed70965,2026-09-24 19:28:33,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, dev, Pillow",Update careers page: default to R&D and adjust background blur,2,3,3,0
+9d475daaa2,2026-09-25 12:50:46,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, dev, Pillow",feat(chatbot): make chatbot static across resolutions and prevent expansion on zoom,2,381,188,193
+5fe20fb5e0,2026-09-29 13:27:47,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",fixing issue solved,27,3339,54,3285
+4c1848e74c,2026-09-29 14:19:26,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",latestchanges,7,32,85,-53
+5864911b26,2026-09-29 14:26:02,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow","Merge branch 'chatbot' of https://github.com/Techcitta/granules-india-website into chatbot # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.",0,0,0,0
+8c0bd1fc36,2026-09-29 16:52:46,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",Fixed investors page sizing for mobile,11,256,862,-606
+dfad3b11ae,2026-09-29 17:17:52,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",fixed sizing in careers page mobile edition,1,110,1,109
+3294a151a6,2026-09-30 14:36:57,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",media section changes,10,1838,1191,647
+af06ecdfef,2026-09-30 15:35:08,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",Update media news section with official publication logos and 100x100 styling,25,211,86,125
+fb790ab4db,2026-09-30 15:48:55,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",jhewfv,3,1,31,-30
+230be196c2,2026-09-30 18:01:47,Techcitta-karthik/Granules & Techcitta/granules-india-website,"chatbot, Pillow",updates on media,14,193,12,181

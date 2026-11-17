@@ -1,14 +1,22 @@
 /**
- * Google Sheets Form Submission Service for Granules India
+ * Form Submission Service for Granules India
  * 
- * Sends submitted form data to a Google Apps Script Web App webhook,
- * which appends rows into 3 distinct sheets:
- *  1. "Contact"
- *  2. "Talent Community"
- *  3. "Data Privacy"
+ * Supports:
+ *  1. Microsoft SharePoint & Power Automate Webhook (VITE_SHAREPOINT_WEBHOOK_URL)
+ *  2. Google Sheets Web App Webhook (VITE_GOOGLE_SHEETS_WEBHOOK_URL)
+ * 
+ * Routes submissions across:
+ *  - "Contact" (Contact Us inquiries)
+ *  - "Talent Community" (Careers & CV/Resume uploads to SharePoint Document Library)
+ *  - "Data Privacy" (DPDP Act complaints)
+ *  - "Sheet1" / "API" / "PFI" / "FD" (Product lead capture)
  */
 
-// Configured Google Apps Script Web App URL
+// Configured SharePoint Power Automate Webhook URL
+export const SHAREPOINT_WEBHOOK_URL =
+  import.meta.env.VITE_SHAREPOINT_WEBHOOK_URL || '';
+
+// Configured Google Apps Script Web App URL (active fallback)
 export const GOOGLE_SHEETS_WEBHOOK_URL =
   import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL ||
   'https://script.google.com/macros/s/AKfycbzgPNLqcIWEeW6tBbTwy7WhI4VD5UQXtBIs_xZPpgz_DNT3U_wH7WluL2Zqg_viio5Q/exec';
@@ -66,18 +74,18 @@ export type FormPayload =
   | { sheet: 'Sheet1' | 'API' | 'PFI' | 'FD'; data: ProductLeadPayload };
 
 /**
- * Submit form payload to Google Apps Script Web App
+ * Submit form payload to SharePoint (Power Automate) and/or Google Apps Script
  */
 export async function submitToGoogleSheet(payload: FormPayload): Promise<{ success: boolean; error?: string }> {
-  const url = GOOGLE_SHEETS_WEBHOOK_URL;
+  const spUrl = SHAREPOINT_WEBHOOK_URL;
+  const gsUrl = GOOGLE_SHEETS_WEBHOOK_URL;
 
-  // Log in development if webhook URL is not yet configured
-  if (!url) {
+  // Log in development if neither webhook URL is configured
+  if (!spUrl && !gsUrl) {
     console.warn(
-      `[GoogleSheets] VITE_GOOGLE_SHEETS_WEBHOOK_URL is not set. Simulated submission for sheet: "${payload.sheet}"`,
+      `[FormService] Neither VITE_SHAREPOINT_WEBHOOK_URL nor VITE_GOOGLE_SHEETS_WEBHOOK_URL is set. Simulated submission for sheet: "${payload.sheet}"`,
       payload.data
     );
-    // Return success in local preview mode so UI does not get stuck
     return { success: true };
   }
 
@@ -97,25 +105,50 @@ export async function submitToGoogleSheet(payload: FormPayload): Promise<{ succe
       ...sanitizedData,
     };
 
-    // Google Apps Script requires text/plain or application/x-www-form-urlencoded to prevent CORS preflight OPTIONS failure
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8',
-      },
-      body: JSON.stringify(bodyData),
-    });
+    let spSucceeded = false;
 
-    if (!response.ok && response.type !== 'opaque') {
-      throw new Error(`Server returned HTTP ${response.status}`);
+    // 1. Primary: Microsoft SharePoint via Power Automate Webhook
+    if (spUrl) {
+      try {
+        const spResponse = await fetch(spUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(bodyData),
+        });
+        if (spResponse.ok || spResponse.type === 'opaque') {
+          spSucceeded = true;
+        }
+      } catch (spErr) {
+        console.error('[SharePoint] Failed sending to Power Automate webhook:', spErr);
+      }
+    }
+
+    // 2. Secondary / Backup: Google Sheets Webhook
+    if (gsUrl) {
+      const gsResponse = await fetch(gsUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(bodyData),
+      });
+
+      if (!gsResponse.ok && gsResponse.type !== 'opaque' && !spSucceeded) {
+        throw new Error(`Google Sheets server returned HTTP ${gsResponse.status}`);
+      }
     }
 
     return { success: true };
   } catch (err: any) {
-    console.error(`[GoogleSheets] Failed submitting to sheet "${payload.sheet}":`, err);
+    console.error(`[FormService] Failed submitting to "${payload.sheet}":`, err);
     return { success: false, error: err?.message || 'Submission failed' };
   }
 }
+
+// Export alias for semantic clarity
+export const submitFormPayload = submitToGoogleSheet;
 
 /**
  * Convert a File object to Base64 string for transmission

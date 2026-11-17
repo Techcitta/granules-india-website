@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import worldMapUrl from '@svg-maps/world/world.svg?url';
 import { NavBar, CompanyFooter } from '../components/company';
 import { REGULATORY_LOGOS } from '../data/regulatoryLogosData';
+import { PRESENCE_CAPABILITIES, PRESENCE_NETWORK_LOCATIONS } from '../data/presenceMapData';
 import { getAssetUrl } from '../lib/pdf';
 import '../components/company/company.css';
 
@@ -384,9 +385,202 @@ function Business() {
   );
 }
 
+function CapIcon({ capId, className = '' }) {
+  if (capId === 'API') {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="2.8" fill="currentColor" />
+        <line x1="12" y1="9.2" x2="12" y2="4.8" />
+        <circle cx="12" cy="3.6" r="1.8" fill="currentColor" />
+        <line x1="9.6" y1="13.4" x2="5.8" y2="15.6" />
+        <circle cx="4.5" cy="16.5" r="1.8" fill="currentColor" />
+        <line x1="14.4" y1="13.4" x2="18.2" y2="15.6" />
+        <circle cx="19.5" cy="16.5" r="1.8" fill="currentColor" />
+      </svg>
+    );
+  }
+  if (capId === 'PFI') {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M9.5 2.5h5" />
+        <path d="M10.5 2.5v4.5l-4.7 8.2a2 2 0 0 0 1.7 3H16.5a2 2 0 0 0 1.7-3l-4.7-8.2V2.5" />
+        <line x1="8.5" y1="14.5" x2="15.5" y2="14.5" strokeWidth="1.6" />
+      </svg>
+    );
+  }
+  if (capId === 'FD') {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <g transform="rotate(-45 12 12)">
+          <path d="M9 8h2v8H9a4 4 0 0 1-4-4 4 4 0 0 1 4-4z" />
+          <path d="M13 8h2a4 4 0 0 1 4 4 4 4 0 0 1-4 4h-2V8z" opacity="0.82" />
+        </g>
+      </svg>
+    );
+  }
+  if (capId === 'Peptide' || capId === 'PEPTIDE' || capId === 'PEPTIDES') {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" aria-hidden="true">
+        <path d="M7.5 3.5c1.8 3 7.2 5.5 9 9-1.8 3.5-7.2 6-9 9" />
+        <path d="M16.5 3.5c-1.8 3-7.2 5.5-9 9 1.8 3.5 7.2 6 9 9" />
+        <line x1="8.8" y1="6.8" x2="15.2" y2="6.8" strokeWidth="1.8" />
+        <line x1="7.5" y1="12.5" x2="16.5" y2="12.5" strokeWidth="2" />
+        <line x1="8.8" y1="18.2" x2="15.2" y2="18.2" strokeWidth="1.8" />
+      </svg>
+    );
+  }
+  return null;
+}
+
 function Presence() {
   const tabs = ['Our Global Subsidiaries (4)', 'Our Manufacturing Facilities (10)', 'Our R&D Facilities (5)'];
   const [active, setActive] = useState(0);
+  const [selectedCityId, setSelectedCityId] = useState(null);
+  const [selectedCapFilter, setSelectedCapFilter] = useState(null);
+  const [hoveredCityId, setHoveredCityId] = useState(null);
+
+  const isNetworkTab = active === 1 || active === 2;
+  const networkKey = active === 1 ? 'manufacturing' : active === 2 ? 'rd' : null;
+  const networkLocations = networkKey ? PRESENCE_NETWORK_LOCATIONS[networkKey] : [];
+
+  const activeCityMeta = networkLocations.find((loc) => loc.id === selectedCityId) || null;
+
+  // Extract unique capabilities present in the selected city
+  const cityCapabilities = useMemo(() => {
+    if (!activeCityMeta) return [];
+    const capSet = new Set();
+    activeCityMeta.units.forEach((unit) => {
+      unit.capabilities.forEach((c) => capSet.add(c));
+    });
+    return PRESENCE_CAPABILITIES.filter((cap) => capSet.has(cap.id));
+  }, [activeCityMeta]);
+
+  // Filter facilities in the selected city if a capability chip is clicked
+  const displayedUnits = useMemo(() => {
+    if (!activeCityMeta) return [];
+    if (!selectedCapFilter) return activeCityMeta.units;
+    return activeCityMeta.units.filter((unit) => unit.capabilities.includes(selectedCapFilter));
+  }, [activeCityMeta, selectedCapFilter]);
+
+  const handleSelectTab = (index) => {
+    setActive(index);
+    setSelectedCityId(null);
+    setSelectedCapFilter(null);
+    setHoveredCityId(null);
+  };
+
+  const handleToggleCity = (cityId) => {
+    if (!isNetworkTab) return;
+    if (selectedCityId === cityId) {
+      setSelectedCityId(null);
+      setSelectedCapFilter(null);
+    } else {
+      setSelectedCityId(cityId);
+      setSelectedCapFilter(null);
+    }
+  };
+
+  const renderNetworkLayer = (layerKey, layerTabIndex) => {
+    const isLayerActive = active === layerTabIndex;
+    const locations = PRESENCE_NETWORK_LOCATIONS[layerKey];
+
+    return (
+      <g
+        key={layerKey}
+        className={`presence-layer presence-layer-${layerKey}${isLayerActive ? ' is-active' : ''}`}
+        style={{
+          opacity: isLayerActive ? 1 : 0,
+          pointerEvents: isLayerActive ? 'auto' : 'none',
+          transition: 'opacity 0.35s ease',
+        }}
+      >
+        {locations.map((loc) => {
+          const isSelected = isLayerActive && selectedCityId === loc.id;
+          const isHovered = isLayerActive && hoveredCityId === loc.id;
+          const isOtherCitySelected = isLayerActive && selectedCityId !== null && !isSelected;
+
+          const pillLabel = `${loc.label} (${loc.units.length})`;
+
+          return (
+            <g
+              key={loc.id}
+              className={`map-location-node${isSelected ? ' is-selected' : ''}${isHovered ? ' is-hovered' : ''}${isOtherCitySelected ? ' is-dimmed-subtle' : ''}`}
+              role={isLayerActive ? 'button' : undefined}
+              tabIndex={isLayerActive ? 0 : -1}
+              aria-label={`${pillLabel} — click to view facilities`}
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isLayerActive) handleToggleCity(loc.id);
+              }}
+              onKeyDown={(e) => {
+                if (isLayerActive && (e.key === 'Enter' || e.key === ' ')) {
+                  e.preventDefault();
+                  handleToggleCity(loc.id);
+                }
+              }}
+              onMouseEnter={() => {
+                if (isLayerActive) setHoveredCityId(loc.id);
+              }}
+              onMouseLeave={() => {
+                if (isLayerActive) setHoveredCityId(null);
+              }}
+            >
+              <line
+                x1={loc.line.x1}
+                y1={loc.line.y1}
+                x2={loc.line.x2}
+                y2={loc.line.y2}
+                stroke={isSelected ? '#0061f8' : 'rgba(0, 97, 248, 0.45)'}
+                strokeWidth={isSelected ? '1.8' : '1.2'}
+                strokeLinecap="round"
+              />
+              <g className="map-pill-group" filter="url(#map-pill-shadow)">
+                <rect
+                  x={loc.pill.x}
+                  y={loc.pill.y}
+                  width={loc.pill.width}
+                  height={loc.pill.height}
+                  rx={loc.pill.height / 2}
+                  fill={isSelected ? '#eff6ff' : '#ffffff'}
+                  stroke={isSelected ? '#0061f8' : '#d0e2ff'}
+                  strokeWidth={isSelected ? '1.6' : '1'}
+                />
+                <text
+                  x={loc.pill.textX}
+                  y={loc.pill.textY}
+                  fill={isSelected ? '#004ecc' : '#0061f8'}
+                  fontSize={loc.pill.fontSize}
+                  fontWeight="700"
+                  fontFamily="'Manrope', sans-serif"
+                  letterSpacing="0.3px"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                >
+                  {pillLabel}
+                </text>
+              </g>
+              {isSelected && (
+                <circle
+                  className="map-pin-pulse"
+                  cx={loc.pin.cx}
+                  cy={loc.pin.cy}
+                  r={loc.pin.r + 6}
+                />
+              )}
+              <circle
+                className="map-pin-dot"
+                cx={loc.pin.cx}
+                cy={loc.pin.cy}
+                r={loc.pin.r}
+                fill="url(#map-pin-3d)"
+                filter="url(#map-pin-shadow)"
+              />
+            </g>
+          );
+        })}
+      </g>
+    );
+  };
 
   return (
     <section className={`presence presence-state-${active}`} id="presence">
@@ -395,7 +589,7 @@ function Presence() {
         <h2>Global Footprint Across Three Continents</h2>
       </div>
 
-      <div className="map-wrap">
+      <div className="map-wrap" onClick={() => setSelectedCityId(null)}>
         <div className="map-stage">
           <div className="map-plane">
             {/* Base World Map Image */}
@@ -440,24 +634,25 @@ function Presence() {
                 - Granules Life Sciences Private Limited, India
                 - Granules CZRO Private Limited, India
                 - Senn Tides Private Limited, India
+                (Purely informational display — no selection or hover animation)
                 ============================================================ */}
               <g
-                className="presence-layer presence-layer-subsidiaries"
+                className={`presence-layer presence-layer-subsidiaries${active === 0 ? ' is-active' : ''}`}
                 style={{
                   opacity: active === 0 ? 1 : 0,
-                  pointerEvents: active === 0 ? 'auto' : 'none',
+                  pointerEvents: 'none',
                   transition: 'opacity 0.35s ease'
                 }}
               >
                 {/* 1. US Subsidiary: Granules Pharma Inc, US */}
                 <line x1="261" y1="327" x2="245" y2="252" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
+                <g className="map-pill-static" filter="url(#map-pill-shadow)">
                   <rect x="150" y="226" width="190" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
                   <text x="245" y="239.5" fill="#0061f8" fontSize="9.5" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
                     GRANULES PHARMACEUTICALS INC, US
                   </text>
                 </g>
-                <circle className="map-pin-dot" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
+                <circle className="map-pin-static" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
 
                 {/* 2. India Subsidiaries: Leader lines from Hyderabad (698, 413) to stacked pills */}
                 <line x1="698" y1="413" x2="725" y2="360" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
@@ -465,7 +660,7 @@ function Presence() {
                 <line x1="698" y1="413" x2="725" y2="428" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
 
                 {/* Stacked Pills for Indian Subsidiaries */}
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
+                <g className="map-pill-static" filter="url(#map-pill-shadow)">
                   {/* Granules Life Sciences Private Limited, India */}
                   <rect x="725" y="347" width="264" height="24" rx="12" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
                   <text x="857" y="359.5" fill="#0061f8" fontSize="8.9" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.2px" textAnchor="middle" dominantBaseline="central">
@@ -486,120 +681,130 @@ function Presence() {
                 </g>
 
                 {/* Dot at Hyderabad */}
-                <circle className="map-pin-dot" cx="698" cy="413" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
+                <circle className="map-pin-static" cx="698" cy="413" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
               </g>
 
-              {/* ============================================================
-                TAB 1: OUR MANUFACTURING FACILITIES
-                - Hyderabad, India
-                - Visakhapatnam, India
-                - Zurich, Switzerland
-                - Virginia, USA
-                ============================================================ */}
-              <g
-                className="presence-layer presence-layer-manufacturing"
-                style={{
-                  opacity: active === 1 ? 1 : 0,
-                  pointerEvents: active === 1 ? 'auto' : 'none',
-                  transition: 'opacity 0.35s ease'
-                }}
-              >
-                {/* 1. Virginia, USA */}
-                <line x1="261" y1="327" x2="245" y2="252" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="175" y="226" width="140" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="245" y="239.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    VIRGINIA, USA (2)
-                  </text>
-                </g>
-                <circle className="map-pin-dot" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
+              {/* TAB 1: OUR MANUFACTURING FACILITIES */}
+              {renderNetworkLayer('manufacturing', 1)}
 
-                {/* 2. Zurich, Switzerland */}
-                <line x1="498" y1="315" x2="498" y2="280" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="408" y="254" width="180" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="498" y="267.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    ZURICH, SWITZERLAND (1)
-                  </text>
-                </g>
-                <circle className="map-pin-dot" cx="498" cy="315" r="7" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
-
-                {/* 3. Hyderabad, India */}
-                <line x1="698" y1="413" x2="650" y2="442" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="580" y="442" width="140" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="650" y="455.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    HYDERABAD, INDIA (5)
-                  </text>
-                </g>
-                <circle className="map-pin-dot" cx="698" cy="413" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
-
-                {/* 4. Visakhapatnam, India */}
-                <line x1="717" y1="404" x2="748" y2="375" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="748" y="362" width="176" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="836" y="375.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    VISAKHAPATNAM, INDIA (2)
-                  </text>
-                </g>
-                <circle className="map-pin-dot" cx="717" cy="404" r="6.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
-              </g>
-
-              {/* ============================================================
-                TAB 2: OUR R&D FACILITIES
-                - Hyderabad, India
-                - Pune, India
-                - Virginia, USA
-                - Zurich, Switzerland
-                ============================================================ */}
-              <g
-                className="presence-layer presence-layer-rd"
-                style={{
-                  opacity: active === 2 ? 1 : 0,
-                  pointerEvents: active === 2 ? 'auto' : 'none',
-                  transition: 'opacity 0.35s ease'
-                }}
-              >
-                {/* 1. Virginia, USA */}
-                <line x1="261" y1="327" x2="245" y2="252" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="175" y="226" width="140" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="245" y="239.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    VIRGINIA, USA (1)
-                  </text>
-                </g>
-                <circle className="map-pin-dot" cx="261" cy="327" r="7.5" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
-
-                {/* 2. Zurich, Switzerland */}
-                <line x1="498" y1="315" x2="498" y2="280" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="408" y="254" width="180" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="498" y="267.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    ZURICH, SWITZERLAND (1)
-                  </text>
-                </g>
-                <circle className="map-pin-dot" cx="498" cy="315" r="7" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
-
-                {/* 4. Hyderabad, India */}
-                <line x1="698" y1="413" x2="740" y2="375" stroke="rgba(0, 97, 248, 0.45)" strokeWidth="1.2" strokeLinecap="round" />
-                <g className="map-pill-group" filter="url(#map-pill-shadow)">
-                  <rect x="740" y="362" width="150" height="26" rx="13" fill="#ffffff" stroke="#d0e2ff" strokeWidth="1" />
-                  <text x="815" y="375.5" fill="#0061f8" fontSize="10" fontWeight="700" fontFamily="'Manrope', sans-serif" letterSpacing="0.3px" textAnchor="middle" dominantBaseline="central">
-                    HYDERABAD, INDIA (3)
-                  </text>
-                </g>
-                <circle className="map-pin-dot" cx="698" cy="413" r="6" fill="url(#map-pin-3d)" filter="url(#map-pin-shadow)" />
-              </g>
+              {/* TAB 2: OUR R&D FACILITIES */}
+              {renderNetworkLayer('rd', 2)}
             </svg>
           </div>
         </div>
+
+        {/* City Details Box on the right side of the map */}
+        {activeCityMeta && (
+          <div
+            key={activeCityMeta.id}
+            className="city-popover-box"
+            role="dialog"
+            aria-modal="false"
+            aria-label={`${activeCityMeta.label} facilities`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="city-popover-head">
+              <div className="city-popover-title-wrap">
+                <span className="city-popover-pin-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 21s-6-5.4-6-10.5a6 6 0 1 1 12 0C18 15.6 12 21 12 21z" />
+                    <circle cx="12" cy="10.5" r="2.2" />
+                  </svg>
+                </span>
+                <div>
+                  <div className="city-popover-title">{activeCityMeta.label}</div>
+                  <div className="city-popover-sub">
+                    {activeCityMeta.units.length === 1
+                      ? (active === 1 ? 'Manufacturing Facility' : 'R&D Center')
+                      : (active === 1 ? 'Manufacturing Facilities' : 'R&D Centers')}
+                  </div>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="city-popover-close"
+                onClick={() => {
+                  setSelectedCityId(null);
+                  setSelectedCapFilter(null);
+                }}
+                aria-label="Close"
+                title="Close details"
+              >
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* City Capability Filter Chips */}
+            {cityCapabilities.length > 0 && (
+              <div className="city-popover-chips" role="group" aria-label="Filter by capability">
+                {cityCapabilities.map((cap) => {
+                  const isActive = selectedCapFilter === cap.id;
+                  const isOtherActive = selectedCapFilter !== null && !isActive;
+                  return (
+                    <button
+                      key={cap.id}
+                      type="button"
+                      className={`city-cap-chip city-cap-chip--${cap.colorKey}${isActive ? ' is-active' : ''}${isOtherActive ? ' is-inactive' : ''}`}
+                      onClick={() => setSelectedCapFilter((prev) => (prev === cap.id ? null : cap.id))}
+                      aria-pressed={isActive}
+                      title={isActive ? `Clear ${cap.label} filter` : `Filter by ${cap.label}`}
+                    >
+                      <span className="city-cap-chip-icon" aria-hidden="true">
+                        <CapIcon capId={cap.id} />
+                      </span>
+                      <span>{cap.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Facility List */}
+            <div className="city-popover-list">
+              {displayedUnits.map((unit) => (
+                <div className="city-popover-unit" key={unit.name}>
+                  <span className="city-popover-unit-name">{unit.name}</span>
+                  <div className="city-popover-unit-caps">
+                    {unit.capabilities.map((capId) => {
+                      const capMeta = PRESENCE_CAPABILITIES.find((c) => c.id === capId);
+                      return (
+                        <span
+                          key={capId}
+                          className={`cap-badge cap-badge--${capMeta?.colorKey || 'api'}`}
+                        >
+                          <span className="cap-badge-icon" aria-hidden="true">
+                            <CapIcon capId={capId} />
+                          </span>
+                          <span>{capId}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="city-popover-foot">
+              <Link
+                to={active === 1 ? '/business/facilities' : '/business/rd'}
+                className="city-popover-explore"
+              >
+                <span>{active === 1 ? 'Explore all facilities' : 'Explore R&D platform'}</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="presence-tabs shell">
         {tabs.map((tab, index) => (
           <button
             className={active === index ? 'active' : ''}
-            onClick={() => setActive(index)}
+            onClick={() => handleSelectTab(index)}
             key={tab}
           >
             <span>{tab}</span>
