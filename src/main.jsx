@@ -134,7 +134,7 @@ import EsgInActionPage from './pages/EsgInActionPage.tsx';
 import EsgProfilePage from './pages/EsgProfilePage.tsx';
 import EhsSubmissionsPage from './pages/EhsSubmissionsPage.tsx';
 import CommunityPage from './pages/CommunityPage.tsx';
-import InvestorOverviewPage from './pages/InvestorOverviewPage.tsx';
+import InvstrsPage from './pages/InvstrsPage.tsx';
 import InvestorAnnualReportsPage from './pages/InvestorAnnualReportsPage.tsx';
 import MediaPage from './pages/MediaPage.tsx';
 import CareerOverviewPage from './pages/CareerOverviewPage.tsx';
@@ -296,12 +296,12 @@ function App() {
         <Route path="/corporate-social-responsibility" element={<CommunityPage />} />
         <Route path="/csr" element={<CommunityPage />} />
         <Route path="/community" element={<CommunityPage />} />
-        <Route path="/investor" element={<InvestorOverviewPage />} />
-        <Route path="/investors" element={<InvestorOverviewPage />} />
-        <Route path="/investor/v2" element={<InvestorOverviewPage />} />
+        <Route path="/investor" element={<InvstrsPage />} />
+        <Route path="/investors" element={<InvstrsPage />} />
+        <Route path="/investor/v2" element={<InvstrsPage />} />
         <Route path="/investor/annual-reports" element={<InvestorAnnualReportsPage />} />
-        <Route path="/investors/*" element={<InvestorOverviewPage />} />
-        <Route path="/investor/*" element={<InvestorOverviewPage />} />
+        <Route path="/investors/*" element={<InvstrsPage />} />
+        <Route path="/investor/*" element={<InvstrsPage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/careers" element={<CareerOverviewPage />} />
         <Route path="/careers/life-at-granules" element={<LifeAtGranulesPage />} />
