@@ -16,7 +16,7 @@ const SOLUTIONS_LINKS = [
 ];
 
 const IMPACT_LINKS = [
-  { label: 'Investors', href: '/investrspage' },
+  { label: 'Investors', href: '/investor' },
   { label: 'Sustainability', href: '/sustainability' },
   { label: 'Community', href: '/community' },
   { label: 'Media', href: '/media' },

@@ -492,7 +492,7 @@ export const SEARCH_INDEX: SearchResultItem[] = [
     "badge": "Investors",
     "location": "Investors › Overview",
     "description": "Financial results, quarterly earnings releases, investor presentations, stock prices (BSE: 532482 / NSE: GRANULES), and disclosures.",
-    "href": "/investrspage",
+    "href": "/investor",
     "keywords": [
       "investor",
       "investors",

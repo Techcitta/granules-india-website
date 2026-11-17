@@ -79,7 +79,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Business', href: '/business/generics', matchPrefix: '/business' },
   { label: 'Sustainability', href: '/sustainability', matchPrefix: '/sustainability' },
   { label: 'CSR', href: '/community', matchPrefix: '/community' },
-  { label: 'Investor', href: '/investrspage', matchPrefix: '/investrspage' },
+  { label: 'Investor', href: '/investor', matchPrefix: '/investor' },
   { label: 'Media', href: '/media', matchPrefix: '/media' },
   { label: 'Careers', href: '/careers', matchPrefix: '/careers' },
   { label: 'Contact Us', href: '/contact', matchPrefix: '/contact' },

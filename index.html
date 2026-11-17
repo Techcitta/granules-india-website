@@ -168,18 +168,18 @@
         } else if (lower === '/investors/press-release' || lower.indexOf('/investors/press-release/') === 0) {
           targetRoute = '/media';
         } else if (lower.indexOf('/investors/investor-resources/buyback') === 0 || lower.indexOf('/investors/investor-resources/policies') === 0 || lower.indexOf('/investors/investor-resources/investor-presentation') === 0) {
-          targetRoute = '/investrspage';
+          targetRoute = '/investor';
           if (!targetHash) targetHash = '#sec-investor-resources';
         } else if (lower.indexOf('/investors/other-information') === 0) {
-          targetRoute = '/investrspage';
+          targetRoute = '/investor';
           if (!targetHash) targetHash = '#sec-other-info';
         } else if (lower.indexOf('/investors/notice-disclosures') === 0) {
-          targetRoute = '/investrspage';
+          targetRoute = '/investor';
           if (!targetHash) targetHash = '#sec-notices-disclosures';
         } else if (lower.indexOf('/investors/investor-centre') === 0 || lower.indexOf('/investors/investor-resources') === 0 || lower === '/investor.php') {
-          targetRoute = '/investrspage';
-        } else if (lower === '/investors' || lower.indexOf('/investors/') === 0 || lower === '/investor' || (lower.indexOf('/investor/') === 0 && lower.indexOf('/investor/annual-reports') !== 0 && lower.indexOf('/investor/ehs-documents') !== 0)) {
-          targetRoute = '/investrspage';
+          targetRoute = '/investor';
+        } else if (lower === '/investors' || lower.indexOf('/investors/') === 0) {
+          targetRoute = '/investor';
         } else if (lower.indexOf('/products/active-pharmaceutical') === 0 || lower === '/products/api') {
           targetRoute = '/business/api';
         } else if (lower.indexOf('/products/pharmaceutical-formulation') === 0 || lower === '/products/pfi') {
@@ -187,7 +187,7 @@
         } else if (lower.indexOf('/products/finished-dosages') === 0 || lower === '/products/fd') {
           targetRoute = '/business/fd';
         } else if (lower.indexOf('/wp-content/') === 0) {
-          targetRoute = '/investrspage';
+          targetRoute = '/investor';
         }
 
         var isApex = !isLocal && (hostname.toLowerCase() === 'granulesindia.com');

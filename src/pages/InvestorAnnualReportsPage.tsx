@@ -41,9 +41,9 @@ export default function InvestorAnnualReportsPage() {
       <p className="cp-breadcrumb" style={{ width: '85%', maxWidth: '85%', margin: 'clamp(60px, 8vw, 118px) auto 0' }}>
         <Link to="/">HOME</Link>
         <span className="sep">›</span>
-        <Link to="/investrspage">INVESTOR</Link>
+        <Link to="/investor">INVESTOR</Link>
         <span className="sep">›</span>
-        <Link to="/investrspage">FINANCIAL REPORTS &amp; PERFORMANCE</Link>
+        <Link to="/investor">FINANCIAL REPORTS &amp; PERFORMANCE</Link>
         <span className="sep">›</span>
         <span className="current">ANNUAL REPORTS</span>
       </p>
@@ -105,7 +105,7 @@ export default function InvestorAnnualReportsPage() {
       </div>
 
       <div className="inv-detail-back-wrap">
-        <Link className="inv-detail-back" to="/investrspage">
+        <Link className="inv-detail-back" to="/investor">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="15 18 9 12 15 6" />
           </svg>

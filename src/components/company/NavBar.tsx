@@ -113,7 +113,7 @@ function isActive(link: NavLinkItem, pathname: string, activeSection?: string | 
     );
   }
   if (link.label === 'Investor') {
-    return pathname.startsWith('/investrspage') || pathname.startsWith('/investor');
+    return pathname.startsWith('/investor');
   }
   if (link.label === 'Media') {
     return pathname.startsWith('/media');
