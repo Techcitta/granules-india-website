@@ -266,7 +266,7 @@ export const COMPLETE_ESG_DATA: EsgSubfactorItem[] = [
     factor: 'Company Overview',
     subfactor: 'Company Website Governance Links',
     keywords: ['Approach'],
-    docLinks: [{ name: 'Granules Governance Web', url: '/investor', type: 'web' }],
+    docLinks: [{ name: 'Granules Governance Web', url: '/investrspage', type: 'web' }],
     highlights: "Governance section is available on the company's website.",
   },
 
@@ -734,7 +734,7 @@ export const COMPLETE_ESG_DATA: EsgSubfactorItem[] = [
     keywords: ['Policies', 'Stakeholders'],
     docLinks: [
       { name: 'Corporate Governance Report', url: PDF_DEFAULT, type: 'pdf' },
-      { name: 'Investor Governance Page', url: '/investor', type: 'web' },
+      { name: 'Investor Governance Page', url: '/investrspage', type: 'web' },
     ],
     factsheet: 'A : 14',
     highlights:
@@ -748,7 +748,7 @@ export const COMPLETE_ESG_DATA: EsgSubfactorItem[] = [
     docLinks: [
       { name: 'Board Charter', url: PDF_DEFAULT, type: 'pdf' },
       { name: 'Risk Management Charter', url: ANNUAL_REPORT_PDF, type: 'pdf' },
-      { name: 'Corporate Governance Page', url: '/investor', type: 'web' },
+      { name: 'Corporate Governance Page', url: '/investrspage', type: 'web' },
     ],
     highlights:
       'The Board of Directors is the apex body constituted by the shareholders for overseeing the Company’s overall functioning. The Board provides and evaluates the Company’s strategic direction, management policies and effectiveness and ensures that shareholders’ long-term interests are being served; The Board of Directors provides strategic supervision, supported by the Risk Management Committee (RMC) constituted in accordance with SEBI (LODR) Regulations. The RMC is responsible for reviewing the risk management policy, overseeing the ERM framework and monitoring exposure across financial, operational, regulatory, technological, sectoral, talent, geopolitical and ESG-related risks.',
@@ -895,7 +895,7 @@ export const COMPLETE_ESG_DATA: EsgSubfactorItem[] = [
     subfactor: 'ISO 37001 - Anti-Bribery Management System',
     keywords: ['External Validation'],
     docLinks: [
-      { name: 'Governance Portal', url: '/investor', type: 'web' },
+      { name: 'Governance Portal', url: '/investrspage', type: 'web' },
       { name: 'ISO 37001 Certificate', url: PDF_DEFAULT, type: 'pdf' },
     ],
     highlights: 'Certifications: ISO 37001 - Anti-bribery management systems (ABMS).',

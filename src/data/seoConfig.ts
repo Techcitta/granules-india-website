@@ -220,6 +220,12 @@ export const SEO_CONFIG: Record<string, PageSeoMeta> = {
   },
 
   // --- INVESTORS ---
+  '/investrspage': {
+    title: 'Investor Relations Portal | Granules India Limited (BSE: 532482, NSE: GRANULES)',
+    description: 'Official investor portal: quarterly financial results, investor presentations, earnings call recordings, shareholding pattern, and SEBI disclosures.',
+    keywords: 'Granules investor relations, Granules share price, BSE 532482, NSE GRANULES, financial results, quarterly earnings, annual report, dividend',
+    canonical: 'https://www.granulesindia.com/investrspage',
+  },
   '/investor': {
     title: 'Investor Relations Portal | Granules India Limited (BSE: 532482, NSE: GRANULES)',
     description: 'Official investor portal: quarterly financial results, investor presentations, earnings call recordings, shareholding pattern, and SEBI disclosures.',

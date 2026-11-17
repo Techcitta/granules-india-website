@@ -983,7 +983,7 @@ function Investor() {
           Driven by operational excellence and responsible growth, we remain focused on creating
           sustainable value for our investors.
         </p>
-        <Button href="/investors">INVESTOR &rarr;</Button>
+        <Button href="/investrspage">INVESTOR &rarr;</Button>
       </div>
       <div className="investor-panel">
         <a
@@ -1100,7 +1100,7 @@ function Footer() {
   const companyLinks = [
     ['Company', '/company'],
     ['Sustainability', '/sustainability'],
-    ['Investors', '/investor'],
+    ['Investors', '/investrspage'],
     ['Media', '/media'],
     ['Careers', '/careers'],
     ['Contact Us', '/contact'],

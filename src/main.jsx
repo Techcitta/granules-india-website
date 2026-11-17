@@ -60,18 +60,18 @@ if (typeof window !== 'undefined') {
   } else if (lower === '/investors/press-release' || lower.startsWith('/investors/press-release/')) {
     targetRoute = '/media';
   } else if (lower.indexOf('/investors/investor-resources/buyback') === 0 || lower.indexOf('/investors/investor-resources/policies') === 0 || lower.indexOf('/investors/investor-resources/investor-presentation') === 0) {
-    targetRoute = '/investor';
+    targetRoute = '/investrspage';
     if (!targetHash) targetHash = '#sec-investor-resources';
   } else if (lower.indexOf('/investors/other-information') === 0) {
-    targetRoute = '/investor';
+    targetRoute = '/investrspage';
     if (!targetHash) targetHash = '#sec-other-info';
   } else if (lower.indexOf('/investors/notice-disclosures') === 0) {
-    targetRoute = '/investor';
+    targetRoute = '/investrspage';
     if (!targetHash) targetHash = '#sec-notices-disclosures';
   } else if (lower.indexOf('/investors/investor-centre') === 0 || lower.indexOf('/investors/investor-resources') === 0 || lower === '/investor.php') {
-    targetRoute = '/investor';
-  } else if (lower === '/investors' || lower.startsWith('/investors/')) {
-    targetRoute = '/investor';
+    targetRoute = '/investrspage';
+  } else if (lower === '/investors' || lower.startsWith('/investors/') || lower === '/investor' || (lower.startsWith('/investor/') && !lower.startsWith('/investor/annual-reports') && !lower.startsWith('/investor/ehs-documents'))) {
+    targetRoute = '/investrspage';
   } else if (lower.startsWith('/products/active-pharmaceutical') || lower === '/products/api') {
     targetRoute = '/business/api';
   } else if (lower.startsWith('/products/pharmaceutical-formulation') || lower === '/products/pfi') {
@@ -79,7 +79,7 @@ if (typeof window !== 'undefined') {
   } else if (lower.startsWith('/products/finished-dosages') || lower === '/products/fd') {
     targetRoute = '/business/fd';
   } else if (lower.startsWith('/wp-content/')) {
-    targetRoute = '/investor';
+    targetRoute = '/investrspage';
   }
 
   if (isApex) {
@@ -223,24 +223,24 @@ function App() {
         <Route path="/investors/financial-reports/annual-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
         <Route path="/investors/financial-reports" element={<Navigate to="/investor/annual-reports" replace />} />
         <Route path="/investors/financial-reports/*" element={<Navigate to="/investor/annual-reports" replace />} />
-        <Route path="/investors/investor-resources/buyback" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-resources/buyback/*" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-resources/policies" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-resources/policies/*" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-resources/investor-presentation" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-resources/investor-presentation/*" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-resources" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-resources/*" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-centre" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/investor-centre/*" element={<Navigate to="/investor" replace />} />
-        <Route path="/investor.php" element={<Navigate to="/investor" replace />} />
-        <Route path="/wp-content/*" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/investor-resources/buyback" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-resources/buyback/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-resources/policies" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-resources/policies/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-resources/investor-presentation" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-resources/investor-presentation/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-resources" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-resources/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-centre" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/investor-centre/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investor.php" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/wp-content/*" element={<Navigate to="/investrspage" replace />} />
         <Route path="/investors/press-release" element={<Navigate to="/media" replace />} />
         <Route path="/investors/press-release/*" element={<Navigate to="/media" replace />} />
-        <Route path="/investors/other-information" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/other-information/*" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/notice-disclosures" element={<Navigate to="/investor" replace />} />
-        <Route path="/investors/notice-disclosures/*" element={<Navigate to="/investor" replace />} />
+        <Route path="/investors/other-information" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/other-information/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/notice-disclosures" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors/notice-disclosures/*" element={<Navigate to="/investrspage" replace />} />
         <Route path="/public_html" element={<Navigate to="/" replace />} />
         <Route path="/public_html/*" element={<Navigate to="/" replace />} />
         <Route path="/company" element={<CompanyPage />} />
@@ -296,16 +296,17 @@ function App() {
         <Route path="/corporate-social-responsibility" element={<CommunityPage />} />
         <Route path="/csr" element={<CommunityPage />} />
         <Route path="/community" element={<CommunityPage />} />
-        <Route path="/investor" element={<InvestrsPage />} />
-        <Route path="/investors" element={<InvestrsPage />} />
-        <Route path="/investrs" element={<InvestrsPage />} />
         <Route path="/investrspage" element={<InvestrsPage />} />
-        <Route path="/investor/v2" element={<InvestrsPage />} />
-        <Route path="/investor/annual-reports" element={<InvestorAnnualReportsPage />} />
-        <Route path="/investors/*" element={<InvestrsPage />} />
-        <Route path="/investor/*" element={<InvestrsPage />} />
-        <Route path="/investrs/*" element={<InvestrsPage />} />
         <Route path="/investrspage/*" element={<InvestrsPage />} />
+        <Route path="/investor" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investors" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investrs" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investor/v2" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investor/annual-reports" element={<InvestorAnnualReportsPage />} />
+        <Route path="/investrspage/annual-reports" element={<InvestorAnnualReportsPage />} />
+        <Route path="/investors/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investor/*" element={<Navigate to="/investrspage" replace />} />
+        <Route path="/investrs/*" element={<Navigate to="/investrspage" replace />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/careers" element={<CareerOverviewPage />} />
         <Route path="/careers/life-at-granules" element={<LifeAtGranulesPage />} />
