@@ -91,7 +91,7 @@ export const PRESENCE_NETWORK_LOCATIONS = {
       pill: { x: 175, y: 226, width: 140, height: 26, textX: 245, textY: 239.5, fontSize: 10 },
       anchor: { x: 245, y: 218 },
       units: [
-        { name: 'Granules Pharmaceuticals, Inc.', capabilities: ['FD'] },
+        { name: 'Virginia, USA', capabilities: ['FD'] },
       ],
     },
     {
